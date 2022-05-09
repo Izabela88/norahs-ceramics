@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+{% endblock %}
+{% block content %}
+
+  <!-------------------------- HERO SECTION ----------------------------->
+<main id="home-section" class="section">
+  <div class="container">
+    <h1>hello</h1>
+  </div>
+  </main>
+
+{% endblock %}
+
+{% block extra_js %}
+  {{ block.super }}
+  <script src="{% static 'home/js/index.js' %}"></script>
+{% endblock %}
