@@ -35,8 +35,10 @@
         </a>
       </div>
         <nav class="menu">
-          <ol>
-            <li class="menu-item"><a href="#">Home</a></li>
+          <ol id="menu-list">
+            {% url 'home' as url %}
+            <li class="menu-item ">
+              <a class="{% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
             <li class="menu-item"><a href="#">About</a></li>
             <li class="menu-item">
               <a href="#">Ceramics</a>

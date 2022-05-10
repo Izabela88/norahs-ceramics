@@ -157,13 +157,13 @@ label {
   display: flex;
 }
 
-.menu>ol>.menu-item {
+.menu > ol > .menu-item {
   flex: 1;
   padding: 0.75rem 0;
   text-transform: uppercase;
 }
 
-.menu>ol>.menu-item:after {
+.menu > ol > .menu-item:after {
   content: "";
   position: absolute;
   width: 4px;
@@ -175,11 +175,13 @@ label {
   transform: scale(0);
   transition: transform 0.2s ease;
   background: #FECEAB;
-
-
 }
 
-.menu>ol>.menu-item:hover:after {
+#menu-list li a.active {
+  color: var(--col_eight);
+}
+
+.menu > ol > .menu-item:hover:after {
   transform: scale(1);
 }
 
