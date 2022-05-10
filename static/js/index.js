@@ -15,3 +15,28 @@ function controlActiveClass() {
 }
 
 controlActiveClass();
+
+// Code from https://codepen.io/JoseRosario/pen/BWqMwK*
+function toggleHamburgerIcon() {
+  let wrapperMenu = document.querySelector(".wrapper-menu");
+
+  wrapperMenu.addEventListener("click", function () {
+    console.log("click");
+    wrapperMenu.classList.toggle("open");
+  });
+}
+
+toggleHamburgerIcon();
+
+/* My code starts here
+        Open and close sidebar for small devices*/
+const hamburgerIcon = document.querySelector(".wrapper-menu");
+const closeButtons = document.querySelectorAll(".close-sidebar");
+
+function openMenu() {
+  document.getElementById("my-sidebar").classList.toggle("open-menu");
+}
+
+hamburgerIcon.addEventListener("click", function (e) {
+  openMenu();
+});
