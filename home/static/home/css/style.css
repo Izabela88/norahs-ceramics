@@ -1,8 +1,25 @@
+:root {
+    --col_one: #D18E85;
+    --col_two: #C8CAC9;
+    --col_three: #000000;
+    --col_four: #ffffff;
+    --col_five: #F2DFE1;
+    --col_six: #C1B198;
+    --col_seven: #F8B195;
+    --col_eight: #C06C84;
+    --font_one: 'Mali', cursive;
+    --font_two: 'Hubballi', cursive;
+    
+  }
+
+
 #home-section {
     min-height: 100vh;
     height: 100vh;
     position: relative;
+    background-color: var(--col_four);
 }
+
 
 .container {
     max-width: 1200px;
@@ -13,4 +30,90 @@
     justify-content: center;
     align-items: center;
   }
+
+
+.home-txt {
+    width: 50%;
+    padding: 64px;
+    margin: auto;
+}
+
+.home-txt h1 {
+    font-weight: 300;
+    font-family: 'Homemade Apple', cursive
+}
+
+.home-txt p {
+    font-size: 23px;
+    line-height: 30px;
+}
+
+.home-txt a {
+    color: #000000;
+    font-size: 22px;
+    position: relative;
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+    transition-duration: 0.3s;
+    text-transform: uppercase;
+}
+
+.home-txt a:hover {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.hero-image {
+    right: 0;
+    position: relative;
+}
+
+.hero-image img {
+    height: 600px;
+}
+
+.hero-bg {
+    height: 600px;
+    width: 100%;
+    background: linear-gradient(180deg, #e6e9f0 0%, #e1c4b6 100%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.home-images {
+    width: 105%;
+    height: 240px;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    left: 50%;
+    top: 83%;
+    transform: translate(-50%,-50%);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.home-img {
+    height: 100%;
+    width: 100%;
+}
+
+.home-img img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.home-img-one {
+    background-color: var(--col_six);
+}
+  
+.home-img-two {
+    background-color: var(--col_two);
+}
+  
+.home-img-three {
+    background-color: var(--col_six);
+}
   
