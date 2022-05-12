@@ -13,7 +13,7 @@
         <h1>handmade with love</h1>
         <p>Add modern British ceramics to your home, 
           all individually handmade with love.</p>
-          <a href="#">shop</a>
+          <a class="link" href="#">shop</a>
       </div>
       <div class="hero-image">
         <img
@@ -39,7 +39,7 @@
 <section class="b-sellers-section">
   <h1>Best sellers</h1>
   <div class="container">
-    <div class="cards-container">
+    <div class="cards-container center">
       <ul class="cards">
         <li class="card cards__item">
           <div class="card__frame">
@@ -124,22 +124,22 @@
               <li>☆</li>
             </ul>
             <h3>£12,99</h3>
-            <div class="add-btn" type="submit"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
+            <div class="add-btn"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
           </div>
           <div class="card__overlay"></div>
           <div class="card__content">
-            <div class="category" type="submit">
+            <div class="category">
               <img src="{% static 'images/hash.png' %}" alt="">
               <p>ceramics</p>
             </div>
-            <div class="category" type="submit">
+            <div class="category">
               <img src="{% static 'images/hash.png' %}" alt="">
               <p>bowls</p>
             </div>
             <p>An ethically crafted ceramic bowl made with a gorgeous off white stoneware 
               clay which retains heat well. This hand thrown bowl is 
               dishwasher & microwave safe and beautifully decorated with a unique glaze.</p>
-              <div class="more-btn" type="submit">
+              <div class="more-btn">
                 check details
               </div>
           </div>
@@ -150,6 +150,22 @@
     </div>
   </div>
 </section>
+<!-------------------------- NEW COLLECTION SECTION ----------------------------->
+<section class="new-collection">
+  <div class="bg-box"></div>
+  <div class="container">
+    <div class="text-box">
+      <h2>new collection</h2>
+      <p>Discover a new collection of unusual ceramic decorations that will
+         change the interior of your home.
+      </p>
+      <a class="link" href="#">shop now</a>
+    </div>
+    <div class="image-box">
+      <img src="{% static 'images/new-collection.jpg' %}" alt="">
+    </div>        
+  </div>
+</section> 
 
 
 {% endblock %}

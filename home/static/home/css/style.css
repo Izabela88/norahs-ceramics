@@ -7,19 +7,27 @@
     --col_six: #C1B198;
     --col_seven: #F8B195;
     --col_eight: #C06C84;
+    --col_nine: #F2CFBB;
     --font_one: 'Mali', cursive;
     --font_two: 'Hubballi', cursive;
 
 }
 
 
-#home-section {
-    min-height: 100vh;
-    height: 100vh;
+.link {
+    color: #000000;
+    font-size: 22px;
     position: relative;
-    background-color: var(--col_four);
+    margin-top: 20px;
+    border-bottom: 1px solid black;
+    transition-duration: 0.3s;
+    text-transform: uppercase;
 }
 
+.link:hover {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
 
 .container {
     max-width: 1200px;
@@ -32,6 +40,13 @@
 }
 
 /* -----------HOME PAGE----------- */
+#home-section {
+    min-height: 100vh;
+    height: 100vh;
+    position: relative;
+    background-color: var(--col_four);
+}
+
 .home-txt {
     width: 50%;
     padding: 64px;
@@ -48,20 +63,6 @@
     line-height: 30px;
 }
 
-.home-txt a {
-    color: #000000;
-    font-size: 22px;
-    position: relative;
-    margin-top: 20px;
-    border-bottom: 1px solid black;
-    transition-duration: 0.3s;
-    text-transform: uppercase;
-}
-
-.home-txt a:hover {
-    color: #ffffff;
-    border-bottom: 1px solid #ffffff;
-}
 
 .hero-image {
     right: 0;
@@ -126,10 +127,11 @@
 
 .b-sellers-section h1 {
     text-align: center;
-    margin-bottom: 40px;
-    margin-top: 40px;
-    text-transform: uppercase;
-    font-family: var(--font_two);
+    text-transform: lowercase;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
 }
 
 .cards-container {
@@ -139,6 +141,7 @@
     margin-right: auto;
     padding-left: 20px;
     padding-right: 20px;
+    min-height: 100vh;
 }
 
 .cards {
@@ -328,6 +331,51 @@
     height: 15px;
     width: 15px;
 }
+
+/* -----------NEW COLLECTION SECTION----------- */
+.new-collection {
+    height: 100vh;
+    position: relative;
+}
+
+.text-box {
+    width: 500px;
+    margin-left: 40px;
+}
+
+.text-box p {
+    font-size: 23px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bg-box {
+    position: absolute;
+    height: 600px;
+    width: 100vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--col_nine);
+}
+
+.image-box {
+    height: 70vh;
+    width: 500px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin-left: 120px;
+}
+
+.image-box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
 
 @media screen and (max-width: 1150px) {
     .hero-image {
