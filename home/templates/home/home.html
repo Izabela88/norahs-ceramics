@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+{% endblock %}
+{% block content %}
+
+<!-------------------------- HERO SECTION ----------------------------->
+<main id="home-section" class="section">
+  <div class="hero-bg"></div>
+  <div class="container">
+      <div class="home-txt center">
+        <h1>handmade with love</h1>
+        <p>Add modern British ceramics to your home, 
+          all individually handmade with love.</p>
+          <a class="link" href="#">shop</a>
+      </div>
+      <div class="hero-image">
+        <img
+          src="{% static 'images/hero.jpg' %}"
+          class="hero-img"
+          alt="cups"
+        />
+      </div>
+      <div class="home-images center">
+        <div class="home-img home-img-one center">
+          <img src="{% static 'images/home-img-one.jpg' %}" alt="">
+        </div>
+        <div class="home-img home-img-two center">
+          <img src="{% static 'images/home-img-two.jpg' %}" alt="">
+        </div>
+        <div class="home-img home-img-three center">
+          <img src="{% static 'images/home-img-three.jpg' %}" alt="">
+        </div>
+      </div>
+  </div>
+  </main>
+<!-------------------------- BEST SELLERS SECTION ----------------------------->
+<section class="b-sellers-section">
+  <h1>Best sellers</h1>
+  <div class="container">
+    <div class="cards-container center">
+      <ul class="cards">
+        <li class="card cards__item">
+          <div class="card__frame">
+            <div class="card__picture">
+              <img src="{% static 'images/bowl.jpg' %}" alt="" width="120">
+            </div>
+            <h4 class="card__title">Bowl 500ml</h4>
+            <ul class="item_rate">
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+            </ul>
+            <h3>£12,99</h3>
+            <div class="add-btn"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
+          </div>
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <div class="category">
+              <img src="{% static 'images/hash.png' %}" alt="">
+              <p>ceramics</p>
+            </div>
+            <div class="category">
+              <img src="{% static 'images/hash.png' %}" alt="">
+              <p>bowls</p>
+            </div>
+            <p>An ethically crafted ceramic bowl made with a gorgeous off white stoneware 
+              clay which retains heat well. This hand thrown bowl is 
+              dishwasher & microwave safe and beautifully decorated with a unique glaze.</p>
+              <div class="more-btn">
+                check details
+              </div>
+          </div>
+        </li>
+        <li class="card cards__item">
+          <div class="card__frame">
+            <div class="card__picture">
+              <img src="{% static 'images/bowl.jpg' %}" alt="" width="120">
+            </div>
+            <h4 class="card__title">Bowl 500ml</h4>
+            <ul class="item_rate">
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+            </ul>
+            <h3>£12,99</h3>
+            <div class="add-btn"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
+          </div>
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <div class="category">
+              <img src="{% static 'images/hash.png' %}" alt="">
+              <p>ceramics</p>
+            </div>
+            <div class="category">
+              <img src="{% static 'images/hash.png' %}" alt="">
+              <p>bowls</p>
+            </div>
+            <p>An ethically crafted ceramic bowl made with a gorgeous off white stoneware 
+              clay which retains heat well. This hand thrown bowl is 
+              dishwasher & microwave safe and beautifully decorated with a unique glaze.</p>
+              <div class="more-btn">
+                check details
+              </div>
+          </div>
+        </li>
+        <li class="card cards__item">
+          <div class="card__frame">
+            <div class="card__picture">
+              <img src="{% static 'images/bowl.jpg' %}" alt="" width="120">
+            </div>
+            <h4 class="card__title">Bowl 500ml</h4>
+            <ul class="item_rate">
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+              <li>☆</li>
+            </ul>
+            <h3>£12,99</h3>
+            <div class="add-btn"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
+          </div>
+          <div class="card__overlay"></div>
+          <div class="card__content">
+            <div class="category">
+              <img src="{% static 'images/hash.png' %}" alt="">
+              <p>ceramics</p>
+            </div>
+            <div class="category">
+              <img src="{% static 'images/hash.png' %}" alt="">
+              <p>bowls</p>
+            </div>
+            <p>An ethically crafted ceramic bowl made with a gorgeous off white stoneware 
+              clay which retains heat well. This hand thrown bowl is 
+              dishwasher & microwave safe and beautifully decorated with a unique glaze.</p>
+              <div class="more-btn">
+                check details
+              </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+<!-------------------------- NEW COLLECTION SECTION ----------------------------->
+<section class="new-collection">
+  <div class="bg-box"></div>
+  <div class="container container-mobiles">
+    <div class="text-box">
+      <h2>new collection</h2>
+      <p>Discover a new collection of unusual ceramic decorations that will
+         change the interior of your home.
+      </p>
+      <a class="link" href="#">shop now</a>
+    </div>
+    <div class="image-box">
+      <img src="{% static 'images/new-collection.jpg' %}" alt="">
+    </div>        
+  </div>
+</section>
+<!-------------------------- WHY US, OUR VALUES SECTION ----------------------------->
+<section class="info">
+  <div class="container">
+    <div class="parts-wrapper">
+      <h2>why us ?</h2>
+      <div class="parts-container">
+        <div class="part">
+          <img src="{% static 'images/free-delivery.png' %}" alt="">
+          <h4>free shipping</h4>
+          <p>Don't worry about delivery costs.</p>
+        </div>
+        <div class="part">
+          <img src="{% static 'images/refund.png' %}" alt="">
+          <h4>100% refund</h4>
+          <p>You have 14 days to return the purchase. You will receive your money within 24 hours.</p>
+        </div>
+        <div class="part">
+          <img src="{% static 'images/support.png' %}" alt="">
+          <h4>24h support</h4>
+          <p>Our hotline is open 24 hours a day.</p>
+        </div>
+        <div class="part">
+          <img src="{% static 'images/charity.png' %}" alt="">
+          <h4>charity</h4>
+          <p>We donate 5% of our income to charity.</p>
+        </div>
+      </div>
+      <h2>our values</h2>
+      <div class="parts-container-two">
+        <div class="part">
+          <img src="{% static 'images/hand-made.png' %}" alt="">
+          <h4>handmade</h4>
+        </div>
+        <div class="part">
+          <img src="{% static 'images/plant-based.png' %}" alt="">
+          <h4>zero waste products</h4>
+        </div>
+        <div class="part">
+          <img src="{% static 'images/recycle.png' %}" alt="">
+          <h4>recycled materials</h4>
+        </div>
+        <div class="part">
+          <img src="{% static 'images/plastic.png' %}" alt="">
+          <h4>plastic free</h4>
+        </div>  
+    </div>
+    </div>   
+</section>
+<!-------------------------- NEW ARRIVALS SECTION ----------------------------->
+<section class="new-arrivals">
+  <h2>new arrivals</h2>
+  <div class="container">  
+      <div class="carousel-container">
+        <div class="item fade">
+          <div class="image"><img src="{% static 'images/vases.jpg' %}"/>
+            <div class="text is-text-left">
+              <h4 class="title">vases x 3</h4>
+              <h4 class="title">£49,99</h4>
+            </div>
+            <div class="more-button"><p>more</p></div>
+            <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
+          </div>
+        </div>
+        <div class="item fade">
+          <div class="image"><img src="{% static 'images/mug.jpg' %}"/>
+          <div class="text is-text-left">
+            <h4 class="title">mug 300ml</h4>
+            <h4 class="title"4>£9,99</h4>
+          </div>
+          <div class="more-button"><p>more</p></div>
+          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
+        </div>             
+        </div>
+        <div class="item fade">
+          <div class="image"><img src="{% static 'images/plates.jpg' %}"/>
+          <div class="text is-text-left">
+            <h4 class="title">plates x 4</h4>
+            <h4 class="title">£59,99</h4>
+          </div>
+          <div class="more-button"><p>more</p></div>
+          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
+        </div> 
+        </div>
+        <div class="item fade">
+          <div class="image"><img src="{% static 'images/bowls.jpg' %}"/>
+          <div class="text is-text-left">
+            <h4 class="title">bowls x 2</h4>
+            <h4 class="title">£15,99</h4>
+          </div>
+          <div class="more-button"><p>more</p></div>
+          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
+        </div>             
+        </div>
+        <a class="prev center">
+          <i class="fas fa-angle-left"></i></a>
+          <a class="next center"><i class="fas fa-angle-right"></i></a>
+      </div>
+  </div>
+</section>
+<!-------------------------- NEWSLETTER SECTION ----------------------------->
+<section class="newsletter center">
+  <h3>Subscribe to our newsletter and get 10% off on your first order</h3>
+  <div class="newsletter-box">
+    <input type="email" placeholder="write your email here...">
+    <button id="open-newsletter" class="button">
+      SUBSCRIBE
+    </button>
+  </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+  {{ block.super }}
+  <script src="{% static 'home/js/index.js' %}"></script>
+{% endblock %}
