@@ -377,7 +377,7 @@
 
 /* ----------- WHY US, OUR VALUES SECTION----------- */
 .info {
-    height: 100vh;
+    height: 100%;
     position: relative;
     min-height: 100vh;
 }
@@ -442,7 +442,7 @@
 }
 
 .carousel-container {
-    width: 50%;
+    width: 600px;
     height: 25rem;
     padding: 0;
     position: relative;
@@ -606,6 +606,7 @@ main section .carousel-container .dots .dot:hover {
 
 .newsletter h3 {
     font-size: 25px;
+    text-align: center;
 }
 
 .newsletter-box input {
@@ -615,6 +616,9 @@ main section .carousel-container .dots .dot:hover {
     border: none;
     margin: 20px 20px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    font-family: var(--font_two);
+    font-size: 20px;
+    text-align: center;
 }
 
 .newsletter-box input::placeholder {
@@ -646,6 +650,7 @@ main section .carousel-container .dots .dot:hover {
         grid-template-columns: repeat(2, 1fr);
         width: 645px;
         margin-top: 205px;
+        margin-bottom: 100px;
     }
 
     .image-box {
@@ -656,6 +661,10 @@ main section .carousel-container .dots .dot:hover {
     .parts-container,
     .parts-container-two {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .parts-wrapper {
+        margin: 100px auto;
     }
 }
 
@@ -692,8 +701,29 @@ main section .carousel-container .dots .dot:hover {
         height: 240px;
     }
 
+    .container-mobiles {
+        flex-direction: column;
+    }
 
-}
+    .new-collection {
+        height: 100%;
+        min-height: 100vh;
+    }
+
+    .bg-box {
+        height: 100vh;
+    }
+
+    .text-box {
+        margin: 50px auto;
+        text-align: center;
+    }
+
+    .newsletter h3 {
+        font-size: 20px;
+        width: 80%;
+
+    }
 
 @media screen and (max-width: 550px) {
     #menu-list .menu-item {

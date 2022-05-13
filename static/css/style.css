@@ -283,7 +283,6 @@ label {
   margin-left: 30px;
   margin-right: 30px;
   text-align: left;
-  font-weight: bold;
   height: 300px;
 }
 
@@ -298,12 +297,25 @@ label {
   margin-top: 30px;
 }
 
-.footer-box li {
+.footer-box li,
+.contact-info {
   list-style: none;
   line-height: 35px;
   font-size: 18px;
   letter-spacing: 1px;
   font-family: "Hubballi", cursive;
+}
+
+.contact-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 50px;
+}
+
+.contact-info span {
+  margin-left: 8px;
 }
 
 .footer-box a {
