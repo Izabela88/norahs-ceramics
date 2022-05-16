@@ -439,7 +439,6 @@ label {
   justify-content: center;
   text-align: center;
   height: 45px;
-
 }
 
 .register-heading a,
@@ -457,12 +456,18 @@ label {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   width: 700px;
-  height: 550px;
+  height: 100vh;
   position: relative;
   background: rgb(255 255 255 / 70%);
   text-align: center;
   padding: 10px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.register-box,
+.login-box {
+  height: 500px;
+  margin: auto;
 }
 
 .signup,
@@ -472,9 +477,16 @@ label {
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 80%;
   text-align: center;
-  margin: auto;
+  margin: 40px auto;
+}
+
+.signup {
+  width: 100%;
+}
+
+.login {
+  width: 90%;
 }
 
 .signup input,
@@ -541,6 +553,7 @@ label[for="id_password"] {
 .register-txt,
 .login-txt {
   font-size: 18px;
+  text-align: center;
 }
 
 .register-txt a,
@@ -550,15 +563,11 @@ label[for="id_password"] {
   font-weight: bold;
 }
 
-.login-heading {
-  margin-top: 30px;
-  margin-bottom: -30px;
-}
-
 .forgot-link {
   text-transform: uppercase;
   font-size: 18px;
   color: var(--col_eight);
+  font-weight: bold;
 }
 
 
