@@ -409,26 +409,30 @@ label {
   }
 }
 
-/* -------------------REGISTER */
-.register-section {
+/* -------------------REGISTER  AND LOGIN*/
+.register-section,
+.login-section {
   height: 100vh;
   position: relative;
 }
 
-.register-img {
+.register-img,
+.login-img {
   height: 100vh;
   width: 100%;
   position: absolute;
 }
 
-.register-img img {
+.register-img img,
+.login-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.4;
 }
 
-.register-heading {
+.register-heading,
+.login-heading {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -438,7 +442,8 @@ label {
 
 }
 
-.register-heading a {
+.register-heading a,
+.login-heading a {
   font-weight: bold;
   font-size: 18px;
 }
@@ -447,11 +452,12 @@ label {
   display: none;
 }
 
-.form-grid-container {
+.form-grid-container,
+.login-form-grid-container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   width: 700px;
-  height: 600px;
+  height: 550px;
   position: relative;
   background: rgb(255 255 255 / 70%);
   text-align: center;
@@ -459,7 +465,8 @@ label {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
-.signup {
+.signup,
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -470,7 +477,8 @@ label {
   margin: auto;
 }
 
-.signup input {
+.signup input,
+.login input {
   width: 100%;
   height: 45px;
   padding: 10px;
@@ -494,27 +502,11 @@ label {
   visibility: hidden;
 }
 
-label[for="id_is_petsitter"] {
-  position: relative;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  border: none;
-  height: 65px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 18px;
-  color: #f73221;
-  border-radius: 20px;
-}
-
 label[for="id_email"],
 label[for="id_password1"],
-label[for="id_password2"] {
+label[for="id_password2"],
+label[for="id_login"],
+label[for="id_password"] {
   margin-bottom: 10px;
   text-transform: uppercase;
   font-size: 14px;
@@ -522,12 +514,6 @@ label[for="id_password2"] {
   font-weight: bold;
 }
 
-.signup input[type="checkbox"] {
-  width: 30px;
-  height: 30px;
-  border: none;
-  cursor: pointer;
-}
 
 .signup input::placeholder {
   font-family: "Hubballi", cursive;
@@ -552,14 +538,27 @@ label[for="id_password2"] {
   margin-top: 10px;
 }
 
-.register-txt {
+.register-txt,
+.login-txt {
   font-size: 18px;
 }
 
-.register-txt a {
+.register-txt a,
+.login-txt a {
   text-transform: uppercase;
   color: var(--col_eight);
   font-weight: bold;
+}
+
+.login-heading {
+  margin-top: 30px;
+  margin-bottom: -30px;
+}
+
+.forgot-link {
+  text-transform: uppercase;
+  font-size: 18px;
+  color: var(--col_eight);
 }
 
 
