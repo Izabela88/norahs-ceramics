@@ -6,13 +6,6 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 {% block content %}
 <section class="register-section">
-  {% if messages %}
-  <ul class="info-msg center">
-      {% for message in messages %}
-          <li>{{ message.message }}</li>
-      {% endfor %}
-  </ul>
-  {% endif %}
   <div class="register-img">
     <img src="{% static 'images/bg.jpg' %}" alt="">
   </div>
