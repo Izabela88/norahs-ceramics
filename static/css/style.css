@@ -7,6 +7,7 @@
   --col_six: #C1B198;
   --col_seven: #F8B195;
   --col_eight: #C06C84;
+  --col_nine: #F2CFBB;
   --font_one: 'Mali', cursive;
   --font_two: 'Hubballi', cursive;
 
@@ -65,6 +66,16 @@ label {
   letter-spacing: 1px;
 }
 
+.container {
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
 /* scroll bar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -112,6 +123,12 @@ label {
   transform: scale(1.1);
   color: var(--col_four);
   border-color: var(--col_four);
+}
+
+.button-dark:hover {
+  transform: scale(1.1);
+  color: var(--col_eight);
+  border-color: var(--col_eight);
 }
 
 /* -----------------NAVBAR */
@@ -250,7 +267,7 @@ label {
 }
 
 
-/* -------------------footer */
+/* -------------------FOOTER */
 #footer {
   position: relative;
   width: 100%;
@@ -370,9 +387,6 @@ label {
   height: 100%;
 }
 
-
-
-
 @keyframes enter {
   from {
     opacity: 0;
@@ -394,6 +408,161 @@ label {
     opacity: 1;
   }
 }
+
+/* -------------------REGISTER */
+.register-section {
+  height: 100vh;
+  position: relative;
+}
+
+.register-img {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+}
+
+.register-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.register-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 45px;
+
+}
+
+.register-heading a {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.fb_reset {
+  display: none;
+}
+
+.form-grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 700px;
+  height: 600px;
+  position: relative;
+  background: rgb(255 255 255 / 70%);
+  text-align: center;
+  padding: 10px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+.signup input {
+  width: 100%;
+  height: 45px;
+  padding: 10px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Hubballi", cursive;
+  font-size: 18px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+
+}
+
+#id_password1::placeholder,
+#id_password2::placeholder,
+#id_email::placeholder {
+  text-transform: lowercase;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  visibility: hidden;
+}
+
+label[for="id_is_petsitter"] {
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: none;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  color: #f73221;
+  border-radius: 20px;
+}
+
+label[for="id_email"],
+label[for="id_password1"],
+label[for="id_password2"] {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.signup input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.signup input::placeholder {
+  font-family: "Hubballi", cursive;
+  color: var(--black-color);
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.register-input {
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  height: 50px;
+}
+
+.sign-in-social-btn {
+  position: absolute;
+  bottom: 30%;
+}
+
+.terms-txt {
+  margin-top: 10px;
+}
+
+.register-txt {
+  font-size: 18px;
+}
+
+.register-txt a {
+  text-transform: uppercase;
+  color: var(--col_eight);
+  font-weight: bold;
+}
+
+
 
 @media screen and (max-width: 1150px) {
   #header {
@@ -511,6 +680,6 @@ label {
   .footer-box h3 {
     font-size: 25px;
   }
-
-
 }
+
+
