@@ -724,6 +724,7 @@ main section .carousel-container .dots .dot:hover {
         width: 80%;
 
     }
+}
 
 @media screen and (max-width: 550px) {
     #menu-list .menu-item {
