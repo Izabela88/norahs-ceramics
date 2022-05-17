@@ -84,7 +84,7 @@
 }
 
 .home-images {
-    width: 105%;
+    width: 100%;
     height: 240px;
     position: absolute;
     display: grid;
@@ -121,8 +121,9 @@
 /* -----------BEST SELLERS SECTION----------- */
 .b-sellers-section {
     position: relative;
-    height: 100%;
-    min-height: 100vh;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
 }
 
 .b-sellers-section h1 {
@@ -130,7 +131,7 @@
     text-transform: lowercase;
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 23%;
     transform: translate(-50%, -50%);
 }
 
@@ -377,9 +378,10 @@
 
 /* ----------- WHY US, OUR VALUES SECTION----------- */
 .info {
-    height: 100%;
     position: relative;
-    min-height: 100vh;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
 }
 
 .parts-wrapper {
@@ -429,15 +431,16 @@
 /* ----------- NEW ARRIVALS SECTION----------- */
 
 .new-arrivals {
-    height: 100vh;
-    min-height: 100vh;
     position: relative;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
 }
 
 .new-arrivals h2 {
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 23%;
     transform: translate(-50%, -50%);
 }
 
