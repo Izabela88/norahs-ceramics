@@ -15,7 +15,8 @@
 
 .about-section,
 .who-section,
-.eco-section {
+.eco-section,
+.help-section {
     position: relative;
     height: -o-calc(100vh + 174px); /* opera */
     height: -webkit-calc(100vh + 174px); /* google, safari */
@@ -24,13 +25,15 @@
 
 .about-image,
 .who-image,
-.eco-image {
+.eco-image,
+.help-image {
     height: 600px;
 }
 
 .about-txt p,
 .who-txt p,
-.eco-txt p {
+.eco-txt p,
+.help-txt p {
     font-size: 24px;
     margin: 30px auto;
     line-height: 30px;
@@ -38,7 +41,8 @@
 
 .about-image img,
 .who-image img,
-.eco-image img {
+.eco-image img,
+.help-image img {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -68,7 +72,8 @@
 
 
 
-.who-txt {
+.who-txt,
+.help-txt {
     width: 40%;
     margin-right: 4px;
     margin-left: 128px;
