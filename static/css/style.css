@@ -114,6 +114,7 @@ label {
   z-index: 10;
   transition-duration: 0.3s;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  text-transform: uppercase;
 }
 
 .button:hover {
@@ -126,6 +127,12 @@ label {
   transform: scale(1.1);
   color: var(--col_eight);
   border-color: var(--col_eight);
+}
+
+.errorlist {
+  color: red;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 /* -----------------NAVBAR */
@@ -480,6 +487,91 @@ label {
   }
 }
 
+/* -------------------ALLAUTH TEMPLATES*/
+.allauth-section {
+  position: relative;
+  height: -o-calc(100vh + 174px); /* opera */
+  height: -webkit-calc(100vh + 174px); /* google, safari */
+  height: -moz-calc(100vh + 174px)
+}
+
+.allauth-section h1 {
+  margin-bottom: 20px;
+}
+
+.allauth-img {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+}
+
+.allauth-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.allauth-txt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 600px;
+  border: 1px solid var(--col_four);
+  background: rgb(255 255 255 / 40%);
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.allauth-txt p {
+  font-size: 25px;
+  margin: 40px auto;
+  line-height: 30px;
+}
+
+.allauth-txt button {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.allauth-txt a {
+  color: var(--col_eight);
+  border-bottom: 1px solid var(--col_eight);
+}
+
+.password_reset,
+.password_set,
+.reset-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.password_reset input,
+.password_set input,
+.reset-form input {
+  width: 400px;
+}
+
+#id_email,
+#id_password1,
+#id_password2 {
+  outline: none;
+  border: none;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 5px 0px, rgb(0 0 0 / 10%) 0px 0px 1px 0px;
+  font-family: var(--font_two);
+  font-size: 15px;
+  text-align: center;
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+
 /* -------------------REGISTER  AND LOGIN*/
 .register-section,
 .login-section {
@@ -518,9 +610,6 @@ label {
   font-size: 18px;
 }
 
-.fb_reset {
-  display: none;
-}
 
 .form-grid-container,
 .login-form-grid-container {
