@@ -163,6 +163,27 @@ label {
   border-radius: 50%;
 }
 
+.search {
+  position: absolute;
+  top: 13px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 300px;
+}
+
+.search input {
+  outline: none;
+  border: none;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 5px 0px, rgb(0 0 0 / 10%) 0px 0px 1px 0px;
+  font-family: var(--font_two);
+  font-size: 15px;
+  text-align: center;
+  height: 70%;
+  margin-left: 10px;
+  width: 100%;
+}
 
 .auth-links {
   position: absolute;
