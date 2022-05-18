@@ -670,7 +670,7 @@ main section .carousel-container .dots .dot:hover {
     .cards {
         grid-template-columns: repeat(2, 1fr);
         width: 645px;
-        margin-top: 205px;
+        margin-top: 475px;
         margin-bottom: 100px;
     }
 
