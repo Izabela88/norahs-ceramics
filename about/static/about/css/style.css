@@ -89,3 +89,32 @@
 }
 
 
+@media screen and (max-width: 1150px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .who-txt,
+    .help-txt,
+    .eco-txt,
+    .about-txt {
+        margin-top: 120px;
+        margin-bottom: 90px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-section,
+    .who-section,
+    .eco-section,
+    .help-section {
+        position: relative;
+        height: 100%;
+        min-height: 100vh;
+    }
+
+    .about-image, .who-image, .eco-image, .help-image {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
