@@ -35,7 +35,11 @@
           </div>
           <form class="login" method="POST" action="{% url 'account_login' %}">
           {% csrf_token %} 
-          {{ form }} 
+          {{ form }}
+          <div class="show-box show-box-login">
+            <label class="label_login" for="show_password_login">show password</label>
+            <input type="checkbox" id="show_password_login">
+          </div>
           {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
           {% endif %}
