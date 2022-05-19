@@ -33,7 +33,15 @@
         </div>
         <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
           {% csrf_token %} 
-          {{ form }} 
+          {{ form }}
+          <div class="show-box show-box-one">
+            <label class="label_one" for="show_password_one">show password</label>
+            <input type="checkbox" id="show_password_one">
+          </div>
+          <div class="show-box show-box-two">
+            <label class="label_two" for="show_password_two">show password</label>
+            <input type="checkbox" id="show_password_two">
+          </div>
           {% if redirect_field_value %}     
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>   
           {% endif %}
