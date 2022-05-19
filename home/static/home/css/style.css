@@ -47,6 +47,23 @@
     background-color: var(--col_four);
 }
 
+.product-link {
+    position: absolute;
+    top: 20px;
+    color: var(--col_four);
+    border-bottom: 1px solid var(--col_four);
+    background-color: rgb(0 0 0 / 21%);
+    width: 120px;
+    transition-duration: .3s;
+}
+
+.product-link:hover {
+    transform: scale(1.1);
+    color: var(--col_nine);
+    border-bottom: 1px solid var(--col_nine);
+
+}
+
 .home-txt {
     width: 50%;
     padding: 64px;
@@ -84,7 +101,7 @@
 }
 
 .home-images {
-    width: 105%;
+    width: 100%;
     height: 240px;
     position: absolute;
     display: grid;
@@ -121,8 +138,9 @@
 /* -----------BEST SELLERS SECTION----------- */
 .b-sellers-section {
     position: relative;
-    height: 100%;
-    min-height: 100vh;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
 }
 
 .b-sellers-section h1 {
@@ -130,7 +148,7 @@
     text-transform: lowercase;
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 23%;
     transform: translate(-50%, -50%);
 }
 
@@ -377,9 +395,10 @@
 
 /* ----------- WHY US, OUR VALUES SECTION----------- */
 .info {
-    height: 100%;
     position: relative;
-    min-height: 100vh;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
 }
 
 .parts-wrapper {
@@ -429,15 +448,16 @@
 /* ----------- NEW ARRIVALS SECTION----------- */
 
 .new-arrivals {
-    height: 100vh;
-    min-height: 100vh;
     position: relative;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
 }
 
 .new-arrivals h2 {
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 23%;
     transform: translate(-50%, -50%);
 }
 
@@ -447,6 +467,7 @@
     padding: 0;
     position: relative;
     overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .carousel-container .item {
@@ -649,7 +670,7 @@ main section .carousel-container .dots .dot:hover {
     .cards {
         grid-template-columns: repeat(2, 1fr);
         width: 645px;
-        margin-top: 205px;
+        margin-top: 475px;
         margin-bottom: 100px;
     }
 
@@ -724,6 +745,7 @@ main section .carousel-container .dots .dot:hover {
         width: 80%;
 
     }
+}
 
 @media screen and (max-width: 550px) {
     #menu-list .menu-item {

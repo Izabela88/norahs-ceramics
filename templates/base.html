@@ -34,50 +34,67 @@
           <img src="{% static 'images/logo.png' %}" alt="Logo" />
         </a>
       </div>
-        <nav class="menu">
-          <div class="wrapper-menu">
-            <div class="line-menu half start"></div>
-            <div class="line-menu"></div>
-            <div class="line-menu half end"></div>
-          </div>
-          <div id="my-sidebar" class="sidebar">
-            <ol id="menu-list">
-              {% url 'home' as url %}
-              <li class="menu-item ">
-                <a class="close-sidebar {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
-              <li class="menu-item"><a href="#">About</a></li>
-              <li class="menu-item">
-                <a href="#">Ceramics</a>
-                <ol class="sub-menu">
-                  <li class="menu-item"><a href="#">Plates</a></li>
-                  <li class="menu-item"><a href="#">Bowls</a></li>
-                  <li class="menu-item"><a href="#">Mugs</a></li>
-                  <li class="menu-item"><a href="#">Decor</a></li>
-                </ol>
-              </li>
-              <li class="menu-item">
-                <a href="#">Glass</a>
-                <ol class="sub-menu">
-                  <li class="menu-item"><a href="#">Bottles</a></li>
-                  <li class="menu-item"><a href="#">Jars</a></li>
-                  <li class="menu-item"><a href="#">Decor</a></li>
-                </ol>
-              </li>
-              <li class="menu-item">
-                <a href="#">Zero Waste Accessories</a>
-                <ol class="sub-menu">
-                  <li class="menu-item"><a href="#">Kitchen</a></li>
-                  <li class="menu-item"><a href="#">Bathroom</a></li>
-                </ol>
-              </li>
-              <li class="menu-item"><a href="#">New In</a></li>
-              <li class="menu-item"><a href="#">Contact</a></li>
-              <li class="menu-item"><a href="#">Register</a></li>
-              <li class="menu-item"><a href="#">Login</a></li>
-            </ol>
+      <div id="basket" class="basket-box">
+        <a href="#"><img class="shop-basket" src="{% static 'images/shopping-basket.png' %}" alt=""></a><span>£0.00</span>
+      </div>
+      <div id="search-input" class="search">
+        <img src="{% static 'images/zoom.png' %}" alt="">
+        <input type="search" name="search" id="search-input" placeholder="search">
+      </div>
+      <nav class="menu">
+        <div class="wrapper-menu">
+          <div class="line-menu half start"></div>
+          <div class="line-menu"></div>
+          <div class="line-menu half end"></div>
+        </div>
+        <div id="my-sidebar" class="sidebar">
+          <ol id="menu-list">
+            {% url 'home' as url %}
+            <li class="menu-item ">
+              <a class="close-sidebar {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
+            <li class="menu-item"><a href="{% url 'about' %}">About</a></li>
+            <li class="menu-item">
+              <a href="#">Ceramics</a>
+              <ol class="sub-menu">
+                <li class="menu-item"><a href="#">Plates</a></li>
+                <li class="menu-item"><a href="#">Bowls</a></li>
+                <li class="menu-item"><a href="#">Mugs</a></li>
+                <li class="menu-item"><a href="#">Decor</a></li>
+              </ol>
+            </li>
+            <li class="menu-item">
+              <a href="#">Glass</a>
+              <ol class="sub-menu">
+                <li class="menu-item"><a href="#">Bottles</a></li>
+                <li class="menu-item"><a href="#">Jars</a></li>
+                <li class="menu-item"><a href="#">Decor</a></li>
+              </ol>
+            </li>
+            <li class="menu-item">
+              <a href="#">Zero Waste Accessories</a>
+              <ol class="sub-menu">
+                <li class="menu-item"><a href="#">Kitchen</a></li>
+                <li class="menu-item"><a href="#">Bathroom</a></li>
+              </ol>
+            </li>
+            <li class="menu-item"><a href="{% url 'home' %}#new-arriv">New In</a></li>
+            <li class="menu-item"><a href="#">Contact</a></li>
+            <div class="auth-links">
+              <ul>
+                {% if user.is_authenticated %}
+                  <li><img class="user-icon" src="{% static 'images/user.png' %}" alt=""><a href="#">My Profile</a></li>
+                  <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                {% else %}
+                  <li><a href="{% url 'account_signup' %}">Register</a></li>
+                  <li><a href="{% url 'account_login' %}">Login</a></li>
+                {% endif %}
+              </ul>
+            </div>
+            
+          </ol>
 
-          </div>
-        </nav>
+        </div>
+      </nav>
     </header>
 
     {% block content %}
