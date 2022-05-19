@@ -40,3 +40,34 @@ function openMenu() {
 hamburgerIcon.addEventListener("click", function (e) {
   openMenu();
 });
+
+// show/hide password
+function showPassword(elemendId) {
+  let passwordInput = document.getElementById(elemendId);
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+  } else {
+    passwordInput.type = "password";
+  }
+}
+
+const box_one = document.getElementById("show_password_one");
+if (box_one) {
+  box_one.addEventListener("click", function () {
+    showPassword("id_password1");
+  });
+}
+
+const box_two = document.getElementById("show_password_two");
+if (box_two) {
+  box_two.addEventListener("click", function () {
+    showPassword("id_password2");
+  });
+}
+
+const box_three = document.getElementById("show_password_login");
+if (box_three) {
+  box_three.addEventListener("click", function () {
+    showPassword("id_password");
+  });
+}
