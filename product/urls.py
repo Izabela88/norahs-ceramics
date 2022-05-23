@@ -3,9 +3,9 @@ URL patterns for Home application
 """
 
 from django.urls import path
-from product.views import Products
+from product.views import ProductsListView
 
 
 urlpatterns = [
-    path("", Products.as_view(), name="products"),
+    path("", ProductsListView.as_view(), name="products_list"),
 ]

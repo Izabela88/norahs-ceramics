@@ -1,7 +1,9 @@
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+from product.models import Product
 
 # Create your views here.
-class Products(TemplateView):
-    """Render about page"""
-
-    pass
+class ProductsListView(ListView):
+   model = Product
+   paginate_by = 1
+   context_object_name = "product_list" 
+   template_name = "product/product.html"

@@ -10,78 +10,171 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True, null=True)),
-                ('name', models.CharField(max_length=30, primary_key=True, serialize=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True, null=True)),
+                (
+                    "name",
+                    models.CharField(max_length=30, primary_key=True, serialize=False),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Color',
+            name="Color",
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True, null=True)),
-                ('name', models.CharField(max_length=30, primary_key=True, serialize=False)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True, null=True)),
+                (
+                    "name",
+                    models.CharField(max_length=30, primary_key=True, serialize=False),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True, null=True)),
-                ('name', norahs_ceramics.fields.CaseInsensitiveCharField(max_length=100)),
-                ('slug', norahs_ceramics.fields.CaseInsensitiveCharField(max_length=200)),
-                ('price_pence', models.DecimalField(decimal_places=2, max_digits=6, validators=[django.core.validators.MinValueValidator(0.0)])),
-                ('description', models.TextField(max_length=2000)),
-                ('short_description', models.TextField(max_length=1000)),
-                ('is_active', models.BooleanField(null=True)),
-                ('is_featured', models.BooleanField(null=True)),
-                ('width_cm', models.PositiveIntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(1)])),
-                ('height_cm', models.PositiveIntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(1)])),
-                ('length_cm', models.PositiveIntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(1)])),
-                ('volume_ml', models.PositiveIntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(1)])),
-                ('category_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='category', to='product.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True, null=True)),
+                (
+                    "name",
+                    norahs_ceramics.fields.CaseInsensitiveCharField(max_length=100),
+                ),
+                (
+                    "slug",
+                    norahs_ceramics.fields.CaseInsensitiveCharField(max_length=200),
+                ),
+                (
+                    "price_pence",
+                    models.DecimalField(
+                        decimal_places=2,
+                        max_digits=6,
+                        validators=[django.core.validators.MinValueValidator(0.0)],
+                    ),
+                ),
+                ("description", models.TextField(max_length=2000)),
+                ("short_description", models.TextField(max_length=1000)),
+                ("is_active", models.BooleanField(null=True)),
+                ("is_featured", models.BooleanField(null=True)),
+                (
+                    "width_cm",
+                    models.PositiveIntegerField(
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MinValueValidator(1)],
+                    ),
+                ),
+                (
+                    "height_cm",
+                    models.PositiveIntegerField(
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MinValueValidator(1)],
+                    ),
+                ),
+                (
+                    "length_cm",
+                    models.PositiveIntegerField(
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MinValueValidator(1)],
+                    ),
+                ),
+                (
+                    "volume_ml",
+                    models.PositiveIntegerField(
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MinValueValidator(1)],
+                    ),
+                ),
+                (
+                    "category_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="category",
+                        to="product.category",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='SubCategory',
+            name="SubCategory",
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True, null=True)),
-                ('name', models.CharField(max_length=30, primary_key=True, serialize=False)),
-                ('category_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='parent_category', to='product.category')),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True, null=True)),
+                (
+                    "name",
+                    models.CharField(max_length=30, primary_key=True, serialize=False),
+                ),
+                (
+                    "category_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="parent_category",
+                        to="product.category",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='ProductColor',
+            name="ProductColor",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True, null=True)),
-                ('color_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='color', to='product.color')),
-                ('product_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='product', to='product.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True, null=True)),
+                (
+                    "color_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="color",
+                        to="product.color",
+                    ),
+                ),
+                (
+                    "product_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="product",
+                        to="product.product",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

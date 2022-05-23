@@ -1,0 +1,28 @@
+:root {
+    --col_one: #D18E85;
+    --col_two: #C8CAC9;
+    --col_three: #000000;
+    --col_four: #ffffff;
+    --col_five: #F2DFE1;
+    --col_six: #C1B198;
+    --col_seven: #F8B195;
+    --col_eight: #C06C84;
+    --col_nine: #F2CFBB;
+    --font_one: 'Mali', cursive;
+    --font_two: 'Hubballi', cursive;
+
+}
+
+.container {
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-section {
+    height: 100vh;
+}
