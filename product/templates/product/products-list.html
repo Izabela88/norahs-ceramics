@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'product/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="product-section">
+      
+    <div class="container">
+        <div class="products-bg">
+            <img src="{% static 'images/product.jpg' %}" alt="">
+        </div>  
+        <div class="filters">
+            <!-- prices slider -->
+            <!-- https://www.howtocodeschool.com/2021/12/price-range-slider-with-html-css-javascript.html -->
+            <div class="priceSlider">
+                <h3>price range:</h3>
+                <p>Move Slider to choose the price range</p>       
+                <div class="min-max">
+                 <div class="min">
+                     <label>min £</label><span id="min-value"></span>
+                 </div>
+                 <div class="max">
+                     <label>max £</label><span id="max-value"></span>
+                 </div>     
+                </div>                    
+                <div class="min-max-range">
+                <input type="range" min="1" max="500" value="0" class="range" id="min">
+                <input type="range" min="1" max="500" value="500" class="range" id="max">      
+                </div>    
+            </div>
+            <div class="color-picker">
+                <h3>filter colors</h3>
+                <div class="colors">
+                    <input type="checkbox" name="black" id="black">
+                    <input type="checkbox" name="grey" id="grey">
+                    <input type="checkbox" name="red" id="red">
+                    <input type="checkbox" name="beige" id="beige">
+                    <input type="checkbox" name="blue" id="blue">
+                </div>
+            </div>
+        </div>
+        {% if product_list %}
+        <div class="products-list">
+            {% for product in product_list %}
+                    <div class="products-element">
+                        <div class="product-img">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="">
+                            {% else %}
+                                <img src="{% static 'images/no-pictures.png' %}" alt="">
+                            {%  endif %}
+                        </div>
+                        <div class="product-txt">
+                            <h4>{{ product.name }}</h4>
+                            <ul class="stars">
+                                <li>☆</li>
+                                <li>☆</li>
+                                <li>☆</li>
+                                <li>☆</li>
+                                <li>☆</li>
+                            </ul>
+                            <p>0 reviews</p>
+                            <h4>£{{ product.price_pence }}</h4>
+                            <p>{{ product.short_description }}</p>
+                        <div class="buttons">
+                            <button class="button button-dark">add to cart</button>
+                            <button class="button button-dark product-more">more</button>
+                            <button class="button button-dark product-fav">♡</button>
+                        </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% if is_paginated %}
+                <div class="pagination">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a href="/products?page={{ page_obj.previous_page_number }}">previous page</a>
+                        {% endif %}
+                        <span class="page-current">
+                            page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                        </span>
+                        {% if page_obj.has_next %}
+                            <a href="/products?page={{ page_obj.next_page_number }}">next page</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
+            {% else %}
+            <p>No products found!</p>
+        {% endif %}
+                      
+       
+           
+            
+        
+       
+
+    </div>
+   
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+  <script src="{% static 'product/js/index.js' %}"></script>
+ 
+{% endblock %}

@@ -58,7 +58,6 @@ class Product(TimestapModel):
             raise ValidationError(
                 "Image is too big. Max file size is %sMB" % str(megabyte_limit)
             )
-
     image = models.ImageField(
         upload_to="product_images/",
         null=True,
