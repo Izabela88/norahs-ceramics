@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'product/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="product-section">  
+    <div class="container">
+      <div class="product_container">
+          <!-- Left Column / Headphones Image -->
+          <div class="left-column">
+            {% if object.image %}
+              <img src="{{ object.image.url }}" alt="">
+            {% else %}
+              <img class="no-img" src="{% static 'images/no-pictures.png' %}" alt="">
+            {%  endif %}
+          </div>      
+          <!-- Right Column -->
+          <div class="right-column">       
+            <!-- Product Description -->
+            <div class="product-description">
+              <h4>{{ object.name }}</h4>
+              <p>£{{ object.price_pence }}</p>
+              <ul class="stars">
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+            </ul>
+            <a href="#">0 reviews</a>
+            <div class="product-det">
+              <p>height: {{ object.height_cm }} cm,</p>
+              <p>width: {{ object.width_cm }} cm,</p>
+              <p>length: {{ object.length_cm }} cm,</p>
+              <p>volume: {{ object.volume_ml }} ml</p>         
+            </div>
+            </div>
+            <div class="product-description description">
+              <h4>description</h4>
+              <p>{{ object.description }}</p>
+            </div>
+            <!-- Product Pricing -->
+            <div class="product-price">
+              <div class="buttons cart-buttons">
+                <button class="button button-dark minus">-</button>
+                <input type="number" name="" id="number" value="1">
+                <button class="button button-dark plus">+</button>
+              </div>
+              <div class="buttons">
+                <button class="button button-dark">add to cart</button>
+                <button class="button button-dark product-fav">♡</button>
+            </div>
+            </div>
+          </div>       
+      </div>
+       
+    </div>  
+</section>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+  <script src="{% static 'product/js/index.js' %}"></script>
+ 
+{% endblock %}

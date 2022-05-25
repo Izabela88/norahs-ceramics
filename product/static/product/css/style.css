@@ -158,11 +158,11 @@
     -moz-appearance: none;
     appearance: none;
     background-clip: content-box;
-    border-radius: 50%;  
+    border-radius: 50%;
     cursor: pointer;
 }
 
-input[id="black"] { 
+input[id="black"] {
     border: 4px solid #000000;
     padding: 0;
 }
@@ -171,8 +171,8 @@ input[id="black"]:checked {
     background-color: #000000;
     padding: 0;
 }
-  
-input[id="grey"] { 
+
+input[id="grey"] {
     border: 4px solid grey;
     padding: 0;
 }
@@ -180,19 +180,19 @@ input[id="grey"] {
 input[id="grey"]:checked {
     background-color: grey;
     padding: 0;
-  }
-  
-input[id="red"] { 
+}
+
+input[id="red"] {
     border: 4px solid red;
-    padding: 0;   
+    padding: 0;
 }
 
 input[id="red"]:checked {
     background-color: red;
     padding: 0;
-  }
+}
 
-input[id="beige"] { 
+input[id="beige"] {
     border: 4px solid beige;
     padding: 0;
 }
@@ -200,18 +200,18 @@ input[id="beige"] {
 input[id="beige"]:checked {
     background-color: beige;
     padding: 0;
-  }
+}
 
-input[id="blue"] { 
+input[id="blue"] {
     border: 4px solid blue;
     padding: 0;
-    
+
 }
 
 input[id="blue"]:checked {
     background-color: blue;
     padding: 0;
-  }
+}
 
 
 .products-bg {
@@ -318,4 +318,171 @@ input[id="blue"]:checked {
     letter-spacing: 1px;
     color: var(--col_eight);
     margin: 10px 10px;
+}
+
+/* PRODUCT DETAILS */
+.product_container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    margin-top: 17%;
+    font-family: var(--font_two);
+    height: 100%;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, rgb(209 213 219) 0px 0px 0px 1px inset;
+    margin-bottom: 50px;
+}
+
+.left-column {
+    width: 60%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.left-column img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.left-column .no-img {
+    width: 50%;
+    height: 65%;
+}
+
+.right-column {
+    width: 40%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.product-det {
+    width: 100%;
+    display: flex;
+}
+
+.product-det p {
+    margin-right: 5px;
+}
+
+.product-description {
+    border-bottom: 1px solid #E1E8EE;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.description {
+    overflow: auto;
+    height: 200px;
+}
+
+.product-description span {
+    font-size: 12px;
+    color: #358ED7;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.product-description h4 {
+    font-weight: 300;
+    font-size: 30px;
+    color: #43484D;
+    margin: 10px 0;
+}
+
+.product-description p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #86939E;
+    line-height: 24px;
+}
+
+
+.product-price {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.product-price span {
+    font-size: 26px;
+    font-weight: 300;
+    color: #43474D;
+    margin-right: 20px;
+}
+
+.cart-btn {
+    display: inline-block;
+    background-color: #7DC855;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+}
+
+.cart-btn:hover {
+    background-color: #64af3d;
+}
+
+#number {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    -moz-appearance: textfield;
+
+}
+
+.cart-buttons input::-webkit-outer-spin-button,
+.cart-buttons input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cart-buttons {
+    width: 150px;
+}
+
+.plus,
+.minus {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 940px) {
+    .container {
+        flex-direction: column;
+        margin-top: 60px;
+    }
+
+    .left-column,
+    .right-column {
+        width: 100%;
+    }
+
+    .left-column img {
+        width: 300px;
+        right: 0;
+        top: -65px;
+        left: initial;
+    }
+}
+
+@media (max-width: 535px) {
+    .left-column img {
+        width: 220px;
+        top: -85px;
+    }
 }
