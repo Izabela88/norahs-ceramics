@@ -31,8 +31,13 @@
             <div class="product-det">
               <p>height: {{ object.height_cm }} cm,</p>
               <p>width: {{ object.width_cm }} cm,</p>
-              <p>length: {{ object.length_cm }} cm,</p>
-              <p>volume: {{ object.volume_ml }} ml</p>         
+              {% if  object.volume_ml == None %}
+                <p>length: {{ object.length_cm }} cm</p>
+                <p></p>
+              {% else %}
+                <p>length: {{ object.length_cm }} cm,</p>
+                <p>volume: {{ object.volume_ml }} ml</p>
+              {% endif %}         
             </div>
             </div>
             <div class="product-description description">

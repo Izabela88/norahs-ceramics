@@ -238,6 +238,11 @@ input[id="blue"]:checked {
     margin: 0 auto;
 }
 
+.result {
+    margin: 20px auto;
+    font-size: 20px;
+}
+
 .stars {
     display: flex;
 }

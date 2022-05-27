@@ -42,6 +42,13 @@
             </div>
         </div>
         {% if product_list %}
+        <p class="result">
+            we've got {{ page_obj.paginator.count }}
+            {% if page_obj.paginator.count == 1 %}
+                result</p>
+            {% else %}
+                results</p>
+            {% endif %}
         <div class="products-list">
             {% for product in product_list %}
                     <div class="products-element">
@@ -66,7 +73,6 @@
                             <p>{{ product.short_description }}</p>
                         <div class="buttons">
                             <button class="button button-dark">add to cart</button>
-
                             <a href="{% url 'product_detail' slug=product.slug %}" class="button button-dark product-more">more</a>
                             <button class="button button-dark product-fav">♡</button>
                         </div>
@@ -79,13 +85,13 @@
                 <div class="pagination">
                     <span class="page-links">
                         {% if page_obj.has_previous %}
-                            <a href="/products?page={{ page_obj.previous_page_number }}">previous page</a>
+                            <a href="/products?page={{ page_obj.previous_page_number }}&{{query_params}}">previous page</a>
                         {% endif %}
                         <span class="page-current">
                             page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                         </span>
                         {% if page_obj.has_next %}
-                            <a href="/products?page={{ page_obj.next_page_number }}">next page</a>
+                            <a href="/products?page={{ page_obj.next_page_number }}&{{query_params}}">next page</a>
                         {% endif %}
                     </span>
                 </div>

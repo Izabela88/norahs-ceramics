@@ -15,6 +15,16 @@ class ProductListView(ListView):
       if category := self.request.GET.get("category"):
          product_query = product_query.filter(sub_category__category_id=category)     
       return product_query
+   
+   def get_context_data(self,**kwargs):
+      context = super(ProductListView,self).get_context_data(**kwargs)
+      query_params = ""
+      if sub_category := self.request.GET.get("sub_category"):
+         query_params += f"sub_category={sub_category}"
+      if category := self.request.GET.get("category"):
+         query_params += f"category={category}"
+      context['query_params'] = query_params
+      return context
 
 
 class ProductDetailView(DetailView):
