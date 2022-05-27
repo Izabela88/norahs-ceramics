@@ -25,15 +25,15 @@
       <div class="home-images center">
         <div class="home-img home-img-one center">
           <img src="{% static 'images/home-img-one.jpg' %}" alt="">
-          <a class="link product-link" href="#">bowls</a>
+          <a class="link product-link" href="{% url 'product_list'%}?sub_category=bowls">bowls</a>
         </div>
         <div class="home-img home-img-two center">
           <img src="{% static 'images/home-img-two.jpg' %}" alt="">
-          <a class="link product-link" href="#">decor</a>
+          <a class="link product-link" href="{% url 'product_list'%}?sub_category=ceramic_decor">decor</a>
         </div>
         <div class="home-img home-img-three center">
           <img src="{% static 'images/home-img-three.jpg' %}" alt="">
-          <a class="link product-link" href="#">mugs</a>
+          <a class="link product-link" href="{% url 'product_list'%}?sub_category=mugs">mugs</a>
         </div>
       </div>
   </div>
@@ -161,7 +161,7 @@
       <p>Discover a new collection of unusual ceramic decorations that will
          change the interior of your home.
       </p>
-      <a class="link" href="#">shop now</a>
+      <a class="link" href="{% url 'product_list'%}?sub_category=ceramic_decor">shop now</a>
     </div>
     <div class="image-box">
       <img src="{% static 'images/new-collection.jpg' %}" alt="">

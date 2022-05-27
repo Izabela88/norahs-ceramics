@@ -8,7 +8,6 @@
 <section class="product-section">  
     <div class="container">
       <div class="product_container">
-          <!-- Left Column / Headphones Image -->
           <div class="left-column">
             {% if object.image %}
               <img src="{{ object.image.url }}" alt="">
@@ -16,12 +15,10 @@
               <img class="no-img" src="{% static 'images/no-pictures.png' %}" alt="">
             {%  endif %}
           </div>      
-          <!-- Right Column -->
           <div class="right-column">       
-            <!-- Product Description -->
             <div class="product-description">
               <h4>{{ object.name }}</h4>
-              <p>£{{ object.price_pence }}</p>
+              <h4>£{{ object.price_pence }}</h4>
               <ul class="stars">
                 <li>☆</li>
                 <li>☆</li>
@@ -30,6 +27,7 @@
                 <li>☆</li>
             </ul>
             <a href="#">0 reviews</a>
+            <a href="#">write review</a>
             <div class="product-det">
               <p>height: {{ object.height_cm }} cm,</p>
               <p>width: {{ object.width_cm }} cm,</p>
@@ -41,7 +39,6 @@
               <h4>description</h4>
               <p>{{ object.description }}</p>
             </div>
-            <!-- Product Pricing -->
             <div class="product-price">
               <div class="buttons cart-buttons">
                 <button class="button button-dark minus">-</button>
@@ -55,8 +52,10 @@
             </div>
           </div>       
       </div>
-       
     </div>  
+    <div class="section-img">
+      <img src="{% static 'images/product-details.jpg' %}" alt="">
+    </div>
 </section>
 {% endblock %}
 
