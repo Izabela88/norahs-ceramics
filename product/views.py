@@ -32,7 +32,7 @@ class ProductListView(ListView):
         return product_query
 
     def get_context_data(self, **kwargs):
-        context = super(ProductListView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         query_params = ""
         if sub_category := self.request.GET.get("sub_category"):
             query_params += f"sub_category={sub_category}"

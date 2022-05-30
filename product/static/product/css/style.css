@@ -82,6 +82,9 @@
     width: 100%;
     font-size: 20px;
     color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -479,7 +482,7 @@ input[id="blue"]:checked {
     margin: 0 auto;
     padding: 15px;
     display: flex;
-    margin-top: 13%;
+    margin-top: 14%;
     font-family: var(--font_two);
     height: 100vh;
     margin-bottom: 50px;

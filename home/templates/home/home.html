@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load my_filters %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
 {% endblock %}
@@ -221,46 +223,25 @@
   <h2>new arrivals</h2>
   <div class="container">  
       <div class="carousel-container">
-        <div class="item fade">
-          <div class="image"><img src="{% static 'images/vases.jpg' %}"/>
-            <div class="text is-text-left">
-              <h4 class="title">vases x 3</h4>
-              <h4 class="title">£49,99</h4>
+        {% for product in new_arrivals %}
+          <div class="item fade">
+            <div class="image">
+              {% if product.image %}
+                  <img src="{{ product.image.url }}" alt="">
+              {% else %}
+                  <img src="{% static 'images/no-pictures.png' %}" alt="">
+              {%  endif %}
+              <div class="text is-text-left">
+                <h4 class="title">{{ product.name }}</h4>
+                <h4 class="title">£{{product.price_pence | currency}}</h4>
+              </div>
+              <div class="more-button">
+                <a href="{% url 'product_detail' slug=product.slug %}">more</a>
+              </div>
+              <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
             </div>
-            <div class="more-button"><p>more</p></div>
-            <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
           </div>
-        </div>
-        <div class="item fade">
-          <div class="image"><img src="{% static 'images/mug.jpg' %}"/>
-          <div class="text is-text-left">
-            <h4 class="title">mug 300ml</h4>
-            <h4 class="title"4>£9,99</h4>
-          </div>
-          <div class="more-button"><p>more</p></div>
-          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-        </div>             
-        </div>
-        <div class="item fade">
-          <div class="image"><img src="{% static 'images/plates.jpg' %}"/>
-          <div class="text is-text-left">
-            <h4 class="title">plates x 4</h4>
-            <h4 class="title">£59,99</h4>
-          </div>
-          <div class="more-button"><p>more</p></div>
-          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-        </div> 
-        </div>
-        <div class="item fade">
-          <div class="image"><img src="{% static 'images/bowls.jpg' %}"/>
-          <div class="text is-text-left">
-            <h4 class="title">bowls x 2</h4>
-            <h4 class="title">£15,99</h4>
-          </div>
-          <div class="more-button"><p>more</p></div>
-          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-        </div>             
-        </div>
+        {% endfor %}
         <a class="prev center">
           <i class="fas fa-angle-left"></i></a>
           <a class="next center"><i class="fas fa-angle-right"></i></a>
