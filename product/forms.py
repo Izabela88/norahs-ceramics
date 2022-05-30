@@ -10,8 +10,8 @@ class FilterForm(forms.Form):
                 "min": "1",
                 "max": "150",
                 "id": "min",
-                "value": "1",
                 "class": "range",
+                "value": "1",
             }
         ),
         required=False,
@@ -23,10 +23,13 @@ class FilterForm(forms.Form):
                 "type": "range",
                 "min": "1",
                 "max": "150",
-                "value": "150",
                 "id": "max",
                 "class": "range",
+                "value": "150",
             }
         ),
         required=False,
     )
+
+    category = forms.CharField(widget=forms.HiddenInput())
+    sub_category = forms.CharField(widget=forms.HiddenInput())

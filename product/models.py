@@ -19,8 +19,8 @@ class SubCategory(TimestapModel):
 class Product(TimestapModel):
     name = CaseInsensitiveCharField(max_length=100)
     slug = CaseInsensitiveCharField(max_length=200, unique=True)
-    price_pence = models.DecimalField(
-        max_digits=6, decimal_places=2, validators=[MinValueValidator(0.00)]
+    price_pence = models.IntegerField(
+        null=False, validators=[MaxValueValidator(15000), MinValueValidator(1)]
     )
     description = models.TextField(max_length=2000)
     short_description = models.TextField(max_length=500)

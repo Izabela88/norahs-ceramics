@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load my_filters %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'product/css/style.css' %}">
 {% endblock %}
@@ -27,7 +29,7 @@
                  </div>     
                 </div>                    
                 <div class="min-max-range">
-                    <form method="post" class="price-range">
+                    <form method="get" class="price-range">
                         {% csrf_token %}
                         <div class="range-inputs">
                             {{filter_form}}
@@ -91,7 +93,8 @@
                                 <li>☆</li>
                             </ul>
                             <p>0 reviews</p>
-                            <h4>£{{ product.price_pence }}</h4>
+                            <h4>£{{product.price_pence | currency}}
+                            </h4>
                             <p>{{ product.short_description }}</p>
                         <div class="buttons">
                             <button class="button button-dark">add to cart</button>
