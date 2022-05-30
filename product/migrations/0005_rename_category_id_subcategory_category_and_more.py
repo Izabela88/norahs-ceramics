@@ -7,28 +7,30 @@ import norahs_ceramics.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('product', '0004_alter_color_name'),
+        ("product", "0004_alter_color_name"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='subcategory',
-            old_name='category_id',
-            new_name='category',
+            model_name="subcategory",
+            old_name="category_id",
+            new_name="category",
         ),
         migrations.AlterField(
-            model_name='product',
-            name='is_active',
+            model_name="product",
+            name="is_active",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='is_featured',
+            model_name="product",
+            name="is_featured",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='slug',
-            field=norahs_ceramics.fields.CaseInsensitiveCharField(max_length=200, unique=True),
+            model_name="product",
+            name="slug",
+            field=norahs_ceramics.fields.CaseInsensitiveCharField(
+                max_length=200, unique=True
+            ),
         ),
     ]

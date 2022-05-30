@@ -27,9 +27,13 @@
                  </div>     
                 </div>                    
                 <div class="min-max-range">
-                <input type="range" min="1" max="150" value="0" class="range" id="min">
-                <input type="range" min="1" max="150" value="150" class="range" id="max">
-                <input class="button button-dark range-btn" type="submit" value="search">     
+                    <form method="post" class="price-range">
+                        {% csrf_token %}
+                        <div class="range-inputs">
+                            {{filter_form}}
+                        </div>
+                        <input class="button button-dark range-btn" type="submit" value="search">     
+                    </form>
                 </div>    
             </div>
             <div class="color-picker">

@@ -8,18 +8,23 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('product', '0005_rename_category_id_subcategory_category_and_more'),
+        ("product", "0005_rename_category_id_subcategory_category_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='product',
-            name='category',
+            model_name="product",
+            name="category",
         ),
         migrations.AddField(
-            model_name='product',
-            name='sub_category',
-            field=models.ForeignKey(default=django.utils.timezone.now, on_delete=django.db.models.deletion.CASCADE, related_name='sub_category', to='product.subcategory'),
+            model_name="product",
+            name="sub_category",
+            field=models.ForeignKey(
+                default=django.utils.timezone.now,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="sub_category",
+                to="product.subcategory",
+            ),
             preserve_default=False,
         ),
     ]

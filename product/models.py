@@ -58,6 +58,7 @@ class Product(TimestapModel):
             raise ValidationError(
                 "Image is too big. Max file size is %sMB" % str(megabyte_limit)
             )
+
     image = models.ImageField(
         upload_to="product_images/",
         null=True,
@@ -74,4 +75,6 @@ class ProductColor(TimestapModel):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name="product"
     )
-    color = models.ForeignKey(Color, on_delete=models.CASCADE, related_name="color")
+    color = models.ForeignKey(
+        Color, on_delete=models.CASCADE, related_name="color"
+    )

@@ -96,7 +96,7 @@ TEMPLATES = [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
-                'django.template.context_processors.media',
+                "django.template.context_processors.media",
                 "django.contrib.messages.context_processors.messages",
             ],
         },
@@ -110,7 +110,9 @@ WSGI_APPLICATION = "norahs_ceramics.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 if os.getenv("ENV") == "PRODUCTION":
-    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
 else:
     DATABASES = {
         "default": {
@@ -160,7 +162,9 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 
 STATIC_URL = "/static/"
-STATICFILES_STORAGE = "cloudinary_storage.storage.StaticHashedCloudinaryStorage"
+STATICFILES_STORAGE = (
+    "cloudinary_storage.storage.StaticHashedCloudinaryStorage"
+)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]

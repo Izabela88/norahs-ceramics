@@ -20,7 +20,9 @@ class Migration(migrations.Migration):
                 ("updated_at", models.DateTimeField(auto_now=True, null=True)),
                 (
                     "name",
-                    models.CharField(max_length=30, primary_key=True, serialize=False),
+                    models.CharField(
+                        max_length=30, primary_key=True, serialize=False
+                    ),
                 ),
             ],
             options={
@@ -34,7 +36,9 @@ class Migration(migrations.Migration):
                 ("updated_at", models.DateTimeField(auto_now=True, null=True)),
                 (
                     "name",
-                    models.CharField(max_length=30, primary_key=True, serialize=False),
+                    models.CharField(
+                        max_length=30, primary_key=True, serialize=False
+                    ),
                 ),
             ],
             options={
@@ -57,18 +61,24 @@ class Migration(migrations.Migration):
                 ("updated_at", models.DateTimeField(auto_now=True, null=True)),
                 (
                     "name",
-                    norahs_ceramics.fields.CaseInsensitiveCharField(max_length=100),
+                    norahs_ceramics.fields.CaseInsensitiveCharField(
+                        max_length=100
+                    ),
                 ),
                 (
                     "slug",
-                    norahs_ceramics.fields.CaseInsensitiveCharField(max_length=200),
+                    norahs_ceramics.fields.CaseInsensitiveCharField(
+                        max_length=200
+                    ),
                 ),
                 (
                     "price_pence",
                     models.DecimalField(
                         decimal_places=2,
                         max_digits=6,
-                        validators=[django.core.validators.MinValueValidator(0.0)],
+                        validators=[
+                            django.core.validators.MinValueValidator(0.0)
+                        ],
                     ),
                 ),
                 ("description", models.TextField(max_length=2000)),
@@ -80,7 +90,9 @@ class Migration(migrations.Migration):
                     models.PositiveIntegerField(
                         blank=True,
                         null=True,
-                        validators=[django.core.validators.MinValueValidator(1)],
+                        validators=[
+                            django.core.validators.MinValueValidator(1)
+                        ],
                     ),
                 ),
                 (
@@ -88,7 +100,9 @@ class Migration(migrations.Migration):
                     models.PositiveIntegerField(
                         blank=True,
                         null=True,
-                        validators=[django.core.validators.MinValueValidator(1)],
+                        validators=[
+                            django.core.validators.MinValueValidator(1)
+                        ],
                     ),
                 ),
                 (
@@ -96,7 +110,9 @@ class Migration(migrations.Migration):
                     models.PositiveIntegerField(
                         blank=True,
                         null=True,
-                        validators=[django.core.validators.MinValueValidator(1)],
+                        validators=[
+                            django.core.validators.MinValueValidator(1)
+                        ],
                     ),
                 ),
                 (
@@ -104,7 +120,9 @@ class Migration(migrations.Migration):
                     models.PositiveIntegerField(
                         blank=True,
                         null=True,
-                        validators=[django.core.validators.MinValueValidator(1)],
+                        validators=[
+                            django.core.validators.MinValueValidator(1)
+                        ],
                     ),
                 ),
                 (
@@ -127,7 +145,9 @@ class Migration(migrations.Migration):
                 ("updated_at", models.DateTimeField(auto_now=True, null=True)),
                 (
                     "name",
-                    models.CharField(max_length=30, primary_key=True, serialize=False),
+                    models.CharField(
+                        max_length=30, primary_key=True, serialize=False
+                    ),
                 ),
                 (
                     "category_id",
