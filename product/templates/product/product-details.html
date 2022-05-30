@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load my_filters %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'product/css/style.css' %}">
 {% endblock %}
@@ -18,7 +20,7 @@
           <div class="right-column">       
             <div class="product-description">
               <h4>{{ object.name }}</h4>
-              <h4>£{{ object.price_pence }}</h4>
+              <h4>£{{product.price_pence | currency}}</h4>
               <ul class="stars">
                 <li>☆</li>
                 <li>☆</li>
@@ -26,18 +28,21 @@
                 <li>☆</li>
                 <li>☆</li>
             </ul>
-            <a href="#">0 reviews</a>
-            <a href="#">write review</a>
+            <a class="reviews-qty" href="#">0 reviews</a>
+            <a class="write-rev" href="#">write review</a>
             <div class="product-det">
-              <p>height: {{ object.height_cm }} cm,</p>
-              <p>width: {{ object.width_cm }} cm,</p>
-              {% if  object.volume_ml == None %}
-                <p>length: {{ object.length_cm }} cm</p>
-                <p></p>
-              {% else %}
-                <p>length: {{ object.length_cm }} cm,</p>
+              {% if  object.height_cm %}
+                <p>height: {{ object.height_cm }} cm</p>
+              {% endif %}
+              {% if  object.width_cm %}
+                <p>width: {{ object.width_cm }} cm</p>
+              {% endif %}
+              {% if  object.volume_ml %}
                 <p>volume: {{ object.volume_ml }} ml</p>
-              {% endif %}         
+              {% endif %}
+              {% if  object.length_cm %}
+                <p>length: {{ object.length_cm }} cm</p>
+              {% endif %}               
             </div>
             </div>
             <div class="product-description description">

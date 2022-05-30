@@ -71,10 +71,10 @@
               </ol>
             </li>
             <li class="menu-item">
-              <a href="#">Zero Waste Accessories &dtrif;</a>
+              <a href="{% url 'product_list'%}?category=zero_waste">Zero Waste Accessories &dtrif;</a>
               <ol class="sub-menu">
-                <li class="menu-item"><a href="#">Kitchen</a></li>
-                <li class="menu-item"><a href="#">Bathroom</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=kitchen">Kitchen</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=bathroom">Bathroom</a></li>
               </ol>
             </li>
             <li class="menu-item"><a href="{% url 'home' %}#new-arriv">New In</a></li>
