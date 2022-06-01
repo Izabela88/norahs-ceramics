@@ -15,3 +15,7 @@ minSlider.oninput = function () {
 maxSlider.oninput = function () {
   outputMax.innerHTML = this.value;
 };
+
+function submitForm() {
+  document.getElementById("sort-by-form").submit();
+}

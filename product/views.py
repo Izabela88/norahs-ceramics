@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 from product.models import Product, Color
-from product.forms import FilterForm
+from product.forms import FilterForm, SortByForm
 from django.db.models import Q
 
 
@@ -31,7 +31,7 @@ class ProductListView(ListView):
                     self._to_pence(int(max_price)),
                 )
             )
-
+      
         color_filters = []
 
         for color in colors:
@@ -42,6 +42,16 @@ class ProductListView(ListView):
             for filter in color_filters:
                 color_query |= filter
             product_query = product_query.filter(color_query)
+
+        if sort_by:= self.request.GET.get("sort_by"):
+            if sort_by == "name_asc":
+                product_query = product_query.order_by("name")
+            if sort_by == "name_desc":
+                product_query = product_query.order_by("-name")
+            if sort_by == "price_asc":
+                product_query = product_query.order_by("price_pence")
+            if sort_by == "price_desc":
+                product_query = product_query.order_by("-price_pence")
         return product_query
 
     def get_context_data(self, **kwargs):
@@ -55,6 +65,8 @@ class ProductListView(ListView):
             query_params += f"min_price={min_price}&"
         if max_price := self.request.GET.get("max_price"):
             query_params += f"max_price={max_price}&"
+        if sort_by := self.request.GET.get("sort_by"):
+            query_params += f"sort_by={sort_by}&"
 
         initials = {
                 "category": category,
@@ -72,6 +84,7 @@ class ProductListView(ListView):
         context["filter_form"] = FilterForm(
             initial=initials
         )
+        context["sort_by_form"] = SortByForm()
 
         return context
 

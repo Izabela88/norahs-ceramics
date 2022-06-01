@@ -40,3 +40,17 @@ class FilterForm(forms.Form):
         widget=forms.RadioSelect,
         label="",
     )
+
+SORT_BY = [
+    ("name_asc", "name A-Z"),
+    ("name_desc", "name Z-A"),
+    ("price_asc", "price low to high"),
+    ("price_desc", "price high to low"),
+]
+
+class SortByForm(forms.Form):
+    sort_by = forms.CharField(
+            required=False,
+            label="",
+            widget=forms.Select(choices=SORT_BY),
+        )

@@ -48,7 +48,7 @@
                         </div>
                         </div> 
                         </div>
-                        <input class="button button-dark range-btn" type="submit" value="search">     
+                        <input class="button button-dark range-btn" type="submit" value="apply">     
                     </form>
                     <div class="button button-dark clear-btn">
                         <a href="/products">clear filters</a>
@@ -67,19 +67,15 @@
                         items</p>
                     {% endif %}
             </div>
-            <div class="sort">
-                <ul class="links">
-                  <li class="dropdown"><a href="#" class="trigger-drop">sort by<i class="arrow"></i></a>
-                    <ul class="drop">
-                      <li><a href="#">name</a></li>
-                      <li><a href="#">price low to high</a></li>
-                      <li><a href="#">price high to low</a></li>
-                    </ul>
-                  </li>
-            
-                </ul>
-            </div>
-           
+            <div class="sort-box">
+                <p>sort by</p>
+                <form method="get" id="sort-by-form" onchange='submitForm()'>
+                    <div class="select"> 
+                        {% csrf_token %}
+                        {{sort_by_form}}
+                    </div>
+                </form>
+            </div>    
         </div>
         <div class="products-list">
             {% for product in product_list %}
