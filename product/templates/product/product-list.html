@@ -32,21 +32,29 @@
                     <form method="get" class="price-range">
                         {% csrf_token %}
                         <div class="range-inputs">
-                            {{filter_form}}
+                            {{filter_form.min_price}}
+                            {{filter_form.max_price}}
+                        <div class="color-picker">
+                            <h3>colors</h3>         
+                        <div class="colors">
+                        {% for color in filter_form.colors %}
+                            <label for="{{color.id_for_label }}">{{color.choice_label}}:</label>
+                            <input type="checkbox" name="{{color.choice_label }}" id="{{color.choice_label}}" 
+                            {% if color.choice_label in initial_colors %}
+                                checked
+                            {% endif %}
+                            >
+                        {% endfor %}
+                        </div>
+                        </div> 
                         </div>
                         <input class="button button-dark range-btn" type="submit" value="search">     
                     </form>
+                    <div class="button button-dark clear-btn">
+                        <a href="/products">clear filters</a>
+
+                    </div >
                 </div>    
-            </div>
-            <div class="color-picker">
-                <h3>colors</h3>
-                <div class="colors">
-                    <input type="checkbox" name="black" id="black">
-                    <input type="checkbox" name="grey" id="grey">
-                    <input type="checkbox" name="red" id="red">
-                    <input type="checkbox" name="beige" id="beige">
-                    <input type="checkbox" name="blue" id="blue">
-                </div>
             </div>
         </div>
         <div class="info-box">

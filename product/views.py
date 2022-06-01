@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView
-from product.models import Product
+from product.models import Product, Color
 from product.forms import FilterForm
+from django.db.models import Q
 
 
 class ProductListView(ListView):
@@ -13,6 +14,7 @@ class ProductListView(ListView):
         product_query = Product.objects.all()
         min_price = self.request.GET.get("min_price")
         max_price = self.request.GET.get("max_price")
+        colors = Color.objects.all()
 
         if sub_category := self.request.GET.get("sub_category"):
             product_query = product_query.filter(
@@ -29,23 +31,48 @@ class ProductListView(ListView):
                     self._to_pence(int(max_price)),
                 )
             )
+
+        color_filters = []
+
+        for color in colors:
+            if color.name in self.request.GET:
+                color_filters.append(Q(colors=color.name))
+        if color_filters:
+            color_query = color_filters.pop()
+            for filter in color_filters:
+                color_query |= filter
+            product_query = product_query.filter(color_query)
         return product_query
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         query_params = ""
         if sub_category := self.request.GET.get("sub_category"):
-            query_params += f"sub_category={sub_category}"
+            query_params += f"sub_category={sub_category}&"
         if category := self.request.GET.get("category"):
-            query_params += f"category={category}"
+            query_params += f"category={category}&"
         if min_price := self.request.GET.get("min_price"):
-            query_params += f"min_price={min_price}"
+            query_params += f"min_price={min_price}&"
         if max_price := self.request.GET.get("max_price"):
-            query_params += f"max_price={max_price}"
+            query_params += f"max_price={max_price}&"
+
+        initials = {
+                "category": category,
+                "sub_category": sub_category,
+                "min_price": min_price,
+                "max_price": max_price,
+            }
+        context["initial_colors"] = []
+        colors = Color.objects.all()
+        for color in colors:
+            if color.name in self.request.GET:
+                query_params += f"{color.name}=on&"
+                context["initial_colors"].append(color.name)
         context["query_params"] = query_params
         context["filter_form"] = FilterForm(
-            initial={"category": category, "sub_category": sub_category}
+            initial=initials
         )
+
         return context
 
     @staticmethod

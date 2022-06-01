@@ -16,6 +16,10 @@ class SubCategory(TimestapModel):
     )
 
 
+class Color(TimestapModel):
+    name = models.CharField(max_length=30, primary_key=True, unique=True)
+
+
 class Product(TimestapModel):
     name = CaseInsensitiveCharField(max_length=100)
     slug = CaseInsensitiveCharField(max_length=200, unique=True)
@@ -49,6 +53,7 @@ class Product(TimestapModel):
     sub_category = models.ForeignKey(
         SubCategory, on_delete=models.CASCADE, related_name="sub_category"
     )
+    colors = models.ManyToManyField(Color, null=True)
 
     def validate_image(self):
         # https://stackoverflow.com/questions/6195478/max-image-size-on-file-upload
@@ -64,17 +69,4 @@ class Product(TimestapModel):
         null=True,
         blank=True,
         validators=[validate_image],
-    )
-
-
-class Color(TimestapModel):
-    name = models.CharField(max_length=30, primary_key=True, unique=True)
-
-
-class ProductColor(TimestapModel):
-    product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name="product"
-    )
-    color = models.ForeignKey(
-        Color, on_delete=models.CASCADE, related_name="color"
     )

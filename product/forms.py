@@ -1,4 +1,5 @@
 from django import forms
+from product.models import Color
 
 
 class FilterForm(forms.Form):
@@ -33,3 +34,9 @@ class FilterForm(forms.Form):
 
     category = forms.CharField(widget=forms.HiddenInput())
     sub_category = forms.CharField(widget=forms.HiddenInput())
+
+    colors = forms.MultipleChoiceField(
+        choices=[(i.name, i.name) for i in Color.objects.all()],
+        widget=forms.RadioSelect,
+        label="",
+    )
