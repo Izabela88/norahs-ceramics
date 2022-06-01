@@ -53,7 +53,6 @@
     color: var(--col_four);
     border-bottom: 1px solid var(--col_four);
     background-color: rgb(0 0 0 / 21%);
-    width: 120px;
     transition-duration: .3s;
 }
 

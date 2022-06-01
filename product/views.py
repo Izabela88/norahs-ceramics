@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 from product.models import Product, Color
-from product.forms import FilterForm, SortByForm
+from product.forms import FilterForm
 from django.db.models import Q
 
 
@@ -84,7 +84,7 @@ class ProductListView(ListView):
         context["filter_form"] = FilterForm(
             initial=initials
         )
-        context["sort_by_form"] = SortByForm()
+     
 
         return context
 

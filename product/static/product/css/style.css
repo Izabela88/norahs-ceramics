@@ -51,25 +51,24 @@
 
 /* INFO BOX */
 .info-box {
-    width: 65%;
+    width: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, rgb(209 213 219) 0px 0px 0px 1px inset;
+    margin-top: -119px;
+    margin-bottom: -58px;
 }
 
 .sort-box {
     display: flex;
     align-items: center;
     margin-left: 55px;
+    flex-direction: column;
+    margin: 20px auto;
 }
 
-.sort-box p {
-    font-size: 20px;
-    margin-right: 10px;
-}
-
-select , option{
+.sort-box select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -86,7 +85,7 @@ select , option{
     outline: none;
 }
 
-select::-ms-expand {
+.sort-box select::-ms-expand {
     display: none;
 }
 
@@ -95,7 +94,7 @@ select::-ms-expand {
     grid-template-areas: "select";
     align-items: center;
     position: relative;
-    width: 200px;
+    width: 220px;
     border: 1px solid var(--select-border);
     padding: 0.25em 0.5em;
     font-size: 1.25rem;
@@ -146,6 +145,7 @@ select:focus+.focus {
 .priceSlider h3 {
     font-size: 14px;
     text-transform: uppercase;
+    margin: 10px 0;
 }
 
 .priceSlider p {
@@ -234,7 +234,7 @@ select:focus+.focus {
 .range-btn {
     padding: 0;
     height: 35px;
-    width: 50%;
+    width: 100%;
     margin: 20px auto;
     font-size: 12px;
 }
@@ -242,7 +242,7 @@ select:focus+.focus {
 .clear-btn {
     padding: 0;
     height: 35px;
-    width: 50%;
+    width: 100%;
     font-size: 12px;
     margin-left: auto;
     margin-right: auto;

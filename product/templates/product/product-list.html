@@ -45,8 +45,14 @@
                             {% endif %}
                             >
                         {% endfor %}
-                        </div>
-                        </div> 
+                    </div>
+                </div> 
+                <div class="sort-box">
+                    <div class="select">
+                        {{filter_form.sort_by}}   
+
+                    </div>
+                </div>    
                         </div>
                         <input class="button button-dark range-btn" type="submit" value="apply">     
                     </form>
@@ -67,15 +73,7 @@
                         items</p>
                     {% endif %}
             </div>
-            <div class="sort-box">
-                <p>sort by</p>
-                <form method="get" id="sort-by-form" onchange='submitForm()'>
-                    <div class="select"> 
-                        {% csrf_token %}
-                        {{sort_by_form}}
-                    </div>
-                </form>
-            </div>    
+            
         </div>
         <div class="products-list">
             {% for product in product_list %}
