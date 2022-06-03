@@ -2,8 +2,6 @@ from django import forms
 from product.models import Color
 
 
-
-
 SORT_BY = [
     ("", "sort by"),
     ("name_asc", "name A-Z"),
@@ -11,6 +9,7 @@ SORT_BY = [
     ("price_asc", "price low to high"),
     ("price_desc", "price high to low"),
 ]
+
 
 class FilterForm(forms.Form):
 
@@ -52,10 +51,7 @@ class FilterForm(forms.Form):
     )
 
     sort_by = forms.CharField(
-            required=False,
-            label="",
-            widget=forms.Select(choices=SORT_BY),
-        )
-
-
-    
+        required=False,
+        label="",
+        widget=forms.Select(choices=SORT_BY),
+    )

@@ -256,6 +256,12 @@ select:focus+.focus {
     width: 100%;
     color: #000000;
     font-weight: bold;
+    font-size: 15px;
+    transition-duration: .3s;
+}
+
+.clear-btn a:hover {
+    color: var(--col_eight);
 }
 
 /* COLOR PICKER */

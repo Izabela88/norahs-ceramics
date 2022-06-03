@@ -191,3 +191,5 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 AUTH_USER_MODEL = "customer.User"
+
+DJANGO_SETTINGS_MODULE="norahs_ceramics.settings pytest"

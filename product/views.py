@@ -31,7 +31,7 @@ class ProductListView(ListView):
                     self._to_pence(int(max_price)),
                 )
             )
-      
+
         color_filters = []
 
         for color in colors:
@@ -43,7 +43,7 @@ class ProductListView(ListView):
                 color_query |= filter
             product_query = product_query.filter(color_query)
 
-        if sort_by:= self.request.GET.get("sort_by"):
+        if sort_by := self.request.GET.get("sort_by"):
             if sort_by == "name_asc":
                 product_query = product_query.order_by("name")
             if sort_by == "name_desc":
@@ -69,11 +69,11 @@ class ProductListView(ListView):
             query_params += f"sort_by={sort_by}&"
 
         initials = {
-                "category": category,
-                "sub_category": sub_category,
-                "min_price": min_price,
-                "max_price": max_price,
-            }
+            "category": category,
+            "sub_category": sub_category,
+            "min_price": min_price,
+            "max_price": max_price,
+        }
         context["initial_colors"] = []
         colors = Color.objects.all()
         for color in colors:
@@ -81,10 +81,7 @@ class ProductListView(ListView):
                 query_params += f"{color.name}=on&"
                 context["initial_colors"].append(color.name)
         context["query_params"] = query_params
-        context["filter_form"] = FilterForm(
-            initial=initials
-        )
-     
+        context["filter_form"] = FilterForm(initial=initials)
 
         return context
 
