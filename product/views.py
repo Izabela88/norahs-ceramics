@@ -11,7 +11,7 @@ class ProductListView(ListView):
     template_name = "product/product-list.html"
 
     def get_queryset(self):
-        product_query = Product.objects.all()
+        product_query = Product.objects.filter(is_active=True).all()
         min_price = self.request.GET.get("min_price")
         max_price = self.request.GET.get("max_price")
         colors = Color.objects.all()

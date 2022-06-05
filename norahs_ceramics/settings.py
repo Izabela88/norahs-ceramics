@@ -117,8 +117,12 @@ if os.getenv("ENV") == "PRODUCTION":
 else:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": "norahs-ceramics",
+            "USER": "postgres",
+            "PASSWORD": "1234",
+            "HOST": "127.0.0.1",
+            "PORT": "5432",
         }
     }
 
@@ -191,5 +195,3 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 AUTH_USER_MODEL = "customer.User"
-
-DJANGO_SETTINGS_MODULE="norahs_ceramics.settings pytest"

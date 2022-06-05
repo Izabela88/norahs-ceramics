@@ -10,9 +10,17 @@ SORT_BY = [
     ("price_desc", "price high to low"),
 ]
 
+COLORS = [
+    ("white", "white"),
+    ("black", "black"),
+    ("red", "red"),
+    ("blue", "blue"),
+    ("grey", "grey"),
+    ("beige", "beige"),
+]
+
 
 class FilterForm(forms.Form):
-
     min_price = forms.IntegerField(
         widget=forms.NumberInput(
             attrs={
@@ -45,7 +53,7 @@ class FilterForm(forms.Form):
     sub_category = forms.CharField(widget=forms.HiddenInput())
 
     colors = forms.MultipleChoiceField(
-        choices=[(i.name, i.name) for i in Color.objects.all()],
+        choices=COLORS,
         widget=forms.RadioSelect,
         label="",
     )
