@@ -15,7 +15,6 @@ class ProductListView(ListView):
         min_price = self.request.GET.get("min_price")
         max_price = self.request.GET.get("max_price")
         colors = Color.objects.all()
-
         if sub_category := self.request.GET.get("sub_category"):
             product_query = product_query.filter(
                 sub_category__name=sub_category
@@ -52,7 +51,7 @@ class ProductListView(ListView):
                 product_query = product_query.order_by("price_pence")
             if sort_by == "price_desc":
                 product_query = product_query.order_by("-price_pence")
-        return product_query
+        return product_query.distinct()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
