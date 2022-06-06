@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_filters %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'product/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="product-section">  
+    <div class="container">
+      <div class="product_container">
+          <div class="left-column">
+            {% if object.image %}
+              <img src="{{ object.image.url }}" alt="">
+            {% else %}
+              <img class="no-img" src="{% static 'images/no-pictures.png' %}" alt="">
+            {%  endif %}
+          </div>      
+          <div class="right-column">       
+            <div class="product-description">
+              <h4>{{ object.name }}</h4>
+              <h4>£{{product.price_pence | currency}}</h4>
+              <ul class="stars">
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+            </ul>
+            <a class="reviews-qty" href="#">0 reviews</a>
+            <a class="write-rev" href="#">write review</a>
+            <div class="product-det">
+              {% if  object.height_cm %}
+                <p>height: {{ object.height_cm }} cm</p>
+              {% endif %}
+              {% if  object.width_cm %}
+                <p>width: {{ object.width_cm }} cm</p>
+              {% endif %}
+              {% if  object.volume_ml %}
+                <p>volume: {{ object.volume_ml }} ml</p>
+              {% endif %}
+              {% if  object.length_cm %}
+                <p>length: {{ object.length_cm }} cm</p>
+              {% endif %}               
+            </div>
+            </div>
+            <div class="product-description description">
+              <h4>description</h4>
+              <p>{{ object.description }}</p>
+            </div>
+            <div class="product-price">
+              <div class="buttons cart-buttons">
+                <button class="button button-dark minus">-</button>
+                <input type="number" name="" id="number" value="1">
+                <button class="button button-dark plus">+</button>
+              </div>
+              <div class="buttons">
+                <button class="button button-dark">add to cart</button>
+                <button class="button button-dark product-fav">♡</button>
+            </div>
+            </div>
+          </div>       
+      </div>
+    </div>  
+    <div class="section-img">
+      <img src="{% static 'images/product-details.jpg' %}" alt="">
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+  <script src="{% static 'product/js/index.js' %}"></script>
+ 
+{% endblock %}

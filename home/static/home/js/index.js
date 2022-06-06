@@ -1,7 +1,7 @@
 // https://codepen.io/luxonauta/pen/QWEWvmB
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".carousel-container").forEach((carousel) => {
-    insertNumbers(carousel);
+    // insertNumbers(carousel);
 
     carousel.querySelector(".prev").addEventListener("click", (e) => {
       minusItem(carousel);
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       plusItem(carousel);
     });
 
-    insertDots(carousel);
+    // insertDots(carousel);
 
     carousel.querySelectorAll(".dot").forEach((dot) => {
       dot.addEventListener("click", (e) => {

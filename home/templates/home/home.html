@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load my_filters %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
 {% endblock %}
@@ -11,9 +13,9 @@
   <div class="container">
       <div class="home-txt center">
         <h1>handmade with love</h1>
-        <p>Add modern British ceramics to your home, 
+        <p>Add modern British ceramics, glass and zero waste accessories to your home, 
           all individually handmade with love.</p>
-          <a class="link" href="#">shop now</a>
+          <a class="link" href="{% url 'product_list' %}">shop all now</a>
       </div>
       <div class="hero-image">
         <img
@@ -25,15 +27,15 @@
       <div class="home-images center">
         <div class="home-img home-img-one center">
           <img src="{% static 'images/home-img-one.jpg' %}" alt="">
-          <a class="link product-link" href="#">bowls</a>
+          <a class="link product-link" href="{% url 'product_list'%}?sub_category=bowls">ceramic bowls</a>
         </div>
         <div class="home-img home-img-two center">
           <img src="{% static 'images/home-img-two.jpg' %}" alt="">
-          <a class="link product-link" href="#">decor</a>
+          <a class="link product-link" href="{% url 'product_list'%}?sub_category=ceramic_decor">ceramic decor</a>
         </div>
         <div class="home-img home-img-three center">
           <img src="{% static 'images/home-img-three.jpg' %}" alt="">
-          <a class="link product-link" href="#">mugs</a>
+          <a class="link product-link" href="{% url 'product_list'%}?sub_category=mugs">ceramic mugs</a>
         </div>
       </div>
   </div>
@@ -161,7 +163,7 @@
       <p>Discover a new collection of unusual ceramic decorations that will
          change the interior of your home.
       </p>
-      <a class="link" href="#">shop now</a>
+      <a class="link" href="{% url 'product_list'%}?sub_category=ceramic_decor">shop now</a>
     </div>
     <div class="image-box">
       <img src="{% static 'images/new-collection.jpg' %}" alt="">
@@ -221,46 +223,25 @@
   <h2>new arrivals</h2>
   <div class="container">  
       <div class="carousel-container">
-        <div class="item fade">
-          <div class="image"><img src="{% static 'images/vases.jpg' %}"/>
-            <div class="text is-text-left">
-              <h4 class="title">vases x 3</h4>
-              <h4 class="title">£49,99</h4>
+        {% for product in new_arrivals %}
+          <div class="item fade">
+            <div class="image">
+              {% if product.image %}
+                  <img src="{{ product.image.url }}" alt="">
+              {% else %}
+                  <img src="{% static 'images/no-pictures.png' %}" alt="">
+              {%  endif %}
+              <div class="text is-text-left">
+                <h4 class="title">{{ product.name }}</h4>
+                <h4 class="title">£{{product.price_pence | currency}}</h4>
+              </div>
+              <div class="more-button">
+                <a href="{% url 'product_detail' slug=product.slug %}">more</a>
+              </div>
+              <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
             </div>
-            <div class="more-button"><p>more</p></div>
-            <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
           </div>
-        </div>
-        <div class="item fade">
-          <div class="image"><img src="{% static 'images/mug.jpg' %}"/>
-          <div class="text is-text-left">
-            <h4 class="title">mug 300ml</h4>
-            <h4 class="title"4>£9,99</h4>
-          </div>
-          <div class="more-button"><p>more</p></div>
-          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-        </div>             
-        </div>
-        <div class="item fade">
-          <div class="image"><img src="{% static 'images/plates.jpg' %}"/>
-          <div class="text is-text-left">
-            <h4 class="title">plates x 4</h4>
-            <h4 class="title">£59,99</h4>
-          </div>
-          <div class="more-button"><p>more</p></div>
-          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-        </div> 
-        </div>
-        <div class="item fade">
-          <div class="image"><img src="{% static 'images/bowls.jpg' %}"/>
-          <div class="text is-text-left">
-            <h4 class="title">bowls x 2</h4>
-            <h4 class="title">£15,99</h4>
-          </div>
-          <div class="more-button"><p>more</p></div>
-          <div class="add-basket"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-        </div>             
-        </div>
+        {% endfor %}
         <a class="prev center">
           <i class="fas fa-angle-left"></i></a>
           <a class="next center"><i class="fas fa-angle-right"></i></a>
