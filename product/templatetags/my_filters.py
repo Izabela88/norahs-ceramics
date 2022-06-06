@@ -4,7 +4,8 @@ register = template.Library()
 
 
 def currency(pence):
-    return int(pence) / 100
+    pounds = int(pence) / 100
+    return '{0:.2f}'.format(pounds)
 
 
 register.filter("currency", currency)

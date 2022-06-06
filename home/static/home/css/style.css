@@ -520,6 +520,7 @@
     font-weight: normal;
     margin-left: 20px;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 .carousel-container .prev,
@@ -583,8 +584,8 @@ main section .carousel-container .dots .dot:hover {
     width: 60px;
     height: 60px;
     position: absolute;
-    bottom: 20px;
-    right: 75px;
+    bottom: 155px;
+    right: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -614,8 +615,8 @@ main section .carousel-container .dots .dot:hover {
     width: 60px;
     height: 60px;
     position: absolute;
-    bottom: 20px;
-    right: 150px;
+    bottom: 85px;
+    right: 50px;
     display: flex;
     align-items: center;
     justify-content: center;

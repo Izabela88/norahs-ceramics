@@ -27,7 +27,7 @@ class Product(TimestapModel):
         null=False, validators=[MaxValueValidator(15000), MinValueValidator(1)]
     )
     description = models.TextField(max_length=2000)
-    short_description = models.TextField(max_length=500)
+    short_description = models.TextField(max_length=300)
     is_active = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)
     width_cm = models.PositiveIntegerField(

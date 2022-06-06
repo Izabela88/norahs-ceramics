@@ -282,7 +282,6 @@ select:focus+.focus {
 .colors {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    height: 135px;
     align-content: initial;
     justify-items: center;
     margin: 25px auto;
@@ -297,6 +296,10 @@ select:focus+.focus {
     background-clip: content-box;
     border-radius: 50%;
     cursor: pointer;
+    margin-bottom: 3px;
+}
+.color-picker label {
+    margin-bottom: 5px;
 }
 
 .color-picker .colors-btn {
@@ -366,6 +369,17 @@ input[id="white"] {
 }
 
 input[id="white"]:checked {
+    background-color: white;
+    padding: 0;
+}
+
+input[id="transparent"] {
+    border: 4px solid white;
+    padding: 0;
+
+}
+
+input[id="transparent"]:checked {
     background-color: white;
     padding: 0;
 }

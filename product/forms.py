@@ -17,6 +17,7 @@ COLORS = [
     ("blue", "blue"),
     ("grey", "grey"),
     ("beige", "beige"),
+    ("transparent", "transparent"),
 ]
 
 
