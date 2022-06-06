@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_filters %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'product/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="product-section">
+      
+    <div class="container">
+        <div class="products-bg">
+            <img src="{% static 'images/product.jpg' %}" alt="">
+        </div>  
+        <div class="filters">
+            <h2>filters</h2>
+            <!-- prices slider -->
+            <!-- https://www.howtocodeschool.com/2021/12/price-range-slider-with-html-css-javascript.html -->
+            <div class="priceSlider">
+                <h3>price range:</h3>
+                <p>Move Slider to choose the price range</p>       
+                <div class="min-max">
+                 <div class="min">
+                     <label>min £</label><span id="min-value"></span>
+                 </div>
+                 <div class="max">
+                     <label>max £</label><span id="max-value"></span>
+                 </div>     
+                </div>                    
+                <div class="min-max-range">
+                    <form method="get" class="price-range">
+                        {% csrf_token %}
+                        <div class="range-inputs">
+                            {{filter_form.min_price}}
+                            {{filter_form.max_price}}
+                        <div class="color-picker">
+                            <h3>colors</h3>         
+                        <div class="colors">
+                        {% for color in filter_form.colors %}
+                            <label for="{{color.id_for_label }}">{{color.choice_label}}:</label>
+                            <input type="checkbox" name="{{color.choice_label }}" id="{{color.choice_label}}" 
+                            {% if color.choice_label in initial_colors %}
+                                checked
+                            {% endif %}
+                            >
+                        {% endfor %}
+                    </div>
+                </div> 
+                <div class="sort-box">
+                    <div class="select">
+                        {{filter_form.sort_by}}   
+
+                    </div>
+                </div>    
+                        </div>
+                        <input class="button button-dark range-btn" type="submit" value="apply">     
+                    </form>
+                    <div class="button button-dark clear-btn">
+                        <a href="{% url 'product_list' %}">clear filters</a>
+
+                    </div >
+                </div>    
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="items-qty">
+                {% if product_list %}
+                <p class="result">{{ page_obj.paginator.count }}
+                    {% if page_obj.paginator.count == 1 %}
+                        item</p>
+                    {% else %}
+                        items</p>
+                    {% endif %}
+            </div>
+            
+        </div>
+        <div class="products-list">
+            {% for product in product_list %}
+                    <div class="products-element">
+                        <div class="product-img">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="">
+                            {% else %}
+                                <img src="{% static 'images/no-pictures.png' %}" alt="">
+                            {%  endif %}
+                        </div>
+                        <div class="product-txt">
+                            <h4>{{ product.name }}</h4>
+                            <ul class="stars">
+                                <li>☆</li>
+                                <li>☆</li>
+                                <li>☆</li>
+                                <li>☆</li>
+                                <li>☆</li>
+                            </ul>
+                            <p>0 reviews</p>
+                            <h4>£{{product.price_pence | currency}}
+                            </h4>
+                            <p>{{ product.short_description }}</p>
+                        <div class="buttons">
+                            <button class="button button-dark">add to cart</button>
+                            <a href="{% url 'product_detail' slug=product.slug %}" class="button button-dark product-more">more</a>
+                            <button class="button button-dark product-fav">♡</button>
+                        </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% if is_paginated %}
+                <div class="pagination">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a href="/products?page={{ page_obj.previous_page_number }}&{{query_params}}">previous page</a>
+                        {% endif %}
+                        <span class="page-current">
+                            page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                        </span>
+                        {% if page_obj.has_next %}
+                            <a href="/products?page={{ page_obj.next_page_number }}&{{query_params}}">next page</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
+            {% else %}
+            <h2 class="no-products-txt">No products found!</h2>
+        {% endif %}
+    </div>   
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+  <script src="{% static 'product/js/index.js' %}"></script>
+ 
+{% endblock %}

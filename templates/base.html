@@ -54,27 +54,27 @@
               <a class="close-sidebar {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
             <li class="menu-item"><a href="{% url 'about' %}">About</a></li>
             <li class="menu-item">
-              <a href="#">Ceramics</a>
+              <a href="{% url 'product_list'%}?category=ceramics">Ceramics &dtrif;</a>
               <ol class="sub-menu">
-                <li class="menu-item"><a href="#">Plates</a></li>
-                <li class="menu-item"><a href="#">Bowls</a></li>
-                <li class="menu-item"><a href="#">Mugs</a></li>
-                <li class="menu-item"><a href="#">Decor</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=plates">Plates</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=bowls">Bowls</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=mugs">Mugs</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=ceramic_decor">Decor</a></li>
               </ol>
             </li>
             <li class="menu-item">
-              <a href="#">Glass</a>
+              <a href="{% url 'product_list'%}?category=glass">Glass &dtrif;</a>
               <ol class="sub-menu">
-                <li class="menu-item"><a href="#">Bottles</a></li>
-                <li class="menu-item"><a href="#">Jars</a></li>
-                <li class="menu-item"><a href="#">Decor</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=bottles">Bottles</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=jars">Jars</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=glass_decor">Decor</a></li>
               </ol>
             </li>
             <li class="menu-item">
-              <a href="#">Zero Waste Accessories</a>
+              <a href="{% url 'product_list'%}?category=zero_waste">Zero Waste &dtrif;</a>
               <ol class="sub-menu">
-                <li class="menu-item"><a href="#">Kitchen</a></li>
-                <li class="menu-item"><a href="#">Bathroom</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=kitchen">Kitchen</a></li>
+                <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=bathroom">Bathroom</a></li>
               </ol>
             </li>
             <li class="menu-item"><a href="{% url 'home' %}#new-arriv">New In</a></li>
