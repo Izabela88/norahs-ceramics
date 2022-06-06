@@ -8,6 +8,9 @@ from django.core.exceptions import ValidationError
 class Category(TimestapModel):
     name = models.CharField(max_length=30, primary_key=True)
 
+    def __str__(self):
+        return self.name
+
 
 class SubCategory(TimestapModel):
     name = models.CharField(max_length=30, primary_key=True)
@@ -15,9 +18,15 @@ class SubCategory(TimestapModel):
         Category, on_delete=models.CASCADE, related_name="parent_category"
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Color(TimestapModel):
     name = models.CharField(max_length=30, primary_key=True, unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(TimestapModel):
@@ -70,3 +79,6 @@ class Product(TimestapModel):
         blank=True,
         validators=[validate_image],
     )
+
+    def __str__(self):
+        return self.name
