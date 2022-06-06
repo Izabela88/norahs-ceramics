@@ -31,6 +31,8 @@
                 <div class="min-max-range">
                     <form method="get" class="price-range">
                         {% csrf_token %}
+                        {{filter_form.sub_category}}
+                        {{filter_form.category}}
                         <div class="range-inputs">
                             {{filter_form.min_price}}
                             {{filter_form.max_price}}
