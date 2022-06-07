@@ -31,6 +31,14 @@
     height: -moz-calc(100vh + 174px)
 }
 
+.empty-basket-section {
+    height: 100vh;
+}
+
+.empty-basket-section h2 {
+    display: none;
+}
+
 .basket-section h2 {
     position: relative;
     margin-bottom: 50px;
@@ -80,35 +88,6 @@
     overflow-y: auto;
   }
   
-  
-  #empty-basket {
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    animation: fade 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-  }
-  
-  #empty-basket p {
-    position: absolute;
-    padding: 34px;
-    font-size: 24px;
-    top: 20%;
-    left: -8%;
-    width: 300px;
-    height: 300px;
-    line-height: 30px;
-    border-radius: 50%;
-    background-color: #f4afd0;
-    color: var(--white-color);
-    font-family: 'Coiny', cursive;
-    border: 10px solid var(--white-color);
-    letter-spacing: 1px;
-  }
-
   
   .product-box {
     padding: 20px 30px;
@@ -241,4 +220,40 @@
   
   .purchase-button:disabled {
     opacity: 0.5;
+  }
+
+  .empty-img {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+}
+
+.empty-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+}
+
+.empty-basket {
+    height: 100vh;
+    width: 500px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgb(255 255 255 / 70%)
+  }
+  
+  .empty-basket p, 
+  .empty-basket a {
+    font-size: 25px;
+    color: #000000;
+    text-transform: uppercase;
+  }
+
+  .empty-basket p {
+      margin-top: 150px;
+      margin-bottom: 60px;
   }
