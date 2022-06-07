@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "about",
     "product",
     "django.contrib.humanize",
+    "basket"
 ]
 
 SITE_ID = 2

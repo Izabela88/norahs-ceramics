@@ -464,6 +464,15 @@ input[id="transparent"]:checked {
     margin: 10px 0;
 }
 
+.product-txt a {
+    color: #000000;
+    transition-duration: 0.3s;
+}
+
+.product-txt a:hover {
+    color: var(--col_eight);
+}
+
 .product-more,
 .product-fav {
     width: 46px;

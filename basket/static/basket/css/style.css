@@ -1,0 +1,244 @@
+:root {
+    --col_one: #D18E85;
+    --col_two: #C8CAC9;
+    --col_three: #000000;
+    --col_four: #ffffff;
+    --col_five: #F2DFE1;
+    --col_six: #C1B198;
+    --col_seven: #F8B195;
+    --col_eight: #C06C84;
+    --col_nine: #F2CFBB;
+    --font_one: 'Mali', cursive;
+    --font_two: 'Hubballi', cursive;
+}
+
+
+.container {
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.basket-section {
+    position: relative;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
+}
+
+.basket-section h2 {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* shopping cart */
+.shopping-cart-container {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+
+  .close-shopping-cart {
+    cursor: pointer;
+  }
+  
+  .shopping-cart-box {
+    width: 750px;
+    max-height: 90vh;
+    margin: 80px auto;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font_two);
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cart-title {
+    height: 80px;
+    width: 100%;
+    padding: 20px 30px;
+    font-size: 25px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .basket-container {
+    height: 300px;
+    width: 100%;
+    align-items: center;
+    overflow-y: auto;
+  }
+  
+  
+  #empty-basket {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    animation: fade 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+  }
+  
+  #empty-basket p {
+    position: absolute;
+    padding: 34px;
+    font-size: 24px;
+    top: 20%;
+    left: -8%;
+    width: 300px;
+    height: 300px;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: #f4afd0;
+    color: var(--white-color);
+    font-family: 'Coiny', cursive;
+    border: 10px solid var(--white-color);
+    letter-spacing: 1px;
+  }
+
+  
+  .product-box {
+    padding: 20px 30px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: none;
+  }
+  
+  .delete-icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+  
+  .product-image {
+    margin-right: 50px;
+    width: 70px;
+    height: 70px;
+  }
+  
+  .product-description {
+    padding-top: 10px;
+    margin-right: 60px;
+  }
+  
+  .product-description p:first-child {
+    margin-bottom: 5px;
+  }
+  
+  .product-description p:last-child {
+    font-weight: 300;
+    margin-top: 8px;
+    color: #86939e;
+  }
+  
+  .product-quantity {
+    margin-right: 60px;
+  }
+  
+  .quantity-input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 16px;
+    color: #43484d;
+    font-weight: 300;
+    outline: none;
+  }
+  
+  button[class*='btn'] {
+    width: 30px;
+    height: 30px;
+    background-color: #e1e8ee;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .minus-btn {
+    font-size: 23px;
+  }
+  
+  .minus-btn:disabled {
+    opacity: 0.5;
+  }
+  
+  .plus-btn {
+    font-size: 20px;
+  }
+  
+  .total-product-price {
+    width: 83px;
+    text-align: center;
+    font-size: 16px;
+    color: #43484d;
+    font-weight: 300;
+  }
+  
+  .purchase-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .summary-box {
+    width: 80%;
+    display: flex;
+    justify-content: end;
+    margin-top: 15px;
+  }
+  
+  .summary-amount {
+    font-size: 22px;
+    font-weight: 700;
+    color: #202020;
+  }
+  
+  .summary-items {
+    font-size: 16px;
+    font-weight: 500;
+    color: #909090;
+    line-height: 10px;
+    margin-left: 73px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .summary-amount {
+    font-size: 36px;
+    font-weight: 900;
+    color: #202020;
+    margin-left: 70px;
+  }
+  
+  .purchase-button {
+    width: 100%;
+    margin: 30px auto;
+  }
+  
+  .purchase-button:disabled {
+    opacity: 0.5;
+  }

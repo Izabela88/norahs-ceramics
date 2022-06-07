@@ -47,14 +47,13 @@
                             {% endif %}
                             >
                         {% endfor %}
-                    </div>
-                </div> 
-                <div class="sort-box">
-                    <div class="select">
-                        {{filter_form.sort_by}}   
-
-                    </div>
-                </div>    
+                        </div>
+                        </div> 
+                        <div class="sort-box">
+                            <div class="select">
+                                {{filter_form.sort_by}}
+                            </div>
+                        </div>    
                         </div>
                         <input class="button button-dark range-btn" type="submit" value="apply">     
                     </form>
@@ -74,11 +73,10 @@
                     {% else %}
                         items</p>
                     {% endif %}
-            </div>
-            
+            </div>           
         </div>
         <div class="products-list">
-            {% for product in product_list %}
+            {% for product in product_list %}      
                     <div class="products-element">
                         <div class="product-img">
                             {% if product.image %}
@@ -88,7 +86,9 @@
                             {%  endif %}
                         </div>
                         <div class="product-txt">
-                            <h4>{{ product.name }}</h4>
+                            <a href="{% url 'product_detail' slug=product.slug %}">
+                                <h4>{{ product.name }}</h4>
+                            </a>
                             <ul class="stars">
                                 <li>☆</li>
                                 <li>☆</li>
