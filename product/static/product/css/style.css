@@ -497,8 +497,8 @@ input[id="transparent"]:checked {
     align-items: center;
     height: 60px;
     margin-top: 20px;
-    width: 65%;
-    margin-left: -7px;
+    width: 72%;
+    margin-left: -15px;
 }
 
 /* PAGINATION */

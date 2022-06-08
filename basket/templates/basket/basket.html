@@ -6,16 +6,13 @@
 
 {% block content %}
 <section 
-class="{% if basket_products %} basket-section {% else %} empty-basket-section {% endif %}">
-    {% if not basket_products %}
+class="basket-section">
         <div class="empty-img">
             <img src="{% static 'images/bg.jpg' %}" alt="">
         </div>
-    {% endif %}
     <div class="container">
-        <h2>shopping basket</h2>
-        {% if basket_products %}
-            <div class="shopping-cart-container show-shopping-cart">
+        <div class="shopping-cart-container show-shopping-cart">
+                <h2>shopping basket</h2>
                 <div class="shopping-cart-box">
                     <div class="basket-container">
                         <div class="product-box" style="display: flex;">
@@ -34,26 +31,53 @@ class="{% if basket_products %} basket-section {% else %} empty-basket-section {
                             <i class="far fa-trash-alt" aria-hidden="true"></i>
                         </div>
                         </div>
-                        <!-- purchase box-->
-                        <div class="purchase-box">
-                            <div class="summary-box">
-                                <div class="summary-div">
-                                    <div class="summary-amount">total price</div>
-                                    <div class="summary-items">11 items</div>
-                                </div>
-                            <div id="total-price" class="summary-amount">£54.89</div>
-                            </div>
-                            <button class=" button button-dark purchase-button">checkout</button>
+                        <div class="product-box" style="display: flex;">
+                            <img class="product-image" alt="" src="{% static 'images/no-pictures.png' %}">
+                        <div class="product-description">
+                            <p class="cupcake-name">vase</p>
+                            <p class="cupcake-price">£4.99</p>
                         </div>
+                        <div class="product-quantity">
+                            <button class="minus-btn">-</button>
+                            <input class="quantity-input" id="input-id-14" type="text" value="11" readonly="true">
+                            <button class="plus-btn">+</button>
+                        </div>
+                        <div class="total-product-price">£54.89</div>
+                        <div class="delete-icon">
+                            <i class="far fa-trash-alt" aria-hidden="true"></i>
+                        </div>
+                        </div>
+                        <div class="product-box" style="display: flex;">
+                            <img class="product-image" alt="" src="{% static 'images/no-pictures.png' %}">
+                        <div class="product-description">
+                            <p class="cupcake-name">vase</p>
+                            <p class="cupcake-price">£4.99</p>
+                        </div>
+                        <div class="product-quantity">
+                            <button class="minus-btn">-</button>
+                            <input class="quantity-input" id="input-id-14" type="text" value="11" readonly="true">
+                            <button class="plus-btn">+</button>
+                        </div>
+                        <div class="total-product-price">£54.89</div>
+                        <div class="delete-icon">
+                            <i class="far fa-trash-alt" aria-hidden="true"></i>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- purchase box-->
+                    <div class="purchase-box">
+                        <div class="summary-box">
+                            <div class="summary-div">
+                                <div class="summary-amount">total price</div>
+                                <div class="summary-items">11 items</div>
+                            </div>
+                            <div id="total-price" class="summary-amount">£54.89</div>
+                        </div>
+                        <button class=" button button-dark purchase-button">checkout</button>
                     </div>
                 </div>
             </div>
-        {% else %}
-            <div class="empty-basket">
-                <p>your basket is empty</p>
-                <a class="button button-dark" href="{% url 'product_list' %}">back to shopping</a>          
-            </div>
-        {% endif %}   
+       
     </div>
 </section>
 {% endblock %}
