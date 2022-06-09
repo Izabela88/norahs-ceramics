@@ -100,8 +100,11 @@
                             <h4>£{{product.price_pence | currency}}
                             </h4>
                             <p>{{ product.short_description }}</p>
-                        <div class="buttons">
-                            <button class="button button-dark">add to basket</button>
+                            <div class="buttons">
+                                <form method="post" action={% url 'add_to_basket' product_id=product.id %}>
+                                    {% csrf_token %}
+                                    <button type="submit" class="button button-dark">add to basket</button>
+                                </form>
                             <a href="{% url 'product_detail' slug=product.slug %}" class="button button-dark product-more">more</a>
                             <button class="button button-dark product-fav">♡</button>
                         </div>

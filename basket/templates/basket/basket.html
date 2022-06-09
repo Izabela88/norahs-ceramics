@@ -16,22 +16,25 @@ class="basket-section">
                 <div class="shopping-cart-box">
                     <div class="basket-container">
                         <!-- product box -->
-                        <div class="product-box" style="display: flex;">
-                            <img class="product-image" alt="" src="{% static 'images/no-pictures.png' %}">
-                        <div class="product-description">
-                            <p class="cupcake-name">vase</p>
-                            <p class="cupcake-price">£4.99</p>
-                        </div>
-                        <div class="product-quantity">
-                            <button class="minus-btn">-</button>
-                            <input class="quantity-input" id="input-id-14" type="text" value="11" readonly="true">
-                            <button class="plus-btn">+</button>
-                        </div>
-                        <div class="total-product-price">£54.89</div>
-                        <div class="delete-icon">
-                            <i class="far fa-trash-alt" aria-hidden="true"></i>
-                        </div>
-                        </div>               
+                        {% for basket_product in basket_products %}
+
+                            <div class="product-box" style="display: flex;">
+                                <img class="product-image" alt="" src="{% static 'images/no-pictures.png' %}">
+                            <div class="product-description">
+                                <p class="cupcake-name">{{basket_product.product.name}}</p>
+                                <p class="cupcake-price">£{{basket_product.product.price_pence}}</p>
+                            </div>
+                            <div class="product-quantity">
+                                <button class="minus-btn">-</button>
+                                <input class="quantity-input" type="text" readonly="true">
+                                <button class="plus-btn">+</button>
+                            </div>
+                            <div class="total-product-price">....</div>
+                            <div class="delete-icon">
+                                <i class="far fa-trash-alt" aria-hidden="true"></i>
+                            </div>
+                            </div>
+                        {% endfor %}              
                     </div>
                     <!-- summary box-->
                     <div class="purchase-box">

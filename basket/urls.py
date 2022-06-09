@@ -1,7 +1,8 @@
 from django.urls import path
-from basket.views import Basket
+from basket.views import BasketView, AddToBasketView
 
 
 urlpatterns = [
-    path("", Basket.as_view(), name="basket"),
+    path("", BasketView.as_view(), name="basket"),
+    path("<int:product_id>/", AddToBasketView.as_view(), name="add_to_basket"),
 ]

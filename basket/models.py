@@ -42,11 +42,11 @@ class Basket(TimestapModel):
 
 class BasketProduct(TimestapModel):
     basket = models.ForeignKey(
-        Basket, on_delete=models.CASCADE, related_name="basket", null=False
+        Basket, on_delete=models.CASCADE, related_name="basket_products", null=False
     )
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
-        related_name="basket_product",
+        related_name="basket_products",
         null=False,
     )
