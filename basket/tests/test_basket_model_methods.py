@@ -39,7 +39,7 @@ def test_subtract_product_method(sub_category):
 @pytest.mark.django_db
 def test_delete_product_method(sub_category):
     basket = factories.BasketModelFactory()
-    products = ProductModelFactory.create_batch(2,sub_category=sub_category)
+    products = ProductModelFactory.create_batch(2, sub_category=sub_category)
     factories.BasketProductModelFactory.create_batch(
         4, product_id=products[0].id, basket_id=basket.id
     )
@@ -51,3 +51,14 @@ def test_delete_product_method(sub_category):
     basket.delete_product(products[0].id)
     basket_products = BasketProduct.objects.all()
     assert len(basket_products) == 4
+
+
+@pytest.mark.django_db
+def test_total_basket_price_method(sub_category):
+    basket = factories.BasketModelFactory()
+    product = ProductModelFactory(sub_category=sub_category)
+    factories.BasketProductModelFactory.create_batch(
+        4, product_id=product.id, basket_id=basket.id
+    )
+    total_price_pence = basket.total_basket_price()
+    assert total_price_pence == 8000

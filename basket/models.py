@@ -32,6 +32,13 @@ class Basket(TimestapModel):
         if basket_products:
             basket_products.all().delete()
 
+    def total_basket_price(self):
+        basket_products = BasketProduct.objects.filter(basket_id=self.id).all()
+        total_price_pence = 0
+        for basket_product in basket_products:
+            total_price_pence += basket_product.product.price_pence
+        return total_price_pence
+
 
 class BasketProduct(TimestapModel):
     basket = models.ForeignKey(
