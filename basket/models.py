@@ -32,6 +32,7 @@ class Basket(TimestapModel):
         if basket_products:
             basket_products.all().delete()
 
+
 class BasketProduct(TimestapModel):
     basket = models.ForeignKey(
         Basket, on_delete=models.CASCADE, related_name="basket", null=False

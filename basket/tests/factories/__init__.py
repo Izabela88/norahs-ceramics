@@ -1,4 +1,1 @@
-from .model_factories import (
-    BasketModelFactory,
-    BasketProductModelFactory
-)
+from .model_factories import BasketModelFactory, BasketProductModelFactory

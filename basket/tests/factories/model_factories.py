@@ -1,6 +1,7 @@
 import factory
 from basket import models
 
+
 class BasketModelFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Basket
