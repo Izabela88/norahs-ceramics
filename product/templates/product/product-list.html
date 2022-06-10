@@ -67,12 +67,12 @@
         <div class="info-box">
             <div class="items-qty">
                 {% if product_list %}
-                <p class="result">{{ page_obj.paginator.count }}
-                    {% if page_obj.paginator.count == 1 %}
-                        item</p>
-                    {% else %}
-                        items</p>
-                    {% endif %}
+                    <p class="result">{{ page_obj.paginator.count }}
+                {% if page_obj.paginator.count == 1 %}
+                    item</p>
+                {% else %}
+                    items</p>
+                {% endif %}
             </div>           
         </div>
         <div class="products-list">

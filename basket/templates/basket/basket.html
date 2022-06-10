@@ -7,23 +7,22 @@
 {% endblock %}
 
 {% block content %}
-<section 
-class="basket-section">
-        <div class="empty-img">
-            <img src="{% static 'images/bg.jpg' %}" alt="">
-        </div>
+<section class="basket-section">
+    <div class="empty-img">
+        <img src="{% static 'images/bg.jpg' %}" alt="">
+    </div>
     <div class="container">
         <div class="shopping-cart-container show-shopping-cart">
-                <h2>shopping basket</h2>
+        {% if basket_products %}
+            <h2>shopping basket</h2>
                 <div class="shopping-cart-box">
                     <div class="basket-container">
                         <!-- product box -->
-                        {% for k, v in basket_products.items %}
-
+                        {% for basket_product in basket_products %}
                             <div class="product-box" style="display: flex;">
-                                {% if v.product.image %}
+                                {% if basket_product.product.image %}
                                     <div class="product-image">
-                                        <img src="{{ v.product.image.url }}" alt="">
+                                        <img src="{{ basket_product.product.image.url }}" alt="">
                                     </div>
                                 {% else %}
                                     <div class="product-image">
@@ -31,36 +30,58 @@ class="basket-section">
                                     </div>
                                 {%  endif %}
                             <div class="product-description">
-                                <p class="cupcake-name">{{v.product.name}}</p>
-                                <p class="cupcake-price">£{{v.product.price_pence | currency}}</p>
+                                <p class="cupcake-name">{{basket_product.product.name}}</p>
+                                <p class="cupcake-price">£{{basket_product.product.price_pence | currency}}</p>
                             </div>
                             <div class="product-quantity">
-                                <button class="minus-btn">-</button>
-                                <input class="quantity-input" value="{{v.qty}}" type="text" readonly="true">
-                                <button class="plus-btn">+</button>
+                                <form method="post" action={% url 'subtract_from_basket' product_id=basket_product.product.id %}>
+                                    {% csrf_token %}
+                                    <button type="submit" class="minus-btn">-</button>
+                                </form>
+                                <input class="quantity-input" value="{{basket_product.qty}}" type="text" readonly="true">
+                                <form method="post" action={% url 'add_to_basket' product_id=basket_product.product.id %}>
+                                    {% csrf_token %}
+                                    <button type="submit" class="plus-btn">+</button>
+                                </form>
                             </div>
                             <div class="total-product-price">....</div>
                             <div class="delete-icon">
-                                <i class="far fa-trash-alt" aria-hidden="true"></i>
+                                <form method="post" action={% url 'delete_from_basket' product_id=basket_product.product.id %}>
+                                    {% csrf_token %}
+                                    <button type="submit" class="minus-btn"><i class="far fa-trash-alt" aria-hidden="true"></i></button>
+                                </form>                               
                             </div>
                             </div>
-                            {% endfor %}
+                        {% endfor %}                           
                         </div>
                         <!-- summary box-->
                         <div class="purchase-box">
                             <div class="summary-box">
                                 <div class="summary-div">
                                     <div class="summary-amount">total price</div>
-                                    <div class="summary-items">11 items</div>
+                                    {% for basket_product in basket_products %}
+                                    <div class="summary-items">
+                                        <p>{{basket_product.qty}}
+                                        {% if basket_product.qty == 1 %}
+                                            item</p>
+                                        {% else %}
+                                            items</p>
+                                        {% endif %}                                           
+                                    </div>
+                                    {% endfor %}
                                 </div>
                                 <div id="total-price" class="summary-amount">£54.89</div>
                             </div>
                             <button class=" button button-dark purchase-button">checkout</button>
-                        </div>
-                                      
+                        </div>                    
                 </div>
             </div>
-       
+            {% else %}
+                <div class="empty-basket">
+                    <p>your basket is empty</p>
+                    <a class="button button-dark" href="{% url 'product_list' %}">back to shopping</a>
+                </div>
+            {% endif %}      
     </div>
 </section>
 {% endblock %}

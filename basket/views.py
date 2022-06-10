@@ -27,8 +27,10 @@ class BasketView(View):
                     "product": basket_product.product,
                     "qty": 1,
                 }
-
-        context = {"basket_products": products_with_qty}
+        sorted_products = sorted(
+            list(products_with_qty.values()), key=lambda x: x["product"].name
+        )
+        context = {"basket_products": sorted_products}
         return render(request, "basket/basket.html", context)
 
 
@@ -41,5 +43,31 @@ class AddToBasketView(View):
             basket = Basket().save()
 
         basket.add_product(product_id=product_id)
+
+        return HttpResponseRedirect(reverse("basket"))
+
+
+class SubtractFromBasketView(View):
+    def post(self, request, product_id):
+
+        if request.user:
+            basket = request.user.get_or_create_user_basket()
+        else:
+            basket = Basket().save()
+
+        basket.subtract_product(product_id=product_id)
+
+        return HttpResponseRedirect(reverse("basket"))
+
+
+class DeleteFromBasketView(View):
+    def post(self, request, product_id):
+
+        if request.user:
+            basket = request.user.get_or_create_user_basket()
+        else:
+            basket = Basket().save()
+
+        basket.delete_product(product_id=product_id)
 
         return HttpResponseRedirect(reverse("basket"))
