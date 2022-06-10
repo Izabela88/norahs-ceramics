@@ -15,9 +15,20 @@ class BasketView(View):
             basket = request.user.get_or_create_user_basket()
         else:
             basket = Basket().save()
-        context = {
-            "basket_products": basket.basket_products.all()
-        }
+        basket_products = basket.basket_products.all()
+
+        products_with_qty = {}
+
+        for basket_product in basket_products:
+            if basket_product.product_id in products_with_qty:
+                products_with_qty[basket_product.product_id]["qty"] += 1
+            else:
+                products_with_qty[basket_product.product_id] = {
+                    "product": basket_product.product,
+                    "qty": 1,
+                }
+
+        context = {"basket_products": products_with_qty}
         return render(request, "basket/basket.html", context)
 
 
@@ -31,6 +42,4 @@ class AddToBasketView(View):
 
         basket.add_product(product_id=product_id)
 
-        return HttpResponseRedirect(
-            reverse("basket")
-        )
+        return HttpResponseRedirect(reverse("basket"))
