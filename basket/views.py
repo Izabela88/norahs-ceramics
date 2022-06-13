@@ -44,7 +44,7 @@ class AddToBasketView(View):
     def post(self, request, product_id):
         basket = Basket.get_basket(request)
         basket.add_product(product_id=product_id)
-        return HttpResponseRedirect(reverse("basket"))
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
 
 class SubtractFromBasketView(View):

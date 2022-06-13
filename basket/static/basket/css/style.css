@@ -62,7 +62,7 @@
   }
   
   .shopping-cart-box {
-    width: 750px;
+    width: 800px;
     max-height: 90vh;
     margin: 80px auto;
     display: flex;
@@ -108,12 +108,13 @@
     align-items: center;
     cursor: pointer;
     margin-left: 20px;
+    margin-right: 20px;
   }
   
   .product-image {
     margin-right: 50px;
-    width: 165px;
-    height: 60px;
+    width: 195px;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
