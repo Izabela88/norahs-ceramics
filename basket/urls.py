@@ -7,6 +7,7 @@ from basket.views import (
 )
 
 
+
 urlpatterns = [
     path("", BasketView.as_view(), name="basket"),
     path(
@@ -22,4 +23,5 @@ urlpatterns = [
         DeleteFromBasketView.as_view(),
         name="delete_from_basket",
     ),
+
 ]

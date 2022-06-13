@@ -39,6 +39,26 @@ class Basket(TimestapModel):
             total_price_pence += basket_product.product.price_pence
         return total_price_pence
 
+    def total_basket_products_qty(self):
+        basket_products = BasketProduct.objects.filter(basket_id=self.id).all()
+        return len(basket_products)
+
+    @classmethod
+    def get_basket(cls, request):
+        if request.user.is_authenticated:
+            basket = request.user.get_or_create_user_basket()
+        elif basket_id := request.session.get("basket_id"):
+            basket = cls.objects.filter(id=basket_id).first()
+            if not basket:
+                basket = cls()
+                basket.save()
+            request.session["basket_id"] = str(basket.id)
+        else:
+            basket = cls()
+            basket.save()
+            request.session["basket_id"] = str(basket.id)
+        return basket
+
 
 class BasketProduct(TimestapModel):
     basket = models.ForeignKey(

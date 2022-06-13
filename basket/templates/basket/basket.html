@@ -30,8 +30,8 @@
                                     </div>
                                 {%  endif %}
                             <div class="product-description">
-                                <p class="cupcake-name">{{basket_product.product.name}}</p>
-                                <p class="cupcake-price">£{{basket_product.product.price_pence | currency}}</p>
+                                <p class="product-name">{{basket_product.product.name}}</p>
+                                <p class="product-price">£{{basket_product.product.price_pence | currency}}</p>
                             </div>
                             <div class="product-quantity">
                                 <form method="post" action={% url 'subtract_from_basket' product_id=basket_product.product.id %}>
@@ -44,7 +44,7 @@
                                     <button type="submit" class="plus-btn">+</button>
                                 </form>
                             </div>
-                            <div class="total-product-price">....</div>
+                            <div class="total-product-price">£{{basket_product.total_product_price | currency}}</div>
                             <div class="delete-icon">
                                 <form method="post" action={% url 'delete_from_basket' product_id=basket_product.product.id %}>
                                     {% csrf_token %}
@@ -59,18 +59,16 @@
                             <div class="summary-box">
                                 <div class="summary-div">
                                     <div class="summary-amount">total price</div>
-                                    {% for basket_product in basket_products %}
                                     <div class="summary-items">
-                                        <p>{{basket_product.qty}}
-                                        {% if basket_product.qty == 1 %}
+                                        <p>{{sum_products_qty}}
+                                        {% if sum_products_qty == 1 %}
                                             item</p>
                                         {% else %}
                                             items</p>
                                         {% endif %}                                           
-                                    </div>
-                                    {% endfor %}
+                                    </div>                                  
                                 </div>
-                                <div id="total-price" class="summary-amount">£54.89</div>
+                                <div id="total-price" class="summary-amount">£{{total_basket_price | currency}}</div>
                             </div>
                             <button class=" button button-dark purchase-button">checkout</button>
                         </div>                    
