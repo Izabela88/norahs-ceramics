@@ -464,6 +464,15 @@ input[id="transparent"]:checked {
     margin: 10px 0;
 }
 
+.product-txt a {
+    color: #000000;
+    transition-duration: 0.3s;
+}
+
+.product-txt a:hover {
+    color: var(--col_eight);
+}
+
 .product-more,
 .product-fav {
     width: 46px;
@@ -480,16 +489,20 @@ input[id="transparent"]:checked {
 
 .product-more {
     font-size: 11px;
+    margin: 0 10px;
+}
+
+.product-fav {
+    margin: 0 10px;
 }
 
 .buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     height: 60px;
     margin-top: 20px;
-    width: 65%;
-    margin-left: -7px;
+    width: 72%;
 }
 
 /* PAGINATION */
