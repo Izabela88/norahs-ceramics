@@ -50,11 +50,11 @@
               <p>{{ object.description }}</p>
             </div>
             <div class="product-price">
-              <div class="buttons cart-buttons">
+              <!-- <div class="buttons cart-buttons">
                 <button class="button button-dark minus">-</button>
                 <input type="number" name="" id="number" value="1">
                 <button class="button button-dark plus">+</button>
-              </div>
+              </div> -->
               <div class="buttons">
                 <form method="post" action={% url 'add_to_basket' product_id=product.id %}>
                     {% csrf_token %}

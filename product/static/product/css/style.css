@@ -489,16 +489,20 @@ input[id="transparent"]:checked {
 
 .product-more {
     font-size: 11px;
+    margin: 0 10px;
+}
+
+.product-fav {
+    margin: 0 10px;
 }
 
 .buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     height: 60px;
     margin-top: 20px;
     width: 72%;
-    margin-left: -15px;
 }
 
 /* PAGINATION */

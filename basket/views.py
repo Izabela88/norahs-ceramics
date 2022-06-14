@@ -10,7 +10,10 @@ class BasketView(View):
         context = {}
 
         basket = Basket.get_basket(request)
-        basket_products = basket.basket_products.all()
+        if basket.basket_products:
+            basket_products = basket.basket_products.all()
+        else:
+            basket_products = []
 
         products_with_qty = {}
 

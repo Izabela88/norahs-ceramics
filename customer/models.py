@@ -11,5 +11,5 @@ class User(AbstractUser):
             .first()
         )
         if not user_basket:
-            user_basket = Basket(customer_id=self.id).save()
+            user_basket = Basket.objects.create(customer_id=self.id)
         return user_basket
