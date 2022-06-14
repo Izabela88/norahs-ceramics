@@ -246,13 +246,15 @@ label {
   height: 100%;
   justify-content: center;
   font-size: 18px;
+}
 
+.auth-links ul li {
+  margin-left: 20px;
 }
 
 .auth-links ul li a {
   text-transform: uppercase;
   color: #000000;
-  margin-left: 20px;
 }
 
 .basket-box {
@@ -260,7 +262,7 @@ label {
   height: 30px;
   width: 80px;
   top: 13px;
-  right: 30px;
+  right: 50px;
   display: flex;
   align-items: center;
   font-family: var(--font_two);
@@ -280,7 +282,11 @@ label {
 }
 
 .user-icon {
-  margin-right: -11px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 53px;
+  top: 20px;
 }
 
  #menu-list {
@@ -384,6 +390,16 @@ label {
 
 .menu-item:hover>.sub-menu {
   display: block;
+}
+
+.menu-item.profile-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: context-menu;
+  font-size: 18px;
+  letter-spacing: 2px;
 }
 
 

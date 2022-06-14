@@ -84,8 +84,15 @@
             <div class="auth-links">
               <ul>
                 {% if user.is_authenticated %}
-                  <li><img class="user-icon" src="{% static 'images/user.png' %}" alt=""><a href="#">My Profile</a></li>
-                  <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                  <li class="menu-item profile-item">
+                    <span><img class="user-icon" src="{% static 'images/user.png' %}" alt="user icon">profile &dtrif;</span> 
+                    <ol class="sub-menu">
+                      <li class="menu-item profile-item"><a href="#">my profile</a></li>
+                      <li class="menu-item"><a href="#">my orders</a></li>
+                      <li class="menu-item"><a href="#">my reviews</a></li>
+                      <li class="menu-item"><a href="{% url 'account_logout' %}">Logout</a></li>
+                    </ol>
+                  </li>
                 {% else %}
                   <li><a href="{% url 'account_signup' %}">Register</a></li>
                   <li><a href="{% url 'account_login' %}">Login</a></li>
