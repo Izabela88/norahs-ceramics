@@ -7,8 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="product-section">
-      
+<section class="product-section">  
     <div class="container">
         <div class="products-bg">
             <img src="{% static 'images/product.jpg' %}" alt="">
@@ -31,6 +30,8 @@
                 <div class="min-max-range">
                     <form method="get" class="price-range">
                         {% csrf_token %}
+                        {{filter_form.sub_category}}
+                        {{filter_form.category}}
                         <div class="range-inputs">
                             {{filter_form.min_price}}
                             {{filter_form.max_price}}
@@ -45,20 +46,18 @@
                             {% endif %}
                             >
                         {% endfor %}
-                    </div>
-                </div> 
-                <div class="sort-box">
-                    <div class="select">
-                        {{filter_form.sort_by}}   
-
-                    </div>
-                </div>    
+                        </div>
+                        </div> 
+                        <div class="sort-box">
+                            <div class="select">
+                                {{filter_form.sort_by}}
+                            </div>
+                        </div>    
                         </div>
                         <input class="button button-dark range-btn" type="submit" value="apply">     
                     </form>
                     <div class="button button-dark clear-btn">
                         <a href="{% url 'product_list' %}">clear filters</a>
-
                     </div >
                 </div>    
             </div>
@@ -66,17 +65,16 @@
         <div class="info-box">
             <div class="items-qty">
                 {% if product_list %}
-                <p class="result">{{ page_obj.paginator.count }}
-                    {% if page_obj.paginator.count == 1 %}
-                        item</p>
-                    {% else %}
-                        items</p>
-                    {% endif %}
-            </div>
-            
+                    <p class="result">{{ page_obj.paginator.count }}
+                {% if page_obj.paginator.count == 1 %}
+                    item</p>
+                {% else %}
+                    items</p>
+                {% endif %}
+            </div>           
         </div>
         <div class="products-list">
-            {% for product in product_list %}
+            {% for product in product_list %}      
                     <div class="products-element">
                         <div class="product-img">
                             {% if product.image %}
@@ -86,7 +84,9 @@
                             {%  endif %}
                         </div>
                         <div class="product-txt">
-                            <h4>{{ product.name }}</h4>
+                            <a href="{% url 'product_detail' slug=product.slug %}">
+                                <h4>{{ product.name }}</h4>
+                            </a>
                             <ul class="stars">
                                 <li>☆</li>
                                 <li>☆</li>
@@ -98,8 +98,11 @@
                             <h4>£{{product.price_pence | currency}}
                             </h4>
                             <p>{{ product.short_description }}</p>
-                        <div class="buttons">
-                            <button class="button button-dark">add to cart</button>
+                            <div class="buttons">
+                                <form method="post" action={% url 'add_to_basket' product_id=product.id %}>
+                                    {% csrf_token %}
+                                    <button type="submit" class="button button-dark">add to basket</button>
+                                </form>
                             <a href="{% url 'product_detail' slug=product.slug %}" class="button button-dark product-more">more</a>
                             <button class="button button-dark product-fav">♡</button>
                         </div>
