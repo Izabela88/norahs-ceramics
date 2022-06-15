@@ -87,7 +87,7 @@
                   <li class="menu-item profile-item">
                     <span><img class="user-icon" src="{% static 'images/user.png' %}" alt="user icon">profile &dtrif;</span> 
                     <ol class="sub-menu">
-                      <li class="menu-item profile-item"><a href="#">my profile</a></li>
+                      <li class="menu-item profile-item"><a href="{% url 'customer_profile' request.user.id %}">my profile</a></li>
                       <li class="menu-item"><a href="#">my orders</a></li>
                       <li class="menu-item"><a href="#">my reviews</a></li>
                       <li class="menu-item"><a href="{% url 'account_logout' %}">Logout</a></li>

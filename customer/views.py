@@ -5,9 +5,9 @@ from django.urls import reverse
 
 
 class CustomerProfileView(View):
-    def get(self, request: HttpRequest) -> HttpResponse:
+    def get(self, request: HttpRequest, id) -> HttpResponse:
         context = {}
-        return render(request, "customer/user_profile.html", context)
+        return render(request, "customer/customer_profile.html", context)
 
 
 class CustomerAddressView(View):

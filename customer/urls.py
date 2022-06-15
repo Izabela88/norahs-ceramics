@@ -3,5 +3,9 @@ from customer.views import CustomerProfileView
 
 
 urlpatterns = [
-    path("", CustomerProfileView().as_view(), name="customer_profile"),
+    path(
+        "customer_profile/<int:id>",
+        CustomerProfileView.as_view(),
+        name="customer_profile",
+    ),
 ]

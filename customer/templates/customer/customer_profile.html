@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'customer/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="customer-profile-section">
+  <div class="customer-bg-img">
+    <img src="{% static 'images/bg.jpg' %}" alt="">
+  </div>
+  <div class="customer-container">
+    <div class="box">
+      <!-- ---------PERSONAL INFORMATION--------------------->
+      <form class="personal-form" method="post">
+        <p class="personal-heading">Personal Information</p>
+        {% csrf_token %}
+          <label class="profile-label">First Name</label>
+          <input type="text" name="" id="">
+          <label class="profile-label">Last Name</label>
+          <input type="text" name="" id="">
+          <label class="profile-label">Phone number</label>
+          <input type="text" name="" id="">
+          <label class="profile-label">Email</label>
+          <input type="email" name="" id="">
+          <input type="hidden" name="form_type" value="profile_form" /> 
+          <input class="button button-dark update-profil" type="submit" value="Update" />
+      </form>
+      <div class="profile-buttons">
+        <a href="#" class="button button-dark">change password</a>
+        <a href="#" class="button button-dark">delete account</a>
+      </div>
+    </div>
+    <!-- ---------ADDRESS INFORMATION--------------------->
+    <form class="address-form" method="post">
+      <p class="address-heading">Address Information</p>
+      {% csrf_token %}
+        <label class="profile-label">Address 1</label>
+        <input type="text" name="" id="">
+        <label class="profile-label">Address 2</label>
+        <input type="text" name="" id="">
+        <label class="profile-label">post code</label>
+        <input type="text" name="" id="">
+        <label class="profile-label">town</label>
+        <input type="text" name="" id="">
+        <label class="profile-label">county</label>
+        <input type="text" name="" id="">
+        <label class="profile-label">country</label>
+        <input type="text" name="" id="">
+        <input type="hidden" name="form_type" value="address_form" /> 
+        <input class="button button-dark update-profil" type="submit" value="Update" />
+    </form>
+  </div>
+  
+</section>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script src="{% static 'customer/js/customer.js' %}"></script>
+{% endblock %}

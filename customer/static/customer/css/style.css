@@ -1,0 +1,117 @@
+:root {
+    --col_one: #D18E85;
+    --col_two: #C8CAC9;
+    --col_three: #000000;
+    --col_four: #ffffff;
+    --col_five: #F2DFE1;
+    --col_six: #C1B198;
+    --col_seven: #F8B195;
+    --col_eight: #C06C84;
+    --col_nine: #F2CFBB;
+    --font_one: 'Mali', cursive;
+    --font_two: 'Hubballi', cursive;
+}
+
+.customer-profile-section {
+    position: relative;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
+}
+
+.customer-container {
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    height: -o-calc(100vh + 174px);
+    height: -webkit-calc(100vh + 174px);
+    height: -moz-calc(100vh + 174px);
+    text-align: center;
+    background: rgb(255 255 255 / 75%);   
+}
+
+.personal-form,
+.address-form {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+}
+
+.address-form {
+    height: 587px;
+}
+
+.personal-form p,
+.address-form p {
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.personal-form input[type="text"],
+.personal-form input[type="email"],
+.address-form input[type="text"] {
+    height: 40px;
+    width: 80%;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, rgb(209 213 219) 0px 0px 0px 1px inset;
+    outline: none;
+    border: none;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.profile-label {
+    font-size: 18px;
+    margin: 5px auto;
+    text-transform: lowercase;
+}
+
+
+.update-profil {
+    width: 80%;
+    margin-top: 20px;
+}
+
+.customer-bg-img {
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px);
+    width: 100%;
+    position: absolute;
+}
+
+.customer-bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+}
+
+.profile-buttons {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 54px;
+}
+
+.profile-buttons a {
+    margin: 5px auto;
+    width: 100%;
+    height: 100%;
+    color: #000000;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 587px;
+}
