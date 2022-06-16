@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     "basket",
     "phonenumber_field",
+    "sweetify",
 ]
 
 SITE_ID = 2
@@ -203,3 +204,6 @@ AUTH_USER_MODEL = "customer.User"
 # PHONE_NUBER FIELD
 PHONENUMBER_DEFAULT_REGION = "GB"
 PHONENUMBER_DEFAULT_FORMAT = "NATIONAL"
+
+
+SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"

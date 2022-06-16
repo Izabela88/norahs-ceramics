@@ -175,14 +175,12 @@ label {
 .info-msg {
   font-family:var(--font_two);
   letter-spacing: 2px;
-  font-weight: bold;
   position: absolute;
-  z-index: 100;
-  font-size: 22px;
+  font-size: 15px;
   box-shadow: rgb(100 100 111 / 40%) 0px 7px 29px 0px;
   width: 400px;
   height: fit-content;
-  top: 25%;
+  top: 200px;
   left: 50%;
   transform: translate(-50%, -70%);
   padding: 10px;
@@ -191,6 +189,16 @@ label {
   background-color: var(--col_eight);
   color: var(--col_four);
   text-transform: uppercase;
+}
+
+.swal2-container {
+  z-index: 1000000;
+  text-align: center;
+}
+
+.swal2-popup.swal2-toast .swal2-title {
+  text-align: center;
+  font-family: var(--font_two);
 }
 
 /* -----------------NAVBAR */

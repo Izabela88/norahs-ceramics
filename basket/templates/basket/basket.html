@@ -8,6 +8,13 @@
 
 {% block content %}
 <section class="basket-section">
+    {% if messages %}
+    <ul class="info-msg">
+        {% for message in messages %}
+            <li>{{ message.message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <div class="empty-img">
         <img src="{% static 'images/bg.jpg' %}" alt="">
     </div>

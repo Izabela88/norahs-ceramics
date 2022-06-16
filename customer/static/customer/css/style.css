@@ -139,25 +139,4 @@
     margin-bottom: 15px;
 }
 
-.info-msg {
-    font-family:var(--font_two);
-    letter-spacing: 2px;
-    font-weight: bold;
-    position: absolute;
-    z-index: 100;
-    font-size: 22px;
-    box-shadow: rgb(100 100 111 / 40%) 0px 7px 29px 0px;
-    border-radius: 20px;
-    width: 400px;
-    height: fit-content;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -70%);
-    padding: 10px;
-    z-index: 10000000;
-    text-align: center;
-    background-color: var(--col_eight);
-    color: var(--col_four);
-    text-transform: uppercase;
-  }
   

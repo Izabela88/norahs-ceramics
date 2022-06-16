@@ -15,11 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="{% static 'favicon_io/favicon.ico' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
     {% endblock %} 
     {% block corecss %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     {% endblock %}
-
     {% block extra_css %}
     {% endblock %}
     <title>Norah's Ceramics{% block extra_title %}{% endblock %}</title>
@@ -206,16 +206,21 @@
     ></script>
     <script src="{% static 'js/index.js' %}"></script>
     <script>
-      const timeout = document.querySelector(".info-msg");
-      setTimeout(hideElement, 6000); //milliseconds until timeout//
+      const timeouts = document.querySelectorAll(".info-msg");
+      setTimeout(hideElement, 2500); //milliseconds until timeout//
       function hideElement() {
-        timeout.style.display = "none";
+        for (i = 0; i < timeouts.length; i++) {
+          timeouts[i].style.display = "none";
+        }
       }
       </script>
-
-    {% endblock %}
+      
+      {% endblock %}
+      
 
     {% block extra_js %} 
     {% endblock %}
+    {% load sweetify %}
+    {% sweetify %}
   </body>
 </html>

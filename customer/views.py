@@ -7,7 +7,7 @@ from customer.forms import UpdatePersonalInformationForm
 from django.contrib import messages
 from customer.models import User
 from django.views.generic.edit import DeleteView
-
+import sweetify
 
 
 class CustomerProfileView(LoginRequiredMixin, View):
@@ -31,8 +31,8 @@ class CustomerProfileView(LoginRequiredMixin, View):
         )
 
         if personal_info_form.is_valid() and personal_info_form.has_changed():
-            messages.success(
-                request, "Personal information updated successfully!"
+            sweetify.toast(
+                self.request, "personal information updated successfully!"
             )
             personal_info_form.save()
 
@@ -56,7 +56,8 @@ class DeleteCustomerProfile(DeleteView):
     template_name = "confirm_delete_profile.html"
 
     def get_success_url(self):
-        messages.success(
-            self.request, "Your account has been deleted successfully"
+        sweetify.toast(
+            self.request, "your account has been deleted successfully"
         )
+
         return reverse("home")

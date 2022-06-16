@@ -85,13 +85,5 @@
 
 {% block extra_js %}
 {{ block.super }}
-<script src="{% static 'customer/js/customer.js' %}"></script>
-<script>
-const timeout = document.querySelector(".info-msg");
-setTimeout(hideElement, 4000); //milliseconds until timeout//
-function hideElement() {
-  timeout.style.display = "none";
-}
-</script>
- 
+<script src="{% static 'customer/js/customer.js' %}"></script> 
 {% endblock %}
