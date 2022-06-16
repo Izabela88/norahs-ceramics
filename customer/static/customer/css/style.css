@@ -52,24 +52,29 @@
     font-size: 20px;
     text-transform: uppercase;
     margin-bottom: 40px;
+    color: var(--col_eight);
 }
 
 .personal-form input[type="text"],
 .personal-form input[type="email"],
+.personal-form input[type="tel"],
 .address-form input[type="text"] {
     height: 40px;
     width: 80%;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, rgb(209 213 219) 0px 0px 0px 1px inset;
     outline: none;
     border: none;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     text-align: center;
+    font-family: var(--font_two);
+    font-size: 18px;
 }
 
 .profile-label {
     font-size: 18px;
     margin: 5px auto;
     text-transform: lowercase;
+    color: #C06C84;
 }
 
 
@@ -114,4 +119,16 @@
     flex-direction: column;
     align-items: center;
     height: 587px;
+}
+
+
+.error-profile p {
+    font-family: var(--font_two);
+    font-size: 17px;
+    color: red;
+    text-align: center;
+    text-transform: lowercase;
+    font-weight: lighter;
+    height: 17px;
+    margin-bottom: 0;
 }
