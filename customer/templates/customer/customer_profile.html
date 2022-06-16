@@ -56,7 +56,7 @@
       </form>
       <div class="profile-buttons">
         <a href="#" class="button button-dark">change password</a>
-        <a href="#" class="button button-dark">delete account</a>
+        <a href="{% url 'customer_delete' user.id %}" class="button button-dark">delete account</a>
       </div>
     </div>
     <!-- ---------ADDRESS INFORMATION--------------------->

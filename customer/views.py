@@ -5,6 +5,9 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from customer.forms import UpdatePersonalInformationForm
 from django.contrib import messages
+from customer.models import User
+from django.views.generic.edit import DeleteView
+
 
 
 class CustomerProfileView(LoginRequiredMixin, View):
@@ -46,3 +49,14 @@ class CustomerProfileView(LoginRequiredMixin, View):
 class CustomerAddressView(View):
     def post(self, request):
         pass
+
+
+class DeleteCustomerProfile(DeleteView):
+    model = User
+    template_name = "confirm_delete_profile.html"
+
+    def get_success_url(self):
+        messages.success(
+            self.request, "Your account has been deleted successfully"
+        )
+        return reverse("home")

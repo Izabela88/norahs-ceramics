@@ -121,16 +121,22 @@
     height: 587px;
 }
 
+.error-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
 
 .error-profile p {
     font-family: var(--font_two);
-    font-size: 17px;
+    font-size: 13px;
     color: red;
     text-align: center;
     text-transform: lowercase;
     font-weight: lighter;
     height: 17px;
-    margin-bottom: 0;
+    margin-bottom: 15px;
 }
 
 .info-msg {
@@ -150,7 +156,8 @@
     padding: 10px;
     z-index: 10000000;
     text-align: center;
-    background-color: #15d915;
+    background-color: var(--col_eight);
     color: var(--col_four);
+    text-transform: uppercase;
   }
   

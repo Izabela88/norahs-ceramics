@@ -30,6 +30,13 @@
     <a href="#" id="scroll-top-button"></a>
     <!---------------HEADER--------------->
     <header id="header">
+      {% if messages %}
+        <ul class="info-msg">
+            {% for message in messages %}
+                <li>{{ message.message }}</li>
+            {% endfor %}
+        </ul>
+      {% endif %}
       {% url 'home' as url %}
       <div class="logo {% if request.path == url %} active {% endif %}">
         <a href="{{ url }}">
@@ -198,6 +205,13 @@
       crossorigin="anonymous"
     ></script>
     <script src="{% static 'js/index.js' %}"></script>
+    <script>
+      const timeout = document.querySelector(".info-msg");
+      setTimeout(hideElement, 6000); //milliseconds until timeout//
+      function hideElement() {
+        timeout.style.display = "none";
+      }
+      </script>
 
     {% endblock %}
 

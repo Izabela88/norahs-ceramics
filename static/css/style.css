@@ -172,6 +172,27 @@ label {
   height: 50px;
 }
 
+.info-msg {
+  font-family:var(--font_two);
+  letter-spacing: 2px;
+  font-weight: bold;
+  position: absolute;
+  z-index: 100;
+  font-size: 22px;
+  box-shadow: rgb(100 100 111 / 40%) 0px 7px 29px 0px;
+  width: 400px;
+  height: fit-content;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  padding: 10px;
+  z-index: 10000000;
+  text-align: center;
+  background-color: var(--col_eight);
+  color: var(--col_four);
+  text-transform: uppercase;
+}
+
 /* -----------------NAVBAR */
 #header {
   width: 100%;
@@ -832,6 +853,57 @@ label[for="id_password"] {
 .label_login {
   margin-left: 30px;
 }
+
+/*  delete account */
+.delete-account-section {
+  height: 100vh;
+}
+
+.delete-container {
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+}
+
+.delete-form p {
+  font-size: 25px;
+  margin: 40px auto;
+}
+
+.delete-buttons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.del-btn {
+  width: 200px;
+  margin: 0 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.del-btn a {
+  color: #000000;
+  font-size: 17px;
+  height: 100%;
+  width: 100%;
+}
+
 
 
 @media screen and (max-width: 1150px) {
