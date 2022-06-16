@@ -32,7 +32,9 @@ class CustomerProfileView(LoginRequiredMixin, View):
 
         if personal_info_form.is_valid() and personal_info_form.has_changed():
             sweetify.toast(
-                self.request, "personal information updated successfully!"
+                self.request,
+                "personal information updated successfully!",
+                position="top",
             )
             personal_info_form.save()
 

@@ -49,7 +49,12 @@ class AddToBasketView(View):
     def post(self, request, product_id):
         basket = Basket.get_basket(request)
         basket.add_product(product_id=product_id)
-        sweetify.toast(self.request, "product added successfully")
+        sweetify.toast(
+            self.request,
+            "product added successfully",
+            timer=1500,
+            position="top",
+        )
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
 
@@ -57,7 +62,12 @@ class SubtractFromBasketView(View):
     def post(self, request, product_id):
         basket = Basket.get_basket(request)
         basket.subtract_product(product_id=product_id)
-        sweetify.toast(self.request, "product removed successfully")
+        sweetify.toast(
+            self.request,
+            "product removed successfully",
+            timer=1500,
+            position="top",
+        )
         return HttpResponseRedirect(reverse("basket"))
 
 
@@ -65,5 +75,10 @@ class DeleteFromBasketView(View):
     def post(self, request, product_id):
         basket = Basket.get_basket(request)
         basket.delete_product(product_id=product_id)
-        sweetify.toast(self.request, "products removed successfully")
+        sweetify.toast(
+            self.request,
+            "products removed successfully",
+            timer=1500,
+            position="top",
+        )
         return HttpResponseRedirect(reverse("basket"))

@@ -201,6 +201,10 @@ label {
   font-family: var(--font_two);
 }
 
+.swal2-timer-progress-bar {
+  visibility: hidden;
+}
+
 /* -----------------NAVBAR */
 #header {
   width: 100%;
