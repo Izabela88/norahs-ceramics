@@ -7,6 +7,13 @@
 
 {% block content %}
 <section class="customer-profile-section">
+  {% if messages %}
+    <ul class="info-msg">
+        {% for message in messages %}
+            <li>{{ message.message }}</li>
+        {% endfor %}
+    </ul>
+  {% endif %}
   <div class="customer-bg-img">
     <img src="{% static 'images/bg.jpg' %}" alt="">
   </div>
@@ -79,4 +86,12 @@
 {% block extra_js %}
 {{ block.super }}
 <script src="{% static 'customer/js/customer.js' %}"></script>
+<script>
+const timeout = document.querySelector(".info-msg");
+setTimeout(hideElement, 4000); //milliseconds until timeout//
+function hideElement() {
+  timeout.style.display = "none";
+}
+</script>
+ 
 {% endblock %}

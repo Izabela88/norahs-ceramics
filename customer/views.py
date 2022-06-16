@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from customer.forms import UpdatePersonalInformationForm
+from django.contrib import messages
 
 
 class CustomerProfileView(LoginRequiredMixin, View):
@@ -27,6 +28,9 @@ class CustomerProfileView(LoginRequiredMixin, View):
         )
 
         if personal_info_form.is_valid() and personal_info_form.has_changed():
+            messages.success(
+                request, "Personal information updated successfully!"
+            )
             personal_info_form.save()
 
         else:
