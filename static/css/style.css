@@ -104,7 +104,7 @@ label {
 }
 
 .button {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 200;
   letter-spacing: 1px;
   padding: 13px 20px 13px;
@@ -120,6 +120,7 @@ label {
   transition-duration: 0.3s;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   text-transform: uppercase;
+  font-family: var(--font_two);
 }
 
 .button:hover {
@@ -911,23 +912,91 @@ label[for="id_password"] {
 }
 
 .del-btn {
-  width: 200px;
+  width: 220px;
   margin: 0 10px;
   text-align: center;
-  font-size: 15px;
 }
 
-.del-btn a {
-  color: #000000;
-  font-size: 17px;
-  height: 100%;
-  width: 100%;
-  transition-duration: .3s;
-}
-
-.del-btn a:hover {
+.del-btn:hover {
   color: var(--col_eight);
 }
+
+/* --------------change password section */
+.change-password-box {
+  flex-direction: column;
+}
+
+.change-password-box h2 {
+  margin-bottom: 40px;
+}
+
+.change-password-form {
+  width: 400px;
+  height: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.password-buttons {
+  width: 400px;
+}
+
+.password-buttons button {
+  width: 400px;
+}
+
+
+.change-password-form p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.change-password-form input {
+  height: 40px;
+  width: 100%;
+  margin-bottom: 25px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 10px;
+  text-align: center;
+}
+
+.change-password-form ul {
+  display: none;
+}
+
+.change-password-form li {
+  font-family: var(--font_one);
+}
+
+.password-link {
+  color: var(--yellow-color);
+  font-weight: bold;
+}
+
+label[for="id_old_password"],
+label[for="id_new_password1"],
+label[for="id_new_password2"] {
+  font-size: 12px;
+  margin: 5px auto;
+  text-transform: uppercase;
+  color: #C06C84;
+  font-family: var(--font_one);
+}
+
+#back-btn {
+  text-align: center;
+  margin-top: 10px;
+  width: 400px;
+  font-size: 20px;
+}
+
+
 
 
 

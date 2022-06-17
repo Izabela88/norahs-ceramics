@@ -55,7 +55,7 @@
           <input class="button button-dark update-profil" type="submit" value="Update" />
       </form>
       <div class="profile-buttons">
-        <a href="#" class="button button-dark">change password</a>
+        <a href="{% url 'password_change' user.id %}" class="button button-dark">change password</a>
         <a href="{% url 'customer_delete' user.id %}" class="button button-dark">delete account</a>
       </div>
     </div>

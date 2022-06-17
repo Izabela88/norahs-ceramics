@@ -1,13 +1,15 @@
 from django.views import View
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from customer.forms import UpdatePersonalInformationForm, AddressForm
 from django.contrib import messages
 from customer.models import User
 from django.views.generic.edit import DeleteView
 import sweetify
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import PasswordChangeView
 
 
 class CustomerProfileView(LoginRequiredMixin, View):
@@ -41,6 +43,7 @@ class CustomerProfileView(LoginRequiredMixin, View):
                 self.request,
                 "your personal information has been updated successfully!",
                 position="top",
+                timer=3000,
             )
             personal_info_form.save()
 
@@ -69,6 +72,7 @@ class CustomerAddressView(View):
                 self.request,
                 "your address information has been updated successfully!",
                 position="top",
+                timer=3000,
             )
         else:
             request.session["address_form_errors"] = address_form.errors
@@ -86,5 +90,11 @@ class DeleteCustomerProfile(DeleteView):
         sweetify.toast(
             self.request, "your account has been deleted successfully"
         )
-
         return reverse("home")
+
+
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    model = User
+    template_name = "change_password.html"
+    success_message = "your password has been changed successfully"
+    success_url = reverse_lazy("home")

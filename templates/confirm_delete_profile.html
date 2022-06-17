@@ -14,14 +14,12 @@
                 {{form}}
                 <div class="delete-buttons">
                     <input class="button button-dark del-btn" type="submit" value="Yes I am">
-                    <div class="button button-dark  del-btn">
-                        <a href="{% url 'customer_profile' request.user.id %}">Back to profile</a>
-                    </div>
+                    <a class="button button-dark del-btn" href="{% url 'customer_profile' request.user.id %}">Back to profile</a>
                 </div>
             </form>
-            {% endif %}
-
+            
         </div>
-
+        
     </section>
+    {% endif %}
 {% endblock content %}

@@ -71,10 +71,11 @@
 }
 
 .profile-label {
-    font-size: 18px;
+    font-size: 12px;
     margin: 5px auto;
-    text-transform: lowercase;
+    text-transform: uppercase;
     color: #C06C84;
+    font-family: var(--font_one);
 }
 
 

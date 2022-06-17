@@ -208,7 +208,7 @@
     <script src="{% static 'js/index.js' %}"></script>
     <script>
       const timeouts = document.querySelectorAll(".info-msg");
-      setTimeout(hideElement, 2500); //milliseconds until timeout//
+      setTimeout(hideElement, 3000); //milliseconds until timeout//
       function hideElement() {
         for (i = 0; i < timeouts.length; i++) {
           timeouts[i].style.display = "none";
@@ -218,7 +218,6 @@
       
       {% endblock %}
       
-
     {% block extra_js %} 
     {% endblock %}
     {% load sweetify %}
