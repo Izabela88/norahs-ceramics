@@ -60,21 +60,21 @@
       </div>
     </div>
     <!-- ---------ADDRESS INFORMATION--------------------->
-    <form class="address-form" method="post">
+    <form class="address-form" method="post" action={% url 'customer_address' id=request.user.id %}>
       <p class="address-heading">Address Information</p>
       {% csrf_token %}
-        <label class="profile-label">Address 1</label>
-        <input type="text" name="" id="">
-        <label class="profile-label">Address 2</label>
-        <input type="text" name="" id="">
+        <label class="profile-label">address line 1</label>
+        {{address_information_form.address_1}}
+        <label class="profile-label">address line 2</label>
+        {{address_information_form.address_2}}
         <label class="profile-label">post code</label>
-        <input type="text" name="" id="">
-        <label class="profile-label">town</label>
-        <input type="text" name="" id="">
+        {{address_information_form.postcode}}
+        <label class="profile-label">town/city</label>
+        {{address_information_form.town}}
         <label class="profile-label">county</label>
-        <input type="text" name="" id="">
+        {{address_information_form.county}}
         <label class="profile-label">country</label>
-        <input type="text" name="" id="">
+        {{address_information_form.country}}
         <input type="hidden" name="form_type" value="address_form" /> 
         <input class="button button-dark update-profil" type="submit" value="Update" />
     </form>

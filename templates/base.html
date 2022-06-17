@@ -92,11 +92,12 @@
               <ul>
                 {% if user.is_authenticated %}
                   <li class="menu-item profile-item">
-                    <span><img class="user-icon" src="{% static 'images/user.png' %}" alt="user icon">profile &dtrif;</span> 
+                    <span><img class="user-icon" src="{% static 'images/user.png' %}" alt="user icon">my profile &dtrif;</span> 
                     <ol class="sub-menu">
-                      <li class="menu-item profile-item"><a href="{% url 'customer_profile' request.user.id %}">my profile</a></li>
-                      <li class="menu-item"><a href="#">my orders</a></li>
-                      <li class="menu-item"><a href="#">my reviews</a></li>
+                      <li class="menu-item profile-item"><a href="{% url 'customer_profile' request.user.id %}">personal information</a></li>
+                      <li class="menu-item"><a href="#">orders</a></li>
+                      <li class="menu-item"><a href="#">reviews</a></li>
+                      <li class="menu-item"><a href="#">favorites</a></li>
                       <li class="menu-item"><a href="{% url 'account_logout' %}">Logout</a></li>
                     </ol>
                   </li>

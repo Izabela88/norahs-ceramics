@@ -1,6 +1,6 @@
 from django import forms
 from phonenumber_field.modelfields import PhoneNumberField
-from customer.models import User
+from customer.models import User, AddressDetails
 from django.core.validators import RegexValidator
 from django.core.validators import validate_email
 
@@ -50,4 +50,24 @@ class UpdatePersonalInformationForm(forms.ModelForm):
             "email",
             "first_name",
             "last_name",
+        ]
+
+
+class AddressForm(forms.ModelForm):
+    address_1 = forms.CharField(max_length=50, required=True)
+    address_2 = forms.CharField(max_length=100, required=True)
+    town = forms.CharField(max_length=85, required=True)
+    postcode = forms.CharField(max_length=8, required=True)
+    county = forms.CharField(max_length=100, required=True)
+    country = forms.CharField(max_length=100, required=True)
+
+    class Meta:
+        model = AddressDetails
+        fields = [
+            "address_1",
+            "address_2",
+            "town",
+            "postcode",
+            "county",
+            "country",
         ]

@@ -45,7 +45,12 @@ a {
   text-decoration: none;
   letter-spacing: 2px;
   -webkit-tap-highlight-color: transparent;
-  
+  color: #000000;
+  transition-duration: .3s;
+}
+
+a:hover {
+  color: var(--col_eight);
 }
 
 p {
@@ -318,7 +323,7 @@ label {
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 53px;
+  left: 45px;
   top: 20px;
 }
 
@@ -868,7 +873,10 @@ label[for="id_password"] {
 
 /*  delete account */
 .delete-account-section {
-  height: 100vh;
+  position: relative;
+  height: -o-calc(100vh + 174px);
+  height: -webkit-calc(100vh + 174px);
+  height: -moz-calc(100vh + 174px);
 }
 
 .delete-container {
@@ -914,6 +922,11 @@ label[for="id_password"] {
   font-size: 17px;
   height: 100%;
   width: 100%;
+  transition-duration: .3s;
+}
+
+.del-btn a:hover {
+  color: var(--col_eight);
 }
 
 

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from customer.forms import UpdatePersonalInformationForm
+from customer.forms import UpdatePersonalInformationForm, AddressForm
 from django.contrib import messages
 from customer.models import User
 from django.views.generic.edit import DeleteView
@@ -19,10 +19,16 @@ class CustomerProfileView(LoginRequiredMixin, View):
             "personal_info_form_errors": request.session.pop(
                 "personal_info_form_errors", None
             ),
+            "address_form_errors": request.session.pop(
+                "address_form_errors", None
+            ),
+            "personal_information_form": UpdatePersonalInformationForm(
+                instance=request.user
+            ),
+            "address_information_form": AddressForm(
+                instance=request.user.address_details
+            ),
         }
-        context["personal_information_form"] = UpdatePersonalInformationForm(
-            instance=request.user
-        )
         return render(request, "customer/customer_profile.html", context)
 
     def post(self, request, id):
@@ -33,7 +39,7 @@ class CustomerProfileView(LoginRequiredMixin, View):
         if personal_info_form.is_valid() and personal_info_form.has_changed():
             sweetify.toast(
                 self.request,
-                "personal information updated successfully!",
+                "your personal information has been updated successfully!",
                 position="top",
             )
             personal_info_form.save()
@@ -49,8 +55,27 @@ class CustomerProfileView(LoginRequiredMixin, View):
 
 
 class CustomerAddressView(View):
-    def post(self, request):
-        pass
+    def post(self, request, id):
+        address_form = AddressForm(
+            instance=request.user.address_details, data=request.POST or None
+        )
+        if address_form.is_valid() and address_form.has_changed():
+            address_form.save(commit=True)
+            if request.user.address_details_id != address_form.instance.id:
+                # Update existed address
+                request.user.address_details_id = address_form.instance.id
+                request.user.save()
+            sweetify.toast(
+                self.request,
+                "your address information has been updated successfully!",
+                position="top",
+            )
+        else:
+            request.session["address_form_errors"] = address_form.errors
+
+        return HttpResponseRedirect(
+            reverse("customer_profile", kwargs={"id": id})
+        )
 
 
 class DeleteCustomerProfile(DeleteView):
