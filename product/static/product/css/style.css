@@ -34,20 +34,40 @@
 }
 
 .filters {
-    width: 240px;
     position: relative;
     text-align: center;
     background-color: var(--col_four);
-    left: -45%;
-    margin-bottom: -261px;
-    margin-top: -348px;
+    width: 800px;
+    left: 0;
+    margin: 30px auto;
+    z-index: 10000;
 }
 
-.filters h2 {
+.filters button {
     font-size: 25px;
     margin: 20px auto;
     text-transform: uppercase;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    z-index: 10;
+    transition-duration: 0.3s;
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px;
+    text-transform: uppercase;
+    font-family: var(--font_two);
+    width: 800px;
 }
+
 
 /* INFO BOX */
 .info-box {
@@ -56,7 +76,7 @@
     align-items: center;
     justify-content: center;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, rgb(209 213 219) 0px 0px 0px 1px inset;
-    margin-top: -119px;
+    margin-top: 0;
     margin-bottom: -58px;
 }
 
@@ -140,7 +160,17 @@ select:focus+.focus {
     border-radius: 5px;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    width: 800px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
+
+.filters:hover .priceSlider {
+    display: block;
+  }
 
 .priceSlider h3 {
     font-size: 14px;
@@ -234,7 +264,7 @@ select:focus+.focus {
 .range-btn {
     padding: 0;
     height: 35px;
-    width: 100%;
+    width: 230px;
     margin: 20px auto;
     font-size: 16px;
 }
@@ -242,7 +272,7 @@ select:focus+.focus {
 .clear-btn {
     padding: 0;
     height: 35px;
-    width: 100%;
+    width: 230px;
     font-size: 12px;
     margin-left: auto;
     margin-right: auto;
@@ -268,7 +298,7 @@ select:focus+.focus {
 .color-picker {
     background-color: #dedede;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-    width: 100%;
+    width: 380px;
     margin-top: 30px;
 }
 
@@ -387,7 +417,7 @@ input[id="transparent"]:checked {
 
 .products-bg {
     position: relative;
-    width: 65%;
+    width: 800px;
     height: 480px;
     margin-top: 5%;
     margin-left: auto;
@@ -682,25 +712,6 @@ input[id="transparent"]:checked {
 }
 
 @media screen and (max-width: 1150px) {
-    .filters {
-        width: 800px;
-        left: 0;
-        margin: 30px auto;
-    }
-
-    .info-box {
-        margin-top: 0;
-    }
-
-    .color-picker {
-        width: 390px;
-    }
-
-    .range-btn,
-    .clear-btn {
-        width: 230px;
-    }
-
     .product_container {
         flex-direction: column;
         height: auto;

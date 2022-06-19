@@ -61,7 +61,6 @@
             {% url 'home' as url %}
             <li class="menu-item ">
               <a class="close-sidebar {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
-            <li class="menu-item"><a href="{% url 'about' %}">About</a></li>
             <li class="menu-item">
               <a href="{% url 'product_list'%}?category=ceramics">Ceramics &dtrif;</a>
               <ol class="sub-menu">
@@ -87,6 +86,7 @@
               </ol>
             </li>
             <li class="menu-item"><a href="{% url 'home' %}#new-arriv">New In</a></li>
+            <li class="menu-item"><a href="#">best sellers</a></li>
             <li class="menu-item"><a href="#">Contact</a></li>
             <div class="auth-links">
               <ul>
@@ -167,6 +167,7 @@
             <li class="{% if request.path == url %} active {% endif %}">
               <a href="{{ url }}">Home </a>
             </li>
+            <li><a href="{% url 'about' %}">About</a></li>
           </ul>
         </div>
         <div class="footer-box">
