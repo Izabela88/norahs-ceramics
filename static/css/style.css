@@ -205,6 +205,7 @@ label {
 .swal2-popup.swal2-toast .swal2-title {
   text-align: center;
   font-family: var(--font_two);
+  color: #000000;
 }
 
 .swal2-timer-progress-bar {
@@ -932,7 +933,7 @@ label[for="id_password"] {
 
 .change-password-form {
   width: 400px;
-  height: 40%;
+  height: 385px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

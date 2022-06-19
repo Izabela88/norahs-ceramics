@@ -51,8 +51,8 @@ class AddToBasketView(View):
         basket.add_product(product_id=product_id)
         sweetify.toast(
             self.request,
-            "product added successfully",
-            timer=1500,
+            "product has been added to the basket successfully",
+            timer=2500,
             position="top",
         )
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
@@ -64,8 +64,8 @@ class SubtractFromBasketView(View):
         basket.subtract_product(product_id=product_id)
         sweetify.toast(
             self.request,
-            "product removed successfully",
-            timer=1500,
+            "product has been removed from the basket successfully",
+            timer=2500,
             position="top",
         )
         return HttpResponseRedirect(reverse("basket"))
@@ -77,8 +77,8 @@ class DeleteFromBasketView(View):
         basket.delete_product(product_id=product_id)
         sweetify.toast(
             self.request,
-            "products removed successfully",
-            timer=1500,
+            "product has been removed from the basket successfully",
+            timer=2500,
             position="top",
         )
         return HttpResponseRedirect(reverse("basket"))
