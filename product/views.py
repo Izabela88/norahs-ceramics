@@ -7,7 +7,6 @@ from django.db.models import Q
 class ProductListView(ListView):
     model = Product
     paginate_by = 4
-    context_object_name = "product_list"
     template_name = "product/product-list.html"
 
     def get_queryset(self):
@@ -51,7 +50,7 @@ class ProductListView(ListView):
                 product_query = product_query.order_by("price_pence")
             if sort_by == "price_desc":
                 product_query = product_query.order_by("-price_pence")
-        return product_query.distinct()
+        return product_query.distinct("id")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -81,7 +80,6 @@ class ProductListView(ListView):
                 context["initial_colors"].append(color.name)
         context["query_params"] = query_params
         context["filter_form"] = FilterForm(initial=initials)
-
         return context
 
     @staticmethod
@@ -92,3 +90,5 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = "product/product-details.html"
+
+

@@ -51,7 +51,7 @@ class AddToBasketView(View):
         basket.add_product(product_id=product_id)
         sweetify.toast(
             self.request,
-            "product has been added to the basket successfully",
+            "the product has been successfully added to the basket",
             timer=2500,
             position="top",
         )
@@ -64,7 +64,7 @@ class SubtractFromBasketView(View):
         basket.subtract_product(product_id=product_id)
         sweetify.toast(
             self.request,
-            "product has been removed from the basket successfully",
+            "the product has been successfully removed from the basket",
             timer=2500,
             position="top",
         )
@@ -77,7 +77,7 @@ class DeleteFromBasketView(View):
         basket.delete_product(product_id=product_id)
         sweetify.toast(
             self.request,
-            "product has been removed from the basket successfully",
+            "the products has been successfully removed from the basket",
             timer=2500,
             position="top",
         )
