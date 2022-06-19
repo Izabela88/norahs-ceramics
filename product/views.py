@@ -43,14 +43,20 @@ class ProductListView(ListView):
 
         if sort_by := self.request.GET.get("sort_by"):
             if sort_by == "name_asc":
-                product_query = product_query.order_by("name")
+                product_query = product_query.order_by("name").distinct("name")
             if sort_by == "name_desc":
-                product_query = product_query.order_by("-name")
+                product_query = product_query.order_by("-name").distinct(
+                    "name"
+                )
             if sort_by == "price_asc":
-                product_query = product_query.order_by("price_pence")
+                product_query = product_query.order_by("price_pence").distinct(
+                    "price_pence"
+                )
             if sort_by == "price_desc":
-                product_query = product_query.order_by("-price_pence")
-        return product_query.distinct("id")
+                product_query = product_query.order_by(
+                    "-price_pence"
+                ).distinct("price_pence")
+        return product_query.distinct("id", "name", "price_pence")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -90,5 +96,3 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = "product/product-details.html"
-
-

@@ -10,11 +10,11 @@ def get_customer_profile_url(id=1):
     return reverse("customer_profile", kwargs={"id": id})
 
 
-# @pytest.mark.django_db
-# def test_customer_profile_use_correct_template(client):
-#     res = client.get(get_customer_profile_url(id=1))
-#     assert res.status_code == 200
-#     assertTemplateUsed(res, "customer/customer_profile.html")
+@pytest.mark.django_db
+def test_customer_profile_use_correct_template(client):
+    res = client.get(get_customer_profile_url(id=1))
+    assert res.status_code == 200
+    assertTemplateUsed(res, "customer/customer_profile.html")
 
 
 @pytest.mark.django_db
