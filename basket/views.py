@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from basket.models import Basket, BasketProduct
 from django.urls import reverse
+from django.contrib import messages
+import sweetify
 
 
 class BasketView(View):
@@ -47,6 +49,12 @@ class AddToBasketView(View):
     def post(self, request, product_id):
         basket = Basket.get_basket(request)
         basket.add_product(product_id=product_id)
+        sweetify.toast(
+            self.request,
+            "the product has been successfully added to the basket",
+            timer=2500,
+            position="top",
+        )
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
 
@@ -54,6 +62,12 @@ class SubtractFromBasketView(View):
     def post(self, request, product_id):
         basket = Basket.get_basket(request)
         basket.subtract_product(product_id=product_id)
+        sweetify.toast(
+            self.request,
+            "the product has been successfully removed from the basket",
+            timer=2500,
+            position="top",
+        )
         return HttpResponseRedirect(reverse("basket"))
 
 
@@ -61,4 +75,10 @@ class DeleteFromBasketView(View):
     def post(self, request, product_id):
         basket = Basket.get_basket(request)
         basket.delete_product(product_id=product_id)
+        sweetify.toast(
+            self.request,
+            "the products has been successfully removed from the basket",
+            timer=2500,
+            position="top",
+        )
         return HttpResponseRedirect(reverse("basket"))

@@ -83,7 +83,7 @@ function showItems(carousel, item) {
       "none";
   carousel.querySelectorAll(".item")[item].style.display = "block";
 
-  if (carousel.querySelector(".dot.active") != null)
-    carousel.querySelector(".dot.active").classList.remove("active");
-  carousel.querySelectorAll(".dot")[item].classList.add("active");
+  // if (carousel.querySelector(".dot.active") != null)
+  //   carousel.querySelector(".dot.active").classList.remove("active");
+  // carousel.querySelectorAll(".dot")[item].classList.add("active");
 }
