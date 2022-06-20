@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_filters %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- https://codepen.io/mha-el-sayed/pen/zLmoMX -->
+<section class="checkout-section">
+  <div class='container'>
+    <div class='window'>
+      <div class='order-info'>
+        <div class='order-info-content'>
+          <h3>Order Summary</h3>
+          <div class='line'></div>
+          <div class='order-table'>
+            <div class="order-box">
+              <img src='{% static "images/plates.jpg" %}' class='order-img'></img>
+              <p>plates</p>
+              <p>qty: 2</p>
+              <p class="price">£20.00</p>
+            </div>
+            <div class="order-box">
+              <img src='{% static "images/plates.jpg" %}' class='order-img'></img>
+              <p>plates</p>
+              <p>qty: 2</p>
+              <p class="price">£20.00</p>
+            </div>
+            <div class="order-box">
+              <img src='{% static "images/plates.jpg" %}' class='order-img'></img>
+              <p>plates</p>
+              <p>qty: 2</p>
+              <p class="price">£20.00</p>
+            </div>
+          </div>
+          <div class='line'></div>
+          <div class='total'> 
+            <div class='total-part vat'>
+              <p>VAT 20%</p>
+              <p>£4.00</p>
+            </div>
+            <div class='total-part delivery'>
+              <p>Delivery</p> 
+              <p>£0.00</p> 
+            </div>
+            <div class='total-part total-price'>
+              <p>Total</p>
+              <p>£20.00</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='credit-info'>
+        <div class='credit-info-content'>
+          <div class="credit-dropdown">
+            <p> Please select your card:</p> 
+            <div class='dropdown' id='card-dropdown'>
+              <div class='dropdown-btn' id='current-card'>Visa</div>
+            <div class='dropdown-select'>
+              <ul>
+                <li>Master Card</li>
+              </ul>
+            </div>
+          </div>
+          </div>
+            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
+          <div class="card-info">
+            <label for="">Card Number</label> 
+            <input class='input-field'></input>
+            <label for="">Card Name Holder</label>
+            <input class='input-field'></input>
+          </div>
+          <div class='half-input-table'>
+            <div class="half">
+              <label for="">Expires</label> 
+              <input class='input-field'></input>
+            </div>
+            <div class="half">
+              <label for="">CVC</label> 
+              <input class='input-field'></input>          
+            </div>
+          </div>
+          <button class='button pay-btn'>pay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+  <script src="{% static 'checkout/js/checkout.js' %}"></script>
+ 
+{% endblock %}

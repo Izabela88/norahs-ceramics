@@ -1,0 +1,319 @@
+:root {
+    --col_one: #D18E85;
+    --col_two: #C8CAC9;
+    --col_three: #000000;
+    --col_four: #ffffff;
+    --col_five: #F2DFE1;
+    --col_six: #C1B198;
+    --col_seven: #F8B195;
+    --col_eight: #C06C84;
+    --col_nine: #F2CFBB;
+    --font_one: 'Mali', cursive;
+    --font_two: 'Hubballi', cursive;
+}
+
+.checkout-section {
+    position: relative;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px)
+}
+
+/* https://codepen.io/mha-el-sayed/pen/zLmoMX */
+
+.container {
+    height: 100%;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.dropdown-select.visible {
+    display: block;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-select ul {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-select ul li {
+    list-style: none;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.dropdown-select ul li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-select {
+    position: absolute;
+    text-align: left;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 90%;
+    left: 2px;
+    line-height: 2em;
+    margin-top: 2px;
+    box-sizing: border-box;
+}
+
+.half-input-table {
+    display: flex;
+}
+
+
+
+.window {
+    height: 700px;
+    width: 100%;
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    z-index: 10;
+}
+
+.order-info {
+    height: 100%;
+    width: 50%;
+    padding-right: 25px;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+.order-table td:first-of-type {
+    width: 25%;
+}
+
+.order-table {
+    position: relative;
+    width: 555px;
+    overflow: auto;
+    height: 300px;
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #ddd;
+}
+
+.order-table td:last-of-type {
+    vertical-align: top;
+    padding-left: 25px;
+}
+
+.order-info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+
+.pay-btn {
+    margin-top: 20px;
+    width:510px;
+}
+
+
+.total {
+    margin-top: 25px;
+    font-size: 20px;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.total-part {
+  margin-right: 40px;
+  display: flex;
+  margin: 20px 0;
+  width: 100%;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+
+.total-part p {
+    margin-right: 30px;
+}
+
+.input-field {
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+    margin-top: 3px;
+    line-height: 1.5em;
+    font-size: 20px;
+    font-size: 1.3rem;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    color: #fff;
+    box-sizing: border-box;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.credit-info {
+    height: 100%;
+    width: 50%;
+    background-color: #D18E85;
+    color: #eee;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-size: 14px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
+    position: relative;
+}
+
+.credit-dropdown {
+    font-family: var(--font_two);
+    margin-top: -100px;
+    margin-bottom: 55px;
+}
+
+.dropdown-btn {
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 1.5em;
+    cursor: pointer;
+    position: relative;
+    -webkit-transition: background .2s ease;
+    transition: background .2s ease;
+}
+
+.dropdown-btn:after {
+    content: '\25BE';
+    right: 8px;
+    position: absolute;
+}
+
+.dropdown-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-transition: background .2s ease;
+    transition: background .2s ease;
+}
+
+.dropdown-select {
+    display: none;
+}
+
+.credit-card-image {
+    display: block;
+    max-height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 35px;
+}
+
+.credit-info-content {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.order-box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 5px;
+}
+
+.order-box p {
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.order-img {
+    width: 150px;
+    height: 100px;
+}
+
+.price {
+    right: -145px;
+    position: relative;
+    bottom: 0;
+}
+
+.half,
+.card-info  {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.half label,
+.card-info label {
+    font-family: var(--font_one);
+    text-transform: uppercase;
+}
+
+
+
+@media (max-width: 600px) {
+    .window {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border-radius: 0px;
+    }
+
+    .order-info {
+        width: 100%;
+        height: auto;
+        padding-bottom: 100px;
+        border-radius: 0px;
+    }
+
+    .credit-info {
+        width: 100%;
+        height: auto;
+        padding-bottom: 100px;
+        border-radius: 0px;
+    }
+
+    .pay-btn {
+        border-radius: 0px;
+    }
+}

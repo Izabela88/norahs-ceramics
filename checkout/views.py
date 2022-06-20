@@ -3,4 +3,7 @@ from django.views import View
 
 
 class CheckoutView(View):
-    pass
+
+    def get(self, request):
+        context = {}
+        return render(request, "checkout/checkout.html", context)
