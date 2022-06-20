@@ -5,13 +5,16 @@ from product.tests import factories
 from customer.forms import UpdatePersonalInformationForm
 
 
-@pytest.fixture
 def get_customer_profile_url(id=1):
     return reverse("customer_profile", kwargs={"id": id})
 
 
 @pytest.mark.django_db
-def test_customer_profile_use_correct_template(client):
+def test_customer_profile_use_correct_template(client, django_user_model):
+    user = django_user_model.objects.create_user(
+        username="user1", password="bar"
+    )
+    client.force_login(user)
     res = client.get(get_customer_profile_url(id=1))
     assert res.status_code == 200
     assertTemplateUsed(res, "customer/customer_profile.html")

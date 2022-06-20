@@ -40,6 +40,7 @@
     width: 800px;
     left: 0;
     z-index: 10000;
+    margin-bottom: 50px;
 }
 
 .filters button {
@@ -730,6 +731,18 @@ input[id="transparent"]:checked {
 
     .buttons {
         width: 100%;
+    }
+
+    .description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-description.description p {
+        text-align: center;
+        width: 80%;
     }
 }
 

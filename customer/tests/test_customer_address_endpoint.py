@@ -5,7 +5,6 @@ from product.tests import factories
 from customer.forms import AddressForm
 
 
-@pytest.fixture
 def get_customer_address_url(id=1):
     return reverse("customer_address", kwargs={"id": id})
 
