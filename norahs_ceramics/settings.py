@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "basket",
     "phonenumber_field",
     "sweetify",
+    "checkout",
 ]
 
 SITE_ID = 2
