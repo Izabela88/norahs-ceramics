@@ -45,7 +45,12 @@ a {
   text-decoration: none;
   letter-spacing: 2px;
   -webkit-tap-highlight-color: transparent;
-  
+  color: #000000;
+  transition-duration: .3s;
+}
+
+a:hover {
+  color: var(--col_eight);
 }
 
 p {
@@ -99,7 +104,7 @@ label {
 }
 
 .button {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 200;
   letter-spacing: 1px;
   padding: 13px 20px 13px;
@@ -115,6 +120,7 @@ label {
   transition-duration: 0.3s;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   text-transform: uppercase;
+  font-family: var(--font_two);
 }
 
 .button:hover {
@@ -172,11 +178,45 @@ label {
   height: 50px;
 }
 
+.info-msg {
+  font-family:var(--font_two);
+  letter-spacing: 2px;
+  position: absolute;
+  font-size: 15px;
+  box-shadow: rgb(100 100 111 / 40%) 0px 7px 29px 0px;
+  width: 400px;
+  height: fit-content;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  padding: 10px;
+  z-index: 10000000;
+  text-align: center;
+  background-color: var(--col_eight);
+  color: var(--col_four);
+  text-transform: uppercase;
+}
+
+.swal2-container {
+  z-index: 1000000;
+  text-align: center;
+}
+
+.swal2-popup.swal2-toast .swal2-title {
+  text-align: center;
+  font-family: var(--font_two);
+  color: #000000;
+}
+
+.swal2-timer-progress-bar {
+  visibility: hidden;
+}
+
 /* -----------------NAVBAR */
 #header {
   width: 100%;
   position: fixed;
-  z-index: 10000;
+  z-index: 100000;
   transition: background ease-in-out 0.5s, top ease 0.6s;
   background-color: var(--col_four);
   box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 15px;
@@ -246,21 +286,23 @@ label {
   height: 100%;
   justify-content: center;
   font-size: 18px;
+}
 
+.auth-links ul li {
+  margin-left: 20px;
 }
 
 .auth-links ul li a {
   text-transform: uppercase;
   color: #000000;
-  margin-left: 20px;
 }
 
 .basket-box {
   position: absolute;
   height: 30px;
-  width: 80px;
+  width:auto;
   top: 13px;
-  right: 30px;
+  right: 50px;
   display: flex;
   align-items: center;
   font-family: var(--font_two);
@@ -280,7 +322,11 @@ label {
 }
 
 .user-icon {
-  margin-right: -11px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 45px;
+  top: 20px;
 }
 
  #menu-list {
@@ -384,6 +430,16 @@ label {
 
 .menu-item:hover>.sub-menu {
   display: block;
+}
+
+.menu-item.profile-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: context-menu;
+  font-size: 18px;
+  letter-spacing: 2px;
 }
 
 
@@ -817,6 +873,130 @@ label[for="id_password"] {
   margin-left: 30px;
 }
 
+/*  delete account */
+.delete-account-section {
+  position: relative;
+  height: -o-calc(100vh + 174px);
+  height: -webkit-calc(100vh + 174px);
+  height: -moz-calc(100vh + 174px);
+}
+
+.delete-container {
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+}
+
+.delete-form p {
+  font-size: 25px;
+  margin: 40px auto;
+}
+
+.delete-buttons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.del-btn {
+  width: 220px;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.del-btn:hover {
+  color: var(--col_eight);
+}
+
+/* --------------change password section */
+.change-password-box {
+  flex-direction: column;
+}
+
+.change-password-box h2 {
+  margin-bottom: 40px;
+}
+
+.change-password-form {
+  width: 400px;
+  height: 385px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.password-buttons {
+  width: 400px;
+}
+
+.password-buttons button {
+  width: 400px;
+}
+
+
+.change-password-form p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.change-password-form input {
+  height: 40px;
+  width: 100%;
+  margin-bottom: 25px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 10px;
+  text-align: center;
+}
+
+.change-password-form ul {
+  display: none;
+}
+
+.change-password-form li {
+  font-family: var(--font_one);
+}
+
+.password-link {
+  color: var(--yellow-color);
+  font-weight: bold;
+}
+
+label[for="id_old_password"],
+label[for="id_new_password1"],
+label[for="id_new_password2"] {
+  font-size: 12px;
+  margin: 5px auto;
+  text-transform: uppercase;
+  color: #C06C84;
+  font-family: var(--font_one);
+}
+
+#back-btn {
+  text-align: center;
+  margin-top: 10px;
+  width: 400px;
+  font-size: 20px;
+}
+
 
 @media screen and (max-width: 1150px) {
   #header {
@@ -825,7 +1005,7 @@ label[for="id_password"] {
   }
 
   #menu-list .menu-item {
-    width: 50%;
+    width: 100%;
   }
 
 

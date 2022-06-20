@@ -13,7 +13,7 @@
             <img src="{% static 'images/product.jpg' %}" alt="">
         </div>  
         <div class="filters">
-            <h2>filters</h2>
+            <button>filters &dtrif;</button>
             <!-- prices slider -->
             <!-- https://www.howtocodeschool.com/2021/12/price-range-slider-with-html-css-javascript.html -->
             <div class="priceSlider">
@@ -74,7 +74,7 @@
             </div>           
         </div>
         <div class="products-list">
-            {% for product in product_list %}      
+            {% for product in object_list %}      
                     <div class="products-element">
                         <div class="product-img">
                             {% if product.image %}
