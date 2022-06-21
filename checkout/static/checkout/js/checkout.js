@@ -43,3 +43,23 @@ window.onclick = function (e) {
     activeDropdown = null;
   }
 };
+
+const infoBtn = document.querySelector("#personal-info-box");
+const addressBtn = document.querySelector("#address-info-box");
+
+if (infoBtn) {
+  infoBtn.addEventListener("click", () => {
+    document.querySelector(".perso-box").classList.toggle("show-form");
+  });
+}
+
+if (addressBtn) {
+  addressBtn.addEventListener("click", () => {
+    document.querySelector(".address-box").classList.toggle("show-form");
+  });
+}
+
+function defaultOpenTab() {
+  document.getElementById("personal-info-box").click();
+}
+defaultOpenTab();

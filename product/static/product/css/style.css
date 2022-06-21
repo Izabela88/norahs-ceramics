@@ -168,7 +168,7 @@ select:focus+.focus {
     z-index: 1;
 }
 
-.filters:hover .priceSlider {
+.priceSlider.show-filters  {
     display: block;
   }
 

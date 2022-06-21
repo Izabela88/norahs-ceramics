@@ -11,35 +11,35 @@
 <section class="checkout-section">
   <div class='container'>
     <div class='window'>
+      <!-- order summary -->
       <div class='order-info'>
         <div class='order-info-content'>
           <h3>Order Summary</h3>
           <div class='line'></div>
           <div class='order-table'>
-            <div class="order-box">
-              <img src='{% static "images/plates.jpg" %}' class='order-img'></img>
-              <p>plates</p>
-              <p>qty: 2</p>
-              <p class="price">£20.00</p>
-            </div>
-            <div class="order-box">
-              <img src='{% static "images/plates.jpg" %}' class='order-img'></img>
-              <p>plates</p>
-              <p>qty: 2</p>
-              <p class="price">£20.00</p>
-            </div>
-            <div class="order-box">
-              <img src='{% static "images/plates.jpg" %}' class='order-img'></img>
-              <p>plates</p>
-              <p>qty: 2</p>
-              <p class="price">£20.00</p>
-            </div>
+            {% for checkout_product in checkout_products %}
+              <div class="order-box">
+                <div class="checkout-product-image">
+                  {% if checkout_product.product.image %}                   
+                    <img src="{{ checkout_product.product.image.url }}"  class='order-img' alt="">                  
+                  {% else %}                 
+                    <img src="{% static 'images/no-pictures.png' %}"  class='order-img' alt="">
+                  {%  endif %}
+                </div>
+                <div class="product-desc">
+                  <p>{{checkout_product.product.name}}</p>
+                  <p class="checkout-product-price">£{{checkout_product.product.price_pence | currency}}</p>
+                </div>
+                <p>qty: {{checkout_product.qty}}</p>
+                <p class="price">£{{checkout_product.total_product_price | currency}}</p>
+              </div>
+            {% endfor %}         
           </div>
           <div class='line'></div>
           <div class='total'> 
             <div class='total-part vat'>
               <p>VAT 20%</p>
-              <p>£4.00</p>
+              <p>£{{vat_amount | currency}}</p>
             </div>
             <div class='total-part delivery'>
               <p>Delivery</p> 
@@ -47,44 +47,85 @@
             </div>
             <div class='total-part total-price'>
               <p>Total</p>
-              <p>£20.00</p> 
+              <p>£{{total_checkout_price | currency}}</p> 
             </div>
           </div>
+          <div class='line'></div>
+          <a class="bck-link" href="{% url 'basket' %}">&#x2190; back to basket</a>
         </div>
       </div>
-      <div class='credit-info'>
-        <div class='credit-info-content'>
-          <div class="credit-dropdown">
-            <p> Please select your card:</p> 
-            <div class='dropdown' id='card-dropdown'>
-              <div class='dropdown-btn' id='current-card'>Visa</div>
-            <div class='dropdown-select'>
-              <ul>
-                <li>Master Card</li>
-              </ul>
+      <div class="form-wrapper">
+        <div class="checkout-form-box">
+          <!-- personal details -->
+          <form class="checkout-form" method="post">
+            {% csrf_token %}
+            <h3 id="personal-info-box">personal information &dtrif;</h3>
+            <div class='line_two'></div>
+
+            <div class="perso-box">
+              <label class="profile-label">First Name</label>
+              <input type="text">        
+              <label class="profile-label">Last Name</label>
+              <input type="text">
+              <label class="profile-label">Phone number</label>
+              <input type="text">
+              <label class="profile-label">Email</label>
+              <input type="text">           
             </div>
-          </div>
-          </div>
-            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
-          <div class="card-info">
-            <label for="">Card Number</label> 
-            <input class='input-field'></input>
-            <label for="">Card Name Holder</label>
-            <input class='input-field'></input>
-          </div>
-          <div class='half-input-table'>
-            <div class="half">
-              <label for="">Expires</label> 
-              <input class='input-field'></input>
-            </div>
-            <div class="half">
-              <label for="">CVC</label> 
-              <input class='input-field'></input>          
-            </div>
-          </div>
-          <button class='button pay-btn'>pay</button>
+          <!-- address details -->
+          <h3 id="address-info-box">shipping address &dtrif;</h3>
+          <div class="address-box">
+            <label class="profile-label">address line 1</label>
+            <input type="text" name="" id="">
+            <label class="profile-label">address line 2</label>
+            <input type="text" name="" id="">
+            <label class="profile-label">post code</label>
+            <input type="text" name="" id=""> 
+            <label class="profile-label">town/city</label>
+            <input type="text" name="" id=""> 
+            <label class="profile-label">county</label>
+            <input type="text" name="" id="">
+            <label class="profile-label">country</label>
+            <input type="text" name="" id="">
+            <input class="button button-dark checkout-form-btn" type="submit" value="go to secure payment" />
+          </div>  
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+<!-- payment -->
+  <div class='credit-info'>
+    <div class='credit-info-content'>
+      <div class="credit-dropdown">
+        <p> Please select your card:</p> 
+        <div class='dropdown' id='card-dropdown'>
+          <div class='dropdown-btn' id='current-card'>Visa</div>
+        <div class='dropdown-select'>
+          <ul>
+            <li>Master Card</li>
+          </ul>
         </div>
       </div>
+      </div>
+        <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
+      <div class="card-info">
+        <label for="">Card Number</label> 
+        <input class='input-field'></input>
+        <label for="">Card Name Holder</label>
+        <input class='input-field'></input>
+      </div>
+      <div class='half-input-table'>
+        <div class="half">
+          <label for="">Expires date</label> 
+          <input class='input-field'></input>
+        </div>
+        <div class="half">
+          <label for="">CVC</label> 
+          <input class='input-field'></input>          
+        </div>
+      </div>
+      <button class='button pay-btn'>pay</button>
     </div>
   </div>
 </section>
