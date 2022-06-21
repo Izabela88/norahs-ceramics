@@ -54,27 +54,29 @@
           <a class="bck-link" href="{% url 'basket' %}">&#x2190; back to basket</a>
         </div>
       </div>
-      <div class="form-wrapper">
-        <div class="checkout-form-box">
-          <!-- personal details -->
-          <form class="checkout-form" method="post">
-            {% csrf_token %}
-            <h3 id="personal-info-box">personal information &dtrif;</h3>
-            <div class='line_two'></div>
 
-            <div class="perso-box">
-              <label class="profile-label">First Name</label>
-              <input type="text">        
-              <label class="profile-label">Last Name</label>
-              <input type="text">
-              <label class="profile-label">Phone number</label>
-              <input type="text">
-              <label class="profile-label">Email</label>
-              <input type="text">           
-            </div>
-          <!-- address details -->
-          <h3 id="address-info-box">shipping address &dtrif;</h3>
-          <div class="address-box">
+      <div class="form_wrapper">
+        <fieldset class="msf_hide">
+          <h3>personal information</h3>
+          <div class="form-inputs">
+            <label class="profile-label">First Name</label>
+            <input type="text">        
+            <label class="profile-label">Last Name</label>
+            <input type="text">
+            <label class="profile-label">Phone number</label>
+            <input type="text">
+            <label class="profile-label">Email</label>
+            <input type="text">           
+          </div>
+            <input class="button button-dark " type="button" name="back" value="Back"  onclick="msf_btn_back()">
+            <input class="button button-dark " type="button" name="next" value="Next"  onclick="msf_btn_next()">
+          <div class="msf_bullet_o"></div>
+          <div class="msf_line"></div>
+        </fieldset>
+        
+        <fieldset class="msf_hide">
+          <h3>billing address</h3>
+          <div class="form-inputs">
             <label class="profile-label">address line 1</label>
             <input type="text" name="" id="">
             <label class="profile-label">address line 2</label>
@@ -87,13 +89,40 @@
             <input type="text" name="" id="">
             <label class="profile-label">country</label>
             <input type="text" name="" id="">
-            <input class="button button-dark checkout-form-btn" type="submit" value="go to secure payment" />
-          </div>  
-        </form>
-      </div>
-      </div>
+
+          </div>
+          <input class="button button-dark " type="button" name="back" value="Back"  onclick="msf_btn_back()">
+          <input class="button button-dark " type="button" name="next" value="Next"  onclick="msf_btn_next()">
+          <div class="msf_bullet_o"></div>
+          <div class="msf_line"></div>
+        </fieldset>
+        
+        <fieldset class="msf_hide">
+          <h3>shipment address</h3>
+          <div class="form-inputs">
+            <label class="profile-label">address line 1</label>
+            <input type="text" name="" id="">
+            <label class="profile-label">address line 2</label>
+            <input type="text" name="" id="">
+            <label class="profile-label">post code</label>
+            <input type="text" name="" id=""> 
+            <label class="profile-label">town/city</label>
+            <input type="text" name="" id=""> 
+            <label class="profile-label">county</label>
+            <input type="text" name="" id="">
+            <label class="profile-label">country</label>
+            <input type="text" name="" id="">
+          </div>
+          <input class="button button-dark" type="button" name="back" value="Back"  onclick="msf_btn_back()">
+          <input class="button button-dark" type="button" name="next" value="Next"  onclick="msf_btn_next()">
+          <input class="button button-dark checkout-form-btn" type="submit" value="go to secure payment" />
+          <div class="msf_bullet_o"></div>
+          <div class="msf_line"></div>
+        </fieldset>
+        </div>
     </div>
   </div>
+</section>
 <!-- payment -->
   <div class='credit-info'>
     <div class='credit-info-content'>
@@ -128,7 +157,6 @@
       <button class='button pay-btn'>pay</button>
     </div>
   </div>
-</section>
 
 {% endblock %}
 

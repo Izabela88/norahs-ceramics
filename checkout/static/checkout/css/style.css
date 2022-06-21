@@ -14,11 +14,11 @@
 
 .checkout-section {
     position: relative;
-    height: -o-calc(100vh + 350px);
+    height: -o-calc(100vh + 175px);
     /* opera */
-    height: -webkit-calc(100vh + 350px);
+    height: -webkit-calc(100vh + 175px);
     /* google, safari */
-    height: -moz-calc(100vh + 350px)
+    height: -moz-calc(100vh + 175px)
 }
 
 /* https://codepen.io/mha-el-sayed/pen/zLmoMX */
@@ -82,7 +82,6 @@
 
 
 .window {
-    height: 700px;
     width: 100%;
     background: #fff;
     display: -webkit-box;
@@ -92,6 +91,7 @@
     z-index: 10;
     align-items: baseline;
     justify-content: center;
+    height: 750px;
 }
 
 .order-info {
@@ -106,7 +106,6 @@
     -ms-flex-pack: center;
     justify-content: center;
     position: relative;
-    margin-top: -63px;
 }
 
 
@@ -332,11 +331,13 @@
 }
 
 .perso-box,
-.address-box {
+.address-box,
+.billing-address-box {
     display: none;
 }
 
 #personal-info-box,
+#billing-address-info-box,
 #address-info-box {
     height: 40px;
     cursor: pointer;
@@ -344,8 +345,9 @@
     text-transform: uppercase;
 }
 
-.perso-box.show-form, 
-.address-box.show-form {
+.perso-box.show-form,
+.address-box.show-form,
+.billing-address-box.show-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -410,6 +412,110 @@ input[type="text"] {
 
 .checkout-form-btn {
     width: 400px;
+}
+
+/* For the function */
+.msf_hide {
+    display: none;
+}
+
+.msf_show {
+    display: block;
+}
+
+.msf_bullet_o {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.msf_bullet_o>div {
+    height: 15px;
+    width: 15px;
+    margin: 20px 10px;
+    border-radius: 100px;
+    z-index: 2;
+}
+
+.msf_bullet {
+    background-color: lightgrey;
+
+}
+
+.msf_bullet_active {
+    background-color: darkgrey !important;
+}
+
+/* Just for decoration */
+
+.msf_line {
+    opacity: 0.3;
+    background: lightgrey;
+    height: 3px;
+    width: 70px;
+    display: block;
+    left: 50%;
+    margin-top: -29px;
+    margin-left: -35px;
+    position: absolute;
+    z-index: 1;
+}
+
+.form_wrapper {
+    width: 500px;
+    position: relative;
+    height: 700px;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px;
+    border: none;
+    padding: 10px 20px !important;
+    height: 100%;
+}
+
+fieldset h3 {
+    font-family: var(--font_one);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.form-inputs {
+    height: 470px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin: 5px 0px;
+}
+
+input[type="text"],
+input[type="email"] {
+    outline: none;
+    border: none;
+    padding: 5px 0px !important;
+    text-align: center;
+    transition: all 250ms;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    opacity: 0.5;
+}
+
+input[type="button"],
+input[type="submit"] {
+    width: 368px;
+    margin: 10px auto;
+    transition: all 150ms;
 }
 
 
