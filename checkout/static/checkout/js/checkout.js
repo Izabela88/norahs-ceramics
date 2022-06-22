@@ -45,7 +45,7 @@ window.onclick = function (e) {
 };
 
 // https://codepen.io/im1tta/pen/QGmYmN
-// dom variables
+// multistep form
 var msf_getFsTag = document.getElementsByTagName("fieldset");
 
 // declaring the active fieldset & the total fieldset count
@@ -119,4 +119,35 @@ function msf_btn_back() {
   msf_getFsTag[msf_form_nr].className = "msf_showhide";
 }
 
-console.log("loaded");
+// https://stackoverflow.com/questions/16262155/shipping-address-same-as-billing
+
+function sameAddressess() {
+  const checkBox = document.getElementById("myCheck");
+  const shipAdd = document.getElementById("address-ship");
+  const shipAddTwo = document.getElementById("address-ship-two");
+  const codeShip = document.getElementById("code-ship");
+  const townShip = document.getElementById("town-ship");
+  const countyShip = document.getElementById("county-ship");
+  const countryShip = document.getElementById("country-ship");
+  const billingAdd = document.getElementById("address-billing");
+  const billingAddTwo = document.getElementById("address-billing-two");
+  const codeBilling = document.getElementById("code-billing");
+  const townBilling = document.getElementById("town-billing");
+  const countyBilling = document.getElementById("county-billing");
+  const countryBilling = document.getElementById("country-billing");
+  if (checkBox.checked == true) {
+    billingAdd.value = shipAdd.value;
+    billingAddTwo.value = shipAddTwo.value;
+    codeBilling.value = codeShip.value;
+    townBilling.value = townShip.value;
+    countyBilling.value = countyShip.value;
+    countryBilling.value = countryShip.value;
+  } else {
+    billingAdd.value = "";
+    billingAddTwo.value = "";
+    codeBilling.value = "";
+    townBilling.value = "";
+    countyBilling.value = "";
+    countryBilling.value = "";
+  }
+}

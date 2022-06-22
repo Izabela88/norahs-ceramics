@@ -73,52 +73,56 @@
           <div class="msf_bullet_o"></div>
           <div class="msf_line"></div>
         </fieldset>
+
+        <fieldset class="msf_hide">
+          <h3>shipping address</h3>
+          <div class="form-inputs">
+            <label class="profile-label">address line 1</label>
+            <input type="text" name="" id="address-ship">
+            <label class="profile-label">address line 2</label>
+            <input type="text" name="" id="address-ship-two">
+            <label class="profile-label">post code</label>
+            <input type="text" name="" id="code-ship"> 
+            <label class="profile-label">town/city</label>
+            <input type="text" name="" id="town-ship"> 
+            <label class="profile-label">county</label>
+            <input type="text" name="" id="county-ship">
+            <label class="profile-label">country</label>
+            <input type="text" name="" id="country-ship">
+          </div>
+          <input class="button button-dark" type="button" name="back" value="Back"  onclick="msf_btn_back()">
+          <input class="button button-dark" type="button" name="next" value="Next"  onclick="msf_btn_next()">
+          <div class="msf_bullet_o"></div>
+          <div class="msf_line"></div>
+        </fieldset>
         
         <fieldset class="msf_hide">
           <h3>billing address</h3>
           <div class="form-inputs">
             <label class="profile-label">address line 1</label>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="address-billing">
             <label class="profile-label">address line 2</label>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="address-billing-two">
             <label class="profile-label">post code</label>
-            <input type="text" name="" id=""> 
+            <input type="text" name="" id="code-billing"> 
             <label class="profile-label">town/city</label>
-            <input type="text" name="" id=""> 
+            <input type="text" name="" id="town-billing"> 
             <label class="profile-label">county</label>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="county-billing">
             <label class="profile-label">country</label>
-            <input type="text" name="" id="">
-
+            <input type="text" name="" id="country-billing">
+            <div class="check-input">
+              <label for="myCheck">Same as shipping Address:</label>
+              <input type="checkbox" id="myCheck" onclick="sameAddressess()">
+            </div>
           </div>
           <input class="button button-dark " type="button" name="back" value="Back"  onclick="msf_btn_back()">
           <input class="button button-dark " type="button" name="next" value="Next"  onclick="msf_btn_next()">
-          <div class="msf_bullet_o"></div>
-          <div class="msf_line"></div>
-        </fieldset>
-        
-        <fieldset class="msf_hide">
-          <h3>shipment address</h3>
-          <div class="form-inputs">
-            <label class="profile-label">address line 1</label>
-            <input type="text" name="" id="">
-            <label class="profile-label">address line 2</label>
-            <input type="text" name="" id="">
-            <label class="profile-label">post code</label>
-            <input type="text" name="" id=""> 
-            <label class="profile-label">town/city</label>
-            <input type="text" name="" id=""> 
-            <label class="profile-label">county</label>
-            <input type="text" name="" id="">
-            <label class="profile-label">country</label>
-            <input type="text" name="" id="">
-          </div>
-          <input class="button button-dark" type="button" name="back" value="Back"  onclick="msf_btn_back()">
-          <input class="button button-dark" type="button" name="next" value="Next"  onclick="msf_btn_next()">
           <input class="button button-dark checkout-form-btn" type="submit" value="go to secure payment" />
+
           <div class="msf_bullet_o"></div>
           <div class="msf_line"></div>
-        </fieldset>
+        </fieldset>            
         </div>
     </div>
   </div>
