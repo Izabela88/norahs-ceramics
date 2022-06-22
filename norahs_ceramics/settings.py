@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     "basket",
     "phonenumber_field",
     "sweetify",
-    "checkout",
+    "checkout.apps.CheckoutConfig",
 ]
 
 SITE_ID = 2
@@ -208,3 +208,9 @@ PHONENUMBER_DEFAULT_FORMAT = "NATIONAL"
 
 
 SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
+
+
+# djangostripe
+
+STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")

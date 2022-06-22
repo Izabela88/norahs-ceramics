@@ -118,8 +118,7 @@
           </div>
           <input class="button button-dark " type="button" name="back" value="Back"  onclick="msf_btn_back()">
           <input class="button button-dark " type="button" name="next" value="Next"  onclick="msf_btn_next()">
-          <input class="button button-dark checkout-form-btn" type="submit" value="go to secure payment" />
-
+          <input id="submitBtn" class="button button-dark checkout-form-btn" type="submit" value="go to secure payment" />
           <div class="msf_bullet_o"></div>
           <div class="msf_line"></div>
         </fieldset>            
@@ -127,45 +126,13 @@
     </div>
   </div>
 </section>
-<!-- payment -->
-  <div class='credit-info'>
-    <div class='credit-info-content'>
-      <div class="credit-dropdown">
-        <p> Please select your card:</p> 
-        <div class='dropdown' id='card-dropdown'>
-          <div class='dropdown-btn' id='current-card'>Visa</div>
-        <div class='dropdown-select'>
-          <ul>
-            <li>Master Card</li>
-          </ul>
-        </div>
-      </div>
-      </div>
-        <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
-      <div class="card-info">
-        <label for="">Card Number</label> 
-        <input class='input-field'></input>
-        <label for="">Card Name Holder</label>
-        <input class='input-field'></input>
-      </div>
-      <div class='half-input-table'>
-        <div class="half">
-          <label for="">Expires date</label> 
-          <input class='input-field'></input>
-        </div>
-        <div class="half">
-          <label for="">CVC</label> 
-          <input class='input-field'></input>          
-        </div>
-      </div>
-      <button class='button pay-btn'>pay</button>
-    </div>
-  </div>
+
 
 {% endblock %}
 
 {% block extra_js %}
 {{ block.super }}
   <script src="{% static 'checkout/js/checkout.js' %}"></script>
+  
  
 {% endblock %}
