@@ -12,7 +12,9 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 import stripe
 from django.http import HttpRequest, JsonResponse
-from django.views.decorators.csrf import csrf_exempt # ne
+from django.views.decorators.csrf import csrf_exempt
+from checkout.forms import PersonalInformationForm, ShippingAddressForm
+from customer.forms import AddressForm
 
 
 class CheckoutView(View):
@@ -36,6 +38,9 @@ class CheckoutView(View):
             "checkout_products": basket_summary.sorted_products,
             "total_checkout_price": basket.total_basket_price,
             "vat_amount": basket_summary.vat_amount,
+            "pers_info_form": PersonalInformationForm(),
+            "shipment_address_form": ShippingAddressForm(),
+            "billing_address_form": AddressForm(),
         }
 
         return render(request, "checkout/checkout.html", context)
@@ -43,14 +48,15 @@ class CheckoutView(View):
 
 @csrf_exempt
 def stripe_config(request):
-    if request.method == 'GET':
-        stripe_config = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
+    if request.method == "GET":
+        stripe_config = {"publicKey": settings.STRIPE_PUBLISHABLE_KEY}
         return JsonResponse(stripe_config, safe=False)
+
 
 @csrf_exempt
 def create_checkout_session(request):
-    if request.method == 'GET':
-        domain_url = 'http://localhost:8000/'
+    if request.method == "GET":
+        domain_url = "http://localhost:8000/"
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             # Create new Checkout Session for the order
@@ -63,26 +69,28 @@ def create_checkout_session(request):
 
             # ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
             checkout_session = stripe.checkout.Session.create(
-                success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
-                cancel_url=domain_url + 'cancelled/',
-                payment_method_types=['card'],
-                mode='payment',
+                success_url=domain_url
+                + "checkout/success?session_id={CHECKOUT_SESSION_ID}",
+                cancel_url=domain_url + "checkout/cancelled/",
+                payment_method_types=["card"],
+                mode="payment",
                 line_items=[
                     {
-                        'name': 'T-shirt',
-                        'quantity': 1,
-                        'currency': 'gbp',
-                        'amount': '2000',
+                        "name": "T-shirt",
+                        "quantity": 1,
+                        "currency": "usd",
+                        "amount": "2000",
                     }
-                ]
+                ],
             )
-            return JsonResponse({'sessionId': checkout_session['id']})
+            return JsonResponse({"sessionId": checkout_session["id"]})
         except Exception as e:
-            return JsonResponse({'error': str(e)})
+            return JsonResponse({"error": str(e)})
+
 
 class SuccessView(TemplateView):
-    template_name = 'success.html'
+    template_name = "checkout/success.html"
 
 
 class CancelledView(TemplateView):
-    template_name = 'cancelled.html'
+    template_name = "checkout/cancelled.html"

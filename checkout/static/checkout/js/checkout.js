@@ -38,6 +38,7 @@ function msf_btn_next() {
 
   for (i = 0; i < msf_fs_i_count; ++i) {
     var msf_input_s = msf_fs.querySelectorAll("input")[i];
+    var email_format = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
     if (msf_input_s.getAttribute("type") === "button") {
       // nothing happens
     } else {
@@ -77,32 +78,32 @@ function msf_btn_back() {
 
 function sameAddressess() {
   const checkBox = document.getElementById("myCheck");
-  const shipAdd = document.getElementById("address-ship");
-  const shipAddTwo = document.getElementById("address-ship-two");
-  const codeShip = document.getElementById("code-ship");
-  const townShip = document.getElementById("town-ship");
-  const countyShip = document.getElementById("county-ship");
-  const countryShip = document.getElementById("country-ship");
-  const billingAdd = document.getElementById("address-billing");
-  const billingAddTwo = document.getElementById("address-billing-two");
-  const codeBilling = document.getElementById("code-billing");
-  const townBilling = document.getElementById("town-billing");
-  const countyBilling = document.getElementById("county-billing");
-  const countryBilling = document.getElementById("country-billing");
+  const shipAdd = document.getElementById("id_s_address_1");
+  const shipAddTwo = document.getElementById("id_s_address_2");
+  const codeShip = document.getElementById("id_s_postcode");
+  const townShip = document.getElementById("id_s_town");
+  const countyShip = document.getElementById("id_s_county");
+  const countryShip = document.getElementById("id_s_country");
+  const billingAdd = document.getElementById("id_address_1");
+  const billingAddTwo = document.getElementById("id_address_2");
+  const codeBilling = document.getElementById("id_postcode");
+  const townBilling = document.getElementById("id_town");
+  const countyBilling = document.getElementById("id_county");
+  const countryBilling = document.getElementById("id_country");
   if (checkBox.checked == true) {
-    billingAdd.value = shipAdd.value;
-    billingAddTwo.value = shipAddTwo.value;
-    codeBilling.value = codeShip.value;
-    townBilling.value = townShip.value;
-    countyBilling.value = countyShip.value;
-    countryBilling.value = countryShip.value;
+    shipAdd.value = billingAdd.value;
+    shipAddTwo.value = billingAddTwo.value;
+    codeShip.value = codeBilling.value;
+    townShip.value = townBilling.value;
+    countyShip.value = countyBilling.value;
+    countryShip.value = countryBilling.value;
   } else {
-    billingAdd.value = "";
-    billingAddTwo.value = "";
-    codeBilling.value = "";
-    townBilling.value = "";
-    countyBilling.value = "";
-    countryBilling.value = "";
+    shipAdd.value = "";
+    shipAddTwo.value = "";
+    codeShip.value = "";
+    townShip.value = "";
+    countyShip.value = "";
+    countryShip.value = "";
   }
 }
 
@@ -119,7 +120,7 @@ fetch("/checkout/config/")
     // Event handler
     document.querySelector("#submitBtn").addEventListener("click", () => {
       // Get Checkout Session ID
-      fetch("/checkout/create-checkout-session/")
+      fetch("/checkout/create_checkout_session/")
         .then((result) => {
           return result.json();
         })

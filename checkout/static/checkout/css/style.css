@@ -380,7 +380,9 @@
 .checkout-form input[type="text"],
 .checkout-form input[type="email"],
 .checkout-form input[type="tel"],
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
     height: 40px;
     width: 80%;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px, rgb(209 213 219) 0px 0px 0px 1px inset;
@@ -496,20 +498,6 @@ input {
     margin: 5px 0px;
 }
 
-input[type="text"],
-input[type="email"] {
-    outline: none;
-    border: none;
-    padding: 5px 0px !important;
-    text-align: center;
-    transition: all 250ms;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus {
-    opacity: 0.5;
-}
-
 input[type="button"],
 input[type="submit"] {
     width: 368px;
@@ -530,6 +518,12 @@ input[type="submit"] {
 
 input[type="checkbox"] {
     margin-left: -127px;
+    cursor: pointer;
+}
+
+.section {
+    height: 100vh;
+    position: relative;
 }
 
 

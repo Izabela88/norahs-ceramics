@@ -56,72 +56,78 @@
       </div>
 
       <div class="form_wrapper">
-        <fieldset class="msf_hide">
-          <h3>personal information</h3>
-          <div class="form-inputs">
-            <label class="profile-label">First Name</label>
-            <input type="text">        
-            <label class="profile-label">Last Name</label>
-            <input type="text">
-            <label class="profile-label">Phone number</label>
-            <input type="text">
-            <label class="profile-label">Email</label>
-            <input type="text">           
-          </div>
+        <form action="{% url 'checkout_session' %}" method="post">
+          {% csrf_token %}
+          <fieldset class="msf_hide">
+            <h3>personal information</h3>
+            <div class="form-inputs">
+              <label class="profile-label">First Name</label>
+              {{pers_info_form.p_first_name}}
+              <label class="profile-label">Last Name</label>
+              {{pers_info_form.p_last_name}}
+              <label class="profile-label">Phone number</label>
+              {{pers_info_form.p_phone_number}}
+              <label class="profile-label">Email</label>
+              {{pers_info_form.p_email}}
+            </div>
+              <input class="button button-dark " type="button" name="back" value="Back"  onclick="msf_btn_back()">
+              <input class="button button-dark " type="button" name="next" value="Next"  onclick="msf_btn_next()">
+            <div class="msf_bullet_o"></div>
+            <div class="msf_line"></div>
+          </fieldset>
+          <fieldset class="msf_hide">
+            <h3>billing address</h3>
+            <div class="form-inputs">
+              <label class="profile-label">address line 1</label>
+              {{billing_address_form.address_1}}
+              
+              <label class="profile-label">address line 2</label>
+              {{billing_address_form.address_2}}
+
+              <label class="profile-label">post code</label>
+              {{billing_address_form.postcode}}
+
+              <label class="profile-label">town/city</label>
+              {{billing_address_form.town}}
+
+              <label class="profile-label">county</label>
+              {{billing_address_form.county}}
+
+              <label class="profile-label">country</label>
+              {{billing_address_form.country}}
+            </div>
+            <input class="button button-dark" type="button" name="back" value="Back"  onclick="msf_btn_back()">
+            <input class="button button-dark" type="button" name="next" value="Next"  onclick="msf_btn_next()">
+            <div class="msf_bullet_o"></div>
+            <div class="msf_line"></div>
+          </fieldset>         
+          <fieldset class="msf_hide">
+            <h3>shipping address</h3>
+            <div class="form-inputs">
+              <label class="profile-label">address line 1</label>
+              {{shipment_address_form.s_address_1}}             
+              <label class="profile-label">address line 2</label>
+              {{shipment_address_form.s_address_2}}
+              <label class="profile-label">post code</label>
+              {{shipment_address_form.s_postcode}}
+              <label class="profile-label">town/city</label>
+              {{shipment_address_form.s_town}}
+              <label class="profile-label">county</label>
+              {{shipment_address_form.s_county}}
+              <label class="profile-label">country</label>
+              {{shipment_address_form.s_country}}          
+              <div class="check-input">
+                <label for="myCheck">Same as billing Address:</label>
+                <input type="checkbox" id="myCheck" onclick="sameAddressess()">
+              </div>
+            </div>
             <input class="button button-dark " type="button" name="back" value="Back"  onclick="msf_btn_back()">
             <input class="button button-dark " type="button" name="next" value="Next"  onclick="msf_btn_next()">
-          <div class="msf_bullet_o"></div>
-          <div class="msf_line"></div>
-        </fieldset>
-
-        <fieldset class="msf_hide">
-          <h3>shipping address</h3>
-          <div class="form-inputs">
-            <label class="profile-label">address line 1</label>
-            <input type="text" name="" id="address-ship">
-            <label class="profile-label">address line 2</label>
-            <input type="text" name="" id="address-ship-two">
-            <label class="profile-label">post code</label>
-            <input type="text" name="" id="code-ship"> 
-            <label class="profile-label">town/city</label>
-            <input type="text" name="" id="town-ship"> 
-            <label class="profile-label">county</label>
-            <input type="text" name="" id="county-ship">
-            <label class="profile-label">country</label>
-            <input type="text" name="" id="country-ship">
-          </div>
-          <input class="button button-dark" type="button" name="back" value="Back"  onclick="msf_btn_back()">
-          <input class="button button-dark" type="button" name="next" value="Next"  onclick="msf_btn_next()">
-          <div class="msf_bullet_o"></div>
-          <div class="msf_line"></div>
-        </fieldset>
-        
-        <fieldset class="msf_hide">
-          <h3>billing address</h3>
-          <div class="form-inputs">
-            <label class="profile-label">address line 1</label>
-            <input type="text" name="" id="address-billing">
-            <label class="profile-label">address line 2</label>
-            <input type="text" name="" id="address-billing-two">
-            <label class="profile-label">post code</label>
-            <input type="text" name="" id="code-billing"> 
-            <label class="profile-label">town/city</label>
-            <input type="text" name="" id="town-billing"> 
-            <label class="profile-label">county</label>
-            <input type="text" name="" id="county-billing">
-            <label class="profile-label">country</label>
-            <input type="text" name="" id="country-billing">
-            <div class="check-input">
-              <label for="myCheck">Same as shipping Address:</label>
-              <input type="checkbox" id="myCheck" onclick="sameAddressess()">
-            </div>
-          </div>
-          <input class="button button-dark " type="button" name="back" value="Back"  onclick="msf_btn_back()">
-          <input class="button button-dark " type="button" name="next" value="Next"  onclick="msf_btn_next()">
-          <input id="submitBtn" class="button button-dark checkout-form-btn" type="submit" value="go to secure payment" />
-          <div class="msf_bullet_o"></div>
-          <div class="msf_line"></div>
-        </fieldset>            
+            <input id="submitBtn" class="button button-dark checkout-form-btn" type="submit" value="go to secure payment" />
+            <div class="msf_bullet_o"></div>
+            <div class="msf_line"></div>
+          </fieldset>            
+        </form>
         </div>
     </div>
   </div>
