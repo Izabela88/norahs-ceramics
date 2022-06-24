@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from basket.models import Basket
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 import sweetify
 from django.conf import settings  # new
@@ -53,13 +53,6 @@ class CheckoutView(View):
 
 
 @csrf_exempt
-def stripe_config(request):
-    if request.method == "GET":
-        stripe_config = {"publicKey": settings.STRIPE_PUBLISHABLE_KEY}
-        return JsonResponse(stripe_config, safe=False)
-
-
-@csrf_exempt
 def create_checkout_session(request):
     if request.method == "POST":
         domain_url = "http://localhost:8000/"
@@ -68,18 +61,62 @@ def create_checkout_session(request):
         try:
             checkout_session = stripe.checkout.Session.create(
                 billing_address_collection="auto",
+                shipping_options=[
+                    {
+                        "shipping_rate_data": {
+                            "type": "fixed_amount",
+                            "fixed_amount": {
+                                "amount": 0,
+                                "currency": "gbp",
+                            },
+                            "display_name": "Free shipping",
+                            # Delivers between 5-7 business days
+                            "delivery_estimate": {
+                                "minimum": {
+                                    "unit": "business_day",
+                                    "value": 3,
+                                },
+                                "maximum": {
+                                    "unit": "business_day",
+                                    "value": 5,
+                                },
+                            },
+                        }
+                    },
+                    {
+                        "shipping_rate_data": {
+                            "type": "fixed_amount",
+                            "fixed_amount": {
+                                "amount": 500,
+                                "currency": "gbp",
+                            },
+                            "display_name": "Next day delivery",
+                            # Delivers in exactly 1 business day
+                            "delivery_estimate": {
+                                "minimum": {
+                                    "unit": "business_day",
+                                    "value": 1,
+                                },
+                                "maximum": {
+                                    "unit": "business_day",
+                                    "value": 1,
+                                },
+                            },
+                        }
+                    },
+                ],
                 shipping_address_collection={
                     "allowed_countries": ["GB"],
                 },
                 success_url=domain_url
                 + "checkout/success?session_id={CHECKOUT_SESSION_ID}",
-                cancel_url=domain_url + "checkout/cancelled/",
+                cancel_url=domain_url + "checkout/",
                 payment_method_types=["card"],
                 mode="payment",
                 line_items=checkout_products,
             )
         except Exception as e:
-            return str(e)
+            return HttpResponse(e)
         return redirect(checkout_session.url, code=303)
 
 
@@ -88,4 +125,7 @@ class SuccessView(TemplateView):
 
 
 class CancelledView(TemplateView):
-    template_name = "checkout/cancelled.html"
+    template_name = "checkout/checkout.html"
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponseRedirect(reverse("checkout"))

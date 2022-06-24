@@ -413,6 +413,8 @@ input[type="tel"] {
 
 .checkout-form-btn {
     width: 400px;
+    margin-top: 15px;
+    margin-bottom: 30px
 }
 
 /* For the function */
