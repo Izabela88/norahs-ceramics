@@ -15,6 +15,8 @@ from django.http import HttpRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from checkout.forms import PersonalInformationForm, ShippingAddressForm
 from customer.forms import AddressForm
+from order.models import Order
+from order.data_objects import OrderStatus
 
 
 class CheckoutView(View):
@@ -44,6 +46,8 @@ class CheckoutView(View):
             }
             checkout_products.append(checkout_product_data)
         request.session["checkout_products"] = checkout_products
+        request.session["basket_id"] = str(basket.id)
+
         context = {
             "checkout_products": basket_summary.sorted_products,
             "total_checkout_price": basket.total_basket_price,
@@ -57,7 +61,20 @@ def create_checkout_session(request):
     if request.method == "POST":
         domain_url = "http://localhost:8000/"
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        checkout_products = request.session["checkout_products"]
+        try:
+            checkout_products = request.session["checkout_products"]
+            basket_id = request.session["basket_id"]
+        except KeyError as e:
+            return HttpResponseRedirect(reverse("home"))
+        basket = Basket.objects.filter(id=basket_id).first()
+        if not basket:
+            sweetify.toast(
+                request,
+                "no basket!",
+                timer=2500,
+                position="top",
+            )
+            return HttpResponseRedirect(reverse("home"))
         try:
             checkout_session = stripe.checkout.Session.create(
                 billing_address_collection="auto",
@@ -117,6 +134,19 @@ def create_checkout_session(request):
             )
         except Exception as e:
             return HttpResponse(e)
+        if request.user.is_authenticated:
+            order_user = request.user
+        else:
+            order_user = None
+        Order.objects.create(
+            user=order_user,
+            status=OrderStatus.PENDING.value,
+            bill_pence=sum([i["amount"] for i in checkout_products]),
+            transaction_id=checkout_session["payment_intent"],
+        )
+        # basket.delete()
+        # request.session.pop("checkout_products", None)
+        # request.session.pop("basket_id", None)
         return redirect(checkout_session.url, code=303)
 
 
@@ -133,62 +163,66 @@ class CancelledView(TemplateView):
 
 endpoint_secret = settings.STRIPE_WEBHOOK_KEY
 
+
 @csrf_exempt
 def my_webhook_view(request):
-  payload = request.body
-  sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-  event = None
+    payload = request.body
+    sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
+    event = None
 
-  try:
-    event = stripe.Webhook.construct_event(
-      payload, sig_header, endpoint_secret
-    )
-  except ValueError as e:
-    # Invalid payload
-    return HttpResponse(status=400)
-  except stripe.error.SignatureVerificationError as e:
-    # Invalid signature
-    return HttpResponse(status=400)
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
 
-  # Handle the checkout.session.completed event
-  if event['type'] == 'checkout.session.completed':
-    session = event['data']['object']
+    # Handle the checkout.session.completed event
+    if event["type"] == "checkout.session.completed":
+        session = event["data"]["object"]
 
-    # Save an order in your database, marked as 'awaiting payment'
-    create_order(session)
+        # Save an order in your database, marked as 'awaiting payment'
+        create_order(session)
 
-    # Check if the order is already paid (for example, from a card payment)
-    #
-    # A delayed notification payment will have an `unpaid` status, as
-    # you're still waiting for funds to be transferred from the customer's
-    # account.
-    if session.payment_status == "paid":
-      # Fulfill the purchase
-      fulfill_order(session)
+        # Check if the order is already paid (for example, from a card payment)
+        #
+        # A delayed notification payment will have an `unpaid` status, as
+        # you're still waiting for funds to be transferred from the customer's
+        # account.
+        if session.payment_status == "paid":
+            # Fulfill the purchase
+            fulfill_order(session)
 
-  elif event['type'] == 'checkout.session.async_payment_succeeded':
-    session = event['data']['object']
+    elif event["type"] == "checkout.session.async_payment_succeeded":
+        session = event["data"]["object"]
 
-    # Fulfill the purchase
-    fulfill_order(session)
+        # Fulfill the purchase
+        fulfill_order(session)
 
-  elif event['type'] == 'checkout.session.async_payment_failed':
-    session = event['data']['object']
+    elif event["type"] == "checkout.session.async_payment_failed":
+        session = event["data"]["object"]
 
-    # Send an email to the customer asking them to retry their order
-    email_customer_about_failed_payment(session)
+        # Send an email to the customer asking them to retry their order
+        email_customer_about_failed_payment(session)
 
-  # Passed signature verification
-  return HttpResponse(status=200)
+    # Passed signature verification
+    return HttpResponse(status=200)
+
 
 def fulfill_order(session):
-  # TODO: fill me in
-  print("Fulfilling order")
+    # TODO: fill me in
+    print("Fulfilling order")
+
 
 def create_order(session):
-  # TODO: fill me in
-  print("Creating order")
+    # TODO: fill me in
+    print("Creating order")
+
 
 def email_customer_about_failed_payment(session):
-  # TODO: fill me in
-  print("Emailing customer")
+    # TODO: fill me in
+    print("Emailing customer")
