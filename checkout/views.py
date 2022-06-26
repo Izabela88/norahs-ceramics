@@ -8,7 +8,7 @@ from django.conf import settings  # new
 from django.http import JsonResponse
 from django.views import View
 from django.views.generic.base import TemplateView
-
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 import stripe
 from django.http import HttpRequest, JsonResponse
@@ -129,3 +129,66 @@ class CancelledView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         return HttpResponseRedirect(reverse("checkout"))
+
+
+endpoint_secret = settings.STRIPE_WEBHOOK_KEY
+
+@csrf_exempt
+def my_webhook_view(request):
+  payload = request.body
+  sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+  event = None
+
+  try:
+    event = stripe.Webhook.construct_event(
+      payload, sig_header, endpoint_secret
+    )
+  except ValueError as e:
+    # Invalid payload
+    return HttpResponse(status=400)
+  except stripe.error.SignatureVerificationError as e:
+    # Invalid signature
+    return HttpResponse(status=400)
+
+  # Handle the checkout.session.completed event
+  if event['type'] == 'checkout.session.completed':
+    session = event['data']['object']
+
+    # Save an order in your database, marked as 'awaiting payment'
+    create_order(session)
+
+    # Check if the order is already paid (for example, from a card payment)
+    #
+    # A delayed notification payment will have an `unpaid` status, as
+    # you're still waiting for funds to be transferred from the customer's
+    # account.
+    if session.payment_status == "paid":
+      # Fulfill the purchase
+      fulfill_order(session)
+
+  elif event['type'] == 'checkout.session.async_payment_succeeded':
+    session = event['data']['object']
+
+    # Fulfill the purchase
+    fulfill_order(session)
+
+  elif event['type'] == 'checkout.session.async_payment_failed':
+    session = event['data']['object']
+
+    # Send an email to the customer asking them to retry their order
+    email_customer_about_failed_payment(session)
+
+  # Passed signature verification
+  return HttpResponse(status=200)
+
+def fulfill_order(session):
+  # TODO: fill me in
+  print("Fulfilling order")
+
+def create_order(session):
+  # TODO: fill me in
+  print("Creating order")
+
+def email_customer_about_failed_payment(session):
+  # TODO: fill me in
+  print("Emailing customer")

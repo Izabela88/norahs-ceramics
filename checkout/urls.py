@@ -11,4 +11,5 @@ urlpatterns = [
     ),
     path("success/", views.SuccessView.as_view()),  # new
     path("", views.CancelledView.as_view()),  # new
+    path("payment_webhook", views.my_webhook_view),  # new
 ]
