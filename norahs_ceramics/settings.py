@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "sweetify",
     "checkout.apps.CheckoutConfig",
-    "order"
+    "order",
 ]
 
 SITE_ID = 2

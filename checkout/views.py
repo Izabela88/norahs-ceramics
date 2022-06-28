@@ -15,7 +15,7 @@ from django.http import HttpRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from checkout.forms import PersonalInformationForm, ShippingAddressForm
 from customer.forms import AddressForm
-from order.models import Order
+from order.models import Order, OrderProduct
 from order.data_objects import OrderStatus
 
 
@@ -23,7 +23,6 @@ class CheckoutView(View):
     def get(self, request):
 
         basket = Basket.get_basket(request)
-
         if not basket.basket_products.count():
             sweetify.toast(
                 self.request,
@@ -36,15 +35,19 @@ class CheckoutView(View):
         else:
             basket_summary = basket.basket_summary()
 
-        checkout_products = []
+        checkout_products = {"line_items": [], "product_ids": []}
         for product_summary in basket_summary.sorted_products:
-            checkout_product_data = {
+            line_item = {
                 "name": product_summary["product"].name,
                 "quantity": product_summary["qty"],
                 "currency": "gbp",
-                "amount": product_summary["total_product_price"],
+                "amount": product_summary["product"].price_pence,
             }
-            checkout_products.append(checkout_product_data)
+            checkout_products["line_items"].append(line_item)
+            for _ in range(product_summary["qty"]):
+                checkout_products["product_ids"].append(
+                    product_summary["product"].id
+                )
         request.session["checkout_products"] = checkout_products
         request.session["basket_id"] = str(basket.id)
 
@@ -64,6 +67,7 @@ def create_checkout_session(request):
         try:
             checkout_products = request.session["checkout_products"]
             basket_id = request.session["basket_id"]
+
         except KeyError as e:
             return HttpResponseRedirect(reverse("home"))
         basket = Basket.objects.filter(id=basket_id).first()
@@ -130,7 +134,7 @@ def create_checkout_session(request):
                 cancel_url=domain_url + "checkout/",
                 payment_method_types=["card"],
                 mode="payment",
-                line_items=checkout_products,
+                line_items=checkout_products["line_items"],
             )
         except Exception as e:
             return HttpResponse(e)
@@ -138,12 +142,19 @@ def create_checkout_session(request):
             order_user = request.user
         else:
             order_user = None
-        Order.objects.create(
+        order = Order.objects.create(
             user=order_user,
             status=OrderStatus.PENDING.value,
-            bill_pence=sum([i["amount"] for i in checkout_products]),
+            bill_pence=sum(
+                [i["amount"] for i in checkout_products["line_items"]]
+            ),
             transaction_id=checkout_session["payment_intent"],
         )
+        for product_id in checkout_products["product_ids"]:
+            OrderProduct.objects.create(
+                order_id=order.id, product_id=product_id
+            )
+
         # basket.delete()
         # request.session.pop("checkout_products", None)
         # request.session.pop("basket_id", None)
