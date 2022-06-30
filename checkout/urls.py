@@ -9,7 +9,6 @@ urlpatterns = [
         views.create_checkout_session,
         name="checkout_session",
     ),
-    path("success/", views.SuccessView.as_view()),  # new
-    path("", views.CancelledView.as_view()),  # new
-    path("payment_webhook", views.my_webhook_view),  # new
+    path("success/<str:session_id>", views.SuccessView.as_view()),  # new
+    path("cancelled/", views.CancelledView.as_view()),  # new # new
 ]

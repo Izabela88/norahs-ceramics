@@ -2,6 +2,7 @@ from django.db import models
 from norahs_ceramics.model_mixin import TimestapModel
 from customer.models import User, AddressDetails
 from product.models import Product
+from uuid import uuid4
 
 
 class Order(TimestapModel):
@@ -14,6 +15,10 @@ class Order(TimestapModel):
     status = models.CharField(max_length=300, null=False)
     bill_pence = models.IntegerField()
     transaction_id = models.CharField(max_length=300)
+    order_no = models.UUIDField(default=uuid4, editable=False)
+
+    def __str__(self):
+        return self.transaction_id
 
 
 class OrderProduct(TimestapModel):
@@ -29,3 +34,6 @@ class OrderProduct(TimestapModel):
         null=False,
         related_name="order_products",
     )
+
+    def __str__(self):
+        return str(self.product)

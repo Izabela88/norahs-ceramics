@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from basket.models import Basket
 from django.http import HttpResponseRedirect, HttpResponse
@@ -59,11 +59,13 @@ class CheckoutView(View):
         return render(request, "checkout/checkout.html", context)
 
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == "POST":
         domain_url = "http://localhost:8000/"
-        stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_products = request.session["checkout_products"]
             basket_id = request.session["basket_id"]
@@ -130,7 +132,7 @@ def create_checkout_session(request):
                     "allowed_countries": ["GB"],
                 },
                 success_url=domain_url
-                + "checkout/success?session_id={CHECKOUT_SESSION_ID}",
+                + "checkout/success/{CHECKOUT_SESSION_ID}",
                 cancel_url=domain_url + "checkout/",
                 payment_method_types=["card"],
                 mode="payment",
@@ -138,102 +140,65 @@ def create_checkout_session(request):
             )
         except Exception as e:
             return HttpResponse(e)
+
+        return redirect(checkout_session.url, code=303)
+
+
+class SuccessView(View):
+    def get(self, request, session_id):
+        context = {}
+        session = stripe.checkout.Session.retrieve(
+            session_id
+        )
+        context["customer"] = stripe.Customer.retrieve(session.customer)
+
+        try:
+            checkout_products = request.session["checkout_products"]
+            basket_id = request.session["basket_id"]
+
+        except KeyError as e:
+            sweetify.toast(
+                request,
+                "no products in the basket!",
+                timer=2500,
+                position="top",
+            )
+            return HttpResponseRedirect(reverse("home"))
         if request.user.is_authenticated:
             order_user = request.user
         else:
             order_user = None
         order = Order.objects.create(
             user=order_user,
-            status=OrderStatus.PENDING.value,
+            status=OrderStatus.PAID.value,
             bill_pence=sum(
                 [i["amount"] for i in checkout_products["line_items"]]
             ),
-            transaction_id=checkout_session["payment_intent"],
+            transaction_id=session["payment_intent"],
         )
         for product_id in checkout_products["product_ids"]:
             OrderProduct.objects.create(
                 order_id=order.id, product_id=product_id
             )
-
-        # basket.delete()
-        # request.session.pop("checkout_products", None)
-        # request.session.pop("basket_id", None)
-        return redirect(checkout_session.url, code=303)
-
-
-class SuccessView(TemplateView):
-    template_name = "checkout/success.html"
+        basket_id = request.session["basket_id"]
+        basket = Basket.objects.filter(id=basket_id).first()
+        if basket:
+            basket.delete()
+            request.session.pop("checkout_products", None)
+            request.session.pop("basket_id", None)
+        order = Order.objects.first()
+        context["order"] = order
+        return render(request, "checkout/success.html", context)
 
 
 class CancelledView(TemplateView):
     template_name = "checkout/checkout.html"
 
     def get(self, request, *args, **kwargs):
-        return HttpResponseRedirect(reverse("checkout"))
-
-
-endpoint_secret = settings.STRIPE_WEBHOOK_KEY
-
-
-@csrf_exempt
-def my_webhook_view(request):
-    payload = request.body
-    sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
-    event = None
-
-    try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
+        sweetify.toast(
+            request,
+            "payment process has been cancelled!",
+            timer=2500,
+            position="top",
         )
-    except ValueError as e:
-        # Invalid payload
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
-        return HttpResponse(status=400)
-
-    # Handle the checkout.session.completed event
-    if event["type"] == "checkout.session.completed":
-        session = event["data"]["object"]
-
-        # Save an order in your database, marked as 'awaiting payment'
-        create_order(session)
-
-        # Check if the order is already paid (for example, from a card payment)
-        #
-        # A delayed notification payment will have an `unpaid` status, as
-        # you're still waiting for funds to be transferred from the customer's
-        # account.
-        if session.payment_status == "paid":
-            # Fulfill the purchase
-            fulfill_order(session)
-
-    elif event["type"] == "checkout.session.async_payment_succeeded":
-        session = event["data"]["object"]
-
-        # Fulfill the purchase
-        fulfill_order(session)
-
-    elif event["type"] == "checkout.session.async_payment_failed":
-        session = event["data"]["object"]
-
-        # Send an email to the customer asking them to retry their order
-        email_customer_about_failed_payment(session)
-
-    # Passed signature verification
-    return HttpResponse(status=200)
-
-
-def fulfill_order(session):
-    # TODO: fill me in
-    print("Fulfilling order")
-
-
-def create_order(session):
-    # TODO: fill me in
-    print("Creating order")
-
-
-def email_customer_about_failed_payment(session):
-    # TODO: fill me in
-    print("Emailing customer")
+        return HttpResponseRedirect(reverse("checkout"))
