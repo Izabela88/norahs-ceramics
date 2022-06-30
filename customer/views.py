@@ -1,5 +1,5 @@
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,9 +7,12 @@ from customer.forms import UpdatePersonalInformationForm, AddressForm
 from django.contrib import messages
 from customer.models import User
 from django.views.generic.edit import DeleteView
+from django.views.generic import ListView, DetailView
+
 import sweetify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import PasswordChangeView
+from order.models import Order
 
 
 class CustomerProfileView(LoginRequiredMixin, View):
@@ -98,3 +101,11 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = "change_password.html"
     success_message = "your password has been changed successfully"
     success_url = reverse_lazy("home")
+
+
+class CustomerOrderHistoryListView(ListView):
+    model = Order
+    paginate_by = 4
+    template_name = "customer/customer_orders.html"
+
+   

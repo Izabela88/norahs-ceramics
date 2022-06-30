@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'customer/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="customer-profile-section">
+    <div class="customer-container">
+        <h2>Your order history</h2>
+        <table id="orders">
+          <tr>
+            <th>order number</th>
+            <th>date</th>
+            <th>status</th>
+          </tr>
+          {% for order in object_list %}
+            <tr>
+              <td><a href="#">{{order.order_no}}</a></td>
+              <td>{{order.created_at}}</td>
+              <td>{{order.status}}</td>
+            </tr>
+          {% endfor %}        
+        </table>      
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script src="{% static 'customer/js/customer.js' %}"></script> 
+{% endblock %}
