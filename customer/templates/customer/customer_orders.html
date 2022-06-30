@@ -9,21 +9,25 @@
 <section class="customer-profile-section">
     <div class="customer-container">
         <h2>Your order history</h2>
+        {% if order %}
         <table id="orders">
           <tr>
             <th>order number</th>
             <th>date</th>
             <th>status</th>
           </tr>
-          {% for order in object_list %}
-            <tr>
-              <td><a href="#">{{order.order_no}}</a></td>
-              <td>{{order.created_at}}</td>
-              <td>{{order.status}}</td>
-            </tr>
-          {% endfor %}        
-        </table>      
-    </div>
+            {% for order in object_list %}
+              <tr>
+                <td><a href="#">{{order.order_no}}</a></td>
+                <td>{{order.created_at}}</td>
+                <td>{{order.status}}</td>
+              </tr>
+            {% endfor %}
+          </table>      
+          {% else %}
+              <p>no orders</p>
+          {% endif %}     
+          </div>
 </section>
 {% endblock %}
 

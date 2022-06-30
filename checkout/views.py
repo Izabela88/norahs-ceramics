@@ -21,7 +21,14 @@ from order.data_objects import OrderStatus
 
 class CheckoutView(View):
     def get(self, request):
-
+        if request.session.pop("cancel_message", None):
+            sweetify.toast(
+                request,
+                "the payment process has been canceled!",
+                timer=4500,
+                position="top",
+                icon="error",
+            )
         basket = Basket.get_basket(request)
         if not basket.basket_products.count():
             sweetify.toast(
@@ -29,6 +36,7 @@ class CheckoutView(View):
                 "your basket is empty!",
                 timer=2500,
                 position="top",
+                icon="info",
             )
             return HttpResponseRedirect(reverse("home"))
 
@@ -76,9 +84,10 @@ def create_checkout_session(request):
         if not basket:
             sweetify.toast(
                 request,
-                "no basket!",
+                "empty basket!",
                 timer=2500,
                 position="top",
+                icon="info",
             )
             return HttpResponseRedirect(reverse("home"))
         try:
@@ -133,7 +142,7 @@ def create_checkout_session(request):
                 },
                 success_url=domain_url
                 + "checkout/success/{CHECKOUT_SESSION_ID}",
-                cancel_url=domain_url + "checkout/",
+                cancel_url=domain_url + "checkout/cancel",
                 payment_method_types=["card"],
                 mode="payment",
                 line_items=checkout_products["line_items"],
@@ -160,6 +169,7 @@ class SuccessView(View):
                 "no products in the basket!",
                 timer=2500,
                 position="top",
+                icon="info",
             )
             return HttpResponseRedirect(reverse("home"))
         if request.user.is_authenticated:
@@ -193,10 +203,5 @@ class CancelledView(TemplateView):
     template_name = "checkout/checkout.html"
 
     def get(self, request, *args, **kwargs):
-        sweetify.toast(
-            request,
-            "payment process has been cancelled!",
-            timer=2500,
-            position="top",
-        )
+        request.session["cancel_message"] = True
         return HttpResponseRedirect(reverse("checkout"))

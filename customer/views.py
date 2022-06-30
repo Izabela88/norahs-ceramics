@@ -91,7 +91,9 @@ class DeleteCustomerProfile(DeleteView):
 
     def get_success_url(self):
         sweetify.toast(
-            self.request, "your account has been deleted successfully"
+            self.request,
+            "your account has been deleted successfully",
+            icon="info",
         )
         return reverse("home")
 
@@ -107,5 +109,3 @@ class CustomerOrderHistoryListView(ListView):
     model = Order
     paginate_by = 4
     template_name = "customer/customer_orders.html"
-
-   
