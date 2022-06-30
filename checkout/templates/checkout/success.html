@@ -9,10 +9,9 @@
 {% block content %}
 <section class="section">
     <div class="container">
-      <div class="order-details">
-          <p>Hello {{customer.name}}! Your payment has been succeeded.</p>
-          <p>Your order number is {{order.order_no}} </p>
-          <p>We will notify you immediately as soon as your order is shipped. If you have any questions about your order, please send a message in the "contact" section</p>
+      <div 
+      style="width: 1000px;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;">
+        <p style="font-size: 20px; margin: 30px auto; width: 80%;line-height: 40px">Hello {{customer.name}}! <br> Your payment has been succeeded. <br> Your order number is: {{order.order_no}}. <br> We will notify you immediately as soon as your order is shipped. <br> If you have any questions about this order, please send a message in the "contact" section.</p>
       </div>
     </div>
   </section>
@@ -23,5 +22,3 @@
 {{ block.super }}
   <script src="{% static 'checkout/js/checkout.js' %}"></script>
 {% endblock %}
-
-<!-- 4242 4242 4242 4242 -->

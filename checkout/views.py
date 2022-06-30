@@ -147,9 +147,7 @@ def create_checkout_session(request):
 class SuccessView(View):
     def get(self, request, session_id):
         context = {}
-        session = stripe.checkout.Session.retrieve(
-            session_id
-        )
+        session = stripe.checkout.Session.retrieve(session_id)
         context["customer"] = stripe.Customer.retrieve(session.customer)
 
         try:
