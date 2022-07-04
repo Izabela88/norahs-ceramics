@@ -8,6 +8,7 @@ function controlActiveClass() {
   for (let i = 0; i < menuLength; i++) {
     if (menuItem[i].href === currentLocation) {
       menuItem[i].classList.add("active");
+      console.log(currentLocation);
     } else {
       menuItem[i].classList.remove("active");
     }

@@ -19,7 +19,7 @@ from order.models import Order, OrderProduct
 from order.data_objects import OrderStatus
 
 
-class CheckoutView(View):
+class OrderSummaryView(View):
     def get(self, request):
         if request.session.pop("cancel_message", None):
             sweetify.toast(
@@ -84,7 +84,7 @@ def create_checkout_session(request):
         if not basket:
             sweetify.toast(
                 request,
-                "empty basket!",
+                "the basket is empty!",
                 timer=2500,
                 position="top",
                 icon="info",

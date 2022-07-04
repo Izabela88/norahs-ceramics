@@ -50,11 +50,29 @@ class Basket(TimestapModel):
         return len(basket_products)
 
     @classmethod
+    def get_or_create_basket_with_id(cls, id):
+        basket = cls.objects.filter(id=id).first()
+        if not basket:
+            basket = cls(id=id)
+            basket.save()
+        return basket
+
+    @classmethod
     def get_basket(cls, request):
+        session_basket_id = request.session.get("basket_id")
         if request.user.is_authenticated:
-            basket = request.user.get_or_create_user_basket()
-        elif basket_id := request.session.get("basket_id"):
-            basket = cls.objects.filter(id=basket_id).first()
+            basket = request.user.get_user_basket()
+            if not basket:
+                if session_basket_id:
+                    basket = cls.get_or_create_basket_with_id(
+                        session_basket_id
+                    )
+                    basket.customer_id = request.user.id
+                    basket.save()
+                else:
+                    basket = request.user.create_user_basket()
+        elif session_basket_id:
+            basket = cls.objects.filter(id=session_basket_id).first()
             if not basket:
                 basket = cls()
                 basket.save()

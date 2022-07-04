@@ -41,113 +41,40 @@
   </div>
   </main>
 <!-------------------------- BEST SELLERS SECTION ----------------------------->
-<section class="b-sellers-section">
+<section id="best-sellers" class="b-sellers-section">
   <h1>Best sellers</h1>
   <div class="container">
     <div class="cards-container center">
       <ul class="cards">
-        <li class="card cards__item">
-          <div class="card__frame">
-            <div class="card__picture">
-              <img src="{% static 'images/bowl.jpg' %}" alt="" width="120">
-            </div>
-            <h4 class="card__title">Bowl 500ml</h4>
-            <ul class="item_rate">
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-            </ul>
-            <h3>£12,99</h3>
-            <div class="add-btn"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-          </div>
-          <div class="card__overlay"></div>
-          <div class="card__content">
-            <div class="category">
-              <img src="{% static 'images/hash.png' %}" alt="">
-              <p>ceramics</p>
-            </div>
-            <div class="category">
-              <img src="{% static 'images/hash.png' %}" alt="">
-              <p>bowls</p>
-            </div>
-            <p>An ethically crafted ceramic bowl made with a gorgeous off white stoneware 
-              clay which retains heat well. This hand thrown bowl is 
-              dishwasher & microwave safe and beautifully decorated with a unique glaze.</p>
-              <div class="more-btn">
-                check details
+        {% if best_sellers %}
+        {% for best_seller in best_sellers %}
+          <li class="card cards__item">
+            <div class="card__frame">
+              <div class="card__picture">
+                {% if best_seller.product.image %}
+                    <img src="{{ best_seller.product.image.url }}" width="120" alt="">
+                {% else %}
+                    <img src="{% static 'images/no-pictures.png' %}" alt="">
+                {%  endif %}
               </div>
-          </div>
-        </li>
-        <li class="card cards__item">
-          <div class="card__frame">
-            <div class="card__picture">
-              <img src="{% static 'images/bowl.jpg' %}" alt="" width="120">
+              <h4 class="card__title">{{best_seller.product.name}}</h4>
+              <ul class="item_rate">
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+                <li>☆</li>
+              </ul>
+              <h3>£{{best_seller.product.price_pence | currency}}</h3>
+              <a class="add-btn" href="{% url 'product_detail' slug=best_seller.product.slug %}">more</a>
+            </div>            
+            <div class="card__content">
+              <p>{{best_seller.product.short_description}}</p>
+              
             </div>
-            <h4 class="card__title">Bowl 500ml</h4>
-            <ul class="item_rate">
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-            </ul>
-            <h3>£12,99</h3>
-            <div class="add-btn"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-          </div>
-          <div class="card__overlay"></div>
-          <div class="card__content">
-            <div class="category">
-              <img src="{% static 'images/hash.png' %}" alt="">
-              <p>ceramics</p>
-            </div>
-            <div class="category">
-              <img src="{% static 'images/hash.png' %}" alt="">
-              <p>bowls</p>
-            </div>
-            <p>An ethically crafted ceramic bowl made with a gorgeous off white stoneware 
-              clay which retains heat well. This hand thrown bowl is 
-              dishwasher & microwave safe and beautifully decorated with a unique glaze.</p>
-              <div class="more-btn">
-                check details
-              </div>
-          </div>
-        </li>
-        <li class="card cards__item">
-          <div class="card__frame">
-            <div class="card__picture">
-              <img src="{% static 'images/bowl.jpg' %}" alt="" width="120">
-            </div>
-            <h4 class="card__title">Bowl 500ml</h4>
-            <ul class="item_rate">
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-              <li>☆</li>
-            </ul>
-            <h3>£12,99</h3>
-            <div class="add-btn"><img src="{% static 'images/cart-icon.png' %}" alt=""></div>
-          </div>
-          <div class="card__overlay"></div>
-          <div class="card__content">
-            <div class="category">
-              <img src="{% static 'images/hash.png' %}" alt="">
-              <p>ceramics</p>
-            </div>
-            <div class="category">
-              <img src="{% static 'images/hash.png' %}" alt="">
-              <p>bowls</p>
-            </div>
-            <p>An ethically crafted ceramic bowl made with a gorgeous off white stoneware 
-              clay which retains heat well. This hand thrown bowl is 
-              dishwasher & microwave safe and beautifully decorated with a unique glaze.</p>
-              <div class="more-btn">
-                check details
-              </div>
-          </div>
-        </li>
+          </li>
+          {% endfor %}
+          {% endif %}
       </ul>
     </div>
     </div>
