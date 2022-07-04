@@ -60,7 +60,10 @@ class CustomerProfileView(LoginRequiredMixin, View):
         )
 
 
-class CustomerAddressView(View):
+class CustomerAddressView(LoginRequiredMixin, View):
+    login_url = "/accounts/login/"
+    redirect_field_name = "account_login"
+
     def post(self, request, id):
         address_form = AddressForm(
             instance=request.user.address_details, data=request.POST or None
@@ -85,9 +88,11 @@ class CustomerAddressView(View):
         )
 
 
-class DeleteCustomerProfile(DeleteView):
+class DeleteCustomerProfile(LoginRequiredMixin, DeleteView):
     model = User
     template_name = "confirm_delete_profile.html"
+    login_url = "/accounts/login/"
+    redirect_field_name = "account_login"
 
     def get_success_url(self):
         sweetify.toast(
@@ -98,11 +103,15 @@ class DeleteCustomerProfile(DeleteView):
         return reverse("home")
 
 
-class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+class ChangePasswordView(
+    LoginRequiredMixin, SuccessMessageMixin, PasswordChangeView
+):
     model = User
     template_name = "change_password.html"
     success_message = "your password has been changed successfully"
     success_url = reverse_lazy("home")
+    login_url = "/accounts/login/"
+    redirect_field_name = "account_login"
 
 
 class CustomerOrderHistoryListView(LoginRequiredMixin, ListView):
