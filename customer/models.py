@@ -10,7 +10,7 @@ class User(AbstractUser):
         "AddressDetails", null=True, on_delete=models.CASCADE
     )
 
-    def get_or_create_user_basket(self):
+    def get_user_basket(self):
         from basket.models import Basket
 
         user_basket = (
@@ -18,9 +18,12 @@ class User(AbstractUser):
             .order_by("-created_at")
             .first()
         )
-        if not user_basket:
-            user_basket = Basket.objects.create(customer_id=self.id)
         return user_basket
+
+    def create_user_basket(self):
+        from basket.models import Basket
+
+        return Basket.objects.create(customer_id=self.id)
 
 
 class AddressDetails(TimestapModel):

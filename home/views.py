@@ -1,5 +1,7 @@
 from django.views.generic import TemplateView
 from product.models import Product
+from order.models import OrderProduct
+from django.db.models import Count
 
 
 class HomeView(TemplateView):
@@ -11,4 +13,7 @@ class HomeView(TemplateView):
             "-created_at"
         )[:10]
 
+        context["best_sellers"] = OrderProduct.objects.annotate(
+            count=Count("product_id")
+        ).order_by("-count")[:3]
         return context

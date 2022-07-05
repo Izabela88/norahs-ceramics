@@ -15,3 +15,9 @@ minSlider.oninput = function () {
 maxSlider.oninput = function () {
   outputMax.innerHTML = this.value;
 };
+
+const btn = document.querySelector("#filters-button");
+
+btn.addEventListener("click", () => {
+  document.querySelector(".priceSlider").classList.toggle("show-filters");
+});
