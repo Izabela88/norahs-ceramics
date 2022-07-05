@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     "sweetify",
     "checkout.apps.CheckoutConfig",
     "order",
-    "reviews"
+    "reviews",
 ]
 
 SITE_ID = 2

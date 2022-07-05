@@ -2,6 +2,11 @@ from django.views.generic import ListView, DetailView
 from product.models import Product, Color
 from product.forms import FilterForm
 from django.db.models import Q
+from reviews.forms import ProductReviewForm
+from django.shortcuts import render
+from django.views import View
+from reviews.forms import ProductReviewForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class ProductListView(ListView):
@@ -96,3 +101,13 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = "product/product-details.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["review_form"] = ProductReviewForm()
+        return context
+
+
+class ReviewView(LoginRequiredMixin, View):
+    login_url = "/accounts/login/"
+    redirect_field_name = "account_login"
