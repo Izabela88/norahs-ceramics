@@ -16,6 +16,7 @@ dj3-cloudinary-storage==0.0.6
 Django==4.0.4
 django-allauth==0.50.0
 django-case-insensitive-field==1.0.3
+django-cookies-samesite==0.9.0
 django-phonenumber-field==6.2.0
 factory-boy==3.2.1
 Faker==13.12.0
@@ -47,4 +48,5 @@ stripe==2.63.0
 sweetify==2.3.1
 tomli==2.0.1
 tzdata==2022.1
+ua-parser==0.10.0
 urllib3==1.26.9
