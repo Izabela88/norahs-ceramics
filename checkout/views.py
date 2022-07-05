@@ -73,7 +73,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == "POST":
-        domain_url = "http://localhost:8000/"
+        domain_url = "https://norahsceramics.herokuapp.com/"
         try:
             checkout_products = request.session["checkout_products"]
             basket_id = request.session["basket_id"]
