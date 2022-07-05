@@ -56,3 +56,16 @@ arr.forEach((item) => {
     });
   }
 });
+
+const openModalButton = document.querySelector("#open-modal");
+const closeModal = document.querySelector(".popup__close");
+// / Function opens Prices
+function openModal() {
+  let showDeleteModal = document.querySelector(".popup");
+  showDeleteModal.classList.toggle("show-modal");
+}
+
+if (openModalButton) {
+  openModalButton.addEventListener("click", openModal);
+  closeModal.addEventListener("click", openModal);
+}

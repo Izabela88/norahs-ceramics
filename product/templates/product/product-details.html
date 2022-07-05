@@ -29,7 +29,7 @@
                 <li>☆</li>
             </ul>
             <a class="reviews-qty" href="#">0 reviews</a>
-            <a class="r-button" href="#popup">write review</a>
+            <span id="open-modal" class="r-button">write review</span>
             <div class="product-det">
               {% if  object.height_cm %}
                 <p>height: {{ object.height_cm }} cm</p>
@@ -67,7 +67,7 @@
     </div>
 </section>
 <!-- REVIEWS -->
-  <div class="popup" id="popup">
+  <div class="popup">
     <div class="popup-inner">
       <div class="popup__photo">
         {% if object.image %}
@@ -77,7 +77,14 @@
         {%  endif %}
       </div>
       <div class="popup__text">
-        <h3>how do you rate this product?</h3>
+        <h3>
+          {% if user.is_authenticated %}
+            how do you rate this product?
+          {% else %}
+          to leave a review of this product you must register or log in to your account
+          {% endif %}
+        </h3>
+        {% if user.is_authenticated %}      
         <form class="rev-form" action="" method="post">
           {% csrf_token %}
           <div class="rev-stars">
@@ -85,11 +92,10 @@
           </div>
           {{review_form.description}}
           <input type="submit" class="button button-dark rev-btn" value="submit">
-        </div>
-
         </form>
-
-      <a class="popup__close" href="#">&#10006; </a>
+        {% endif %}
+        </div>
+      <button class="popup__close">&#10006;</button>
     </div>
   </div>
 

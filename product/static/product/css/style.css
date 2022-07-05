@@ -620,8 +620,8 @@ input[id="transparent"]:checked {
 }
 
 .product-description span {
-    font-size: 12px;
-    color: #358ED7;
+    font-size: 16px;
+    color: var(--col_eight);
     letter-spacing: 1px;
     text-transform: uppercase;
     text-decoration: none;
@@ -715,6 +715,7 @@ input[id="transparent"]:checked {
     font-size: 15px;
     font-weight: 300;
     text-transform: uppercase;
+    cursor: pointer;
   }
   
   .popup {
@@ -782,11 +783,11 @@ input[id="transparent"]:checked {
     color: #686868;
     line-height: 1.5;
   }
-  .popup:target {
+  .show-modal {
     visibility: visible;
     opacity: 1;
   }
-  .popup:target .popup-inner {
+  .show-modal .popup-inner {
     bottom: 0;
     right: 0;
     transform: rotate(0);
@@ -803,7 +804,6 @@ input[id="transparent"]:checked {
     background-color: #0A0A0A;
     z-index: 4;
     color: #fff;
-    line-height: 3rem;
     text-align: center;
     cursor: pointer;
     text-decoration: none;
