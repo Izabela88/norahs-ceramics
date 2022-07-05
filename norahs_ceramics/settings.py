@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     "basket",
     "phonenumber_field",
     "sweetify",
+    "checkout.apps.CheckoutConfig",
+    "order",
 ]
 
 SITE_ID = 2
@@ -185,11 +187,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# EMAIL
-if DEBUG:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-
 # ALLAUTH
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -207,3 +204,24 @@ PHONENUMBER_DEFAULT_FORMAT = "NATIONAL"
 
 
 SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
+
+
+# djangostripe
+
+STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_WEBHOOK_KEY = os.environ.get("STRIPE_WEBHOOK_KEY")
+
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+
+# EMAIL
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = os.environ.get("EMAIL")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
