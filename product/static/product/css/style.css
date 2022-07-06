@@ -761,7 +761,6 @@ input[id="transparent"]:checked {
     width: auto;
     height: 100%;
     object-fit: cover;
-
   }
   .popup__text {
     display: flex;

@@ -10,7 +10,6 @@ const stars = document.querySelector("#id_stars");
 // Change stars color on click
 const handleStarSelect = (size) => {
   const children = stars.children;
-  console.log(children);
 
   for (let i = 0; i < children.length; i++) {
     if (i <= size) {
@@ -59,6 +58,7 @@ arr.forEach((item) => {
 
 const openModalButton = document.querySelector("#open-modal");
 const closeModal = document.querySelector(".popup__close");
+
 // / Function opens Prices
 function openModal() {
   let showDeleteModal = document.querySelector(".popup");
@@ -69,3 +69,14 @@ if (openModalButton) {
   openModalButton.addEventListener("click", openModal);
   closeModal.addEventListener("click", openModal);
 }
+
+function uncheckStars() {
+  const children = stars.children;
+  for (let i = 0; i < children.length; i++) {
+    if (!openModal) {
+      children[i].classList.remove("checked");
+    }
+  }
+}
+
+uncheckStars();
