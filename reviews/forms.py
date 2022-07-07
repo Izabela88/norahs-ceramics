@@ -11,7 +11,7 @@ class ProductReviewForm(forms.ModelForm):
         (5, "☆"),
     )
     description = forms.CharField(
-        required=False,
+        required=True,
         widget=forms.Textarea(
             attrs={
                 "class": "rev-description",

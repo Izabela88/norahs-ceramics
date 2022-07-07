@@ -24,7 +24,7 @@ class ProductReview(TimestapModel):
         null=False,
         related_name="reviewer",
     )
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=False, null=False, default="")
     stars = models.IntegerField(choices=TYPE_SELECT, blank=False, null=False)
     is_visible = models.BooleanField(null=False, default=False)
     is_admin_approved = models.BooleanField(null=False, default=False)
