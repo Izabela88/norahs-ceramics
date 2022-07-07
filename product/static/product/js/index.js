@@ -69,14 +69,17 @@ if (openModalButton) {
   openModalButton.addEventListener("click", openModal);
   closeModal.addEventListener("click", openModal);
 }
+// ================================================================
+const openModalBtn = document.querySelector("#see-rev");
+const closeModalBtn = document.querySelector(".popup__close_btn");
 
-function uncheckStars() {
-  const children = stars.children;
-  for (let i = 0; i < children.length; i++) {
-    if (!openModal) {
-      children[i].classList.remove("checked");
-    }
-  }
+// / Function opens Prices
+function openRevModal() {
+  let showDeleteModal = document.querySelector(".rev-popup");
+  showDeleteModal.classList.toggle("show-rev-modal");
 }
 
-uncheckStars();
+if (openModalBtn) {
+  openModalBtn.addEventListener("click", openRevModal);
+  closeModalBtn.addEventListener("click", openRevModal);
+}

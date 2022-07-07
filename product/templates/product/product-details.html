@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load my_filters %}
+{% load custom_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'product/css/style.css' %}">
@@ -35,7 +36,14 @@
                 <li>☆</li>
                 <li>☆</li>
             </ul>
-            <a class="reviews-qty" href="#">0 reviews</a>
+            {% if object.product_reviews %}
+              <span id="see-rev" class="r-button reviews-qty">{{object.product_reviews.count}} 
+              {% if object.product_reviews.count == 1 %}
+                review</span>
+              {% else %}
+                reviews</p>
+              {% endif %}</span>
+            {% endif %}
             <span id="open-modal" class="r-button">write review</span>
             <div class="product-det">
               {% if  object.height_cm %}
@@ -73,7 +81,7 @@
       <img src="{% static 'images/product-details.jpg' %}" alt="">
     </div>
 </section>
-<!-- REVIEWS -->
+<!--MAKE PRODUCT REVIEW -->
   <div class="popup">
     <div class="popup-inner">
       <div class="popup__photo">
@@ -88,7 +96,7 @@
           {% if user.is_authenticated %}
             how do you rate this product?
           {% else %}
-          to leave a review of this product you must register or log in to your account
+            to leave a review of this product you must register or log in to your account
           {% endif %}
         </h3>
         {% if user.is_authenticated %}      
@@ -104,6 +112,37 @@
         </div>
       <button class="popup__close">&#10006;</button>
     </div>
+  </div>
+<!--SEE PRODUCT REVIEWS -->
+  <div class="rev-popup">
+    <div class="popup-inner rev-box">     
+      {% if object.product_reviews %}
+        {% for review in object.product_reviews.all %}
+        {% if review.is_admin_approved and review.is_visible %}
+          <div class="rev_text">
+            <p>{{review.reviewer.username}}</p>
+            <p>{{review.created_at}}</p>         
+            <ul class="stars-list">
+              {% with ''|center:review.stars as range %}
+              {% for _ in range %}
+                <li style="color: #f9bf3b">★</li>
+              {% endfor %}
+              {% endwith %}
+              {% with '5'|subtract:review.stars as empty_stars %}
+                {% with ''|center:empty_stars as range %}
+                  {% for _ in range %}
+                    <li>☆</li>
+                  {% endfor %}
+                {% endwith %}
+              {% endwith %}                         
+            </ul>
+            <p>{{review.description}}</p>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          <button class="popup__close_btn">&#10006;</button>
+      </div>
   </div>
 
 
