@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from basket.models import Basket
 from django.urls import reverse
 import sweetify
+from django.contrib import messages
 
 
 class BasketView(View):
@@ -28,7 +29,6 @@ class AddToBasketView(View):
             "the product has been successfully added to the basket",
             timer=2500,
             position="top",
-            
         )
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 

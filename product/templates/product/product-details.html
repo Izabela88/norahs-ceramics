@@ -131,40 +131,37 @@
 <!--SEE PRODUCT REVIEWS -->
   <div class="rev-popup">
     <div class="popup-inner rev-box">
-      {% if object.product_reviews %}
       <div class="box">
-          {% for review in object.product_reviews.all %}
+        {% for review in reviews %}
           <div class="rev_text">
-            {% if review.is_admin_approved and review.is_visible %}
-              <p>{{review.reviewer.username}}</p>
-              <p>{{review.created_at}}</p>         
-              <ul class="stars-list">
-                {% with ''|center:review.stars as range %}
-                {% for _ in range %}
-                  <li style="color: #f9bf3b">★</li>
-                {% endfor %}
+            <p>{{review.reviewer.username}}</p>
+            <p>{{review.created_at}}</p>         
+            <ul class="stars-list">
+              {% with ''|center:review.stars as range %}
+              {% for _ in range %}
+                <li style="color: #f9bf3b">★</li>
+              {% endfor %}
+              {% endwith %}
+              {% with '5'|subtract:review.stars as empty_stars %}
+                {% with ''|center:empty_stars as range %}
+                  {% for _ in range %}
+                    <li>☆</li>
+                  {% endfor %}
                 {% endwith %}
-                {% with '5'|subtract:review.stars as empty_stars %}
-                  {% with ''|center:empty_stars as range %}
-                    {% for _ in range %}
-                      <li>☆</li>
-                    {% endfor %}
-                  {% endwith %}
-                {% endwith %}                         
-              </ul>
-              <p>{{review.description}}</p>
-            {% else %}
-              <p class="no-rev">this product has no reviews yet</p>   
-            {% endif %}
-            </div>
-          {% endfor %}
-          <button class="popup__close_btn">&#10006;</button>
-        </div>
-      {% endif %}
+              {% endwith %}                         
+            </ul>
+            <p>{{review.description}}</p>
+          </div>
+        {% endfor %}
+        {% if not reviews %}
+          <div class="rev_text">
+            <p class="no-rev">this product has no reviews yet</p>   
+          </div>
+        {% endif %}
+        <button class="popup__close_btn">&#10006;</button>      
       </div>
+    </div>
   </div>
-
-
 {% endblock %}
 
 {% block extra_js %}

@@ -111,6 +111,9 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             context["review_form"] = ProductReviewForm()
+        context["reviews"] = ProductReview.objects.filter(
+            product_id=self.object.id, is_admin_approved=True, is_visible=True
+        ).all()
         return context
 
 
