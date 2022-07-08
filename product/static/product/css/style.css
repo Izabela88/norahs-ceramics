@@ -620,7 +620,7 @@ input[id="transparent"]:checked {
 }
 
 .product-description span {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--col_eight);
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -741,10 +741,9 @@ input[id="transparent"]:checked {
     right: -100vh;
     display: flex;
     align-items: center;
-    max-width: 800px;
-    max-height: 600px;
-    width: 60%;
-    height: 80%;
+    overflow-y: auto;
+    width: 800px;
+    height: 600px;
     background-color: #fff;
     transform: rotate(32deg);
     transition: 0.64s ease-in-out;
@@ -794,8 +793,8 @@ input[id="transparent"]:checked {
   }
   .popup__close, .popup__close_btn {
     position: absolute;
-    right: -1rem;
-    top: -1rem;
+    right: 20px;
+    top: 15px;
     width: 3rem;
     height: 3rem;
     font-size: 0.875rem;
@@ -898,10 +897,12 @@ input[id="transparent"]:checked {
 
   .rev_text {
     width: 100%;
-    height: 100px;
-    border: 1px solid #dedede;
+    height: 125px;
     text-align: center;
     overflow: auto;
+    margin: 10px auto;
+    border: 1px solid #dedede;
+    padding: 10px;
   }
 
   .rev_text p {
@@ -914,12 +915,39 @@ input[id="transparent"]:checked {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: auto;
+    height: auto;
+    max-height: 600px;
+    padding: 30px;
+  }
+
+  .box {
+    height: 70%;
+    width: 80%;
+    overflow: auto;
+    padding: 30px;
   }
 
  .stars-list {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+ .avr-stars-list {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 10px 0;
+  }
+
+  .avr-stars-list li {
+    font-size: 20px;
+  }
+
+  .no-rev {
+    text-transform: uppercase;
+    font-size: 20px;
   }
 
 @media screen and (max-width: 1150px) {

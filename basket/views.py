@@ -1,9 +1,8 @@
 from django.views import View
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from basket.models import Basket, BasketProduct
+from basket.models import Basket
 from django.urls import reverse
-from django.contrib import messages
 import sweetify
 
 
@@ -29,6 +28,7 @@ class AddToBasketView(View):
             "the product has been successfully added to the basket",
             timer=2500,
             position="top",
+            
         )
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 

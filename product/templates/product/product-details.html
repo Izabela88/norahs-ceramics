@@ -29,20 +29,35 @@
             <div class="product-description">
               <h4>{{ object.name }}</h4>
               <h4>£{{product.price_pence | currency}}</h4>
-              <ul class="stars">
-                <li>☆</li>
-                <li>☆</li>
-                <li>☆</li>
-                <li>☆</li>
-                <li>☆</li>
-            </ul>
+              <ul class="avr-stars-list">
+                {% if not object.reviews_rating.0 %}
+                  <li>☆</li>
+                  <li>☆</li>
+                  <li>☆</li>
+                  <li>☆</li>
+                  <li>☆</li>
+                {% else %}
+                  {% with ''|center:object.reviews_rating.0 as range %}
+                  {% for _ in range %}
+                    <li style="color: #f9bf3b">★</li>
+                  {% endfor %}
+                  {% endwith %}
+                {% with '5'|subtract:object.reviews_rating.0 as empty_stars %}
+                  {% with ''|center:empty_stars as range %}
+                      {% for _ in range %}
+                        <li>☆</li>
+                      {% endfor %}
+                    {% endwith %}
+                  {% endwith %}      
+                {% endif %}                       
+              </ul>
             {% if object.product_reviews %}
-              <span id="see-rev" class="r-button reviews-qty">{{object.product_reviews.count}} 
-              {% if object.product_reviews.count == 1 %}
+              <span id="see-rev" class="r-button reviews-qty">{{object.reviews_rating.1}} 
+              {% if object.reviews_rating.1 == 1 %}
                 review</span>
               {% else %}
-                reviews</p>
-              {% endif %}</span>
+                reviews</span>
+              {% endif %}
             {% endif %}
             <span id="open-modal" class="r-button">write review</span>
             <div class="product-det">
@@ -115,33 +130,37 @@
   </div>
 <!--SEE PRODUCT REVIEWS -->
   <div class="rev-popup">
-    <div class="popup-inner rev-box">     
+    <div class="popup-inner rev-box">
       {% if object.product_reviews %}
-        {% for review in object.product_reviews.all %}
-        {% if review.is_admin_approved and review.is_visible %}
+      <div class="box">
+          {% for review in object.product_reviews.all %}
           <div class="rev_text">
-            <p>{{review.reviewer.username}}</p>
-            <p>{{review.created_at}}</p>         
-            <ul class="stars-list">
-              {% with ''|center:review.stars as range %}
-              {% for _ in range %}
-                <li style="color: #f9bf3b">★</li>
-              {% endfor %}
-              {% endwith %}
-              {% with '5'|subtract:review.stars as empty_stars %}
-                {% with ''|center:empty_stars as range %}
-                  {% for _ in range %}
-                    <li>☆</li>
-                  {% endfor %}
+            {% if review.is_admin_approved and review.is_visible %}
+              <p>{{review.reviewer.username}}</p>
+              <p>{{review.created_at}}</p>         
+              <ul class="stars-list">
+                {% with ''|center:review.stars as range %}
+                {% for _ in range %}
+                  <li style="color: #f9bf3b">★</li>
+                {% endfor %}
                 {% endwith %}
-              {% endwith %}                         
-            </ul>
-            <p>{{review.description}}</p>
-          </div>
-          {% endif %}
+                {% with '5'|subtract:review.stars as empty_stars %}
+                  {% with ''|center:empty_stars as range %}
+                    {% for _ in range %}
+                      <li>☆</li>
+                    {% endfor %}
+                  {% endwith %}
+                {% endwith %}                         
+              </ul>
+              <p>{{review.description}}</p>
+            {% else %}
+              <p class="no-rev">this product has no reviews yet</p>   
+            {% endif %}
+            </div>
           {% endfor %}
-          {% endif %}
           <button class="popup__close_btn">&#10006;</button>
+        </div>
+      {% endif %}
       </div>
   </div>
 
