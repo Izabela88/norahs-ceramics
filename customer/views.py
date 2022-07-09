@@ -123,7 +123,11 @@ class CustomerOrderHistoryListView(LoginRequiredMixin, ListView):
     template_name = "customer/customer_orders.html"
 
     def get_queryset(self):
-        user_order = Order.objects.filter(user=self.request.user).all()
+        user_order = (
+            Order.objects.filter(user=self.request.user)
+            .order_by("-created_at")
+            .all()
+        )
         return user_order
 
     def get_context_data(self, **kwargs):
@@ -156,11 +160,13 @@ class UserReviewListView(LoginRequiredMixin, ListView):
 
     model = ProductReview
     template_name = "customer/customer_reviews.html"
-    paginate_by = 1
+    paginate_by = 2
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            user_reviews = ProductReview.objects.filter(
-                reviewer_id=self.request.user.id
-            ).all()
+            user_reviews = (
+                ProductReview.objects.filter(reviewer_id=self.request.user.id)
+                .order_by("-created_at")
+                .all()
+            )
             return user_reviews
