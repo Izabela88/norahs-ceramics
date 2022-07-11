@@ -5,6 +5,7 @@ from customer.views import (
     DeleteCustomerProfile,
     ChangePasswordView,
     CustomerOrderHistoryListView,
+    UserReviewListView,
 )
 
 urlpatterns = [
@@ -32,5 +33,10 @@ urlpatterns = [
         "<int:pk>/order_history",
         CustomerOrderHistoryListView.as_view(),
         name="order_history",
+    ),
+    path(
+        "<int:pk>/user_reviews",
+        UserReviewListView.as_view(),
+        name="user_reviews",
     ),
 ]

@@ -94,7 +94,7 @@
                     <ol class="sub-menu">
                       <li class="menu-item profile-item"><a href="{% url 'customer_profile' request.user.id %}">personal information</a></li>
                       <li class="menu-item"><a href="{% url 'order_history' request.user.id %}">orders</a></li>
-                      <li class="menu-item"><a href="#">reviews</a></li>
+                      <li class="menu-item"><a href="{% url 'user_reviews' request.user.id %}">reviews</a></li>
                       <li class="menu-item"><a href="#">favorites</a></li>
                       <li class="menu-item"><a href="{% url 'account_logout' %}">Logout</a></li>
                     </ol>
@@ -207,7 +207,7 @@
     <script src="{% static 'js/index.js' %}"></script>
     <script>
       const timeouts = document.querySelectorAll(".info-msg");
-      setTimeout(hideElement, 3000); //milliseconds until timeout//
+      setTimeout(hideElement, 5000); //milliseconds until timeout//
       function hideElement() {
         for (i = 0; i < timeouts.length; i++) {
           timeouts[i].style.display = "none";

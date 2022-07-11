@@ -12,7 +12,8 @@ from django.views.generic import ListView, DetailView
 import sweetify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import PasswordChangeView
-from order.models import Order, OrderProduct
+from order.models import Order
+from reviews.models import ProductReview
 
 
 class CustomerProfileView(LoginRequiredMixin, View):
@@ -122,7 +123,11 @@ class CustomerOrderHistoryListView(LoginRequiredMixin, ListView):
     template_name = "customer/customer_orders.html"
 
     def get_queryset(self):
-        user_order = Order.objects.filter(user=self.request.user).all()
+        user_order = (
+            Order.objects.filter(user=self.request.user)
+            .order_by("-created_at")
+            .all()
+        )
         return user_order
 
     def get_context_data(self, **kwargs):
@@ -147,3 +152,21 @@ class CustomerOrderHistoryListView(LoginRequiredMixin, ListView):
             ]
 
         return context
+
+
+class UserReviewListView(LoginRequiredMixin, ListView):
+    login_url = "/accounts/login/"
+    redirect_field_name = "account_login"
+
+    model = ProductReview
+    template_name = "customer/customer_reviews.html"
+    paginate_by = 2
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            user_reviews = (
+                ProductReview.objects.filter(reviewer_id=self.request.user.id)
+                .order_by("-created_at")
+                .all()
+            )
+            return user_reviews

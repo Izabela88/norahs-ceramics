@@ -1,10 +1,10 @@
 from django.views import View
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from basket.models import Basket, BasketProduct
+from basket.models import Basket
 from django.urls import reverse
-from django.contrib import messages
 import sweetify
+from django.contrib import messages
 
 
 class BasketView(View):

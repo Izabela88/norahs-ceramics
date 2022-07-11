@@ -2,6 +2,16 @@ from django.views.generic import ListView, DetailView
 from product.models import Product, Color
 from product.forms import FilterForm
 from django.db.models import Q
+from reviews.forms import ProductReviewForm
+from django.shortcuts import render, get_object_or_404
+from django.views import View
+from reviews.forms import ProductReviewForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from reviews.models import ProductReview
+from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
+from django.urls import reverse
+import sweetify
+from django.contrib import messages
 
 
 class ProductListView(ListView):
@@ -96,3 +106,45 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = "product/product-details.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            context["review_form"] = ProductReviewForm()
+        context["reviews"] = ProductReview.objects.filter(
+            product_id=self.object.id, is_admin_approved=True, is_visible=True
+        ).all()
+        return context
+
+
+class ReviewView(LoginRequiredMixin, View):
+    login_url = "/accounts/login/"
+    redirect_field_name = "account_login"
+
+    def post(self, request, slug):
+        product = get_object_or_404(Product, slug=slug)
+        product_review = ProductReview.objects.filter(
+            product_id=product.id, reviewer_id=request.user.id
+        ).first()
+        if product_review:
+            messages.error(
+                request, "You have already given review to this product !"
+            )
+            return HttpResponseRedirect(
+                reverse("product_detail", kwargs={"slug": slug})
+            )
+        else:
+            review_form = ProductReviewForm(data=request.POST or None)
+            if review_form.is_valid():
+                review_form.instance.product_id = product.id
+                review_form.instance.reviewer_id = request.user.id
+                review_form.instance.save()
+                messages.success(
+                    request,
+                    "Thank you for your review! Your review will be"
+                    " visible after approval by the website administrator",
+                )
+
+        return HttpResponseRedirect(
+            reverse("product_detail", kwargs={"slug": slug})
+        )
