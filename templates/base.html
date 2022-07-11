@@ -86,7 +86,7 @@
               <ul>
                 {% if user.is_authenticated %}
                   <li class="menu-item profile-item">
-                    <span><img class="user-icon" src="{% static 'images/user.png' %}" alt="user icon">my profile &dtrif;</span> 
+                    <p><img class="user-icon" src="{% static 'images/user.png' %}" alt="user icon">my profile &dtrif;</p> 
                     <ol class="sub-menu">
                       <li class="menu-item profile-item"><a href="{% url 'customer_profile' request.user.id %}">personal information</a></li>
                       <li class="menu-item"><a href="{% url 'order_history' request.user.id %}">orders</a></li>
@@ -161,6 +161,11 @@
               <a href="{{ url }}">Home </a>
             </li>
             <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'terms' %}">Terms and Conditions</a></li>
+            <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+            <li><a href="{% url 'returns_policy' %}">Returns</a></li>
+            <li><a href="{% url 'shipping' %}">Shipping and Delivery</a></li>
+            
           </ul>
         </div>
         <div class="footer-box">

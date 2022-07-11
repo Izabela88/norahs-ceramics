@@ -438,7 +438,7 @@ label {
   align-items: center;
   text-align: center;
   cursor: context-menu;
-  font-size: 18px;
+  font-size: 18px !important;
   letter-spacing: 2px;
 }
 
