@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load my_filters %}
+{% load custom_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'product/css/style.css' %}">
@@ -75,41 +76,61 @@
         </div>
         <div class="products-list">
             {% for product in object_list %}      
-                    <div class="products-element">
-                        <div class="product-img">
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" alt="">
-                            {% else %}
-                                <img src="{% static 'images/no-pictures.png' %}" alt="">
-                            {%  endif %}
-                        </div>
-                        <div class="product-txt">
-                            <a href="{% url 'product_detail' slug=product.slug %}">
-                                <h4>{{ product.name }}</h4>
-                            </a>
-                            <ul class="stars">
-                                <li>☆</li>
-                                <li>☆</li>
-                                <li>☆</li>
-                                <li>☆</li>
-                                <li>☆</li>
-                            </ul>
-                            <p>0 reviews</p>
-                            <h4>£{{product.price_pence | currency}}
-                            </h4>
-                            <p>{{ product.short_description }}</p>
-                            <div class="buttons">
-                                <form method="post" action={% url 'add_to_basket' product_id=product.id %}>
-                                    {% csrf_token %}
-                                    <button type="submit" class="button button-dark">add to basket</button>
-                                </form>
-                            <a href="{% url 'product_detail' slug=product.slug %}" class="button button-dark product-more">more</a>
-                            <button class="button button-dark product-fav">♡</button>
-                        </div>
-
-                        </div>
+                <div class="products-element">
+                    <div class="product-img">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="">
+                        {% else %}
+                            <img src="{% static 'images/no-pictures.png' %}" alt="">
+                        {%  endif %}
                     </div>
-                    {% endfor %}
+                    <div class="product-txt">
+                        <a href="{% url 'product_detail' slug=product.slug %}">
+                            <h4>{{ product.name }}</h4>
+                        </a>
+                        <ul class="avr-stars-list">
+                            {% if not product.reviews_rating.0 %}
+                              <li>☆</li>
+                              <li>☆</li>
+                              <li>☆</li>
+                              <li>☆</li>
+                              <li>☆</li>
+                            {% else %}
+                              {% with ''|center:product.reviews_rating.0 as range %}
+                              {% for _ in range %}
+                                <li style="color: #f9bf3b">★</li>
+                              {% endfor %}
+                              {% endwith %}
+                            {% with '5'|subtract:product.reviews_rating.0 as empty_stars %}
+                              {% with ''|center:empty_stars as range %}
+                                  {% for _ in range %}
+                                    <li>☆</li>
+                                  {% endfor %}
+                                {% endwith %}
+                              {% endwith %}      
+                            {% endif %}                       
+                          </ul>
+                        {% if product.product_reviews %}
+                            <p>{{ product.reviews_rating.1}} 
+                            {% if product.reviews_rating.1 == 1 %}
+                                review</p>
+                            {% else %}
+                                reviews</p>
+                            {% endif %}</p>
+                            {% endif %}
+                        <h4>£{{product.price_pence | currency}}
+                        </h4>
+                        <p>{{ product.short_description }}</p>
+                        <div class="buttons">
+                            <form method="post" action={% url 'add_to_basket' product_id=product.id %}>
+                                {% csrf_token %}
+                                <button type="submit" class="button button-dark">add to basket</button>
+                            </form>
+                        <a href="{% url 'product_detail' slug=product.slug %}" class="button button-dark product-more">more</a>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
                 </div>
             {% if is_paginated %}
                 <div class="pagination">
@@ -137,5 +158,29 @@
 {% block extra_js %}
 {{ block.super }}
   <script src="{% static 'product/js/index.js' %}"></script>
+  <script>
+    const minSlider = document.getElementById("min");
+    const maxSlider = document.getElementById("max");
+
+    const outputMin = document.getElementById("min-value");
+    const outputMax = document.getElementById("max-value");
+
+    outputMin.innerHTML = minSlider.value;
+    outputMax.innerHTML = maxSlider.value;
+
+    minSlider.oninput = function () {
+      outputMin.innerHTML = this.value;
+    };
+
+    maxSlider.oninput = function () {
+      outputMax.innerHTML = this.value;
+    };
+
+    const btn = document.querySelector("#filters-button");
+
+    btn.addEventListener("click", () => {
+      document.querySelector(".priceSlider").classList.toggle("show-filters");
+    });
+  </script>
  
 {% endblock %}
