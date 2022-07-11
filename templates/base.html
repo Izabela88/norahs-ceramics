@@ -44,10 +44,6 @@
       <div id="basket" class="basket-box">
         <a href="{% url 'basket' %}"><img class="shop-basket" src="{% static 'images/shopping-basket.png' %}" alt=""></a><span>£{{total_basket_price | currency }}</span>
       </div>
-      <!-- <div id="search-input" class="search">
-        <img src="{% static 'images/zoom.png' %}" alt="">
-        <input type="search" name="search" id="search-input" placeholder="search">
-      </div> -->
       <nav class="menu">
         <div class="wrapper-menu">
           <div class="line-menu half start"></div>
@@ -85,7 +81,7 @@
             </li>
             <li class="menu-item"><a href="{% url 'home' %}#new-arriv">New In</a></li>
             <li class="menu-item"><a href="{% url 'home' %}#best-sellers">best sellers</a></li>
-            <li class="menu-item"><a href="#">Contact</a></li>
+            <li class="menu-item"><a href="{% url 'contact' %}">Contact</a></li>
             <div class="auth-links">
               <ul>
                 {% if user.is_authenticated %}
@@ -95,7 +91,6 @@
                       <li class="menu-item profile-item"><a href="{% url 'customer_profile' request.user.id %}">personal information</a></li>
                       <li class="menu-item"><a href="{% url 'order_history' request.user.id %}">orders</a></li>
                       <li class="menu-item"><a href="{% url 'user_reviews' request.user.id %}">reviews</a></li>
-                      <li class="menu-item"><a href="#">favorites</a></li>
                       <li class="menu-item"><a href="{% url 'account_logout' %}">Logout</a></li>
                     </ol>
                   </li>

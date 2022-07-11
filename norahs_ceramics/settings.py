@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     "checkout.apps.CheckoutConfig",
     "order",
     "reviews",
+    "contact",
 ]
 
 SITE_ID = 2
@@ -203,12 +204,11 @@ AUTH_USER_MODEL = "customer.User"
 PHONENUMBER_DEFAULT_REGION = "GB"
 PHONENUMBER_DEFAULT_FORMAT = "NATIONAL"
 
-
+# SWEETALERT2
 SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
 
 
 # djangostripe
-
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 STRIPE_WEBHOOK_KEY = os.environ.get("STRIPE_WEBHOOK_KEY")
