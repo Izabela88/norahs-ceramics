@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
-{% load static %} 
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'contact/css/style.css' %}">
+{% endblock %}
 {% block content %}
-<section class="section contact-section">
+<section class="contact-section">
     {% if messages %}
         <ul class="info-msg center">
             {% for message in messages %}
@@ -21,7 +24,7 @@
         <form class="contact-form" method="post">
             {% csrf_token %}
             {{ contact_form }}        
-            <input class="button button-bright center" type="submit" value="send">                     
+            <button class="button button-dark" type="submit">send</button>                   
         </form>   
     </div>
    </div>
