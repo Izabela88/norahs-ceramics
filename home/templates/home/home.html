@@ -178,10 +178,13 @@
 <section class="newsletter center">
   <h3>Subscribe to our newsletter and be up to date!</h3>
   <div class="newsletter-box">
-    <input type="email" placeholder="write your email here...">
-    <button id="open-newsletter" class="button">
-      SUBSCRIBE
-    </button>
+    <form method="post" action="{% url 'newsletter' %}">
+      {% csrf_token %}
+      {{newsletter_email}}
+      <button id="open-newsletter" class="button">
+        SUBSCRIBE
+      </button>
+    </form>
   </div>
 </section>
 

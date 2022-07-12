@@ -642,6 +642,10 @@ main section .carousel-container .dots .dot:hover {
     text-align: center;
 }
 
+label[for="id_newsletter_email"] {
+    display: none;
+}
+
 
 @media screen and (max-width: 1150px) {
     .hero-image {
