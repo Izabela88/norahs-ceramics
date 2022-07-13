@@ -5,20 +5,17 @@
 {% block title %}Error 401{% endblock title %}
 
 {% block content %}
-    <section class="error-section">
-        <div class="container center ">
-            <div class="error-box center">
+    <section class="errors-section">
+        <div class="errors-container">
+            <div class="error-box">
                 <h2>oops! you are not authorized to proceed... please register or log in.</h2>
-                <div class="error-img center"></div>               
+                <div class="error-img">
+                    <img src="{% static 'images/401.jpg' %}" alt="">
+                </div>                 
             </div>
-            <div class="error-buttons">
-                <div class="button button-dark center error-button">
-                    <a href="{% url 'account_signup' %}">Register</a>
-                </div>
-                <div class="button button-dark center error-button">
-                    <a href="{% url 'account_login' %}">Log In</a>
-                </div>
-
+            <div class="errors-buttons">
+                <a class="button button-dark" href="{% url 'account_signup' %}">Register</a>             
+                <a class="button button-dark" href="{% url 'account_login' %}">Log In</a>
             </div>
         </div>
 

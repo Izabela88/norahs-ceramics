@@ -997,6 +997,61 @@ label[for="id_new_password2"] {
   font-size: 20px;
 }
 
+/* ERROR PAGES */
+.errors-section {
+  position: relative;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px);
+    min-height: 100vh;
+}
+
+.errors-container {
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.error-box h2 {
+  font-size: 30px;
+  margin: 20px auto;
+}
+
+.error-img {
+  height: 400px;
+  width: 400px;
+  margin: 40px 0;
+}
+
+.error-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.errors-buttons {
+  display: flex;
+  margin: 20px auto;
+}
+
+.errors-buttons a {
+  width: 200px;
+  text-align: center;
+  margin: 0 20px;
+}
 
 @media screen and (max-width: 1150px) {
   #header {
@@ -1116,4 +1171,29 @@ label[for="id_new_password2"] {
   }
 }
 
+@media screen and (max-width: 800px) {
+  .errors-section {
+    height: 100vh;
 
+  }
+  .error-box {
+    width: 90%;
+  }
+
+  .error-box h2 {
+    font-size: 20px;
+  }
+
+  .error-img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .errors-buttons {
+    flex-direction: column;
+  }
+
+  .errors-buttons a {
+    margin: 10px auto;
+  }
+}
