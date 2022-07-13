@@ -13,7 +13,6 @@ from django.utils import timezone
 import datetime
 
 
-
 class HomeView(TemplateView):
     template_name = "home/home.html"
 
@@ -33,7 +32,6 @@ class HomeView(TemplateView):
 
 
 class NewsletterView(View):
-
     def post(self, request) -> HttpResponse:
         """Subscribe email address"""
         email_form = NewsletterUserForm(data=request.POST or None)

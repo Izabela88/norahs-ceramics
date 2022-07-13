@@ -80,6 +80,9 @@ class Product(TimestapModel):
         validators=[validate_image],
     )
 
+    def get_absolute_url(self):
+        return f"/products/{self.slug}/"
+
     @property
     def reviews_rating(self) -> tuple[float, int]:
         """Return user avarage reviews rating
