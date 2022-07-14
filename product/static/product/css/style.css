@@ -10,6 +10,7 @@
     --col_nine: #F2CFBB;
     --font_one: 'Mali', cursive;
     --font_two: 'Hubballi', cursive;
+    --font_three:'Nanum Pen Script', cursive;
     --select-border: #777;
     --select-focus: blue;
     --select-arrow: var(--select-border);
@@ -171,7 +172,7 @@ select:focus+.focus {
   }
 
 .priceSlider h3 {
-    font-size: 14px;
+    font-size: 18px;
     text-transform: uppercase;
     margin: 10px 0;
 }
@@ -302,7 +303,7 @@ select:focus+.focus {
 
 .color-picker h3 {
     margin-bottom: 25px;
-    font-size: 14px;
+    font-size: 18px;
     text-transform: uppercase;
     margin-top: 20px;
 }
@@ -486,9 +487,14 @@ input[id="transparent"]:checked {
     padding: 10px;
 }
 
+.short-desc {
+    height: 55px;
+    overflow: auto;
+}
+
 
 .product-txt h4 {
-    font-size: 18px;
+    font-size: 25px;
     margin: 10px 0;
 }
 
@@ -529,7 +535,7 @@ input[id="transparent"]:checked {
     justify-content: flex-start;
     align-items: center;
     height: 60px;
-    margin-top: 20px;
+    margin-top: 15px;
     width: 72%;
 }
 
@@ -632,7 +638,6 @@ input[id="transparent"]:checked {
     font-size: 30px;
     color: #43484D;
     margin: 10px 0;
-    font-size: 25px;
 }
 
 .product-description p {
@@ -766,10 +771,10 @@ input[id="transparent"]:checked {
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    padding: 4rem;
+    padding: 30px;
   }
   .popup__text h3 {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 400;
     margin-top: 30px;
     text-transform: uppercase;
@@ -906,8 +911,9 @@ input[id="transparent"]:checked {
   }
 
   .rev_text p {
-    font-size: 16px;
+    font-size: 20px;
     margin: 10px auto;
+    font-family: 'Nanum Pen Script', cursive;;
   }
 
   .rev-box {
@@ -947,7 +953,7 @@ input[id="transparent"]:checked {
 
   .no-rev {
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 30px;
   }
 
 @media screen and (max-width: 1150px) {
