@@ -367,4 +367,8 @@
     .basket-btns {
       flex-direction: column;
     }
+
+    .summary-box {
+      justify-content: center;
+    }
   }

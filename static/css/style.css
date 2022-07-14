@@ -353,12 +353,11 @@ label {
   will-change: transform;
   transform: scale(0);
   transition: transform 0.2s ease;
-  background: #FECEAB;
+  background: var(--col_nine);
 }
 
 #menu-list li a.active {
   color: var(--col_eight);
-  font-weight: bold;
 }
 
  #menu-list .menu-item:hover:after {
