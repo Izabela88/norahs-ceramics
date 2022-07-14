@@ -1164,10 +1164,15 @@ label[for="id_new_password2"] {
     text-align: center;
     margin-bottom: 25px;
     margin-top: 15px;
+    height: auto;
   }
 
   .footer-box h3 {
     font-size: 25px;
+  }
+
+  .contact-info {
+    justify-content: center;
   }
 }
 

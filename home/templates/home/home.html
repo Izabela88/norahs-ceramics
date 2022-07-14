@@ -11,6 +11,7 @@
 <main id="home-section" class="section">
   <div class="hero-bg"></div>
   <div class="container">
+    <div class="hero-container">
       <div class="home-txt center">
         <h1>handmade with love</h1>
         <p>Add modern British ceramics, glass and zero waste accessories to your home, 
@@ -24,18 +25,20 @@
           alt="cups"
         />
       </div>
+    </div>
       <div class="home-images center">
         <div class="home-img home-img-one center">
-          <img src="{% static 'images/home-img-one.jpg' %}" alt="">
-          <a class="link product-link" href="{% url 'product_list'%}?sub_category=bowls">ceramic bowls</a>
+          <p class="link product-link">ceramic bowls</p>
+          <a href="{% url 'product_list'%}?sub_category=bowls"><img src="{% static 'images/home-img-one.jpg' %}" alt=""></a>
         </div>
         <div class="home-img home-img-two center">
-          <img src="{% static 'images/home_pic.jpg' %}" alt="">
-          <a class="link product-link" href="{% url 'product_list'%}?sub_category=ceramic_decor">ceramic decor</a>
+          <p class="link product-link">ceramic decor</p>
+          <a  href="{% url 'product_list'%}?sub_category=ceramic_decor"><img src="{% static 'images/home_pic.jpg' %}" alt=""></a>
         </div>
         <div class="home-img home-img-three center">
-          <img src="{% static 'images/home-img-three.jpg' %}" alt="">
-          <a class="link product-link" href="{% url 'product_list'%}?sub_category=mugs">ceramic mugs</a>
+          <p class="link product-link">ceramic mugs</p>
+          <a  href="{% url 'product_list'%}?sub_category=mugs"><img src="{% static 'images/home-img-three.jpg' %}" alt="">
+            </a>
         </div>
       </div>
   </div>
@@ -146,7 +149,7 @@
     </div>   
 </section>
 <!-------------------------- NEW ARRIVALS SECTION ----------------------------->
-<section id="new-arriv" class="new-arrivals">
+<section id="new-arriv" class="section new-arrivals">
   <h2>new arrivals</h2>
   <div class="container">  
       <div class="carousel-container">

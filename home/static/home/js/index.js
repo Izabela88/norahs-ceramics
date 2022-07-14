@@ -1,4 +1,5 @@
 // https://codepen.io/luxonauta/pen/QWEWvmB
+// new arrivals carousel
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".carousel-container").forEach((carousel) => {
     // insertNumbers(carousel);
@@ -10,8 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     carousel.querySelector(".next").addEventListener("click", () => {
       plusItem(carousel);
     });
-
-    // insertDots(carousel);
 
     carousel.querySelectorAll(".dot").forEach((dot) => {
       dot.addEventListener("click", (e) => {
@@ -82,8 +81,4 @@ function showItems(carousel, item) {
     carousel.querySelectorAll(".item")[currentItem(carousel)].style.display =
       "none";
   carousel.querySelectorAll(".item")[item].style.display = "block";
-
-  // if (carousel.querySelector(".dot.active") != null)
-  //   carousel.querySelector(".dot.active").classList.remove("active");
-  // carousel.querySelectorAll(".dot")[item].classList.add("active");
 }
