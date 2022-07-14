@@ -77,7 +77,10 @@
                                 </div>
                                 <div id="total-price" class="summary-amount">£{{total_basket_price | currency}}</div>
                             </div>
-                            <a href="{% url 'checkout' %}" class="button button-dark purchase-button">go to checkout</a>
+                            <div class="basket-btns">
+                                <a href="{% url 'checkout' %}" class="button button-dark purchase-button">continue as guest</a>
+                                <a class="button button-dark purchase-button" href="{% url 'account_login' %}">Log In</a>
+                           </div>
                         </div>                    
                 </div>
             </div>

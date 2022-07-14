@@ -748,7 +748,7 @@ label[for="id_newsletter_email"] {
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
 
     h1,
     h2 {
@@ -761,6 +761,12 @@ label[for="id_newsletter_email"] {
 
     .home-images {
         grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+    }
+
+    .home-img {
+        width: 60%;
+        height: 92%;
     }
 
     .home-img-one,
@@ -776,10 +782,6 @@ label[for="id_newsletter_email"] {
         font-size: 20px;
     }
 
-    .home-images {
-        width: 425px;
-        height: 240px;
-    }
 
     .container-mobiles {
         flex-direction: column;
@@ -799,10 +801,71 @@ label[for="id_newsletter_email"] {
         text-align: center;
     }
 
+    .text-box h2 {
+        margin-top: 150px;
+    }
+
+    .newsletter {
+        height: 300px;
+    }
+
     .newsletter h3 {
         font-size: 20px;
-        width: 80%;
+        width: 50%;
 
+    }
+
+    .newsletter-box form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 400px;
+    }
+
+    .newsletter-box input,
+    .newsletter-box button {
+        width: 100%;
+    }
+
+    .carousel-container {
+        width: 600px;
+    }
+
+    .cards-container {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+        width: 400px;
+        margin: 60px auto;
+    }
+
+
+    .home-img {
+        max-width: 600px;
+        width: 75%;
+    }
+
+    .parts-container, .parts-container-two {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .carousel-container {
+        width: 400px;
+        padding: 0;
+        height: auto;
+    }
+
+    .image-box {
+        width: 400px;
+    }
+
+    .text-box p {
+        font-size: 20px;
     }
 }
 
