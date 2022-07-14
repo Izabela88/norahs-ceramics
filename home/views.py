@@ -23,9 +23,13 @@ class HomeView(TemplateView):
             "-created_at"
         )[:10]
 
-        context["best_sellers"] = OrderProduct.objects.annotate(
-            count=Count("product_id")
-        ).order_by("-count")[:3]
+        distinct_products = OrderProduct.objects.distinct("product_id")
+
+        context["best_sellers"] = (
+            OrderProduct.objects.annotate(count=Count("product_id"))
+            .filter(id__in=distinct_products)
+            .order_by("-count")[:6]
+        )
 
         context["newsletter_email"] = NewsletterUserForm()
         return context
