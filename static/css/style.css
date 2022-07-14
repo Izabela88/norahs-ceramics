@@ -309,6 +309,7 @@ label {
   z-index: 100000;
   background-color: var(--col_four);
   padding: 5px;
+  border-radius: 10px;
 }
 
 .basket-box span {
@@ -1201,4 +1202,16 @@ label[for="id_new_password2"] {
   .errors-buttons a {
     margin: 10px auto;
   }
+}
+
+
+@media screen and (max-width: 550px) {
+  .button {
+    font-size: 17px;
+  }
+
+  .basket-box {
+    right: 15px;
+  }
+
 }

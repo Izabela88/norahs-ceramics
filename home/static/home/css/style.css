@@ -674,7 +674,7 @@ label[for="id_newsletter_email"] {
         width: 700px;
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .product-link {
         font-size: 35px;
         top: 10px;
@@ -695,7 +695,7 @@ label[for="id_newsletter_email"] {
     .cards {
         grid-template-columns: repeat(2, 1fr);
         width: 645px;
-       margin: 60px auto;
+        margin: 60px auto;
     }
 
     .image-box {
@@ -850,7 +850,8 @@ label[for="id_newsletter_email"] {
         width: 75%;
     }
 
-    .parts-container, .parts-container-two {
+    .parts-container,
+    .parts-container-two {
         grid-template-columns: repeat(1, 1fr);
     }
 
@@ -870,6 +871,10 @@ label[for="id_newsletter_email"] {
 }
 
 @media screen and (max-width: 550px) {
+
+    #home-section {
+        height: 100vh;
+    }
     #menu-list .menu-item {
         width: 100%;
     }
@@ -880,15 +885,62 @@ label[for="id_newsletter_email"] {
 
     h1,
     h2 {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     p {
         font-size: 17px;
     }
 
-    .home-images {
-        width: 365px;
-        height: 215px;
+    .text-box {
+        width: 300px;
     }
+
+    .home-txt p {
+        font-size: 17px;
+    }
+
+    .link {
+        font-size: 16px;
+    }
+
+    .text-box p,
+    .part p,
+    .part h4,
+    .newsletter h3  {
+        font-size: 17px;
+    }
+    
+    .product-link {
+        font-size: 35px;
+    }
+
+    .cards {
+        width: 300px;
+    }
+
+    .hero-bg {
+        height: 300px;
+    }
+
+    .newsletter-box form,
+    .image-box,
+    .carousel-container {
+        width: 300px;
+    }
+
+    .carousel-container .item .text .title {
+        font-size: 12px;
+    }
+
+    .more-button {
+        font-size: 12px;
+        bottom: 183px;
+        right: 23px;
+    }
+    
+    .carousel-container .prev, .carousel-container .next {
+        font-size: 20px;
+    }
+    
 }

@@ -164,10 +164,8 @@
               <div class="text is-text-left">
                 <h4 class="title">{{ product.name }}</h4>
                 <h4 class="title">£{{product.price_pence | currency}}</h4>
-              </div>
-              <div class="more-button">
-                <a href="{% url 'product_detail' slug=product.slug %}">more</a>
-              </div>
+              </div>     
+              <a class="more-button" href="{% url 'product_detail' slug=product.slug %}">more</a>           
             </div>
           </div>
         {% endfor %}
