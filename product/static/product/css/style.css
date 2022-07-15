@@ -989,5 +989,155 @@ input[id="transparent"]:checked {
         text-align: center;
         width: 80%;
     }
+
+    .avr-stars-list {
+        justify-content: center;
+    }
+
+    .left-column,
+    .right-column {
+        height: auto;
+    }
+
+    .popup, .rev-popup {
+        height: 100vh;
+    }
+
+    .popup-inner {
+        flex-direction: column;
+        height: auto;
+        width: 500px;
+    }
+
+    .popup__photo  {
+        display: none;
+    }
 }
 
+@media screen and (max-width: 900px) {
+    .products-element {
+        flex-direction: column;
+        height: 480px;
+        text-align: center;
+    }
+
+    .product-txt {
+        align-items: center;
+        padding: 0;
+        background-color: rgb(0 0 0 / 25%);
+        color: var(--col_four);
+        width: 95%;
+        height: 95%;
+        text-align: center;
+    }
+
+    .product-img {
+        height: 426px;
+        position: absolute;
+        z-index: -1;
+        width: 90%;
+        opacity: 0.5;
+    }
+
+    .product-txt h4 {
+        color: var(--col_four);
+        font-size: 30px;
+    }
+
+    .short-desc {
+        width: 80%;
+        text-align: center;
+    }
+
+    .short-desc p {
+        font-size: 18px;
+    }
+
+    .buttons button {
+        background-color: var(--col_four);
+    }
+
+    .filters button,
+    .priceSlider,
+    .products-list,
+    .info-box,
+    .products-element,
+    .filters,
+    .products-bg {
+        width: 600px;
+    }
+
+    .products-bg {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .filters button,
+    .priceSlider,
+    .products-list,
+    .info-box,
+    .products-element,
+    .filters,
+    .products-bg {
+        width: 400px;
+    }
+
+   
+}
+
+@media screen and (max-width: 450px) {
+
+    .filters button,
+    .priceSlider,
+    .products-list,
+    .info-box,
+    .products-element,
+    .filters,
+    .products-bg,
+    .popup-inner {
+        width: 300px;
+    }
+
+    .color-picker,
+    .select {
+        width: auto;
+    }
+
+    .range-btn,
+    .clear-btn {
+        width: 240px;
+    }
+
+    .products-element {
+        height: 320px;
+    }
+
+    .product-img {
+        height: 225px;
+    }
+
+    .product-txt h4 {
+        margin: 0;
+        padding: 10px;
+        font-size: 25px;
+    }
+
+    .short-desc p {
+        font-size: 16px;
+    }
+
+    .product-txt {
+        background-color: rgb(0 0 0 / 45%);
+    }
+
+    .rev-form textarea {
+        width: 100%;
+    }
+
+    .box {
+        padding: 0;
+        width: 100%;
+    }
+}
