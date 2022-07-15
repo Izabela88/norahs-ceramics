@@ -295,3 +295,9 @@
         border: 1px solid #7e7e7e;
     }
 }
+
+@media screen and (max-width: 650px) {
+    .personal-form, .address-form {
+        width: 400px;
+    }
+}

@@ -545,31 +545,31 @@ input[type="checkbox"] {
 }
 
 
-
-
-@media (max-width: 600px) {
-    .window {
-        width: 100%;
-        height: 100%;
-        display: block;
-        border-radius: 0px;
+@media screen and (max-width: 700px) {
+    .order-box {
+        flex-direction: column;
+        border-bottom: 1px solid rgb(0 0 0 / 5%);
+        height: 215px;
     }
 
-    .order-info {
-        width: 100%;
-        height: auto;
-        padding-bottom: 100px;
-        border-radius: 0px;
+    .bck-link {
+        left: 0;
     }
 
-    .credit-info {
-        width: 100%;
-        height: auto;
-        padding-bottom: 100px;
-        border-radius: 0px;
+    .total-part {
+        justify-content: center;
+        align-items: center;
     }
 
-    .pay-btn {
-        border-radius: 0px;
+    .checkout-form-btn {
+        width: 300px;
+    }
+
+    .order-table {
+        width: 300px;
+    }
+
+    .checkout-section {
+        height: 100vh;
     }
 }

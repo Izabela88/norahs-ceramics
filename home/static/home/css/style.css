@@ -167,18 +167,15 @@
     text-transform: uppercase;
     position: relative;
     left: 50%;
-    top: 23%;
     transform: translate(-50%, -50%);
+    margin-bottom: -170px;
+    margin-top: 170px;
 }
 
 .cards-container {
     flex-grow: 1;
     max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    min-height: 100vh;
+    margin: 200px auto;
 }
 
 .cards {

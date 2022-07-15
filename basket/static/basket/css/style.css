@@ -372,3 +372,14 @@
       justify-content: center;
     }
   }
+
+  @media screen and (max-width: 600px) {
+
+    .summary-box,
+    .summary-div {
+      
+      flex-direction: column;
+    }
+    .summary-amount {
+      margin: auto;    }
+  }

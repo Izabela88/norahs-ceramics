@@ -112,4 +112,44 @@
     font-size: 20px;
     letter-spacing: 2px;
   }
+
   
+  @media screen and (max-width: 1150px) {
+    .contact-section {
+      height: 100vh;
+    }
+
+    .contact-form-box {
+      width: 80%;
+      height: auto;
+    }
+
+    .contact-form-box h2 {
+      font-size: 40px;
+    }
+
+    .contact-form-box p {
+      font-size: 17px;
+    }
+
+    .contact-form label {
+      margin-bottom: 5px;
+      margin-top: 5px;
+      font-size: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      margin-bottom: 5px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .contact-form-box h2 {
+      font-size: 30px;
+    }
+
+    .contact-form-box p {
+      font-size: 13px;
+    }
+  }
