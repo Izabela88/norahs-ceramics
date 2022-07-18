@@ -4,10 +4,7 @@ from product.models import Category, SubCategory, Product, Color
 
 class ProductAdmin(admin.ModelAdmin):
     """
-    Admin setting to display list of artwork,
-    Ordered by name, with a vertical filter and a
-    Search box
-    Widget to display image thumbnail in list display
+    Admin setting to display list of products
     """
 
     model = Product
@@ -18,7 +15,6 @@ class ProductAdmin(admin.ModelAdmin):
         "description",
         "short_description",
         "is_active",
-        "is_featured",
         "width_cm",
         "height_cm",
         "length_cm",
@@ -28,7 +24,19 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Product)
+class ProductSubCategoryAdmin(admin.ModelAdmin):
+    """
+    Admin setting to display product subcategory
+    """
+
+    model = SubCategory
+    list_display = (
+        "name",
+        "category",
+    )
+
+
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)
-admin.site.register(SubCategory)
+admin.site.register(SubCategory, ProductSubCategoryAdmin)
 admin.site.register(Color)
