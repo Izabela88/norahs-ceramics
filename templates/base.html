@@ -8,11 +8,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+    content="Norah's Ceramics is an online store that offers handmade ceramics, glass and zero waste accessories.">
+    <meta name="keywords" content="ceramics, glass, zero waste, united kingdom">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="{% static 'favicon_io/favicon.ico' %}" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
     {% block corecss %}
@@ -44,10 +53,6 @@
       <div id="basket" class="basket-box">
         <a href="{% url 'basket' %}"><img class="shop-basket" src="{% static 'images/shopping-basket.png' %}" alt=""></a><span>£{{total_basket_price | currency }}</span>
       </div>
-      <!-- <div id="search-input" class="search">
-        <img src="{% static 'images/zoom.png' %}" alt="">
-        <input type="search" name="search" id="search-input" placeholder="search">
-      </div> -->
       <nav class="menu">
         <div class="wrapper-menu">
           <div class="line-menu half start"></div>
@@ -83,19 +88,18 @@
                 <li class="menu-item"><a href="{% url 'product_list'%}?sub_category=bathroom">Bathroom</a></li>
               </ol>
             </li>
-            <li class="menu-item"><a href="{% url 'home' %}#new-arriv">New In</a></li>
-            <li class="menu-item"><a href="{% url 'home' %}#best-sellers">best sellers</a></li>
-            <li class="menu-item"><a href="#">Contact</a></li>
+            <li class="menu-item"><a class="close-sidebar" href="{% url 'home' %}#new-arriv">New In</a></li>
+            <li class="menu-item"><a class="close-sidebar" href="{% url 'home' %}#best-sellers">best sellers</a></li>
+            <li class="menu-item"><a class="close-sidebar" href="{% url 'contact' %}">Contact</a></li>
             <div class="auth-links">
               <ul>
                 {% if user.is_authenticated %}
                   <li class="menu-item profile-item">
-                    <span><img class="user-icon" src="{% static 'images/user.png' %}" alt="user icon">my profile &dtrif;</span> 
+                    <p><img class="user-icon" src="{% static 'images/user.png' %}" alt="user icon">my profile &dtrif;</p> 
                     <ol class="sub-menu">
                       <li class="menu-item profile-item"><a href="{% url 'customer_profile' request.user.id %}">personal information</a></li>
                       <li class="menu-item"><a href="{% url 'order_history' request.user.id %}">orders</a></li>
                       <li class="menu-item"><a href="{% url 'user_reviews' request.user.id %}">reviews</a></li>
-                      <li class="menu-item"><a href="#">favorites</a></li>
                       <li class="menu-item"><a href="{% url 'account_logout' %}">Logout</a></li>
                     </ol>
                   </li>
@@ -131,7 +135,7 @@
           <ul>
             <li>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/Norahs-Ceramics-103884272399147"
                 target="_blank"
                 rel="noopener"
                 aria-label="Visit our Facebook page"
@@ -166,6 +170,11 @@
               <a href="{{ url }}">Home </a>
             </li>
             <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'terms' %}">Terms and Conditions</a></li>
+            <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+            <li><a href="{% url 'returns_policy' %}">Returns</a></li>
+            <li><a href="{% url 'shipping' %}">Shipping and Delivery</a></li>
+            
           </ul>
         </div>
         <div class="footer-box">
@@ -180,9 +189,9 @@
         </div>
         <div class="footer-box">
           <h3>Contact Us</h3>
-          <div class="contact-info"><img src="{% static 'images/phone.png' %}" alt=""><span>0333 333 333</span></div>
+          <div class="contact-info"><img src="{% static 'images/phone.png' %}" alt=""><span>01746 315102</span></div>
           <div class="contact-info"><img src="{% static 'images/email.png' %}" alt=""><span>info@norahsceramics.com</span></div>
-          <div class="contact-info"><img src="{% static 'images/gps.png' %}" alt=""><span>Wolverhampton, UK</span></div>
+          <div class="contact-info"><img src="{% static 'images/gps.png' %}" alt=""><span>Bridgnorth, UK</span></div>
         </div>
       </div>
       <p>

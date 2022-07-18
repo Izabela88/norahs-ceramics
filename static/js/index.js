@@ -72,3 +72,15 @@ if (box_three) {
     showPassword("id_password");
   });
 }
+
+/* After pressing sidebar links and scrolling to a given section,
+      the sidebar closes automatically*/
+for (const button of closeButtons) {
+  let wrapperMenu = document.querySelector(".wrapper-menu");
+  button.addEventListener("click", function (e) {
+    if (window.innerWidth < 1150) {
+      wrapperMenu.classList.toggle("open");
+      openMenu();
+    }
+  });
+}

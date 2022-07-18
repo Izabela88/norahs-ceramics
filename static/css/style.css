@@ -10,6 +10,7 @@
   --col_nine: #F2CFBB;
   --font_one: 'Mali', cursive;
   --font_two: 'Hubballi', cursive;
+  --font_three:'Nanum Pen Script', cursive;
 
 }
 
@@ -26,18 +27,15 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: var(--font_one);
+  font-family: var(--font_three);
   font-weight: 300;
   letter-spacing: 2px;
-  text-transform:lowercase 
+  text-transform:uppercase; 
 }
 
-h1 {
-  font-size: 40px;
-}
-
+h1,
 h2 {
-  font-size: 40px;
+  font-size: 50px;
 }
 
 a {
@@ -309,6 +307,7 @@ label {
   z-index: 100000;
   background-color: var(--col_four);
   padding: 5px;
+  border-radius: 10px;
 }
 
 .basket-box span {
@@ -354,12 +353,11 @@ label {
   will-change: transform;
   transform: scale(0);
   transition: transform 0.2s ease;
-  background: #FECEAB;
+  background: var(--col_nine);
 }
 
 #menu-list li a.active {
   color: var(--col_eight);
-  font-weight: bold;
 }
 
  #menu-list .menu-item:hover:after {
@@ -438,7 +436,7 @@ label {
   align-items: center;
   text-align: center;
   cursor: context-menu;
-  font-size: 18px;
+  font-size: 18px !important;
   letter-spacing: 2px;
 }
 
@@ -479,8 +477,8 @@ label {
 }
 
 .footer-box h3 {
-  font-family: "Hubballi", cursive;
-  font-size: 20px;
+  font-family: var(--font_three);
+  font-size: 25px;
   margin-bottom: 25px;
   margin-top: 30px;
 }
@@ -776,11 +774,11 @@ label[for="id_login"],
 label[for="id_password"] {
   margin-bottom: 10px;
   margin-top: 20px;
-  text-transform: lowercase;
-  font-size: 14px;
+  text-transform: uppercase;
+  font-size: 20px;
   letter-spacing: 2px;
   font-weight: 500;
-  font-family: var(--font_one);
+  font-family: 'Nanum Pen Script', cursive;
 }
 
 
@@ -983,11 +981,11 @@ label[for="id_password"] {
 label[for="id_old_password"],
 label[for="id_new_password1"],
 label[for="id_new_password2"] {
-  font-size: 12px;
+  font-size: 20px;
   margin: 5px auto;
   text-transform: uppercase;
   color: #C06C84;
-  font-family: var(--font_one);
+  font-family: var(--font_three);
 }
 
 #back-btn {
@@ -997,6 +995,61 @@ label[for="id_new_password2"] {
   font-size: 20px;
 }
 
+/* ERROR PAGES */
+.errors-section {
+  position: relative;
+    height: -o-calc(100vh + 174px); /* opera */
+    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -moz-calc(100vh + 174px);
+    min-height: 100vh;
+}
+
+.errors-container {
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.error-box h2 {
+  font-size: 30px;
+  margin: 20px auto;
+}
+
+.error-img {
+  height: 400px;
+  width: 400px;
+  margin: 40px 0;
+}
+
+.error-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.errors-buttons {
+  display: flex;
+  margin: 20px auto;
+}
+
+.errors-buttons a {
+  width: 200px;
+  text-align: center;
+  margin: 0 20px;
+}
 
 @media screen and (max-width: 1150px) {
   #header {
@@ -1109,11 +1162,88 @@ label[for="id_new_password2"] {
     text-align: center;
     margin-bottom: 25px;
     margin-top: 15px;
+    height: auto;
   }
 
   .footer-box h3 {
     font-size: 25px;
   }
+
+  .contact-info {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .errors-section {
+    height: 100vh;
+
+  }
+  .error-box {
+    width: 90%;
+  }
+
+  .error-box h2 {
+    font-size: 20px;
+  }
+
+  .error-img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .errors-buttons {
+    flex-direction: column;
+  }
+
+  .errors-buttons a {
+    margin: 10px auto;
+  }
+
+  .change-password-box h2,
+  .delete-container h2 {
+    font-size: 30px;
+  }
+
+  label[for="id_old_password"], label[for="id_new_password1"], label[for="id_new_password2"] {
+    font-size: 17px;
+  }
+
+  .delete-form p {
+    font-size: 18px;
+  }
+
+  .delete-buttons {
+    flex-direction: column;
+  }
+
+  .del-btn {
+    margin-bottom: 10px;
+  }
+
+  .delete-form {
+    width: 400px;
+  }
+
+  .delete-account-section {
+    height: 100vh;
+  }
+
 }
 
 
+@media screen and (max-width: 550px) {
+  .button {
+    font-size: 17px;
+  }
+
+  .basket-box {
+    right: 15px;
+  }
+
+  .wrapper-menu {
+    height: 40px;
+    width: 40px;
+  }
+
+}
