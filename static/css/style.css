@@ -1221,6 +1221,14 @@ label[for="id_new_password2"] {
     margin-bottom: 10px;
   }
 
+  .delete-form {
+    width: 400px;
+  }
+
+  .delete-account-section {
+    height: 100vh;
+  }
+
 }
 
 
