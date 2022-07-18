@@ -20,9 +20,9 @@
       <div class="product_container">
           <div class="left-column">
             {% if object.image %}
-              <img src="{{ object.image.url }}" alt="">
+              <img src="{{ object.image.url }}" alt="image">
             {% else %}
-              <img class="no-img" src="{% static 'images/no-pictures.png' %}" alt="">
+              <img class="no-img" src="{% static 'images/no-pictures.png' %}" alt="image">
             {%  endif %}
           </div>      
           <div class="right-column">       
@@ -91,7 +91,7 @@
     </div> 
     </div> 
     <div class="section-img">
-      <img src="{% static 'images/product-details.jpg' %}" alt="">
+      <img src="{% static 'images/product-details.jpg' %}" alt="image">
     </div>
 </section>
 <!--MAKE PRODUCT REVIEW -->
@@ -99,9 +99,9 @@
     <div class="popup-inner">
       <div class="popup__photo">
         {% if object.image %}
-        <img src="{{ object.image.url }}" alt="">
+        <img src="{{ object.image.url }}" alt="image">
         {% else %}
-          <img class="no-img" src="{% static 'images/no-pictures.png' %}" alt="">
+          <img class="no-img" src="{% static 'images/no-pictures.png' %}" alt="image">
         {%  endif %}
       </div>
       <div class="popup__text">

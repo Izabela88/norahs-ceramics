@@ -11,7 +11,7 @@
 <section class="product-section">  
     <div class="container">
         <div class="products-bg">
-            <img src="{% static 'images/product.jpg' %}" alt="">
+            <img src="{% static 'images/product.jpg' %}" alt="image">
         </div>  
         <div class="filters">
             <button id="filters-button">filters &dtrif;</button>
@@ -79,9 +79,9 @@
                 <div class="products-element">
                     <div class="product-img">
                         {% if product.image %}
-                            <img src="{{ product.image.url }}" alt="">
+                            <img src="{{ product.image.url }}" alt="image">
                         {% else %}
-                            <img src="{% static 'images/no-pictures.png' %}" alt="">
+                            <img src="{% static 'images/no-pictures.png' %}" alt="image">
                         {%  endif %}
                     </div>
                     <div class="product-txt">
