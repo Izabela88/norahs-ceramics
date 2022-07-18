@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.sites",
+    "django.contrib.sitemaps",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -65,6 +66,9 @@ INSTALLED_APPS = [
     "checkout.apps.CheckoutConfig",
     "order",
     "reviews",
+    "contact",
+    "policies",
+    "newsletter",
 ]
 
 SITE_ID = 2
@@ -203,12 +207,11 @@ AUTH_USER_MODEL = "customer.User"
 PHONENUMBER_DEFAULT_REGION = "GB"
 PHONENUMBER_DEFAULT_FORMAT = "NATIONAL"
 
-
+# SWEETALERT2
 SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
 
 
 # djangostripe
-
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 STRIPE_WEBHOOK_KEY = os.environ.get("STRIPE_WEBHOOK_KEY")
@@ -226,3 +229,8 @@ else:
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
+
+# MAILCHIMP CREDENTIALS
+MAILCHIMP_API_KEY = os.environ.get("MAILCHIMP_API_KEY")
+MAILCHIMP_DATA_CENTER = os.environ.get("MAILCHIMP_DATA_CENTER")
+MAILCHIMP_EMAIL_LIST_ID = os.environ.get("MAILCHIMP_EMAIL_LIST_ID")

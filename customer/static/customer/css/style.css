@@ -10,6 +10,7 @@
     --col_nine: #F2CFBB;
     --font_one: 'Mali', cursive;
     --font_two: 'Hubballi', cursive;
+    --font_three:'Nanum Pen Script', cursive;   --font_two: 'Hubballi', cursive;
 }
 
 .customer-profile-section {
@@ -57,10 +58,11 @@
 
 .personal-form p,
 .address-form p {
-    font-size: 20px;
+    font-size: 25px;
     text-transform: uppercase;
     margin-bottom: 40px;
     color: var(--col_eight);
+    font-family: var(--font_three);
 }
 
 .personal-form input[type="text"],
@@ -79,11 +81,11 @@
 }
 
 .profile-label {
-    font-size: 12px;
+    font-size: 20px;
     margin: 5px auto;
     text-transform: uppercase;
     color: #C06C84;
-    font-family: var(--font_one);
+    font-family: var(--font_three);
 }
 
 
@@ -154,7 +156,7 @@
 #orders,
 #reviews {
     font-family: var(--font_two);
-    width: 1200px;
+    width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -211,7 +213,7 @@
 .order-container h2,
 .review-container h2 {
     margin: 30px auto;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .products {
@@ -291,5 +293,15 @@
 
     .products {
         border: 1px solid #7e7e7e;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .personal-form, .address-form {
+        width: 400px;
+    }
+
+    .profile-label {
+        font-size: 17px;
     }
 }

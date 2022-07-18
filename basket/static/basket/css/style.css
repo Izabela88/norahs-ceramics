@@ -1,15 +1,16 @@
 :root {
-    --col_one: #D18E85;
-    --col_two: #C8CAC9;
-    --col_three: #000000;
-    --col_four: #ffffff;
-    --col_five: #F2DFE1;
-    --col_six: #C1B198;
-    --col_seven: #F8B195;
-    --col_eight: #C06C84;
-    --col_nine: #F2CFBB;
-    --font_one: 'Mali', cursive;
-    --font_two: 'Hubballi', cursive;
+  --col_one: #D18E85;
+  --col_two: #C8CAC9;
+  --col_three: #000000;
+  --col_four: #ffffff;
+  --col_five: #F2DFE1;
+  --col_six: #C1B198;
+  --col_seven: #F8B195;
+  --col_eight: #C06C84;
+  --col_nine: #F2CFBB;
+  --font_one: 'Mali', cursive;
+  --font_two: 'Hubballi', cursive;
+  --font_three:'Nanum Pen Script', cursive;
 }
 
 
@@ -36,6 +37,7 @@
 .basket-section h2 {
     position: relative;
     margin-top: 50px;
+    font-size: 30px;
 }
 
 /* shopping cart */
@@ -212,38 +214,46 @@
   }
   
   .summary-box {
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: end;
     margin-top: 15px;
+    font-family: var(--font_three);
+    text-transform: uppercase;
+    letter-spacing: 2pxs;
   }
   
   .summary-amount {
-    font-size: 22px;
+    font-size: 45px;
     font-weight: 700;
-    color: #202020;
-  }
-  
-  .summary-items {
-    font-size: 20px;
-    font-weight: 500;
-    color: #909090;
-    line-height: 10px;
-    margin-left: -17px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .summary-amount {
-    font-size: 36px;
-    font-weight: 900;
     color: #202020;
     margin-left: 70px;
   }
   
+  .summary-items {
+    font-size: 30px;
+    font-weight: 500;
+    color: #909090;
+    line-height: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+
+  .summary-items p {
+    font-family: var(--font_three);
+
+  }
+
+  .basket-btns {
+    display: flex;
+  }
+  
   .purchase-button {
-    width: 100%;
-    margin: 30px auto;
+    width: 350px;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   
   .purchase-button:disabled {
@@ -353,4 +363,23 @@
     #empty-basket p {
       left: -4%;
     }
+
+    .basket-btns {
+      flex-direction: column;
+    }
+
+    .summary-box {
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .summary-box,
+    .summary-div {
+      
+      flex-direction: column;
+    }
+    .summary-amount {
+      margin: auto;    }
   }

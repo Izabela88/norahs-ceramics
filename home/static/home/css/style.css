@@ -10,23 +10,22 @@
     --col_nine: #F2CFBB;
     --font_one: 'Mali', cursive;
     --font_two: 'Hubballi', cursive;
-
+    --font_three:'Nanum Pen Script', cursive;
 }
 
 
 .link {
     color: #000000;
-    font-size: 22px;
+    font-size: 30px;
     position: relative;
     margin-top: 20px;
-    border-bottom: 1px solid black;
     transition-duration: 0.3s;
     text-transform: uppercase;
+    font-family: var(--font_three);
 }
 
 .link:hover {
     color: #ffffff;
-    border-bottom: 1px solid #ffffff;
 }
 
 .container {
@@ -42,42 +41,46 @@
 /* -----------HOME PAGE----------- */
 #home-section {
     min-height: 100vh;
-    height: 100vh;
+    height: -o-calc(100% + 174px);
+    /* opera */
+    height: -webkit-calc(100vh + 174px);
+    /* google, safari */
+    height: -moz-calc(100vh + 174px);
     position: relative;
     background-color: var(--col_four);
 }
 
 .product-link {
     position: absolute;
-    top: 20px;
+    top: 12px;
     color: var(--col_four);
-    border-bottom: 1px solid var(--col_four);
-    background-color: rgb(0 0 0 / 21%);
     transition-duration: .3s;
+    text-transform: uppercase;
+    font-family: var(--font_three);
+    font-size: 35px;
+    z-index: 200;
 }
 
-.product-link:hover {
-    transform: scale(1.1);
-    color: var(--col_nine);
-    border-bottom: 1px solid var(--col_nine);
-
-}
 
 .home-txt {
     width: 50%;
-    padding: 64px;
+    padding: 55px;
     margin: auto;
 }
 
 .home-txt h1 {
     font-weight: 300;
-    font-family: 'Homemade Apple', cursive
+    font-family: var(--font_three);
+    font-size: 55px;
+    margin: 20px auto;
 }
+
 
 .home-txt p {
     font-size: 23px;
     line-height: 30px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 
@@ -96,70 +99,83 @@
     background: linear-gradient(180deg, #e6e9f0 0%, #e1c4b6 100%);
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     transform: translate(-50%, -50%);
+}
+
+.hero-container {
+    height: 600px;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
 }
 
 .home-images {
     width: 100%;
-    height: 240px;
+    height: 275px;
     position: absolute;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     left: 50%;
-    top: 83%;
+    top: 70%;
     transform: translate(-50%, -50%);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    background-color: var(--col_nine);
+    align-items: center;
+    justify-content: center;
 }
 
 .home-img {
-    height: 100%;
+    height: 80%;
+    width: 85%;
+    margin: auto;
+    box-shadow: rgb(0 0 0 / 15%) 0px 5px 15px 0px;
+}
+
+.home-img a {
     width: 100%;
+    height: 100%;
 }
 
 .home-img img {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition-duration: .3s;
+
 }
 
-.home-img-one {
-    background-color: var(--col_six);
-}
 
-.home-img-two {
-    background-color: var(--col_two);
-}
-
-.home-img-three {
-    background-color: var(--col_six);
+.home-img-one img:hover,
+.home-img-two img:hover,
+.home-img-three img:hover {
+    transform: scale(1.1);
 }
 
 /* -----------BEST SELLERS SECTION----------- */
 .b-sellers-section {
     position: relative;
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
-    height: -moz-calc(100vh + 174px)
+    height: 100%;
+    min-height: 100vh;
 }
 
 .b-sellers-section h1 {
     text-align: center;
-    text-transform: lowercase;
-    position: absolute;
+    text-transform: uppercase;
+    position: relative;
     left: 50%;
-    top: 23%;
     transform: translate(-50%, -50%);
+    margin-bottom: -170px;
+    margin-top: 170px;
 }
 
 .cards-container {
     flex-grow: 1;
     max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    min-height: 100vh;
+    margin: 200px auto;
 }
 
 .cards {
@@ -222,9 +238,9 @@
 }
 
 .card__title {
-    margin: 0 auto;
+    margin: 10px auto;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 17px;
     text-transform: uppercase;
 }
 
@@ -270,6 +286,7 @@
 
 .card__frame h3 {
     margin-top: 10px;
+    font-size: 25px;
 }
 
 .add-btn {
@@ -339,6 +356,7 @@
     font-size: 23px;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .bg-box {
@@ -370,8 +388,10 @@
 /* ----------- WHY US, OUR VALUES SECTION----------- */
 .info {
     position: relative;
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -o-calc(100vh + 174px);
+    /* opera */
+    height: -webkit-calc(100vh + 174px);
+    /* google, safari */
     height: -moz-calc(100vh + 174px)
 }
 
@@ -408,14 +428,16 @@
 }
 
 .part p {
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .part img,
 .part h4 {
     margin-top: 20px;
     margin-bottom: 20px;
+    font-size: 25px;
 }
 
 
@@ -423,8 +445,10 @@
 
 .new-arrivals {
     position: relative;
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
+    height: -o-calc(100vh + 174px);
+    /* opera */
+    height: -webkit-calc(100vh + 174px);
+    /* google, safari */
     height: -moz-calc(100vh + 174px)
 }
 
@@ -490,11 +514,10 @@
 }
 
 .carousel-container .item .text .title {
-    font-size: 1.2rem;
+    font-size: 25px;
     font-weight: normal;
-    margin-left: 20px;
-    margin-bottom: 5px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .carousel-container .prev,
@@ -620,7 +643,7 @@ main section .carousel-container .dots .dot:hover {
 }
 
 .newsletter h3 {
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -642,6 +665,10 @@ main section .carousel-container .dots .dot:hover {
     text-align: center;
 }
 
+label[for="id_newsletter_email"] {
+    display: none;
+}
+
 
 @media screen and (max-width: 1150px) {
     .hero-image {
@@ -650,7 +677,16 @@ main section .carousel-container .dots .dot:hover {
 
     .home-images {
         width: 700px;
-        height: 185px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-link {
+        font-size: 35px;
+        top: 10px;
+    }
+
+    .home-img-three {
+        display: none;
     }
 
     .home-txt {
@@ -664,13 +700,11 @@ main section .carousel-container .dots .dot:hover {
     .cards {
         grid-template-columns: repeat(2, 1fr);
         width: 645px;
-        margin-top: 475px;
-        margin-bottom: 100px;
+        margin: 60px auto;
     }
 
     .image-box {
-        margin: 0;
-        height: 66vh;
+        margin: 40px auto;
     }
 
     .parts-container,
@@ -681,9 +715,47 @@ main section .carousel-container .dots .dot:hover {
     .parts-wrapper {
         margin: 100px auto;
     }
+
+    .new-collection {
+        height: 100%;
+        min-height: 100vh;
+    }
+
+    .container-mobiles {
+        flex-direction: column;
+    }
+
+    .bg-box {
+        height: 100%;
+    }
+
+    .text-box {
+        text-align: center;
+        margin: 50px auto;
+    }
+
+    .b-sellers-section h1 {
+        margin-top: 100px;
+    }
+
+    .cards-container {
+        margin: 100px auto;
+    }
+
+    .new-arrivals {
+        height: 100vh;
+    }
+
+    .info {
+        height: 100%;
+        min-height: 100vh;
+    }
+
+
+
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
 
     h1,
     h2 {
@@ -696,6 +768,12 @@ main section .carousel-container .dots .dot:hover {
 
     .home-images {
         grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+    }
+
+    .home-img {
+        width: 60%;
+        height: 92%;
     }
 
     .home-img-one,
@@ -711,10 +789,6 @@ main section .carousel-container .dots .dot:hover {
         font-size: 20px;
     }
 
-    .home-images {
-        width: 425px;
-        height: 240px;
-    }
 
     .container-mobiles {
         flex-direction: column;
@@ -734,14 +808,80 @@ main section .carousel-container .dots .dot:hover {
         text-align: center;
     }
 
+    .text-box h2 {
+        margin-top: 150px;
+    }
+
+    .newsletter {
+        height: 300px;
+    }
+
     .newsletter h3 {
         font-size: 20px;
-        width: 80%;
+        width: 50%;
 
+    }
+
+    .newsletter-box form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 400px;
+    }
+
+    .newsletter-box input,
+    .newsletter-box button {
+        width: 100%;
+    }
+
+    .carousel-container {
+        width: 600px;
+    }
+
+    .cards-container {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+        width: 400px;
+        margin: 60px auto;
+    }
+
+
+    .home-img {
+        max-width: 600px;
+        width: 90%;
+    }
+
+    .parts-container,
+    .parts-container-two {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .carousel-container {
+        width: 400px;
+        padding: 0;
+        height: auto;
+    }
+
+    .image-box {
+        width: 400px;
+    }
+
+    .text-box p {
+        font-size: 20px;
     }
 }
 
 @media screen and (max-width: 550px) {
+
+    #home-section {
+        height: 100vh;
+    }
     #menu-list .menu-item {
         width: 100%;
     }
@@ -759,8 +899,63 @@ main section .carousel-container .dots .dot:hover {
         font-size: 17px;
     }
 
-    .home-images {
-        width: 365px;
-        height: 215px;
+    .text-box {
+        width: 300px;
     }
+
+    .home-txt p {
+        font-size: 11px;
+    }
+
+    .home-txt h1 {
+        font-size: 25px;
+    }
+
+    .link {
+        font-size: 16px;
+    }
+
+    .text-box p,
+    .part p,
+    .part h4,
+    .newsletter h3  {
+        font-size: 17px;
+    }
+
+    .newsletter h3 {
+        width: 70%;
+    }
+    
+    .product-link {
+        font-size: 35px;
+    }
+
+    .cards {
+        width: 300px;
+    }
+
+    .hero-bg {
+        height: 300px;
+    }
+
+    .newsletter-box form,
+    .image-box,
+    .carousel-container {
+        width: 300px;
+    }
+
+    .carousel-container .item .text .title {
+        font-size: 17px;
+    }
+
+    .more-button {
+        font-size: 12px;
+        bottom: 183px;
+        right: 23px;
+    }
+    
+    .carousel-container .prev, .carousel-container .next {
+        font-size: 20px;
+    }
+    
 }

@@ -1,0 +1,121 @@
+:root {
+    --col_one: #D18E85;
+    --col_two: #C8CAC9;
+    --col_three: #000000;
+    --col_four: #ffffff;
+    --col_five: #F2DFE1;
+    --col_six: #C1B198;
+    --col_seven: #F8B195;
+    --col_eight: #C06C84;
+    --col_nine: #F2CFBB;
+    --font_one: 'Mali', cursive;
+    --font_two: 'Hubballi', cursive;
+}
+
+[data-custom-class='policy_body'],
+[data-custom-class='policy_body'] * {
+    background: transparent;
+}
+
+[data-custom-class='title'],
+[data-custom-class='title'] * {
+    font-family: 'Hubballi', cursive;
+    font-size: 26px;
+    color: #000000;
+}
+
+[data-custom-class='subtitle'],
+[data-custom-class='subtitle'] * {
+    font-family: 'Hubballi', cursive;
+    color: #595959;
+    font-size: 14px;
+}
+
+[data-custom-class='heading_1'],
+[data-custom-class='heading_1'] * {
+    font-family: 'Hubballi', cursive;
+    font-size: 19px;
+    color: #000000;
+}
+
+[data-custom-class='heading_2'],
+[data-custom-class='heading_2'] * {
+    font-family: 'Hubballi', cursive;
+    font-size: 17px;
+    color: #000000;
+}
+
+[data-custom-class='body_text'],
+[data-custom-class='body_text'] * {
+    color: #595959;
+    font-size: 17px;
+    font-family: 'Hubballi', cursive;
+}
+
+[data-custom-class='link'],
+[data-custom-class='link'] * {
+    color: #3030F1;
+    font-size: 16px;
+    font-family: 'Hubballi', cursive;
+    word-break: break-word;
+}
+
+.terms-container {
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.terms-section {
+    position: relative;
+    height: -o-calc(9600px + 174px);
+    /* opera */
+    height: -webkit-calc(9600px + 174px);
+    /* google, safari */
+    height: -moz-calc(9600px + 174px)
+}
+
+.privacy-section {
+    position: relative;
+    height: -o-calc(6300px + 174px);
+    /* opera */
+    height: -webkit-calc(6300px + 174px);
+    /* google, safari */
+    height: -moz-calc(6300px + 174px)
+}
+
+.return-section {
+    position: relative;
+    height: -o-calc(1500px + 174px);
+    /* opera */
+    height: -webkit-calc(1500px + 174px);
+    /* google, safari */
+    height: -moz-calc(1500px + 174px)
+}
+
+.delivery-section {
+    position: relative;
+    height: -o-calc(1300px + 174px);
+    /* opera */
+    height: -webkit-calc(1300px + 174px);
+    /* google, safari */
+    height: -moz-calc(1300px + 174px)
+}
+
+.terms-container h3 {
+    margin: 20px auto;
+    text-transform: uppercase;
+    font-family: 'Hubballi', cursive;
+}
+
+.terms-container p {
+    font-size: 18px;
+    line-height: 20px;
+}

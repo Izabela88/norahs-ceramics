@@ -120,7 +120,9 @@
                             {% endif %}
                         <h4>£{{product.price_pence | currency}}
                         </h4>
-                        <p>{{ product.short_description }}</p>
+                        <div class="short-desc">
+                            <p>{{ product.short_description }}</p>
+                        </div>
                         <div class="buttons">
                             <form method="post" action={% url 'add_to_basket' product_id=product.id %}>
                                 {% csrf_token %}
