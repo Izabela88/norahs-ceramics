@@ -334,7 +334,7 @@ Visa: 4242 4242 4242 4242
   | Add/edit/delete product category | No        | No         | Yes       |
   | Login                            | No        | Yes        | Yes       |
   | Register                         | Yes       | No         | No        |
-  | View/edit/delete my reviews      | No        | Yes        | Yes       |
+  | Edit/delete reviews                No        | No         | Yes       |
   | View all reviews                 | No        | Yes        | Yes       |
   | Add/edit/delete a review         | No        | No         | Yes       |
   | View order history and details   | No        | Yes        | Yes       |
