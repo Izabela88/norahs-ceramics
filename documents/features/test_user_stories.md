@@ -63,47 +63,47 @@
 
     > - As a frequent user, I want to view the product details so that I can make an informed decision.
 
-        - Product details page contains:
-        - product image
-        - product name
-        - product price
-        - product overall rating displays as stars
-        - link - qty of reviews
-        - link - write review
-        - product details like: height, width, length, volume
-        - product description
-        - 'add to basket' button
+    - Product details page contains:
+    - product image
+    - product name
+    - product price
+    - product overall rating displays as stars
+    - link - qty of reviews
+    - link - write review
+    - product details like: height, width, length, volume
+    - product description
+    - 'add to basket' button
 
     ![product details](/documents/product-details.png)
 
     > - As a frequent user, I want to know what products are new arrivals, so I can be up to date with the new products.
 
-        - This section is located in the home section.
-        - Displays the ten most recently added products.
+    - This section is located in the home section.
+    - Displays the ten most recently added products.
 
     ![new arrivals](/documents/new-arrivals.png)
 
     > - As a frequent user, I want to sort the list of products so that I can find a piece within my price range.
 
-        - 'sort by' option is located inside the 'filters' box.
-        - The user can sort products by:
-            - name A-Z
-            - name Z-A
-            - price low to high
-            - price high to low
+    - 'sort by' option is located inside the 'filters' box.
+    - The user can sort products by:
+        - name A-Z
+        - name Z-A
+        - price low to high
+        - price high to low
 
     ![filters](/documents/filters.png)
 
     > - As a frequent user, I want to review items in my shopping bag so that I can adjust quantities ordered.
 
-        - The shopping basket features a summary list all the items added by the user, including quantity and prices.
-        - The user will be able to add / subtract / delete all products.
-        - When adjusting / removing an item in/from the shopping basket, the totals and subtotals will adjust accordingly and a toast message will inform the user about their action and the content of the shopping basket.
-        - The shopping basket a also features a button "Proceed" which leads to order summary part.
+    - The shopping basket features a summary list all the items added by the user, including quantity and prices.
+    - The user will be able to add / subtract / delete all products.
+    - When adjusting / removing an item in/from the shopping basket, the totals and subtotals will adjust accordingly and a toast message will inform the user about their action and the content of the shopping basket.
+    - The shopping basket a also features a button "Proceed" which leads to order summary part.
 
     ![basket](/documents/basket.png)
 
-        - When the shopping basket is empty, an information appears on the screen.
+    - When the shopping basket is empty, an information appears on the screen.
 
     ![basket](/documents/empty-basket.png)
 
