@@ -192,6 +192,10 @@
 
     ![basket](/documents/basket.png)
 
+    - When the shopping basket is empty, an information appears on the screen.
+
+    ![basket](/documents/empty-basket.png)
+
   - ### **Order Summary:**
 
     - The order summary features a summary list all the products from the shopping basket, prices, quantity, VAT, delivery cost and total price to pay.

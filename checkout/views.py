@@ -14,6 +14,8 @@ from django.http import HttpRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from order.models import Order, OrderProduct
 from order.data_objects import OrderStatus
+from django.core.mail import send_mail, BadHeaderError
+from customer.models import User
 
 
 class OrderSummaryView(View):

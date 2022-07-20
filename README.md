@@ -81,8 +81,6 @@ Visa: 4242 4242 4242 4242
      - As a new user, I want to find a section describing the company to find out when it was founded and the rest of the pertinent information about this company.
      - As a new user ,I want to easily understand the main purpose of the website.
      - As a new user I want to have option to see passwords so I will not make a mistake typing it.
-     - As a frequent user, I want to log in and logout so that I can access my profile safely.
-     - As a frequent user, I want to register for an account so I can make purchase.
      - As a new user , I want to view all the products available so that I can quickly have an overview of what is on offer.
      - As a new user, I want to view available products by specific category so that I can quickly find products I’m interested in.
      - As a new user , I want to find a section describing the company to find out when it was founded and the rest of the pertinent information about this company.
@@ -104,6 +102,8 @@ Visa: 4242 4242 4242 4242
      - As a frequent user, I want to be able to write products review , so I can help others users with choosing the products.
      - As a frequent user, I want to sign up for the Newsletter to email any major updates and/or changes to the website or organization.
      - As a frequent user, I want to be able to contact the platform owner so I can report any problems or ask questions.
+     - As a frequent user, I want to log in and logout so that I can access my profile safely.
+     - As a frequent user, I want to register for an account so I can make purchase.
 
 - ### **Scope**
 
