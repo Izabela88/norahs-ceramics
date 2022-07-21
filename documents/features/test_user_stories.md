@@ -87,10 +87,10 @@
 
     - 'sort by' option is located inside the 'filters' box.
     - The user can sort products by:
-        - name A-Z
-        - name Z-A
-        - price low to high
-        - price high to low
+      - name A-Z
+      - name Z-A
+      - price low to high
+      - price high to low
 
     ![filters](/documents/filters.png)
 
@@ -151,7 +151,24 @@
     ![best sellers](/documents/best-sellers.png)
 
     > - As a frequent user, I want to enter payment information in a safe and secure way so that I can checkout quickly with confidence.
+
+    - Checkout is proceed with Stripe.
+    - After clicking button 'go to secure payment' in order summary section, the user is moving to Stripe page, where their can make secure payment.
+    - Stripe page contains:
+      - order summary
+      - email input
+      - shipping address form
+      - shipping method to choose
+      - payment details inputs
+      - 'pay' button
+
+    ![payment](/documents/payment.png)
+
     > - As a frequent user, I want to receive confirmation for my order so that I can have a proof of purchase.
+
+    - After success payment, the user is moving to page, where their can see its order number.
+
+    ![order no](/documents/order-no.png)
 
     > - As a frequent user, I want to be able to write products review , so I can help others users with choosing the products.
 

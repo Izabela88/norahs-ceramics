@@ -146,6 +146,7 @@ def create_checkout_session(request):
                 mode="payment",
                 line_items=checkout_products["line_items"],
             )
+    
         except Exception as e:
             return HttpResponse(e)
 

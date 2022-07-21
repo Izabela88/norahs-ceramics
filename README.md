@@ -421,7 +421,7 @@ Visa: 4242 4242 4242 4242
 
 - ### **Automated testing**
 
-  - Developer implemented 23 automated testings.
+  - Developer implemented 23 automated tests.
   - To check tests run 'pytest' in the terminal.
 
   - ### **Testing accessibility and performance**
