@@ -26,8 +26,7 @@
 
     ![footer social icons](/documents/footer.png)
 
-    > - As a new user, I want to find a section describing the company to find out when it was founded and the rest of the pertinent information about this company.
-    > - As a new user ,I want to easily understand the main purpose of the website.
+    > - As a new user, I want to easily understand the main purpose of the website.
 
     - The hero section contains images that are related to the activities of the company.
     - The hero section contains a text that indicates what the company does.
