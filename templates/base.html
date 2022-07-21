@@ -91,6 +91,7 @@
             <li class="menu-item"><a class="close-sidebar" href="{% url 'home' %}#new-arriv">New In</a></li>
             <li class="menu-item"><a class="close-sidebar" href="{% url 'home' %}#best-sellers">best sellers</a></li>
             <li class="menu-item"><a class="close-sidebar" href="{% url 'contact' %}">Contact</a></li>
+          </ol>
             <div class="auth-links">
               <ul>
                 {% if user.is_authenticated %}
@@ -109,9 +110,6 @@
                 {% endif %}
               </ul>
             </div>
-            
-          </ol>
-
         </div>
       </nav>
     </header>

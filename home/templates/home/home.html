@@ -29,15 +29,15 @@
       <div class="home-images center">
         <div class="home-img home-img-one center">
           <p class="link product-link">ceramic bowls</p>
-          <a href="{% url 'product_list'%}?sub_category=bowls"><img src="{% static 'images/home-img-one.jpg' %}" alt=""></a>
+          <a href="{% url 'product_list'%}?sub_category=bowls"><img src="{% static 'images/home-img-one.jpg' %}" alt="image"></a>
         </div>
         <div class="home-img home-img-two center">
           <p class="link product-link">ceramic decor</p>
-          <a  href="{% url 'product_list'%}?sub_category=ceramic_decor"><img src="{% static 'images/home_pic.jpg' %}" alt=""></a>
+          <a  href="{% url 'product_list'%}?sub_category=ceramic_decor"><img src="{% static 'images/home_pic.jpg' %}" alt="image"></a>
         </div>
         <div class="home-img home-img-three center">
           <p class="link product-link">ceramic mugs</p>
-          <a  href="{% url 'product_list'%}?sub_category=mugs"><img src="{% static 'images/home-img-three.jpg' %}" alt="">
+          <a  href="{% url 'product_list'%}?sub_category=mugs"><img src="{% static 'images/home-img-three.jpg' %}" alt="image">
             </a>
         </div>
       </div>
@@ -55,9 +55,9 @@
             <div class="card__frame">
               <div class="card__picture">
                 {% if best_seller.product.image %}
-                    <img src="{{ best_seller.product.image.url }}" width="120" alt="">
+                    <img src="{{ best_seller.product.image.url }}" width="120" alt="image">
                 {% else %}
-                    <img src="{% static 'images/no-pictures.png' %}" alt="">
+                    <img src="{% static 'images/no-pictures.png' %}" alt="image">
                 {%  endif %}
               </div>
               <h4 class="card__title">{{best_seller.product.name}}</h4>
@@ -81,8 +81,6 @@
       </ul>
     </div>
     </div>
-    </div>
-  </div>
 </section>
 <!-------------------------- NEW COLLECTION SECTION ----------------------------->
 <section class="new-collection">
@@ -96,7 +94,7 @@
       <a class="link" href="{% url 'product_list'%}?sub_category=ceramic_decor">shop now</a>
     </div>
     <div class="image-box">
-      <img src="{% static 'images/new-collection.jpg' %}" alt="">
+      <img src="{% static 'images/new-collection.jpg' %}" alt="image">
     </div>        
   </div>
 </section>
@@ -107,22 +105,22 @@
       <h2>why us ?</h2>
       <div class="parts-container">
         <div class="part">
-          <img src="{% static 'images/free-delivery.png' %}" alt="">
+          <img src="{% static 'images/free-delivery.png' %}" alt="image">
           <h4>free shipping</h4>
           <p>Don't worry about delivery costs.</p>
         </div>
         <div class="part">
-          <img src="{% static 'images/refund.png' %}" alt="">
+          <img src="{% static 'images/refund.png' %}" alt="image">
           <h4>100% refund</h4>
           <p>You have 14 days to return the purchase. You will receive your money within 24 hours.</p>
         </div>
         <div class="part">
-          <img src="{% static 'images/support.png' %}" alt="">
+          <img src="{% static 'images/support.png' %}" alt="image">
           <h4>24h support</h4>
           <p>Our telephone line is open 24h.</p>
         </div>
         <div class="part">
-          <img src="{% static 'images/charity.png' %}" alt="">
+          <img src="{% static 'images/charity.png' %}" alt="image">
           <h4>charity</h4>
           <p>We donate 5% of our income to charity.</p>
         </div>
@@ -130,23 +128,25 @@
       <h2>our values</h2>
       <div class="parts-container-two">
         <div class="part">
-          <img src="{% static 'images/hand-made.png' %}" alt="">
+          <img src="{% static 'images/hand-made.png' %}" alt="image">
           <h4>handmade</h4>
         </div>
         <div class="part">
-          <img src="{% static 'images/plant-based.png' %}" alt="">
+          <img src="{% static 'images/plant-based.png' %}" alt="image">
           <h4>zero waste products</h4>
         </div>
         <div class="part">
-          <img src="{% static 'images/recycle.png' %}" alt="">
+          <img src="{% static 'images/recycle.png' %}" alt="image">
           <h4>recycled materials</h4>
         </div>
         <div class="part">
-          <img src="{% static 'images/plastic.png' %}" alt="">
+          <img src="{% static 'images/plastic.png' %}" alt="image">
           <h4>plastic free</h4>
         </div>  
     </div>
-    </div>   
+    </div>
+    </div>
+
 </section>
 <!-------------------------- NEW ARRIVALS SECTION ----------------------------->
 <section id="new-arriv" class="section new-arrivals">
@@ -157,9 +157,9 @@
           <div class="item fade">
             <div class="image">
               {% if product.image %}
-                  <img src="{{ product.image.url }}" alt="">
+                  <img src="{{ product.image.url }}" alt="image">
               {% else %}
-                  <img src="{% static 'images/no-pictures.png' %}" alt="">
+                  <img src="{% static 'images/no-pictures.png' %}" alt="image">
               {%  endif %}
               <div class="text is-text-left">
                 <h4 class="title">{{ product.name }}</h4>

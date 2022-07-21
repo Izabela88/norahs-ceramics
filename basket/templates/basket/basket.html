@@ -16,7 +16,7 @@
     </ul>
     {% endif %}
     <div class="empty-img">
-        <img src="{% static 'images/bg.jpg' %}" alt="">
+        <img src="{% static 'images/bg.jpg' %}" alt="Vase">
     </div>
     <div class="container">
         <div class="shopping-cart-container show-shopping-cart">
@@ -29,11 +29,11 @@
                             <div class="product-box" style="display: flex;">
                                 {% if basket_product.product.image %}
                                     <div class="product-image">
-                                        <img src="{{ basket_product.product.image.url }}" alt="">
+                                        <img src="{{ basket_product.product.image.url }}" alt="basket product">
                                     </div>
                                 {% else %}
                                     <div class="product-image">
-                                        <img src="{% static 'images/no-pictures.png' %}" alt="">
+                                        <img src="{% static 'images/no-pictures.png' %}" alt="no product">
                                     </div>
                                 {%  endif %}
                             <div class="product-description">

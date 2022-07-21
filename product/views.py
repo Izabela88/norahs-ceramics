@@ -5,7 +5,6 @@ from django.db.models import Q
 from reviews.forms import ProductReviewForm
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from reviews.forms import ProductReviewForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from reviews.models import ProductReview
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse

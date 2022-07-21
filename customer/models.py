@@ -28,19 +28,19 @@ class User(AbstractUser):
 
 class AddressDetails(TimestapModel):
     address_1 = models.CharField(
-        verbose_name="Address", max_length=100, null=True
+        verbose_name="Address", max_length=100, default=""
     )
     address_2 = models.CharField(
-        verbose_name="Address 1", max_length=100, null=True
+        verbose_name="Address 1", max_length=100, default=""
     )
 
     town = models.CharField(
-        verbose_name="Town/City", max_length=100, null=True
+        verbose_name="Town/City", max_length=100, default=""
     )
     postcode = models.CharField(
-        verbose_name="Post Code", max_length=8, null=True
+        verbose_name="Post Code", max_length=8, default=""
     )
-    county = models.CharField(verbose_name="County", max_length=100, null=True)
+    county = models.CharField(verbose_name="County", max_length=100, default="")
     country = models.CharField(
-        verbose_name="Country", max_length=100, null=True
+        verbose_name="Country", max_length=100, default=""
     )
