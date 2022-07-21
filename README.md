@@ -334,7 +334,7 @@ Visa: 4242 4242 4242 4242
   | Add/edit/delete product category | No        | No         | Yes       |
   | Login                            | No        | Yes        | Yes       |
   | Register                         | Yes       | No         | No        |
-  | Edit/delete reviews                No        | No         | Yes       |
+  | Edit/delete reviews No           | No        | Yes        |
   | View all reviews                 | No        | Yes        | Yes       |
   | Add/edit/delete a review         | No        | No         | Yes       |
   | View order history and details   | No        | Yes        | Yes       |
@@ -346,6 +346,7 @@ Visa: 4242 4242 4242 4242
   - #### **Delete operations**
 
     - Users first need to confirm that they are sure that they want to delete user profile.
+
   - #### **Review status**
 
     - Reviews can be written only by register users.
@@ -410,7 +411,7 @@ Visa: 4242 4242 4242 4242
   - [Compress](https://compressgif.com/): for compress images.
   - [Realfavicongenerator](https://realfavicongenerator.net/): for favicon.
   - [TablePlus](https://tableplus.com/): for database management.
-  - [TempMail](https://temp-mail.org/en/): generates temporary emails, used for registering an walkers accounts.
+  - [TempMail](https://temp-mail.org/en/): generates temporary emails, used for registering an account.
   - [Pytest](https://pytest-django.readthedocs.io/en/latest/index.html): for automated tests.
 
 ## **TESTING**
@@ -430,25 +431,25 @@ Visa: 4242 4242 4242 4242
 
     - For desktop:
 
-    | Section        | Performance | Accessibility | Best Practices | SEO |
-    | -------------- | ----------- | ------------- | -------------- | --- |
-    | Home           | 95          | 92            | 92             | 90  |
-    | About          | 97          | 97            | 100            | 90  |
-    | Contact        | 93          | 98            | 100            | 90  |
-    | Register       | 91          | 98            | 100            | 90  |
-    | Log In         | 93          | 98            | 100            | 90  |
-    | Error pages    | 95          | 100           | 100            | 90  |
+    | Section     | Performance | Accessibility | Best Practices | SEO |
+    | ----------- | ----------- | ------------- | -------------- | --- |
+    | Home        | 95          | 92            | 92             | 90  |
+    | About       | 97          | 97            | 100            | 90  |
+    | Contact     | 93          | 98            | 100            | 90  |
+    | Register    | 91          | 98            | 100            | 90  |
+    | Log In      | 93          | 98            | 100            | 90  |
+    | Error pages | 95          | 100           | 100            | 90  |
 
     - For mobiles:
 
-    | Section        | Performance | Accessibility | Best Practices | SEO |
-    | -------------- | ----------- | ------------- | -------------- | --- |
-    | Home           | 84          | 92            | 100            | 92  |
-    | About          | 81          | 100           | 100            | 92  |
-    | Contact        | 85          | 100           | 100            | 92  |
-    | Register       | 83          | 98            | 100            | 92  |
-    | Log In         | 80          | 98            | 100            | 92  |
-    | Error pages    | 76          | 100           | 100            | 92  |
+    | Section     | Performance | Accessibility | Best Practices | SEO |
+    | ----------- | ----------- | ------------- | -------------- | --- |
+    | Home        | 84          | 92            | 100            | 92  |
+    | About       | 81          | 100           | 100            | 92  |
+    | Contact     | 85          | 100           | 100            | 92  |
+    | Register    | 83          | 98            | 100            | 92  |
+    | Log In      | 80          | 98            | 100            | 92  |
+    | Error pages | 76          | 100           | 100            | 92  |
 
   - ### **Interesting issues and known bugs**
 
@@ -502,7 +503,9 @@ Visa: 4242 4242 4242 4242
      MAILCHIMP_API_KEY | generated in Mailchimp account  
      MAILCHIMP_DATA_CENTER | generated in Mailchimp account  
      MAILCHIMP_EMAIL_LIST_ID | generated in Mailchimp account
-    SECRET_KEY | your secret key
+     SECRET_KEY | your secret key
+     STRIPE_PUBLISHABLE_KEY | generated in Stripe account
+     STRIPE_SECRET_KEY | generated in Stripe account
 
   - install dj_database_url and psycopg2.
 
@@ -562,25 +565,25 @@ Visa: 4242 4242 4242 4242
 
   ```
   release: python manage.py migrate
-  web: gunicorn walkers.wsgi
+  web: gunicorn norahs_ceramics.wsgi
   ```
 
   - Login to Heroku through CLI, using `heroku login`. Once logged in, disable the collect static temporarily, so that Heroku won't try to collect static files when it deploys.
 
   ```
-  heroku config:set DISABLE_COLLECTSTATIC=1 --app walkers88
+  heroku config:set DISABLE_COLLECTSTATIC=1 --app norahs_ceramics
   ```
 
   And add the hostname of the Heroku app to allowed hosts in the project's settings.py, and also add localhost so that Gitpod will still work as well:
 
   ```
-  ALLOWED_HOSTS = ["walkers88.herokuapp.com", "localhost", "127.0.0.1"]
+  ALLOWED_HOSTS = ["norahsceramics.herokuapp.com/", "localhost", "127.0.0.1"]
   ```
 
   - Add, commit, and push to Github and then to Heroku. After pushing to Github as usual, initialize git remote first:
 
   ```
-  heroku git:remote -a walkers88
+  heroku git:remote -a norahs_ceramics
   ```
 
   Then push to Heroku:
