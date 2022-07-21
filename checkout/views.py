@@ -5,18 +5,16 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 import sweetify
 from django.conf import settings  # new
-from django.http import JsonResponse
-from django.views import View
 from django.views.generic.base import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 import stripe
 from django.http import HttpRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from checkout.forms import PersonalInformationForm, ShippingAddressForm
-from customer.forms import AddressForm
 from order.models import Order, OrderProduct
 from order.data_objects import OrderStatus
+from django.core.mail import send_mail, BadHeaderError
+from customer.models import User
 
 
 class OrderSummaryView(View):
@@ -147,6 +145,7 @@ def create_checkout_session(request):
                 mode="payment",
                 line_items=checkout_products["line_items"],
             )
+
         except Exception as e:
             return HttpResponse(e)
 

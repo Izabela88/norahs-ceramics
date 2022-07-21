@@ -21,9 +21,9 @@
               <div class="order-box">
                 <div class="checkout-product-image">
                   {% if checkout_product.product.image %}                   
-                    <img src="{{ checkout_product.product.image.url }}"  class='order-img' alt="">                  
+                    <img src="{{ checkout_product.product.image.url }}"  class='order-img' alt="product image">                  
                   {% else %}                 
-                    <img src="{% static 'images/no-pictures.png' %}"  class='order-img' alt="">
+                    <img src="{% static 'images/no-pictures.png' %}"  class='order-img' alt="no picture">
                   {%  endif %}
                 </div>
                 <div class="product-desc">
