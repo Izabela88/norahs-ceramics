@@ -5,7 +5,6 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 import sweetify
 from django.conf import settings  # new
-from django.views import View
 from django.views.generic.base import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -146,7 +145,7 @@ def create_checkout_session(request):
                 mode="payment",
                 line_items=checkout_products["line_items"],
             )
-    
+
         except Exception as e:
             return HttpResponse(e)
 

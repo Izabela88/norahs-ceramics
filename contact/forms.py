@@ -77,7 +77,7 @@ class ContactForm(forms.Form):
             [settings.EMAIL_HOST_USER],
             self.cleaned_data["email"],
             self.format_message(),
-            "You got a email!",
+            "You got an email!",
         )
 
     def format_message(self) -> str:
