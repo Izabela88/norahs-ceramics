@@ -381,5 +381,11 @@
       flex-direction: column;
     }
     .summary-amount {
-      margin: auto;    }
+      margin: auto;    
+    }
+
+    .empty-basket p, .empty-basket a {
+        font-size: 20px;
+    }
+
   }

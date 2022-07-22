@@ -467,8 +467,8 @@ label {
   justify-content: space-around;
   align-items: baseline;
   color: var(--black-color);
-  width: 1300px;
   margin: 35px auto;
+  max-width: 1200px;
 }
 
 .footer-box {
@@ -1064,6 +1064,13 @@ label[for="id_new_password2"] {
     width: 100%;
   }
 
+  .menu-item a {
+    font-size: 15px;
+  }
+
+  .box-logo {
+    display: none;
+  }
 
   .wrapper-menu {
     width: 50px;
@@ -1079,7 +1086,7 @@ label[for="id_new_password2"] {
     z-index: 1000;
   }
   
-  
+
   .wrapper-menu.open {
     transform: rotate(-45deg);
   }
@@ -1142,6 +1149,7 @@ label[for="id_new_password2"] {
     overflow-y: hidden;
     opacity: 0.5;
     background-color: #ffffff;
+    display: flex;
   }
 
   #menu-list {
@@ -1149,8 +1157,8 @@ label[for="id_new_password2"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    padding: 135px;
+    padding: 0;
+    margin: auto;
   }
 
   #footer-container {
@@ -1178,6 +1186,11 @@ label[for="id_new_password2"] {
 }
 
 @media screen and (max-width: 800px) {
+
+  h1, h2 {
+    font-size: 30px;
+  }
+
   .errors-section {
     height: 100vh;
 
@@ -1232,6 +1245,10 @@ label[for="id_new_password2"] {
     height: 100vh;
   }
 
+  #footer p {
+    width: 80%;
+  }
+
 }
 
 
@@ -1247,6 +1264,19 @@ label[for="id_new_password2"] {
   .wrapper-menu {
     height: 40px;
     width: 40px;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .auth-links {
+    width: 230px ;
+  }
+
+  .user-icon {
+    display: none;
   }
 
 }

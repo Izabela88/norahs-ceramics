@@ -298,7 +298,7 @@
 
 @media screen and (max-width: 650px) {
     .personal-form, .address-form {
-        width: 400px;
+        width: 330px;
     }
 
     .profile-label {

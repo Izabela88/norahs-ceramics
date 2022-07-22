@@ -875,6 +875,10 @@ label[for="id_newsletter_email"] {
     .text-box p {
         font-size: 20px;
     }
+
+    .newsletter-box input::placeholder {
+        font-size: 15px;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -884,10 +888,6 @@ label[for="id_newsletter_email"] {
     }
     #menu-list .menu-item {
         width: 100%;
-    }
-
-    #menu-list {
-        padding: 30px;
     }
 
     h1,
@@ -904,15 +904,21 @@ label[for="id_newsletter_email"] {
     }
 
     .home-txt p {
-        font-size: 11px;
+        font-size: 15px;
+        line-height: 22px;
     }
 
     .home-txt h1 {
         font-size: 25px;
     }
 
+    .home-images {
+        height: 220px;
+    }
+
     .link {
-        font-size: 16px;
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
     .text-box p,
@@ -927,7 +933,7 @@ label[for="id_newsletter_email"] {
     }
     
     .product-link {
-        font-size: 35px;
+        font-size: 25px;
     }
 
     .cards {
