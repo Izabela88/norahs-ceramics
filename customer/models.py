@@ -1,9 +1,12 @@
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
+
 from django.contrib.auth.models import AbstractUser
-from phonenumber_field.modelfields import PhoneNumberField
-from norahs_ceramics.model_mixin import TimestapModel
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+
+from norahs_ceramics.model_mixin import TimestapModel
 
 if TYPE_CHECKING:
     from basket.models import Basket

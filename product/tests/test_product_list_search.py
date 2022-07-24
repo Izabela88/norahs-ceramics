@@ -1,5 +1,6 @@
-from django.urls import reverse
 import pytest
+from django.urls import reverse
+
 from product.tests import factories
 
 PRODUCT_LIST_URL = reverse("product_list")

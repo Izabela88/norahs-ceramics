@@ -1,12 +1,13 @@
-from django.views import View
-from contact.forms import ContactForm
-from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from django.shortcuts import render
-from django.contrib import messages
 from django.conf import settings
+from django.contrib import messages
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 from django.template.loader import render_to_string
-from contact.utility import send_email
 from django.urls import reverse
+from django.views import View
+
+from contact.forms import ContactForm
+from contact.utility import send_email
 
 
 class ContactView(View):

@@ -1,10 +1,11 @@
 from django.urls import path
+
 from customer.views import (
-    CustomerProfileView,
-    CustomerAddressView,
-    DeleteCustomerProfile,
     ChangePasswordView,
+    CustomerAddressView,
     CustomerOrderHistoryListView,
+    CustomerProfileView,
+    DeleteCustomerProfile,
     UserReviewListView,
 )
 

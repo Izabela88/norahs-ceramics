@@ -1,6 +1,7 @@
 from django.contrib.sitemaps import Sitemap
-from product.models import Product
 from django.urls import reverse
+
+from product.models import Product
 
 
 class Product_Sitemap(Sitemap):

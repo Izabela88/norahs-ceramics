@@ -1,8 +1,8 @@
 from django import forms
-from contact.utility import send_email
 from django.conf import settings
-from django.core.validators import RegexValidator
-from django.core.validators import validate_email
+from django.core.validators import RegexValidator, validate_email
+
+from contact.utility import send_email
 
 
 class ContactForm(forms.Form):

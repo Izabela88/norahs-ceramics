@@ -1,6 +1,7 @@
 from django import forms
-from newsletter.models import NewsletterUser
 from django.core.validators import validate_email
+
+from newsletter.models import NewsletterUser
 
 
 class NewsletterUserForm(forms.ModelForm):

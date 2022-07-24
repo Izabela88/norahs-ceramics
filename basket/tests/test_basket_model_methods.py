@@ -1,11 +1,12 @@
 import pytest
+
+from basket.models import BasketProduct
 from basket.tests import factories
 from product.tests.factories import (
-    ProductModelFactory,
     CategoryModelFactory,
+    ProductModelFactory,
     SubCategoryModelFactory,
 )
-from basket.models import BasketProduct
 
 
 @pytest.fixture

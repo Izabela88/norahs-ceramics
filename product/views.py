@@ -1,17 +1,18 @@
-from django.views.generic import ListView, DetailView
-from product.models import Product, Color
-from product.forms import FilterForm
-from django.db.models import Q
-from reviews.forms import ProductReviewForm
-from django.shortcuts import render, get_object_or_404
-from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
-from reviews.models import ProductReview
-from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from django.urls import reverse
-from django.db.models.query import QuerySet
 import sweetify
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
+from django.db.models.query import QuerySet
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+from django.views import View
+from django.views.generic import DetailView, ListView
+
+from product.forms import FilterForm
+from product.models import Color, Product
+from reviews.forms import ProductReviewForm
+from reviews.models import ProductReview
 
 
 class ProductListView(ListView):

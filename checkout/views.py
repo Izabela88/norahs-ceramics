@@ -1,24 +1,27 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-from basket.models import Basket
-from django.http import HttpResponseRedirect, HttpResponse
-from django.urls import reverse
+import stripe
 import sweetify
 from django.conf import settings  # new
-from django.views.generic.base import TemplateView
-from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-import stripe
-from django.http import HttpRequest, JsonResponse
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from order.models import Order, OrderProduct
-from order.data_objects import OrderStatus
-from django.core.mail import send_mail, BadHeaderError
+from django.views.generic.base import TemplateView
+
+from basket.models import Basket, BasketSummary
 from customer.models import User
+from order.data_objects import OrderStatus
+from order.models import Order, OrderProduct
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class OrderSummaryView(View):
-    def get(self, request):
+    def get(self, request: HttpRequest) -> HttpResponse:
+        """Get checkout/order summary data and render"""
         if request.session.pop("cancel_message", None):
             sweetify.toast(
                 request,
@@ -41,6 +44,21 @@ class OrderSummaryView(View):
         else:
             basket_summary = basket.basket_summary()
 
+        checkout_products = self.get_checkout_products(basket_summary)
+
+        request.session["checkout_products"] = checkout_products
+        request.session["basket_id"] = str(basket.id)
+
+        context = {
+            "checkout_products": basket_summary.sorted_products,
+            "total_checkout_price": basket.total_basket_price,
+            "vat_amount": basket_summary.vat_amount,
+        }
+        return render(request, "checkout/checkout.html", context)
+
+    @staticmethod
+    def get_checkout_products(basket_summary: BasketSummary) -> dict:
+        """Get checkout products from basket summary"""
         checkout_products = {"line_items": [], "product_ids": []}
         for product_summary in basket_summary.sorted_products:
             line_item = {
@@ -54,22 +72,12 @@ class OrderSummaryView(View):
                 checkout_products["product_ids"].append(
                     product_summary["product"].id
                 )
-        request.session["checkout_products"] = checkout_products
-        request.session["basket_id"] = str(basket.id)
-
-        context = {
-            "checkout_products": basket_summary.sorted_products,
-            "total_checkout_price": basket.total_basket_price,
-            "vat_amount": basket_summary.vat_amount,
-        }
-        return render(request, "checkout/checkout.html", context)
-
-
-stripe.api_key = settings.STRIPE_SECRET_KEY
+        return checkout_products
 
 
 @csrf_exempt
-def create_checkout_session(request):
+def create_checkout_session(request: HttpRequest) -> HttpResponse:
+    """Create stripe checkout session - copied from Stripe documentation"""
     if request.method == "POST":
         domain_url = "https://norahsceramics.herokuapp.com/"
         try:
@@ -153,7 +161,7 @@ def create_checkout_session(request):
 
 
 class SuccessView(View):
-    def get(self, request, session_id):
+    def get(self, request: HttpRequest, session_id: str) -> HttpResponse:
         context = {}
         session = stripe.checkout.Session.retrieve(session_id)
         context["customer"] = stripe.Customer.retrieve(session.customer)
@@ -162,7 +170,7 @@ class SuccessView(View):
             checkout_products = request.session["checkout_products"]
             basket_id = request.session["basket_id"]
 
-        except KeyError as e:
+        except KeyError:
             sweetify.toast(
                 request,
                 "no products in the basket!",
@@ -201,6 +209,8 @@ class SuccessView(View):
 class CancelledView(TemplateView):
     template_name = "checkout/checkout.html"
 
-    def get(self, request, *args, **kwargs):
+    def get(
+        self, request: HttpRequest, *args: tuple, **kwargs: dict
+    ) -> HttpResponse:
         request.session["cancel_message"] = True
         return HttpResponseRedirect(reverse("checkout"))

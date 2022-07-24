@@ -1,20 +1,20 @@
-from django.views import View
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from django.urls import reverse, reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
-from customer.forms import UpdatePersonalInformationForm, AddressForm
-from django.contrib import messages
-from customer.models import User
-from django.views.generic.edit import DeleteView
-from django.views.generic import ListView, DetailView
-
 import sweetify
-from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models.query import QuerySet
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse, reverse_lazy
+from django.views import View
+from django.views.generic import DetailView, ListView
+from django.views.generic.edit import DeleteView
+
+from customer.forms import AddressForm, UpdatePersonalInformationForm
+from customer.models import User
 from order.models import Order
 from reviews.models import ProductReview
-from django.db.models.query import QuerySet
 
 
 class CustomerProfileView(LoginRequiredMixin, View):

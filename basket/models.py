@@ -1,10 +1,12 @@
-from django.db import models
-from norahs_ceramics.model_mixin import TimestapModel
-from customer.models import User
-from uuid import uuid4, UUID
-from django.http import HttpRequest
-from product.models import Product
 from collections import namedtuple
+from uuid import UUID, uuid4
+
+from django.db import models
+from django.http import HttpRequest
+
+from customer.models import User
+from norahs_ceramics.model_mixin import TimestapModel
+from product.models import Product
 
 BasketSummary = namedtuple(
     "BasketSummary",

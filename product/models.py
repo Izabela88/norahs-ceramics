@@ -1,8 +1,9 @@
-from django.db import models
+from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+
 from norahs_ceramics.fields import CaseInsensitiveCharField
 from norahs_ceramics.model_mixin import TimestapModel
-from django.core.exceptions import ValidationError
 
 
 class Category(TimestapModel):

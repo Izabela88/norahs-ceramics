@@ -1,8 +1,10 @@
-from django.db import models
-from norahs_ceramics.model_mixin import TimestapModel
-from customer.models import User, AddressDetails
-from product.models import Product
 from uuid import uuid4
+
+from django.db import models
+
+from customer.models import AddressDetails, User
+from norahs_ceramics.model_mixin import TimestapModel
+from product.models import Product
 
 
 class Order(TimestapModel):

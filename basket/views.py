@@ -1,9 +1,10 @@
-from django.views import View
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from basket.models import Basket
-from django.urls import reverse
 import sweetify
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
+from django.views import View
+
+from basket.models import Basket
 
 
 class BasketView(View):

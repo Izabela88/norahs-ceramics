@@ -1,4 +1,4 @@
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import BadHeaderError, send_mail
 
 
 def send_email(

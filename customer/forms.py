@@ -1,8 +1,8 @@
 from django import forms
+from django.core.validators import RegexValidator, validate_email
 from phonenumber_field.modelfields import PhoneNumberField
-from customer.models import User, AddressDetails
-from django.core.validators import RegexValidator
-from django.core.validators import validate_email
+
+from customer.models import AddressDetails, User
 
 
 class UpdatePersonalInformationForm(forms.ModelForm):

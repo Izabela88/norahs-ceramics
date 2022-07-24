@@ -1,16 +1,18 @@
-from django.views.generic import TemplateView
-from product.models import Product
-from order.models import OrderProduct
-from django.db.models import Count
-from newsletter.forms import NewsletterUserForm
-from django.views import View
-from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
-from newsletter.models import NewsletterUser
-from django.urls import reverse
-from django.contrib import messages
-from newsletter.mailchimp_utils import subscribe
-from django.utils import timezone
 import datetime
+
+from django.contrib import messages
+from django.db.models import Count
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.utils import timezone
+from django.views import View
+from django.views.generic import TemplateView
+
+from newsletter.forms import NewsletterUserForm
+from newsletter.mailchimp_utils import subscribe
+from newsletter.models import NewsletterUser
+from order.models import OrderProduct
+from product.models import Product
 
 
 class HomeView(TemplateView):
