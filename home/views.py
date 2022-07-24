@@ -16,7 +16,8 @@ import datetime
 class HomeView(TemplateView):
     template_name = "home/home.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: dict) -> dict:
+        """Expand context data"""
         context = super().get_context_data(**kwargs)
 
         context["new_arrivals"] = Product.objects.all().order_by(
@@ -36,7 +37,7 @@ class HomeView(TemplateView):
 
 
 class NewsletterView(View):
-    def post(self, request) -> HttpResponse:
+    def post(self, request: HttpRequest) -> HttpResponse:
         """Subscribe email address"""
         email_form = NewsletterUserForm(data=request.POST or None)
         if email_form.is_valid():
