@@ -20,7 +20,7 @@ class BasketView(View):
 
 
 class AddToBasketView(View):
-    def post(self, request, product_id):
+    def post(self, request: HttpRequest, product_id: int) -> HttpResponse:
         basket = Basket.get_basket(request)
         basket.add_product(product_id=product_id)
         sweetify.toast(
@@ -33,7 +33,7 @@ class AddToBasketView(View):
 
 
 class SubtractFromBasketView(View):
-    def post(self, request, product_id):
+    def post(self, request: HttpRequest, product_id: int) -> HttpResponse:
         basket = Basket.get_basket(request)
         basket.subtract_product(product_id=product_id)
         sweetify.toast(
@@ -46,7 +46,7 @@ class SubtractFromBasketView(View):
 
 
 class DeleteFromBasketView(View):
-    def post(self, request, product_id):
+    def post(self, request: HttpRequest, product_id: int) -> HttpResponse:
         basket = Basket.get_basket(request)
         basket.delete_product(product_id=product_id)
         sweetify.toast(
