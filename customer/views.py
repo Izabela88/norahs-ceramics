@@ -21,7 +21,7 @@ class CustomerProfileView(LoginRequiredMixin, View):
     login_url = "/accounts/login/"
     redirect_field_name = "account_login"
 
-    def get(self, request: HttpRequest, _) -> HttpResponse:
+    def get(self, request: HttpRequest, id: int) -> HttpResponse:
         context = {
             "personal_info_form_errors": request.session.pop(
                 "personal_info_form_errors", None
