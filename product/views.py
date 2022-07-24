@@ -129,7 +129,8 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = "product/product-details.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: dict) -> dict:
+        """Expand context with product review data"""
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             context["review_form"] = ProductReviewForm()
@@ -143,7 +144,8 @@ class ReviewView(LoginRequiredMixin, View):
     login_url = "/accounts/login/"
     redirect_field_name = "account_login"
 
-    def post(self, request, slug):
+    def post(self, request: HttpRequest, slug: str) -> HttpResponse:
+        """Create product review"""
         product = get_object_or_404(Product, slug=slug)
         product_review = ProductReview.objects.filter(
             product_id=product.id, reviewer_id=request.user.id
