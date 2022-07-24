@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from reviews.models import ProductReview
 from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
 from django.urls import reverse
+from django.db.models.query import QuerySet
 import sweetify
 from django.contrib import messages
 
@@ -18,11 +19,12 @@ class ProductListView(ListView):
     paginate_by = 4
     template_name = "product/product-list.html"
 
-    def get_queryset(self):
-        product_query = Product.objects.filter(is_active=True).all()
+    def filter_products(
+        self, product_query: QuerySet[Product]
+    ) -> QuerySet[Product]:
+        """Filter products by category, sub_category, and min & max price"""
         min_price = self.request.GET.get("min_price")
         max_price = self.request.GET.get("max_price")
-        colors = Color.objects.all()
         if sub_category := self.request.GET.get("sub_category"):
             product_query = product_query.filter(
                 sub_category__name=sub_category
@@ -38,7 +40,13 @@ class ProductListView(ListView):
                     self._to_pence(int(max_price)),
                 )
             )
+        return product_query
 
+    def filter_products_colors(
+        self, product_query: QuerySet[Product]
+    ) -> QuerySet[Product]:
+        """Filter products by colors"""
+        colors = Color.objects.all()
         color_filters = []
 
         for color in colors:
@@ -49,7 +57,12 @@ class ProductListView(ListView):
             for filter in color_filters:
                 color_query |= filter
             product_query = product_query.filter(color_query)
+        return product_query
 
+    def sort_products(
+        self, product_query: QuerySet[Product]
+    ) -> QuerySet[Product]:
+        """Sort products by name or price"""
         if sort_by := self.request.GET.get("sort_by"):
             if sort_by == "name_asc":
                 product_query = product_query.order_by("name").distinct("name")
@@ -65,9 +78,19 @@ class ProductListView(ListView):
                 product_query = product_query.order_by(
                     "-price_pence"
                 ).distinct("price_pence")
+        return product_query
+
+    def get_queryset(self) -> QuerySet[Product]:
+        """Get filtered and sorted products"""
+        product_query = Product.objects.filter(is_active=True).all()
+        product_query = self.filter_products(product_query)
+        product_query = self.filter_products_colors(product_query)
+        product_query = self.sort_products(product_query)
         return product_query.distinct("id", "name", "price_pence")
 
     def get_context_data(self, **kwargs):
+        """Expand context with extra data for search urls. They are used to
+        preserve user search"""
         context = super().get_context_data(**kwargs)
         query_params = ""
         if sub_category := self.request.GET.get("sub_category"):
@@ -98,7 +121,7 @@ class ProductListView(ListView):
         return context
 
     @staticmethod
-    def _to_pence(price):
+    def _to_pence(price: int) -> int:
         return price * 100
 
 
