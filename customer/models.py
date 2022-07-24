@@ -40,7 +40,9 @@ class AddressDetails(TimestapModel):
     postcode = models.CharField(
         verbose_name="Post Code", max_length=8, default=""
     )
-    county = models.CharField(verbose_name="County", max_length=100, default="")
+    county = models.CharField(
+        verbose_name="County", max_length=100, default=""
+    )
     country = models.CharField(
         verbose_name="Country", max_length=100, default=""
     )

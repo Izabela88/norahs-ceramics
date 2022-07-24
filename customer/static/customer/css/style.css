@@ -283,7 +283,6 @@
     }
     .order-info {
         grid-template-columns: repeat(1, 1fr);
-        width: 500px;
         height: 150px;
         line-height: 30px;
     }
