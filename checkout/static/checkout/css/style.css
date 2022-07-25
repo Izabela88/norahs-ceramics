@@ -544,6 +544,13 @@ input[type="checkbox"] {
     position: relative;
 }
 
+@media screen and (max-width: 1300px) {
+    @media screen and (max-height: 805px) {
+      .window {
+        height: 560px;
+      }
+    }}
+
 
 @media screen and (max-width: 700px) {
     .order-box {
@@ -571,5 +578,9 @@ input[type="checkbox"] {
 
     .checkout-section {
         height: 100vh;
+    }
+
+    .order-info-content h3 {
+        font-size: 25px;
     }
 }

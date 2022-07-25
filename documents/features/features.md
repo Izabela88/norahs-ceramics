@@ -20,6 +20,13 @@
 
   - All interactive elements - including icons, links and buttons - feature hovering effects and all modals.
 
+- ## **Back to top button:**
+
+  - When the page is scrolled down, the button appears in the lower right corner.
+  - After pressing the button, the page automatically scrolls to the home page, and the button disappears.
+
+  ![back to top button](/documents/back-to-top-button.png)
+
 - ## **Newsletter:**
 
   - The newsletter is in bottom section of home page.

@@ -956,6 +956,13 @@ input[id="transparent"]:checked {
     font-size: 30px;
   }
 
+  @media screen and (max-width: 1300px) {
+    @media screen and (max-height: 805px) {
+        .popup, .rev-popup {
+            height: calc(100vh - 154px);
+        }
+    }}
+
 @media screen and (max-width: 1150px) {
     .product_container {
         flex-direction: column;
@@ -1070,6 +1077,10 @@ input[id="transparent"]:checked {
     .products-bg {
         height: auto;
     }
+
+    .description {
+        height: auto;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1084,6 +1095,14 @@ input[id="transparent"]:checked {
         width: 400px;
     }
 
+    .product-description h4 {
+        font-size: 25px;
+    }
+
+    .popup__close, .popup__close_btn {
+        right: 7px;
+        top: 6px;
+    }
    
 }
 

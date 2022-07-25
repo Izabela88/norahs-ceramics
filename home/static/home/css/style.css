@@ -750,9 +750,6 @@ label[for="id_newsletter_email"] {
         height: 100%;
         min-height: 100vh;
     }
-
-
-
 }
 
 @media screen and (max-width: 900px) {
@@ -841,6 +838,10 @@ label[for="id_newsletter_email"] {
 
     .cards-container {
         padding: 0;
+    }
+
+    .b-sellers-section h1 {
+        margin-bottom: -100px;
     }
 }
 
@@ -963,5 +964,8 @@ label[for="id_newsletter_email"] {
     .carousel-container .prev, .carousel-container .next {
         font-size: 20px;
     }
+
+  
+
     
 }

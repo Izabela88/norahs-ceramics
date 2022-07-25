@@ -303,4 +303,12 @@
     .profile-label {
         font-size: 17px;
     }
+
+    .order-container h2, .review-container h2 {
+        font-size: 25px;
+    }
+
+    .no-orders-heading {
+        padding: 33px;
+    }
 }

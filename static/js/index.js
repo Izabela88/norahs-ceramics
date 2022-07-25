@@ -84,3 +84,36 @@ for (const button of closeButtons) {
     }
   });
 }
+
+// Scroll to top after click 'back to top button'
+const backToTopButton = document.querySelector("#back-to-top-button");
+
+window.addEventListener("scroll", (e) => {
+  // Get the current scroll value
+  let currentPosition = window.scrollY;
+
+  if (currentPosition > 200) {
+    backToTopButton.className = "go-up-btn show-btn";
+  } else {
+    backToTopButton.className = "go-up-btn hide-btn";
+  }
+});
+
+/* The function moves the page up with animate scrolling
+ with using window.requestAnimationFrame() */
+const backToTop = () => {
+  // Set a variable for the number of pixels we are from the top of the document
+  const pxNumber =
+    document.documentElement.scrollTop || document.body.scrollTop;
+
+  if (pxNumber > 0) {
+    window.requestAnimationFrame(backToTop);
+    window.scrollTo(0, pxNumber - pxNumber / 20);
+  }
+};
+
+// Add onclick event listener to 'back to top button'
+backToTopButton.onclick = function (e) {
+  e.preventDefault();
+  backToTop();
+};
