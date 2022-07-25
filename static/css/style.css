@@ -1072,6 +1072,7 @@ label[for="id_new_password2"] {
   height: 50px;
   z-index: 1000;
   visibility: hidden;
+  background-color: var(--col_four);
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;}
 
 .go-up-btn i {
@@ -1370,7 +1371,7 @@ label[for="id_new_password2"] {
   }
 
   .auth-links {
-    width: 230px ;
+    width: 250px ;
   }
 
   .user-icon {

@@ -1,4 +1,4 @@
-// Control active class
+// Control active class in the navbar
 
 function controlActiveClass() {
   let currentLocation = window.location.href;

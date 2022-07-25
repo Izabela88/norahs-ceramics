@@ -162,6 +162,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 10px;
 }
 
 .order-info {
@@ -310,5 +311,6 @@
 
     .no-orders-heading {
         padding: 33px;
+        width: auto;
     }
 }
