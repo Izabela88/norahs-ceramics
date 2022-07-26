@@ -1,9 +1,12 @@
-from django.db import models
-from norahs_ceramics.model_mixin import TimestapModel
-from customer.models import User
-from uuid import uuid4
-from product.models import Product
 from collections import namedtuple
+from uuid import UUID, uuid4
+
+from django.db import models
+from django.http import HttpRequest
+
+from customer.models import User
+from norahs_ceramics.model_mixin import TimestapModel
+from product.models import Product
 
 BasketSummary = namedtuple(
     "BasketSummary",
@@ -17,20 +20,23 @@ class Basket(TimestapModel):
         User, on_delete=models.CASCADE, related_name="customer", null=True
     )
 
-    def add_product(self, product_id):
+    def add_product(self, product_id: int) -> None:
+        """Add basket product to the basket"""
         basket_product = BasketProduct(
             product_id=product_id, basket_id=self.id
         )
         basket_product.save()
 
-    def subtract_product(self, product_id):
+    def subtract_product(self, product_id: int) -> None:
+        """Remove basket product from the basket"""
         basket_product = BasketProduct.objects.filter(
             product_id=product_id, basket_id=self.id
         ).first()
         if basket_product:
             basket_product.delete()
 
-    def delete_product(self, product_id):
+    def delete_product(self, product_id: int) -> None:
+        """Delete all basket products of given id from the basket"""
         basket_products = BasketProduct.objects.filter(
             product_id=product_id, basket_id=self.id
         ).all()
@@ -38,19 +44,22 @@ class Basket(TimestapModel):
         if basket_products:
             basket_products.all().delete()
 
-    def total_basket_price(self):
+    def total_basket_price(self) -> int:
+        """Calculate total basket price in pence"""
         basket_products = BasketProduct.objects.filter(basket_id=self.id).all()
         total_price_pence = 0
         for basket_product in basket_products:
             total_price_pence += basket_product.product.price_pence
         return total_price_pence
 
-    def total_basket_products_qty(self):
+    def total_basket_products_qty(self) -> int:
+        """Return total number of products in the basket"""
         basket_products = BasketProduct.objects.filter(basket_id=self.id).all()
         return len(basket_products)
 
     @classmethod
-    def get_or_create_basket_with_id(cls, id):
+    def get_or_create_basket_with_id(cls, id: str | UUID) -> "Basket":
+        """Get basket with given id or create one"""
         basket = cls.objects.filter(id=id).first()
         if not basket:
             basket = cls(id=id)
@@ -58,7 +67,14 @@ class Basket(TimestapModel):
         return basket
 
     @classmethod
-    def get_basket(cls, request):
+    def get_basket(cls, request: HttpRequest) -> "Basket":
+        """Get basket for user. There can be 3 scenarios:
+        1. if user is authenticated then try to get one from DB or create new
+        2. when user is not authenticated try to get basket from session
+           basket id
+        3. If user is not authenticated and there is no basket id in session
+           then create new and save it in the session
+        """
         session_basket_id = request.session.get("basket_id")
         if request.user.is_authenticated:
             basket = request.user.get_user_basket()
@@ -83,7 +99,9 @@ class Basket(TimestapModel):
             request.session["basket_id"] = str(basket.id)
         return basket
 
-    def basket_summary(self):
+    def basket_summary(self) -> BasketSummary:
+        """Gets basket summary that contains all details that are required to
+        display the basket"""
         if self.basket_products:
             basket_products = self.basket_products.all()
         else:

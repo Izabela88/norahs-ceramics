@@ -1,4 +1,5 @@
 from django.db import models
+
 from norahs_ceramics.model_mixin import TimestapModel
 
 

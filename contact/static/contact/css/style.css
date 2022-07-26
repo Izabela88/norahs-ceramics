@@ -26,9 +26,7 @@
 
 .contact-section {
     position: relative;
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
-    height: -moz-calc(100vh + 174px)
+    height: calc(100vh + 174px)
 }
 
 .contact-form-box {
@@ -64,7 +62,7 @@
   
   .contact-form {
     width: 100%;
-    height: 70%;
+    height: 525px;
     display: flex;
     flex-direction: column;
     align-items: center;

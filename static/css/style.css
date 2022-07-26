@@ -204,6 +204,7 @@ label {
   text-align: center;
   font-family: var(--font_two);
   color: #000000;
+  font-weight: 200;
 }
 
 .swal2-timer-progress-bar {
@@ -449,12 +450,14 @@ label {
   position: relative;
   width: 100%;
   box-shadow: rgb(0 0 0 / 30%) 2px 2px 15px;
+  height: 500px;
 }
 
 #footer p {
   color: var(--black-color);
   text-align: center;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
   letter-spacing: 1px;
   position: relative;
   bottom: 0;
@@ -467,8 +470,8 @@ label {
   justify-content: space-around;
   align-items: baseline;
   color: var(--black-color);
-  width: 1300px;
-  margin: 35px auto;
+  margin: 15px auto;
+  max-width: 1200px;
 }
 
 .footer-box {
@@ -903,6 +906,7 @@ label[for="id_password"] {
 .delete-form p {
   font-size: 25px;
   margin: 40px auto;
+  text-align: center;
 }
 
 .delete-buttons {
@@ -1001,9 +1005,7 @@ label[for="id_new_password2"] {
 /* ERROR PAGES */
 .errors-section {
   position: relative;
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
-    height: -moz-calc(100vh + 174px);
+    height: calc(100vh + 174px);
     min-height: 100vh;
 }
 
@@ -1054,6 +1056,57 @@ label[for="id_new_password2"] {
   margin: 0 20px;
 }
 
+
+/* back to top button */
+.go-up-btn {
+  transition: all 0.25s ease-in-out;
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 20px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 1000;
+  visibility: hidden;
+  background-color: var(--col_four);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;}
+
+.go-up-btn i {
+  font-size: 30px;
+  color: var(--col_eight);
+}
+.show-btn {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hide-btn {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media screen and (max-width: 1300px) {
+  @media screen and (max-height: 805px) {
+    .logo {
+      height: 80px;
+      width: 80px;
+    }
+
+    .register-heading, .login-heading {
+      margin-top: 25px;
+    }
+
+    .signup, .login {
+      margin: 0 auto;
+    }
+
+  }}
+
 @media screen and (max-width: 1150px) {
   #header {
     box-shadow: none;
@@ -1064,6 +1117,13 @@ label[for="id_new_password2"] {
     width: 100%;
   }
 
+  .menu-item a {
+    font-size: 15px;
+  }
+
+  .box-logo {
+    display: none;
+  }
 
   .wrapper-menu {
     width: 50px;
@@ -1079,7 +1139,7 @@ label[for="id_new_password2"] {
     z-index: 1000;
   }
   
-  
+
   .wrapper-menu.open {
     transform: rotate(-45deg);
   }
@@ -1142,6 +1202,7 @@ label[for="id_new_password2"] {
     overflow-y: hidden;
     opacity: 0.5;
     background-color: #ffffff;
+    display: flex;
   }
 
   #menu-list {
@@ -1149,8 +1210,12 @@ label[for="id_new_password2"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    padding: 135px;
+    padding: 0;
+    margin: auto;
+  }
+
+  #footer {
+    height: auto;
   }
 
   #footer-container {
@@ -1159,6 +1224,7 @@ label[for="id_new_password2"] {
     align-items: center;
     height: auto;
     width: 100%;
+    margin: 0;
   }
 
   .footer-box {
@@ -1175,9 +1241,19 @@ label[for="id_new_password2"] {
   .contact-info {
     justify-content: center;
   }
+
+  .signup, .login {
+    margin: 20px auto;
+  }
+
 }
 
 @media screen and (max-width: 800px) {
+
+  h1, h2 {
+    font-size: 30px;
+  }
+
   .errors-section {
     height: 100vh;
 
@@ -1203,6 +1279,18 @@ label[for="id_new_password2"] {
     margin: 10px auto;
   }
 
+  .change-password-form,
+  .password-buttons button,
+  #back-btn,
+  .password-buttons {
+    width: 300px;
+  }
+
+  #back-btn {
+    font-size: 17px;
+  }
+  
+
   .change-password-box h2,
   .delete-container h2 {
     font-size: 30px;
@@ -1225,11 +1313,45 @@ label[for="id_new_password2"] {
   }
 
   .delete-form {
-    width: 400px;
+    width: 300px;
   }
 
   .delete-account-section {
     height: 100vh;
+  }
+
+  #footer p {
+    width: 80%;
+  }
+
+  .allauth-txt {
+    width: auto;
+  }
+
+  .allauth-txt p {
+    font-size: 18px;
+  }
+
+  .password_reset input, .password_set input, .reset-form input {
+    width: 300px;
+  }
+
+  .register-heading, .login-heading {
+    margin: 0;
+  }
+
+  label[for="id_email"], label[for="id_password1"], label[for="id_password2"], label[for="id_login"], label[for="id_password"] {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-top: 17px;
+  }
+
+  .show-box-one {
+    margin-top: -114px;
+  }
+
+  .show-box-two {
+    margin-top: -57px;
   }
 
 }
@@ -1247,6 +1369,23 @@ label[for="id_new_password2"] {
   .wrapper-menu {
     height: 40px;
     width: 40px;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .auth-links {
+    width: 250px ;
+  }
+
+  .user-icon {
+    display: none;
+  }
+
+  .change-password-box h2, .delete-container h2 {
+    font-size: 25px;
   }
 
 }

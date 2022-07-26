@@ -4,7 +4,10 @@ register = template.Library()
 
 
 def currency(pence):
-    pounds = int(pence) / 100
+    try:
+        pounds = int(pence) / 100
+    except ValueError:
+        pounds = 0
     return "{0:.2f}".format(pounds)
 
 

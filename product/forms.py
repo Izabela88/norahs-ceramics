@@ -1,6 +1,6 @@
 from django import forms
-from product.models import Color
 
+from product.models import Color
 
 SORT_BY = [
     ("", "sort by"),

@@ -1,7 +1,6 @@
 from django import forms
+from django.core.validators import RegexValidator, validate_email
 from phonenumber_field.formfields import PhoneNumberField
-from django.core.validators import RegexValidator
-from django.core.validators import validate_email
 
 
 class PersonalInformationForm(forms.Form):

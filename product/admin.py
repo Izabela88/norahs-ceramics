@@ -1,5 +1,6 @@
 from django.contrib import admin
-from product.models import Category, SubCategory, Product, Color
+
+from product.models import Category, Color, Product, SubCategory
 
 
 class ProductAdmin(admin.ModelAdmin):

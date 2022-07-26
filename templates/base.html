@@ -34,8 +34,8 @@
 
   <body>
     <!-- Back to top button -->
-    <a href="#" id="scroll-top-button"></a>
-    <!---------------HEADER--------------->
+    <div id="back-to-top-button" class="go-up-btn"><i class="fas fa-chevron-circle-up"></i></div>    
+    <!-- HEADER -->
     <header id="header">
       {% if messages %}
         <ul class="info-msg">
@@ -116,11 +116,10 @@
 
     {% block content %}
 
-    <!------------CONTENT GOES HERE------------------>
+    <!-- CONTENT GOES HERE -->
 
     {% endblock content %}
-
-    <!------------------FOOTER--------------------->
+<!-- FOOTER -->
     <footer id="footer">
       <div class="box-logo">
         <a class="logo" href="{% url 'home' %}">

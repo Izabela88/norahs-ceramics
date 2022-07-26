@@ -1,8 +1,9 @@
-from django.urls import reverse
 import pytest
+from django.urls import reverse
 from pytest_django.asserts import assertTemplateUsed
-from product.tests import factories
+
 from customer.forms import AddressForm
+from product.tests import factories
 
 
 def get_customer_address_url(id=1):

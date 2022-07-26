@@ -6,3 +6,7 @@ exclude ='''
     | migrations
 )/
 '''
+
+[tool.isort]
+profile = "black"
+skip = ["migrations/","venv-ceramics/"]
