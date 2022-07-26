@@ -108,7 +108,6 @@
 
   > As a frequent user, I want to see messages after logging in, logging out, or register so I will know what is happening.
 
-    - While using the website, each activity is described by messages appearing on the screen.
     - While using the website, each activity is described by toast messages appearing on the screen.
     - After registering, the user receives a message to their email with a verification link that allows verifying whether the email is correct.
 
