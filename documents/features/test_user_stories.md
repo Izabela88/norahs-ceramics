@@ -63,15 +63,15 @@
   > As a frequent user, I want to view the product details so that I can make an informed decision.
 
     - Product details page contains:
-    - product image
-    - product name
-    - product price
-    - product overall rating displays as stars
-    - link - qty of reviews
-    - link - write review
-    - product details like: height, width, length, volume
-    - product description
-    - 'add to basket' button
+      - product image
+      - product name
+      - product price
+      - product overall rating displays as stars
+      - link - qty of reviews
+      - link - write review
+      - product details like: height, width, length, volume
+      - product description
+      - 'add to basket' button
 
     ![product details](/documents/product-details.png)
 
