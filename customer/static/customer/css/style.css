@@ -15,11 +15,7 @@
 
 .customer-profile-section {
     position: relative;
-    height: -o-calc(100vh + 174px);
-    /* opera */
-    height: -webkit-calc(100vh + 174px);
-    /* google, safari */
-    height: -moz-calc(100vh + 174px)
+    height: calc(100vh + 174px)
 }
 
 .customer-container,
@@ -31,9 +27,7 @@
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-    height: -o-calc(100vh + 174px);
-    height: -webkit-calc(100vh + 174px);
-    height: -moz-calc(100vh + 174px);
+    height: calc(100vh + 174px);
     text-align: center;
     background: rgb(255 255 255 / 75%);
 }
@@ -95,11 +89,7 @@
 }
 
 .customer-bg-img {
-    height: -o-calc(100vh + 174px);
-    /* opera */
-    height: -webkit-calc(100vh + 174px);
-    /* google, safari */
-    height: -moz-calc(100vh + 174px);
+    height: calc(100vh + 174px);
     width: 100%;
     position: absolute;
 }

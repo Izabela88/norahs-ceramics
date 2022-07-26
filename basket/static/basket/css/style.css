@@ -27,9 +27,7 @@
 
 .basket-section {
     position: relative;
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
-    height: -moz-calc(100vh + 174px)
+    height: calc(100vh + 174px)
 }
 
 
@@ -43,9 +41,7 @@
 /* shopping cart */
 .shopping-cart-container {
     width: 100%;
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
-    height: -moz-calc(100vh + 174px);
+    height: calc(100vh + 174px);
     text-align: center;
     display: flex;
     justify-content: center;
@@ -261,9 +257,7 @@
   }
 
   .empty-img {
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
-    height: -moz-calc(100vh + 174px);
+    height: calc(100vh + 174px);
     width: 100%;
     position: absolute;
 }

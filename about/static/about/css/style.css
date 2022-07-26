@@ -18,9 +18,7 @@
 .eco-section,
 .help-section {
     position: relative;
-    height: -o-calc(100vh + 174px); /* opera */
-    height: -webkit-calc(100vh + 174px); /* google, safari */
-    height: -moz-calc(100vh + 174px)
+    height: calc(100vh + 174px)
 }
 
 .about-image,

@@ -41,11 +41,7 @@
 /* -----------HOME PAGE----------- */
 #home-section {
     min-height: 100vh;
-    height: -o-calc(100% + 174px);
-    /* opera */
-    height: -webkit-calc(100vh + 174px);
-    /* google, safari */
-    height: -moz-calc(100vh + 174px);
+    height: calc(100vh + 174px);
     position: relative;
     background-color: var(--col_four);
 }
@@ -388,11 +384,7 @@
 /* ----------- WHY US, OUR VALUES SECTION----------- */
 .info {
     position: relative;
-    height: -o-calc(100vh + 174px);
-    /* opera */
-    height: -webkit-calc(100vh + 174px);
-    /* google, safari */
-    height: -moz-calc(100vh + 174px)
+    height: calc(100vh + 174px)
 }
 
 .parts-wrapper {
@@ -445,11 +437,7 @@
 
 .new-arrivals {
     position: relative;
-    height: -o-calc(100vh + 174px);
-    /* opera */
-    height: -webkit-calc(100vh + 174px);
-    /* google, safari */
-    height: -moz-calc(100vh + 174px)
+    height: calc(100vh + 174px)
 }
 
 .new-arrivals h2 {
