@@ -294,6 +294,7 @@ select:focus+.focus {
     align-content: initial;
     justify-items: center;
     margin: 25px auto;
+    width: 255px;
 }
 
 .color-picker input {

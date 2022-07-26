@@ -331,8 +331,7 @@ label {
 }
 
  #menu-list {
-  max-width: 1200px;
-  padding: 0 8rem;
+  max-width: 1000px;
   display: flex;
   list-style-type: none;
   margin: 0 auto;
@@ -340,7 +339,7 @@ label {
 
  #menu-list .menu-item {
   flex: 1;
-  padding: 0.75rem 0;
+  padding: 10px 0;
   text-transform: uppercase;
 }
 
@@ -372,6 +371,7 @@ label {
   text-align: center;
 }
 
+.menu-item span ,
 .menu-item a {
   overflow: hidden;
   white-space: nowrap;
@@ -383,6 +383,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 
@@ -428,7 +429,7 @@ label {
   z-index: 1;
 }
 
-.menu-item:hover>.sub-menu {
+.sub-menu.show-sub-menu {
   display: block;
 }
 
@@ -1114,10 +1115,11 @@ label[for="id_new_password2"] {
   }
 
   #menu-list .menu-item {
-    width: 100%;
+    width: 120px;
   }
 
-  .menu-item a {
+  .menu-item a,
+  .menu-item span {
     font-size: 15px;
   }
 

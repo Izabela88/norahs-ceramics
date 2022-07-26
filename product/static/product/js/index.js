@@ -59,7 +59,7 @@ arr.forEach((item) => {
 const openModalButton = document.querySelector("#open-modal");
 const closeModal = document.querySelector(".popup__close");
 
-// / Function opens Prices
+// / Function opens modal
 function openModal() {
   let showDeleteModal = document.querySelector(".popup");
   showDeleteModal.classList.toggle("show-modal");
@@ -73,7 +73,7 @@ if (openModalButton) {
 const openModalBtn = document.querySelector("#see-rev");
 const closeModalBtn = document.querySelector(".popup__close_btn");
 
-// / Function opens Prices
+// / Function opens reviews modal
 function openRevModal() {
   let showDeleteModal = document.querySelector(".rev-popup");
   showDeleteModal.classList.toggle("show-rev-modal");

@@ -2,15 +2,15 @@
 
 function controlActiveClass() {
   let currentLocation = window.location.href;
-  let menuItem = document.querySelectorAll("#menu-list li a");
-  let menuLength = menuItem.length;
+  let menuItems = document.querySelectorAll("#menu-list li a");
+  let menuLength = menuItems.length;
 
   for (let i = 0; i < menuLength; i++) {
-    if (menuItem[i].href === currentLocation) {
-      menuItem[i].classList.add("active");
+    if (menuItems[i].href === currentLocation) {
+      menuItems[i].classList.add("active");
       console.log(currentLocation);
     } else {
-      menuItem[i].classList.remove("active");
+      menuItems[i].classList.remove("active");
     }
   }
 }
@@ -117,3 +117,46 @@ backToTopButton.onclick = function (e) {
   e.preventDefault();
   backToTop();
 };
+
+// show sub menu
+//Working JS (But using multiple classnames)
+const ceramicsBtn = document.querySelector("#ceramics");
+const glassBtn = document.querySelector("#glass");
+const zeroWasteBtn = document.querySelector("#zero-waste");
+const ceramicsContent = document.querySelectorAll(".ceramics-content");
+const glassContent = document.querySelectorAll(".glass-content");
+const zeroWasteContent = document.querySelectorAll(".zero-waste-content");
+let showDropdown = false;
+ceramicsBtn.addEventListener("click", toggleCeramics);
+glassBtn.addEventListener("click", toggleGlass);
+zeroWasteBtn.addEventListener("click", toggleWaste);
+
+function toggleCeramics() {
+  if (!showDropdown) {
+    ceramicsContent.forEach((item) => item.classList.add("show-sub-menu"));
+    showDropdown = true;
+  } else {
+    ceramicsContent.forEach((item) => item.classList.remove("show-sub-menu"));
+    showDropdown = false;
+  }
+}
+
+function toggleGlass() {
+  if (!showDropdown) {
+    glassContent.forEach((item) => item.classList.add("show-sub-menu"));
+    showDropdown = true;
+  } else {
+    glassContent.forEach((item) => item.classList.remove("show-sub-menu"));
+    showDropdown = false;
+  }
+}
+
+function toggleWaste() {
+  if (!showDropdown) {
+    zeroWasteContent.forEach((item) => item.classList.add("show-sub-menu"));
+    showDropdown = true;
+  } else {
+    zeroWasteContent.forEach((item) => item.classList.remove("show-sub-menu"));
+    showDropdown = false;
+  }
+}
