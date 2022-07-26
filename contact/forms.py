@@ -45,7 +45,7 @@ class ContactForm(forms.Form):
             }
         ),
     )
-    email = forms.EmailField(
+    contact_email = forms.EmailField(
         validators=[validate_email],
         required=True,
         widget=forms.EmailInput(
@@ -75,7 +75,7 @@ class ContactForm(forms.Form):
         """
         return send_email(
             [settings.EMAIL_HOST_USER],
-            self.cleaned_data["email"],
+            self.cleaned_data["contact_email"],
             self.format_message(),
             "You got an email!",
         )
@@ -92,7 +92,7 @@ class ContactForm(forms.Form):
             Message:\n\t\t{}\n""".format(
             self.cleaned_data["first_name"],
             self.cleaned_data["last_name"],
-            self.cleaned_data["email"],
+            self.cleaned_data["contact_email"],
             self.cleaned_data["message"],
         )
         return message

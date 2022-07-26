@@ -158,7 +158,7 @@
     min-height: 100vh;
 }
 
-.b-sellers-section h1 {
+.b-sellers-section h2 {
     text-align: center;
     text-transform: uppercase;
     position: relative;
@@ -722,7 +722,7 @@ label[for="id_newsletter_email"] {
         margin: 50px auto;
     }
 
-    .b-sellers-section h1 {
+    .b-sellers-section h2 {
         margin-top: 100px;
     }
 
@@ -828,7 +828,7 @@ label[for="id_newsletter_email"] {
         padding: 0;
     }
 
-    .b-sellers-section h1 {
+    .b-sellers-section h2 {
         margin-bottom: -100px;
     }
 }

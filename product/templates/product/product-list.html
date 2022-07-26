@@ -40,7 +40,7 @@
                             <h3>colors</h3>         
                         <div class="colors">
                         {% for color in filter_form.colors %}
-                            <label for="{{color.id_for_label }}">{{color.choice_label}}:</label>
+                            <label for="{{color.choice_label }}">{{color.choice_label}}:</label>
                             <input type="checkbox" name="{{color.choice_label }}" id="{{color.choice_label}}" 
                             {% if color.choice_label in initial_colors %}
                                 checked
@@ -116,7 +116,7 @@
                                 review</p>
                             {% else %}
                                 reviews</p>
-                            {% endif %}</p>
+                            {% endif %}
                             {% endif %}
                         <h4>£{{product.price_pence | currency}}
                         </h4>

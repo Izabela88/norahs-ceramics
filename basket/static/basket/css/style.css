@@ -216,7 +216,7 @@
     margin-top: 15px;
     font-family: var(--font_three);
     text-transform: uppercase;
-    letter-spacing: 2pxs;
+    letter-spacing: 2px;
   }
   
   .summary-amount {

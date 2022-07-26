@@ -39,7 +39,7 @@ class ContactView(View):
             success = False
             if contact_form.submit_email():
                 if send_email(
-                    [contact_form.cleaned_data["email"]],
+                    [contact_form.cleaned_data["contact_email"]],
                     settings.EMAIL_HOST_USER,
                     body,
                     "We have got your email",

@@ -12,7 +12,7 @@
     --font_two: 'Hubballi', cursive;
     --font_three:'Nanum Pen Script', cursive;
     --select-border: #777;
-    --select-focus: blue;
+    --select-focus: #D18E85;
     --select-arrow: var(--select-border);
 
 }
@@ -238,26 +238,6 @@ select:focus+.focus {
     padding: 0;
     outline: none;
     margin: 10px auto;
-}
-
-.range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: var(--col_one);
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.range::moz-range-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: var(--col_one);
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 .range-btn {

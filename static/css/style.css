@@ -204,6 +204,7 @@ label {
   text-align: center;
   font-family: var(--font_two);
   color: #000000;
+  font-weight: 200;
 }
 
 .swal2-timer-progress-bar {
@@ -449,12 +450,14 @@ label {
   position: relative;
   width: 100%;
   box-shadow: rgb(0 0 0 / 30%) 2px 2px 15px;
+  height: 500px;
 }
 
 #footer p {
   color: var(--black-color);
   text-align: center;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
   letter-spacing: 1px;
   position: relative;
   bottom: 0;
@@ -467,7 +470,7 @@ label {
   justify-content: space-around;
   align-items: baseline;
   color: var(--black-color);
-  margin: 0 auto;
+  margin: 15px auto;
   max-width: 1200px;
 }
 
@@ -1211,12 +1214,17 @@ label[for="id_new_password2"] {
     margin: auto;
   }
 
+  #footer {
+    height: auto;
+  }
+
   #footer-container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: auto;
     width: 100%;
+    margin: 0;
   }
 
   .footer-box {
