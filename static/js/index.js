@@ -119,17 +119,19 @@ backToTopButton.onclick = function (e) {
 };
 
 // show sub menu
-//Working JS (But using multiple classnames)
 const ceramicsBtn = document.querySelector("#ceramics");
 const glassBtn = document.querySelector("#glass");
 const zeroWasteBtn = document.querySelector("#zero-waste");
+const profile = document.querySelector("#profile");
 const ceramicsContent = document.querySelectorAll(".ceramics-content");
 const glassContent = document.querySelectorAll(".glass-content");
 const zeroWasteContent = document.querySelectorAll(".zero-waste-content");
+const profileContent = document.querySelectorAll(".profile-content");
 let showDropdown = false;
 ceramicsBtn.addEventListener("click", toggleCeramics);
 glassBtn.addEventListener("click", toggleGlass);
 zeroWasteBtn.addEventListener("click", toggleWaste);
+profile.addEventListener("click", toggleProfile);
 
 function toggleCeramics() {
   if (!showDropdown) {
@@ -157,6 +159,16 @@ function toggleWaste() {
     showDropdown = true;
   } else {
     zeroWasteContent.forEach((item) => item.classList.remove("show-sub-menu"));
+    showDropdown = false;
+  }
+}
+
+function toggleProfile() {
+  if (!showDropdown) {
+    profileContent.forEach((item) => item.classList.add("show-sub-menu"));
+    showDropdown = true;
+  } else {
+    profileContent.forEach((item) => item.classList.remove("show-sub-menu"));
     showDropdown = false;
   }
 }
