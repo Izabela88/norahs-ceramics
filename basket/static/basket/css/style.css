@@ -394,5 +394,11 @@
     .purchase-box {
       margin-top: 45px;
     }
+
+    .shopping-cart-container,
+    .empty-img {
+      height: 100%;
+      min-height: 100vh;
+    }
   
   }

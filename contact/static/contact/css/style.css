@@ -150,4 +150,15 @@
     .contact-form-box p {
       font-size: 13px;
     }
+
+    .contact-section {
+      height: 100%;
+      min-height: 100vh;
+    }
+
+    .contact-form-box {
+      height: 700px;
+      margin: 106px auto;
+    }
+
   }
