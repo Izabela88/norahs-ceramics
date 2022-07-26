@@ -7,22 +7,16 @@
 {% block content %}
 <section class="section">
   <div class="container">
-    <div>
-      <p
-        style="
-          font-size: 20px;
-          margin: 30px auto;
-          width: 80%;
-          line-height: 40px;
-        "
-      >
+    <div class="success-txt">
+      <p>
         Hello {{customer.name}}! <br />
         Your payment has been succeeded. <br />
         Your order number is: {{order.order_no}}. <br />
         We will notify you immediately as soon as your order is shipped. <br />
         If you have any questions about this order, please send a message in the
-        "contact" section.
+        "contact" section with above order number.
       </p>
+      <a class="button button-dark" href="{% url 'home' %}">back to home</a>
     </div>
   </div>
 </section>
