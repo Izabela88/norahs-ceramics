@@ -292,6 +292,10 @@ label {
   margin-left: 20px;
 }
 
+.auth-links p {
+  cursor: pointer;
+}
+
 .auth-links ul li a {
   text-transform: uppercase;
   color: #000000;

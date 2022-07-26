@@ -187,6 +187,7 @@
     overflow: auto;
     margin: 10px 10px;
     padding: 10px;
+    word-wrap: break-word;
 }
 
 .head {
@@ -272,13 +273,19 @@
     .customer-bg-img {
         height: 100%;
     }
-    .order-info {
+    .order-info{
         grid-template-columns: repeat(1, 1fr);
         height: 150px;
         line-height: 30px;
     }
     .title {
         height: auto;
+    }
+
+    .review-info {
+        grid-template-columns: repeat(1, 1fr);
+        height: 300px;
+        width: 90%;
     }
 
     .products {
@@ -297,10 +304,15 @@
 
     .order-container h2, .review-container h2 {
         font-size: 25px;
+        margin-top: 160px;
     }
 
     .no-orders-heading {
         padding: 33px;
         width: auto;
+    }
+
+    .customer-container, .order-container, .review-container {
+        height: auto;
     }
 }
