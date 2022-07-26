@@ -81,7 +81,7 @@ class OrderSummaryView(View):
 
 
 @csrf_exempt
-def create_checkout_session(request: HttpRequest) -> HttpResponse:
+def create_checkout_session(request: HttpRequest):
     """Create stripe checkout session - copied from Stripe documentation"""
     if request.method == "POST":
         domain_url = "https://norahsceramics.herokuapp.com/"

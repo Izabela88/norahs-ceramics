@@ -22,7 +22,6 @@ function toggleHamburgerIcon() {
   let wrapperMenu = document.querySelector(".wrapper-menu");
 
   wrapperMenu.addEventListener("click", function () {
-    console.log("click");
     wrapperMenu.classList.toggle("open");
   });
 }
