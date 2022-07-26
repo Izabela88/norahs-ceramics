@@ -1390,4 +1390,24 @@ label[for="id_new_password2"] {
     font-size: 25px;
   }
 
+  .register-section, .login-section {
+    height: 100%;
+    min-height: 100vh;
+  }
+
+  .form-grid-container, 
+  .login-form-grid-container,
+  .register-img,
+   .login-img {
+    height: 900px;
+  }
+
+  .signup, .login {
+    width: 90%;
+  }
+
+  .register-box, .login-box {
+    height: auto;
+  }
+
 }
