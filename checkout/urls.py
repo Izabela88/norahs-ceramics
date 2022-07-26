@@ -1,6 +1,6 @@
 from django.urls import path
-from checkout import views
 
+from checkout import views
 
 urlpatterns = [
     path("", views.OrderSummaryView.as_view(), name="checkout"),

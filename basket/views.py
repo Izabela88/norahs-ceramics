@@ -1,10 +1,10 @@
-from django.views import View
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from basket.models import Basket
-from django.urls import reverse
 import sweetify
-from django.contrib import messages
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
+from django.views import View
+
+from basket.models import Basket
 
 
 class BasketView(View):
@@ -21,7 +21,7 @@ class BasketView(View):
 
 
 class AddToBasketView(View):
-    def post(self, request, product_id):
+    def post(self, request: HttpRequest, product_id: int) -> HttpResponse:
         basket = Basket.get_basket(request)
         basket.add_product(product_id=product_id)
         sweetify.toast(
@@ -34,7 +34,7 @@ class AddToBasketView(View):
 
 
 class SubtractFromBasketView(View):
-    def post(self, request, product_id):
+    def post(self, request: HttpRequest, product_id: int) -> HttpResponse:
         basket = Basket.get_basket(request)
         basket.subtract_product(product_id=product_id)
         sweetify.toast(
@@ -47,7 +47,7 @@ class SubtractFromBasketView(View):
 
 
 class DeleteFromBasketView(View):
-    def post(self, request, product_id):
+    def post(self, request: HttpRequest, product_id: int) -> HttpResponse:
         basket = Basket.get_basket(request)
         basket.delete_product(product_id=product_id)
         sweetify.toast(

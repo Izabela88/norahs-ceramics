@@ -1,7 +1,8 @@
 from django.db import models
+
 from customer.models import User
-from product.models import Product
 from norahs_ceramics.model_mixin import TimestapModel
+from product.models import Product
 
 
 class ProductReview(TimestapModel):

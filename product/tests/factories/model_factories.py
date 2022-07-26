@@ -1,4 +1,5 @@
 import factory
+
 from product import models
 
 

@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
 
-<!-------------------------- HERO SECTION ----------------------------->
+<!-- HERO SECTION -->
 <main id="home-section" class="section">
   <div class="hero-bg"></div>
   <div class="container">
@@ -43,9 +43,9 @@
       </div>
   </div>
   </main>
-<!-------------------------- BEST SELLERS SECTION ----------------------------->
+<!-- BEST SELLERS SECTION -->
 <section id="best-sellers" class="b-sellers-section">
-  <h1>Best sellers</h1>
+  <h2>Best sellers</h2>
   <div class="container">
     <div class="cards-container center">
       <ul class="cards">
@@ -82,7 +82,7 @@
     </div>
     </div>
 </section>
-<!-------------------------- NEW COLLECTION SECTION ----------------------------->
+<!-- NEW COLLECTION SECTION -->
 <section class="new-collection">
   <div class="bg-box"></div>
   <div class="container container-mobiles">
@@ -98,7 +98,7 @@
     </div>        
   </div>
 </section>
-<!-------------------------- WHY US, OUR VALUES SECTION ----------------------------->
+<!-- WHY US, OUR VALUES SECTION -->
 <section class="info">
   <div class="container">
     <div class="parts-wrapper">
@@ -148,7 +148,7 @@
     </div>
 
 </section>
-<!-------------------------- NEW ARRIVALS SECTION ----------------------------->
+<!-- NEW ARRIVALS SECTION -->
 <section id="new-arriv" class="section new-arrivals">
   <h2>new arrivals</h2>
   <div class="container">  
@@ -175,13 +175,13 @@
       </div>
   </div>
 </section>
-<!-------------------------- NEWSLETTER SECTION ----------------------------->
+<!-- NEWSLETTER SECTION -->
 <section class="newsletter center">
   <h3>Subscribe to our newsletter and be up to date!</h3>
   <div class="newsletter-box">
     <form method="post" action="{% url 'newsletter' %}">
       {% csrf_token %}
-      {{newsletter_email}}
+      {{newsletter_email.newsletter_email}}
       <button id="open-newsletter" class="button">
         SUBSCRIBE
       </button>

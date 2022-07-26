@@ -19,7 +19,14 @@
             please fill in the form below. you will receive a reply within 24 hours.</p>    
         <form class="contact-form" method="post">
             {% csrf_token %}
-            {{ contact_form }}        
+            <label for="id_first_name">first name</label>
+            {{ contact_form.first_name }}
+            <label for="id_last_name">last name</label>     
+            {{ contact_form.last_name }}
+            <label for="id_contact_email">email</label>      
+            {{ contact_form.contact_email }}
+            <label for="id_message">message</label>       
+            {{ contact_form.message }}        
             <button class="button button-dark" type="submit">send</button>                   
         </form>   
     </div>

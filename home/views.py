@@ -1,22 +1,25 @@
-from django.views.generic import TemplateView
-from product.models import Product
-from order.models import OrderProduct
-from django.db.models import Count
-from newsletter.forms import NewsletterUserForm
-from django.views import View
-from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
-from newsletter.models import NewsletterUser
-from django.urls import reverse
-from django.contrib import messages
-from newsletter.mailchimp_utils import subscribe
-from django.utils import timezone
 import datetime
+
+from django.contrib import messages
+from django.db.models import Count
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.utils import timezone
+from django.views import View
+from django.views.generic import TemplateView
+
+from newsletter.forms import NewsletterUserForm
+from newsletter.mailchimp_utils import subscribe
+from newsletter.models import NewsletterUser
+from order.models import OrderProduct
+from product.models import Product
 
 
 class HomeView(TemplateView):
     template_name = "home/home.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: dict) -> dict:
+        """Expand context data"""
         context = super().get_context_data(**kwargs)
 
         context["new_arrivals"] = Product.objects.all().order_by(
@@ -36,7 +39,7 @@ class HomeView(TemplateView):
 
 
 class NewsletterView(View):
-    def post(self, request) -> HttpResponse:
+    def post(self, request: HttpRequest) -> HttpResponse:
         """Subscribe email address"""
         email_form = NewsletterUserForm(data=request.POST or None)
         if email_form.is_valid():

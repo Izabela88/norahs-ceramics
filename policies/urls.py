@@ -3,13 +3,13 @@ URL patterns for Home application
 """
 
 from django.urls import path
+
 from policies.views import (
-    TermsAndConditionsView,
     PrivacyPolicyView,
     ReturnsPolicyView,
     ShippingPolicyView,
+    TermsAndConditionsView,
 )
-
 
 urlpatterns = [
     path(

@@ -1,16 +1,18 @@
-from django.views.generic import ListView, DetailView
-from product.models import Product, Color
-from product.forms import FilterForm
-from django.db.models import Q
-from reviews.forms import ProductReviewForm
-from django.shortcuts import render, get_object_or_404
-from django.views import View
-from django.contrib.auth.mixins import LoginRequiredMixin
-from reviews.models import ProductReview
-from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
-from django.urls import reverse
 import sweetify
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
+from django.db.models.query import QuerySet
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+from django.views import View
+from django.views.generic import DetailView, ListView
+
+from product.forms import FilterForm
+from product.models import Color, Product
+from reviews.forms import ProductReviewForm
+from reviews.models import ProductReview
 
 
 class ProductListView(ListView):
@@ -18,11 +20,12 @@ class ProductListView(ListView):
     paginate_by = 4
     template_name = "product/product-list.html"
 
-    def get_queryset(self):
-        product_query = Product.objects.filter(is_active=True).all()
+    def filter_products(
+        self, product_query: QuerySet[Product]
+    ) -> QuerySet[Product]:
+        """Filter products by category, sub_category, and min & max price"""
         min_price = self.request.GET.get("min_price")
         max_price = self.request.GET.get("max_price")
-        colors = Color.objects.all()
         if sub_category := self.request.GET.get("sub_category"):
             product_query = product_query.filter(
                 sub_category__name=sub_category
@@ -38,7 +41,13 @@ class ProductListView(ListView):
                     self._to_pence(int(max_price)),
                 )
             )
+        return product_query
 
+    def filter_products_colors(
+        self, product_query: QuerySet[Product]
+    ) -> QuerySet[Product]:
+        """Filter products by colors"""
+        colors = Color.objects.all()
         color_filters = []
 
         for color in colors:
@@ -49,7 +58,12 @@ class ProductListView(ListView):
             for filter in color_filters:
                 color_query |= filter
             product_query = product_query.filter(color_query)
+        return product_query
 
+    def sort_products(
+        self, product_query: QuerySet[Product]
+    ) -> QuerySet[Product]:
+        """Sort products by name or price"""
         if sort_by := self.request.GET.get("sort_by"):
             if sort_by == "name_asc":
                 product_query = product_query.order_by("name").distinct("name")
@@ -65,9 +79,19 @@ class ProductListView(ListView):
                 product_query = product_query.order_by(
                     "-price_pence"
                 ).distinct("price_pence")
+        return product_query
+
+    def get_queryset(self) -> QuerySet[Product]:
+        """Get filtered and sorted products"""
+        product_query = Product.objects.filter(is_active=True).all()
+        product_query = self.filter_products(product_query)
+        product_query = self.filter_products_colors(product_query)
+        product_query = self.sort_products(product_query)
         return product_query.distinct("id", "name", "price_pence")
 
     def get_context_data(self, **kwargs):
+        """Expand context with extra data for search urls. They are used to
+        preserve user search"""
         context = super().get_context_data(**kwargs)
         query_params = ""
         if sub_category := self.request.GET.get("sub_category"):
@@ -98,7 +122,7 @@ class ProductListView(ListView):
         return context
 
     @staticmethod
-    def _to_pence(price):
+    def _to_pence(price: int) -> int:
         return price * 100
 
 
@@ -106,7 +130,8 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = "product/product-details.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: dict) -> dict:
+        """Expand context with product review data"""
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             context["review_form"] = ProductReviewForm()
@@ -120,7 +145,8 @@ class ReviewView(LoginRequiredMixin, View):
     login_url = "/accounts/login/"
     redirect_field_name = "account_login"
 
-    def post(self, request, slug):
+    def post(self, request: HttpRequest, slug: str) -> HttpResponse:
+        """Create product review"""
         product = get_object_or_404(Product, slug=slug)
         product_review = ProductReview.objects.filter(
             product_id=product.id, reviewer_id=request.user.id

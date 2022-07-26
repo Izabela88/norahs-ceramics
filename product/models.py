@@ -1,14 +1,15 @@
-from django.db import models
+from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+
 from norahs_ceramics.fields import CaseInsensitiveCharField
 from norahs_ceramics.model_mixin import TimestapModel
-from django.core.exceptions import ValidationError
 
 
 class Category(TimestapModel):
     name = models.CharField(max_length=30, primary_key=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -18,14 +19,14 @@ class SubCategory(TimestapModel):
         Category, on_delete=models.CASCADE, related_name="parent_category"
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
 class Color(TimestapModel):
     name = models.CharField(max_length=30, primary_key=True, unique=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -64,7 +65,9 @@ class Product(TimestapModel):
     )
     colors = models.ManyToManyField(Color, null=True)
 
-    def validate_image(self):
+    def validate_image(self) -> None:
+        """Validate product image. Raises ValidationError if image is
+        too big"""
         # https://stackoverflow.com/questions/6195478/max-image-size-on-file-upload
         filesize = self.file.size
         megabyte_limit = 0.4
@@ -80,15 +83,15 @@ class Product(TimestapModel):
         validators=[validate_image],
     )
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
         return f"/products/{self.slug}/"
 
     @property
     def reviews_rating(self) -> tuple[float, int]:
-        """Return user avarage reviews rating
+        """Return user average reviews rating
 
         Returns:
-            tuple[float, int]: Avarage rating and number of reviews
+            tuple[float, int]: Average rating and number of reviews
         """
         reviews = self.product_reviews.filter(
             is_admin_approved=True, is_visible=True
@@ -100,5 +103,5 @@ class Product(TimestapModel):
             avg_rating = 0
         return avg_rating, len(reviews)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name

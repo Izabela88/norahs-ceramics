@@ -185,8 +185,8 @@ Visa: 4242 4242 4242 4242
 
     - **User**
 
-      - The Django default User model is replaced by the custom AbstractUser because:
-        - During authentication, the application uses an email address to identify uniquely.
+      - The Django default User model is replaced by the custom AbstractUser.
+      - During authentication, the application uses an email address to identify uniquely.
       - Stores users' registration information provided upon signing up.
 
     - **AddressDetails model**
@@ -334,9 +334,9 @@ Visa: 4242 4242 4242 4242
   | Add/edit/delete product category | No        | No         | Yes       |
   | Login                            | No        | Yes        | Yes       |
   | Register                         | Yes       | No         | No        |
-  | Edit/delete reviews No           | No        | Yes        |
+  | Edit/delete reviews              | No        | No         | Yes       |
   | View all reviews                 | No        | Yes        | Yes       |
-  | Add/edit/delete a review         | No        | No         | Yes       |
+  | Add a review                     | No        | Yes        | Yes       |
   | View order history and details   | No        | Yes        | Yes       |
   | View shopping basket             | Yes       | Yes        | Yes       |
   | Checkout page                    | Yes       | Yes        | Yes       |
@@ -374,7 +374,7 @@ Visa: 4242 4242 4242 4242
 
 - ### **Databases platform and cloud storage**
 
-  - [SQlite](https://www.sqlite.org/index.html): SQL database engine provided by default as part of Django and used during development.
+  - [Postgres](https://www.postgresql.org/): database engine used during development.
   - [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql): SQL database service provided directly by Heroku for storing data.
   - [Cloudinary](https://cloudinary.com/): to store images and static files in production.
   - [Heroku](https://www.heroku.com/): to deploy and run the application in production.
@@ -544,8 +544,12 @@ Visa: 4242 4242 4242 4242
   else:
       DATABASES = {
           "default": {
-              "ENGINE": "django.db.backends.sqlite3",
-              "NAME": BASE_DIR / "db.sqlite3",
+              "ENGINE": "django.db.backends.postgresql_psycopg2",
+              "NAME": "norahs-ceramics",
+              "USER": "postgres",
+              "PASSWORD": "1234",
+              "HOST": "127.0.0.1",
+              "PORT": "5432",
           }
       }
   ```
