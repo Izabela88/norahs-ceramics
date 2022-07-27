@@ -1142,7 +1142,10 @@ label[for="id_new_password2"] {
     position: absolute;
     right: 5%;
     top: 70px;
-    z-index: 1000;
+    z-index: 10000000;
+    background-color: var(--col_four);
+    padding: 2px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
   
 
@@ -1250,6 +1253,10 @@ label[for="id_new_password2"] {
 
   .signup, .login {
     margin: 20px auto;
+  }
+
+  .allauth-section h1 {
+    margin: 0;
   }
 
 }

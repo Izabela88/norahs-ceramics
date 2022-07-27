@@ -127,10 +127,22 @@ const glassContent = document.querySelectorAll(".glass-content");
 const zeroWasteContent = document.querySelectorAll(".zero-waste-content");
 const profileContent = document.querySelectorAll(".profile-content");
 let showDropdown = false;
-ceramicsBtn.addEventListener("click", toggleCeramics);
-glassBtn.addEventListener("click", toggleGlass);
-zeroWasteBtn.addEventListener("click", toggleWaste);
-profile.addEventListener("click", toggleProfile);
+
+if (ceramicsBtn) {
+  ceramicsBtn.addEventListener("click", toggleCeramics);
+}
+
+if (glassBtn) {
+  glassBtn.addEventListener("click", toggleGlass);
+}
+
+if (zeroWasteBtn) {
+  zeroWasteBtn.addEventListener("click", toggleWaste);
+}
+
+if (profile) {
+  profile.addEventListener("click", toggleProfile);
+}
 
 function toggleCeramics() {
   if (!showDropdown) {
