@@ -5,6 +5,9 @@
 ![mockup](/documents/responsive.png)
 
 Norah's Ceramics - an online shop with handmade ceramic and glass products and also zero waste accessories for kitchen and bathroom.
+This e-commerce business is B2C oriented, so the owner is selling their products to individual customers.
+The company's goal is to promote environmentally friendly products and reduce environmental pollution with plastic.
+The website owner and main artist is a woman, so the website is targeted mainly at women. The design is very feminine. Due to the fact that Norah's Ceramics is a new company on the market and it does not have many customers yet, the products are produced on an ongoing basis. In case of a need to increase production in the future, the 'stock' option will be introduced to keep track of stocks.
 
 Using the principles of UX design, this fully responsive and interactive website was developed using HTML, CSS, JavaScript and Python, and Django as a framework.
 
@@ -303,6 +306,7 @@ Visa: 4242 4242 4242 4242
   - Complete automated testing in 100%.
   - Ability to share products on social media.
   - Allauth integration with social media platform.
+  - Stock option.
 
 ## **DATA VALIDATION**
 
