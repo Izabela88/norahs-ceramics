@@ -216,6 +216,14 @@
     - When adding a product to the basket, on the right side of the icon, the total price of products in the basket changes dynamically.
 
     ![basket icon](/documents/basket-icon.png)
-  - ### **Norah's ceramics Facebook page:**
+
+  - ### **Norah's Ceramics Facebook page:**
 
     ![Facebook page](/documents/fb-page.png)
+
+  - ### **Error Pages:**
+
+    ![401](/documents/401.png)
+    ![403](/documents/403.png)
+    ![404](/documents/404.png)
+    ![500](/documents/500.png)
