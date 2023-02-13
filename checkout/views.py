@@ -84,7 +84,7 @@ class OrderSummaryView(View):
 def create_checkout_session(request: HttpRequest):
     """Create stripe checkout session - copied from Stripe documentation"""
     if request.method == "POST":
-        domain_url = "https://norahsceramics.herokuapp.com/"
+        domain_url = "https://norahs-ceramics-production.up.railway.app/"
         try:
             checkout_products = request.session["checkout_products"]
             basket_id = request.session["basket_id"]
