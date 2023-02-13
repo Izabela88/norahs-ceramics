@@ -37,7 +37,7 @@ if os.getenv("ENV") == "PRODUCTION":
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ["norahsceramics.herokuapp.com", "localhost", "norahs-ceramics.up.railway.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
