@@ -30,12 +30,12 @@ h5 {
   font-family: var(--font_three);
   font-weight: 300;
   letter-spacing: 2px;
-  text-transform:uppercase; 
+  text-transform:uppercase;
 }
 
 h1,
 h2 {
-  font-size: 50px;
+  font-size: 45px;
 }
 
 a {
@@ -230,11 +230,11 @@ label {
 }
 
 .logo {
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
   position: relative;
   margin: 5px auto;
-  padding: 10px;
+  padding: 5px;
   border-radius: 50%;
   border: 1px solid var(--col_eight);
   background-color: var(--col_four);
@@ -343,8 +343,8 @@ label {
 
  #menu-list .menu-item {
   flex: 1;
-  padding: 10px 0;
   text-transform: uppercase;
+  padding-bottom: 10px;
 }
 
  #menu-list .menu-item:after {
@@ -1147,42 +1147,42 @@ label[for="id_new_password2"] {
     padding: 2px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
-  
+
 
   .wrapper-menu.open {
     transform: rotate(-45deg);
   }
-  
+
   .line-menu {
     background-color: #000;
     border-radius: 5px;
     width: 100%;
     height: 6px;
   }
-  
+
   .line-menu.half {
     width: 50%;
   }
-  
+
   .line-menu.start {
     transition: transform 330ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
     transform-origin: right;
   }
-  
+
   .open .line-menu.start {
     transform: rotate(-90deg) translateX(3px);
   }
-  
+
   .line-menu.end {
     align-self: flex-end;
     transition: transform 330ms cubic-bezier(0.54, -0.81, 0.57, 0.57);
     transform-origin: left;
   }
-  
+
   .open .line-menu.end {
     transform: rotate(-90deg) translateX(-3px);
   }
-  
+
   .sidebar.open-menu {
     width:100%;
     height: 100vh;
@@ -1194,7 +1194,7 @@ label[for="id_new_password2"] {
     top: 0;
     opacity: 1;
   }
-  
+
   .sidebar {
     height: 0;
     width: 0;
@@ -1302,7 +1302,7 @@ label[for="id_new_password2"] {
   #back-btn {
     font-size: 17px;
   }
-  
+
 
   .change-password-box h2,
   .delete-container h2 {
@@ -1406,7 +1406,7 @@ label[for="id_new_password2"] {
     min-height: 100vh;
   }
 
-  .form-grid-container, 
+  .form-grid-container,
   .login-form-grid-container,
   .register-img,
    .login-img {
