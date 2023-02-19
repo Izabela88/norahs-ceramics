@@ -122,21 +122,21 @@ WSGI_APPLICATION = "norahs_ceramics.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# if os.getenv("ENV") == "PRODUCTION":
-DATABASES = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
-# else:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.postgresql_psycopg2",
-#             "NAME": "norahs-ceramics",
-#             "USER": "postgres",
-#             "PASSWORD": "1234",
-#             "HOST": "127.0.0.1",
-#             "PORT": "5432",
-#         }
-#     }
+if os.getenv("ENV") == "PRODUCTION":
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": "norahs-ceramics",
+            "USER": "postgres",
+            "PASSWORD": "1234",
+            "HOST": "127.0.0.1",
+            "PORT": "5432",
+        }
+    }
 
 
 # Password validation
