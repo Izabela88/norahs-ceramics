@@ -11,7 +11,7 @@ The website owner and main artist is a woman, so the website is targeted mainly 
 
 Using the principles of UX design, this fully responsive and interactive website was developed using HTML, CSS, JavaScript and Python, and Django as a framework.
 
-View live project here [link to deployed link](https://norahs-ceramics-production.up.railway.app/)
+View live project here [LINK TO DEPLOYED WEBSITE](https://norahs-ceramics-production.up.railway.app/)
 
 ## **PAYMENT**
 
